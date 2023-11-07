@@ -8,7 +8,7 @@ const Apt = () => {
       }}
     >
       <div className="flex items-center gap-2">
-        <img src="/credPoints/aptos.svg" alt="swap" />
+        <img src="/credpoints/aptos.svg" alt="swap" />
         <p className="text-2xl font-bold">APT</p>
       </div>
       <p className="mt-4 text-center">

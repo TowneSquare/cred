@@ -8,7 +8,7 @@ const LiquidSwap = () => {
       }}
     >
       <div className="flex items-center gap-2">
-        <img src="/credPoints/liquidSwap.svg" alt="swap" />
+        <img src="/credpoints/liquidSwap.svg" alt="swap" />
         <p className="text-2xl font-bold">Liquidswap</p>
       </div>
       <p className="mt-4 text-center">is the DeFi platform<br/> that you like the most</p>

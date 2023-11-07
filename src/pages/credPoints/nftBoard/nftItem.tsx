@@ -12,7 +12,7 @@ const NftItem: React.FC<Props> = ({ data }) => {
         <p className="text-xs font-bold text-center">{data.name}</p>
         <div className="flex gap-2 justify-items-end">
           <p className="text-sm">{data.price}</p>
-          <img src="/credPoints/cred.svg" className="w-4 h-4" alt="cred" />
+          <img src="/credpoints/cred.svg" className="w-4 h-4" alt="cred" />
         </div>
       </div>
     </>

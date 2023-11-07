@@ -7,7 +7,7 @@ const initialState: credPointsStates = {
 }
 
 export const fetchCredPoints = createAsyncThunk(
-   'credPoints/fetch',
+   'credpoints/fetch',
    async (arg, thunkAPI) => {
       try {
          return [];

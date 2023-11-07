@@ -8,7 +8,7 @@ const LongestNft = () => {
       }}
     >
       <div className="flex items-center gap-2">
-        <img src="/credPoints/longestNft.svg" alt="swap" />
+        <img src="/credpoints/longestNft.svg" alt="swap" />
         <p className="text-2xl font-bold">Bruh Bear #8932</p>
       </div>
       <p className="mt-4 text-center">is your longest-hodling NFT</p>
