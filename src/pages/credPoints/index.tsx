@@ -1,4 +1,5 @@
 import Header from "../../components/header";
+import Banner from "./banner";
 import Cards from "./cards";
 import LiquidSwapHistory from "./liquidswapHistory";
 import MyTotal from "./myTotal";
@@ -9,11 +10,13 @@ const CredPoints = () => {
     <div>
       <Header />
       <div className="w-full flex justify-center">
-        <div className="w-[1000px] flex flex-col items-center mt-20">
+        <div className="w-full md:w-[1000px] px-4 md:px-0 flex flex-col items-center mt-20 mb-10">
           <MyTotal />
           <Cards />
           <LiquidSwapHistory />
           <NftBoard />
+          <Banner />
+          <p className="mt-20 text-gray-light-1 cursor-pointer">Privacy policy</p>
         </div>
       </div>
     </div>
