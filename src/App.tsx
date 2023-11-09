@@ -7,6 +7,7 @@ import { fetchCredPoints } from "./state/credPoints";
 import { useEffect } from "react";
 import Leaderboard from "./pages/leaderboard";
 import About from "./pages/about";
+import PrivacyPolicy from "./pages/privacyPolicy";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -22,6 +23,7 @@ function App() {
         <Route path="/credPoints" element={<CredPoints />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/about" element={<About />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
       </Routes>
     </div>
   );
