@@ -1,4 +1,5 @@
 import Header from "../../components/header";
+import PrivacyPolicy from "../../components/privacyPolicy";
 import Banner from "./banner";
 import Cards from "./cards";
 import LiquidSwapHistory from "./liquidswapHistory";
@@ -16,7 +17,7 @@ const CredPoints = () => {
           <LiquidSwapHistory />
           <NftBoard />
           <Banner />
-          <p className="mt-20 text-gray-light-1 cursor-pointer">Privacy policy</p>
+          <PrivacyPolicy />
         </div>
       </div>
     </div>

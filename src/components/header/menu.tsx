@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
-import MenuType from "../../type/menu_type";
+import MenuType from "../../type/menuType";
 
 interface Props {
    data: MenuType

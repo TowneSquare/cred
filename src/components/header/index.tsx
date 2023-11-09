@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Menu from "./menu";
-import MenuType from "../../type/menu_type";
+import MenuType from "../../type/menuType";
 import ConnectButton from "./connect_button";
 import { useState } from "react";
 
