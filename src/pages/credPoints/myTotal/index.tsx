@@ -3,7 +3,7 @@ import Share from "../../../components/share";
 const MyTotal = () => {
   const myPoint = "8,750";
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center bg-black">
       <h1 className="text-2xl md:text-3xl font-bold">MY TOTAL CRED POINTS</h1>
       <div
         className="relative mt-4 px-8 py-1 flex gap-2 justify-center items-center border-[3px] md:border-4 border-primary-default rounded-full "

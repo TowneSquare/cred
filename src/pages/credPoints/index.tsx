@@ -10,7 +10,12 @@ const CredPoints = () => {
   return (
     <div>
       <Header />
-      <div className="w-full flex justify-center">
+      <div
+        className="relative w-full flex justify-center z-10 !bg-fixed"
+        style={{
+          background: "url(/credpoints/bg.png)",
+        }}
+      >
         <div className="w-full md:w-[1000px] px-4 md:px-0 flex flex-col items-center mt-20 mb-10">
           <MyTotal />
           <Cards />

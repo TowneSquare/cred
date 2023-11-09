@@ -34,7 +34,7 @@ const ConnectButton = () => {
               isOpen ? "block" : "hidden"
             } absolute z-10 inset-0 flex justify-center items-center bg-[#00000050]`}
           >
-            <div className="relative w-[400px]  bg-gray-dark-2 border-gray-light-3 rounded-md p-8">
+            <div className="relative w-[400px]  bg-gray-light-1 border-gray-light-3 rounded-md p-8">
               <p className="text-2xl font-bold text-center">
                 Connect your wallet
               </p>

@@ -19,7 +19,7 @@ const UserList = () => {
 
 export default UserList;
 
-const Users: UserType[] = Array(10).fill({
+const Users: UserType[] = Array(500).fill({
   ranking: 1,
   walletAddress: '0x4414d542b0...aee870281F',
   score: 22870
