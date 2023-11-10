@@ -31,12 +31,12 @@ const Screen1 = () => {
         <Logo />
       </div>
       <div>
-        <p className="text-[78px] font-bold">A loyalty system</p>
+        <p className="text-[38px] md:text-[78px] font-bold">A loyalty system</p>
       </div>
       <img
         src="/home/screen1/effect1.svg"
         alt="effect1"
-        className="absolute top-20 left-24"
+        className="absolute top-10 right-10 md:top-20 md:left-24 w-[150px] md:w-[260px]"
       />
       <img
         src="/home/screen1/effect2.svg"
