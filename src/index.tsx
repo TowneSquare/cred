@@ -7,8 +7,6 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./state/store";
 import { AppContext } from "./wallet-adapter/AppContext";
-// import "./slick-slider/slick.min.css";
-// import "./slick-slider/slick-theme.min.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

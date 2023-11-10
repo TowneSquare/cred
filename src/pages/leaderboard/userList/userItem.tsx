@@ -39,7 +39,7 @@ const UserItem: React.FC<Props> = ({ data, index }) => {
                 : {}
             }
           >
-            <p className="text-base md:text-xl text-gray-light-1">{ranking}</p>
+            <p className="text-base md:text-lg text-gray-light-1">{ranking}</p>
           </div>
           <div className="flex items-center gap-2">
             <img
@@ -48,16 +48,16 @@ const UserItem: React.FC<Props> = ({ data, index }) => {
               className="w-8 h-8"
               alt="avatar"
             />
-            <p className="hidden md:block text-base md:text-xl font-bold">
+            <p className="hidden md:block text-base md:text-lg font-bold">
               {data.walletAddress}
             </p>
-            <p className="md:hidden text-base md:text-xl font-bold">
+            <p className="md:hidden text-base md:text-lg font-bold">
               {data.walletAddress.slice(0,5)}...{data.walletAddress.slice(-3)}
             </p>
           </div>
         </div>
         <div className="flex gap-2 items-center">
-          <p className="text-base md:text-xl">{data.score.toLocaleString()}</p>
+          <p className="text-base md:text-lg">{data.score.toLocaleString()}</p>
           <img src="/credpoints/cred.svg" className="w-6 h-6 md:w-8 md:h-8" alt="cred" />
         </div>
       </div>

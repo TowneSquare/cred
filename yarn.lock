@@ -9531,6 +9531,11 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
+react-parallax-scroll@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-parallax-scroll/-/react-parallax-scroll-0.1.1.tgz#d9898f8fec56408f51eec09dae3681161122c287"
+  integrity sha512-OpHGoO+p41F7YCtSMw4B4uAsEx38hZslx68GuTqaAQ7p2Jk1DEE6VszhRVXwoUt5/S5gCVj6ll3OzRNZ9RCJSQ==
+
 react-redux@^8.1.2:
   version "8.1.2"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-8.1.2.tgz#9076bbc6b60f746659ad6d51cb05de9c5e1e9188"
