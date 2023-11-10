@@ -12,7 +12,4 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #121212;
   color: white;
-
-  perspective: 1px;
-  transform-style: preserve-3d;
 }

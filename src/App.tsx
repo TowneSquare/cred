@@ -9,6 +9,8 @@ import Leaderboard from "./pages/leaderboard";
 import About from "./pages/about";
 import PrivacyPolicy from "./pages/privacyPolicy";
 
+import { Controller, Scene } from 'react-scrollmagic';
+
 function App() {
   const dispatch = useAppDispatch();
 
