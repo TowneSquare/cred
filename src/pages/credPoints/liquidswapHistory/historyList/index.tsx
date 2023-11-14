@@ -1,3 +1,4 @@
+import { useAppSelector } from "../../../../state/hooks";
 import HistoryItem from "./historyItem";
 
 const HistoryList = () => {

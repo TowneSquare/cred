@@ -3,10 +3,11 @@ import "./index.css";
 import PrimaryButton from "../../../components/primaryButton";
 import NftList from "./nftList";
 import { useState } from "react";
+import { useAppSelector } from "../../../state/hooks";
 
 const NftBoard = () => {
   const [isModal, toggleModal] = useState(false);
-
+  const isLive = useAppSelector((state) => state.credpointsState.isLive);
   return (
     <div className="mt-4 w-full flex border border-gray-light-2 rounded-xl bg-black">
       <div className="min-w-full md:min-w-[50%] p-6 flex flex-col justify-center items-center gap-4">
@@ -29,7 +30,16 @@ const NftBoard = () => {
       </div>
       <div className="hidden md:block w-px border border-gray-light-1" />
       <div className="hidden md:block min-w-[50%]">
-        <NftList />
+        {isLive ? (
+          <NftList />
+        ) : (
+          <div className="w-full h-full flex justify-center items-center">
+            <span className="text-center text-sm">
+              Here we’ll show the eligible
+              <br /> NFTs you have in the wallet
+            </span>
+          </div>
+        )}
       </div>
       {isModal && (
         <div

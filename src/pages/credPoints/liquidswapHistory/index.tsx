@@ -3,9 +3,11 @@ import "./index.css";
 import PrimaryButton from "../../../components/primaryButton";
 import HistoryList from "./historyList";
 import { useState } from "react";
+import { useAppSelector } from "../../../state/hooks";
 
 const LiquidSwapHistory = () => {
   const [isModal, toggleModal] = useState(false);
+  const isLive = useAppSelector((state) => state.credpointsState.isLive);
 
   return (
     <div className="mt-4 w-full flex border border-gray-light-2 rounded-xl bg-black">
@@ -28,13 +30,21 @@ const LiquidSwapHistory = () => {
       </div>
       <div className="hidden md:block w-px border border-gray-light-1" />
       <div className="hidden md:block min-w-[50%]">
-        <HistoryList />
+        {isLive ? (
+          <HistoryList />
+        ) : (
+          <div className="w-full h-full flex justify-center items-center">
+            <span className="text-center text-sm">
+              Here we’ll show the last 10 activities,<br/> when you interact with
+              DeFi protocols
+            </span>
+          </div>
+        )}
       </div>
       {isModal && (
         <div
           className="absolute inset-0 z-10"
-          onClick={(e) => 
-            toggleModal(false)}
+          onClick={(e) => toggleModal(false)}
         >
           <div
             className="fixed top-20 bottom-px left-px right-px flex justify-center border border-gray-light-1 rounded-md"

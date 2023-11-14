@@ -1,5 +1,5 @@
 const PointLogo = () => {
-  const trading="750"
+  const trading="0"
 
   return (
     <div

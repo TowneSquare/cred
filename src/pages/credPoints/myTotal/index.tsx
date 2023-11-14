@@ -1,7 +1,11 @@
 import Share from "../../../components/share";
+import { useAppSelector } from "../../../state/hooks";
 
 const MyTotal = () => {
-  const myPoint = "8,750";
+  const myPoint = useAppSelector(state => state.credpointsState.myPoint);
+  const updatedAt = useAppSelector(state => state.credpointsState.updatedAt);
+  const dateString = new Date(updatedAt).toLocaleTimeString();
+
   return (
     <div className="flex flex-col items-center bg-black">
       <h1 className="text-2xl md:text-3xl font-bold">MY TOTAL CRED POINTS</h1>
@@ -18,7 +22,7 @@ const MyTotal = () => {
           <Share />
         </div>
       </div>
-      <p className="mt-4 text-center text-sm md:text-base">points are updated daily at 00:00 UTC</p>
+      <p className="mt-4 text-center text-sm md:text-base">points are updated daily at {dateString}</p>
     </div>
   );
 };

@@ -16,7 +16,7 @@ const initialState: leaderboardStates = {
 }
 
 export const fetchRankings = createAsyncThunk(
-   'credpoints/fetch',
+   'leaderboard/fetch',
    async (wallet: string, thunkAPI) => {
       const url = `https://backend.townesquare.xyz/activity/leaderboard/${wallet}`;
       try {
@@ -30,7 +30,7 @@ export const fetchRankings = createAsyncThunk(
 
 
 export const leaderboardSlice = createSlice({
-   name: 'credPoints',
+   name: 'leaderboard',
    initialState,
    reducers: {
       
