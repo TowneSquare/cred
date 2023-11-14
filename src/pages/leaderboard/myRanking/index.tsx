@@ -8,11 +8,7 @@ const MyRanking = () => {
     <div className="flex flex-col items-center">
       <h1 className="text-2xl md:text-3xl font-bold">MY RANKING</h1>
       <div
-        className="relative mt-4 px-8 py-1 flex gap-2 justify-center items-center border-[3px] md:border-4 border-secondary-default rounded-full "
-        style={{
-          background:
-            "linear-gradient(94.74deg, rgba(255, 255, 255, 0.14) 16.43%, rgba(255, 255, 255, 0) 108.74%)",
-        }}
+        className="container relative mt-4 px-8 py-1 flex gap-2 justify-center items-center border-[3px] md:border-4 border-secondary-default rounded-full "
       >
         <p className="text-[38px] md:text-[57px] font-semibold">{myRanking}</p>
         <div className="absolute -right-16 md:-right-20">
