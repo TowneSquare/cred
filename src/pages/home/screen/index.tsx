@@ -11,7 +11,7 @@ const Screen = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % 3);
-    }, 6000);
+    }, 3500);
     return () => clearInterval(timer);
   });
 
@@ -35,16 +35,16 @@ const Screen = () => {
         )}
         {current == 1 && (
           <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-third-default">
-            <p className="split text-[38px] md:text-[78px] before:bg-third-default">
+            <p className="split text-[38px] md:text-[78px] font-bold before:bg-third-default">
               that
             </p>
-            <p className="split text-[38px] md:text-[78px] before:bg-third-default">
+            <p className="split text-[38px] md:text-[78px] font-bold before:bg-third-default">
               rewards
             </p>
-            <p className="split text-[38px] md:text-[78px] before:bg-third-default">
+            <p className="split text-[38px] md:text-[78px] font-bold before:bg-third-default">
               you
             </p>
-            <p className="split text-[38px] md:text-[78px] before:bg-third-default">
+            <p className="split text-[38px] md:text-[78px] font-bold before:bg-third-default">
               points
             </p>
           </div>

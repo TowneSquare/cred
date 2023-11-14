@@ -1,12 +1,13 @@
 :root{
-  --speed: 6s;
+  --speed: 3s;
 }
 .split {
   position: relative;
   display: inline-block;
   overflow: hidden;
   /* margin: 15px; */
-  
+  color: transparent;
+
   &::before {
     content: '';
     position: absolute;
@@ -34,45 +35,40 @@
     opacity: 1;
   }
 
-  25% {
+  10% {
     transform: translateX(0);
     opacity: 1;
   }
 
-  35% {
+  15% {
     transform: translateX(calc(100% + 1px));
     opacity: 1;
   }
 
-  36% {
+  16% {
     transform: translateX(calc(100% + 1px));
     opacity: 0;
   }
 
-  37% {
+  17% {
     transform: translateX(calc(-100% - 1px));
     opacity: 0;
   }
-  56% {
+  85% {
     transform: translateX(calc(-100% - 1px));
-    opacity: 1;
-  }
-
-  65% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  80% {
-    transform: translateX(0);
     opacity: 1;
   }
 
   90% {
-    transform: translateX(calc(100% + 1px));
+    transform: translateX(0);
     opacity: 1;
   }
-  
+
+  95% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
   100% {
     transform: translateX(calc(100% + 1px));
     opacity: 1;
@@ -95,12 +91,12 @@
     /* opacity: 1; */
   }
 
-  80% {
+  94% {
     color: inherit;
     /* opacity: 1; */
   }
 
-  81% {
+  95% {
     color: transparent;
     /* opacity: 1; */
   }
