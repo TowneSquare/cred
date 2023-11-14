@@ -8,8 +8,12 @@ const initialState: credPointsStates = {
 
 export const fetchCredPoints = createAsyncThunk(
    'credpoints/fetch',
-   async (arg, thunkAPI) => {
+   async (wallet: string, thunkAPI) => {
+      const url = `https://backend.townesquare.xyz/activity/leaderboard/${wallet}`;
+      console.log(url)
       try {
+         // const res = await fetch(url);
+         // console.log(res);
          return [];
       } catch (error: any) {
          return thunkAPI.rejectWithValue(error.response.data);

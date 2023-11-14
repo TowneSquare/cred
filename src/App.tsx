@@ -10,13 +10,18 @@ import About from "./pages/about";
 import PrivacyPolicy from "./pages/privacyPolicy";
 
 import { Controller, Scene } from 'react-scrollmagic';
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import Sidebar from "./components/header/sidebar";
+import WalletModal from "./components/header/walletModal";
 
 function App() {
   const dispatch = useAppDispatch();
+  const { connected, account } = useWallet();
 
   useEffect(() => {
-    dispatch(fetchCredPoints());
-  }, []);
+    if(account)
+    dispatch(fetchCredPoints(account.address));
+  }, [connected, account]);
 
   return (
     <div>
@@ -27,6 +32,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
       </Routes>
+      <Sidebar />
+      <WalletModal />
     </div>
   );
 }
