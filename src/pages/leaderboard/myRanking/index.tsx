@@ -1,7 +1,9 @@
 import Share from "../../../components/share";
+import { useAppSelector } from "../../../state/hooks";
 
 const MyRanking = () => {
-  const myRanking = "12";
+  const myRanking = useAppSelector(state => state.leaderboardState.myRank);
+  
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-2xl md:text-3xl font-bold">MY RANKING</h1>

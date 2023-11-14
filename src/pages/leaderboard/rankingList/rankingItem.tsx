@@ -1,11 +1,11 @@
-import { UserType } from "../../../type/userType";
+import { RankingType } from "../../../type/rankingType";
 
 interface Props {
-  data: UserType;
+  data: RankingType;
   index: number;
 }
 
-const UserItem: React.FC<Props> = ({ data, index }) => {
+const RankingItem: React.FC<Props> = ({ data, index }) => {
   const ranking = index + 1;
   let bgColor = undefined,
     borderColor = undefined;
@@ -43,22 +43,28 @@ const UserItem: React.FC<Props> = ({ data, index }) => {
           </div>
           <div className="flex items-center gap-2">
             <img
-              src={`https://source.boringavatars.com/marble/120/${data.walletAddress}?colors=264653,2a9d8f,e9c46a,f4a261,e76f51
+              src={`https://source.boringavatars.com/marble/120/${data.wallet}?colors=264653,2a9d8f,e9c46a,f4a261,e76f51
               `}
               className="w-8 h-8"
               alt="avatar"
             />
             <p className="hidden md:block text-base md:text-lg font-bold">
-              {data.walletAddress}
+              {data.wallet.slice(0, 12)}...{data.wallet.slice(-10)}
             </p>
             <p className="md:hidden text-base md:text-lg font-bold">
-              {data.walletAddress.slice(0,5)}...{data.walletAddress.slice(-3)}
+              {data.wallet.slice(0, 5)}...{data.wallet.slice(-3)}
             </p>
           </div>
         </div>
         <div className="flex gap-2 items-center">
-          <p className="text-base md:text-lg">{data.score.toLocaleString()}</p>
-          <img src="/credpoints/cred.svg" className="w-6 h-6 md:w-8 md:h-8" alt="cred" />
+          <p className="text-base md:text-lg">
+            {data.totalPoint.toLocaleString()}
+          </p>
+          <img
+            src="/credpoints/cred.svg"
+            className="w-6 h-6 md:w-8 md:h-8"
+            alt="cred"
+          />
         </div>
       </div>
       <div className="w-full h-px border border-gray-light-1" />
@@ -66,4 +72,4 @@ const UserItem: React.FC<Props> = ({ data, index }) => {
   );
 };
 
-export default UserItem;
+export default RankingItem;

@@ -2,7 +2,7 @@ import Header from "../../components/header";
 import PrivacyPolicy from "../../components/privacyPolicy";
 import Cards from "./cards";
 import MyRanking from "./myRanking";
-import UserList from "./userList";
+import RankingList from "./rankingList";
 import "./index.css";
 
 const Leaderboard = () => {
@@ -24,7 +24,7 @@ const Leaderboard = () => {
         <div className="w-full md:w-[700px] px-4 md:px-0 flex flex-col items-center mt-20 mb-10">
           <MyRanking />
           <Cards />
-          <UserList />
+          <RankingList />
           <PrivacyPolicy />
         </div>
       </div>

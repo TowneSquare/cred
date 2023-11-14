@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import credPointsSlice from "./credPoints";
+import leaderboardSlice from "./leaderboard";
 import dialogSlice from "./dialog";
 
 export const store = configureStore({
   reducer: {
-   credPointsState: credPointsSlice,
+   leaderboardState: leaderboardSlice,
    dialogState: dialogSlice,
   },
 });

@@ -5,20 +5,26 @@ import ConnectButton from "./connectButton";
 import Menu from "./menu";
 
 const Sidebar = () => {
-  const show = useAppSelector(state => state.dialogState.bSidebar);
+  const show = useAppSelector((state) => state.dialogState.bSidebar);
   const dispatch = useAppDispatch();
 
-  return ( 
+  return (
     <div
-      className={`fixed w-1/2 h-screen top-0 right-0 px-4 py-10 z-50 ${
-        show ? "flex" : "hidden"
-      } flex-col gap-4  border-l border-l-gray-light-1 bg-black`}
-      onClick={() => dispatch(toggleSidebar(!show))}
+      className={`${show ? "block" : "hidden"} fixed w-full h-screen inset-0`}
+      onClick={() => dispatch(toggleSidebar(false))}
     >
-      {Menus.map((menu, index) => (
-        <Menu data={menu} key={index} />
-      ))}
-      <ConnectButton />
+      <div
+        className="fixed w-1/2 h-screen top-0 right-0 px-4 py-10 z-50 flex  flex-col gap-4  border-l border-l-gray-light-1 bg-black"
+        onClick={(e) => {
+          e.stopPropagation();
+          dispatch(toggleSidebar(false));
+        }}
+      >
+        {Menus.map((menu, index) => (
+          <Menu data={menu} key={index} />
+        ))}
+        <ConnectButton />
+      </div>
     </div>
   );
 };
