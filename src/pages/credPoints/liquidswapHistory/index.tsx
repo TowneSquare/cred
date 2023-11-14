@@ -10,7 +10,7 @@ const LiquidSwapHistory = () => {
   const isLive = useAppSelector((state) => state.credpointsState.isLive);
 
   return (
-    <div className="mt-4 w-full flex border border-gray-light-2 rounded-xl bg-black">
+    <div className="container mt-4 w-full flex border border-gray-light-2 rounded-xl">
       <div className="min-w-full md:min-w-[50%] p-6 flex flex-col justify-center items-center gap-4">
         <PointLogo />
         <p className="text-2xl font-bold">from DeFi trading</p>

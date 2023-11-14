@@ -12,13 +12,13 @@ const CredPoints = () => {
     <div className="parallax">
       <Header />
       <div className="parallax__group">
-        <div className="parallax__layer effect1">
+        <div className="parallax__layer cred__effect1">
           <img src="/credpoints/effect1.png" alt="effect1" />
         </div>
-        <div className="parallax__layer effect2">
+        <div className="parallax__layer cred__effect2">
           <img src="/credpoints/effect2.png" alt="effect2" />
         </div>
-        <div className="parallax__layer effect3">
+        <div className="parallax__layer cred__effect3">
           <img src="/credpoints/effect3.png" alt="effect3" />
         </div>
       </div>

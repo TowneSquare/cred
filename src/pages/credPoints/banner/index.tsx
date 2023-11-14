@@ -3,10 +3,10 @@ import PrimaryButton from "../../../components/primaryButton";
 const Banner = () => {
   return (
     <div
-      className="relative mt-8 pb-4 md:pb-0 w-full flex flex-col-reverse gap-10 md:gap-0 md:flex-row justify-between items-center border border-gray-light-2 rounded-xl bg-black"
+      className="container relative mt-8 pb-4 md:pb-0 w-full flex flex-col-reverse gap-10 md:gap-0 md:flex-row justify-between items-center border border-[#f9bffeeb] rounded-xl bg-black"
       style={{
         background:
-          "linear-gradient(91.58deg, rgba(170, 114, 180, 0.44) 0%, rgba(107, 55, 172, 0.44) 111.54%),linear-gradient(101.36deg, rgba(249, 191, 254, 0.736) 13.84%, rgba(238, 170, 243, 0.32) 66.32%), black",
+          "linear-gradient(92deg, rgba(170, 114, 180, 0.44) 0%, rgba(107, 55, 172, 0.44) 111.54%)",
       }}
     >
       <div className="px-4 md:px-12 flex flex-col justify-center gap-4">

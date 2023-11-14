@@ -4,11 +4,7 @@ const Apt = () => {
   const isLive = useAppSelector((state) => state.credpointsState.isLive);
   return (
     <div
-      className="w-[220px] md:w-[320px] min-h-[140px]  px-4 pt-4 flex flex-col items-center border border-gray-light-2 rounded-xl"
-      style={{
-        background:
-          "linear-gradient(94.74deg, rgba(255, 255, 255, 0.14) 16.43%, rgba(255, 255, 255, 0) 108.74%)",
-      }}
+      className="container w-[220px] md:w-[320px] min-h-[140px]  px-4 pt-4 flex flex-col items-center border border-gray-light-2 rounded-xl"
     >
       {isLive ? (
         <>
