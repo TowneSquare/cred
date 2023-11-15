@@ -14,6 +14,8 @@ module.exports = {
       'gray-light-1': '#5F5F5F',
       'gray-light-2': '#5F5F5F',
       'gray-light-3': '#B9B9B9',
+      'gray-light-4': '#ffffffeb',
+      'gray-light-5': '#ffffff80',
       'black': '#000000',
       'error': '#FF4471'
     },

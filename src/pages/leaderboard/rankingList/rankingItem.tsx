@@ -8,19 +8,25 @@ interface Props {
 const RankingItem: React.FC<Props> = ({ data, index }) => {
   const ranking = index + 1;
   let bgColor = undefined,
-    borderColor = undefined;
+    borderColor = undefined,
+    textColor = undefined;
   switch (ranking) {
     case 1:
       bgColor = "#FFF5BD";
       borderColor = "#D4B341";
+      textColor = "#6D5C06";
       break;
     case 2:
       bgColor = "#B9B9B9";
       borderColor = "#F7F7F7";
+      textColor = "#484747";
+
       break;
     case 3:
       bgColor = "#E77F44";
       borderColor = "#FFC19D";
+      textColor = "#5F2809";
+
       break;
   }
 
@@ -39,7 +45,12 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
                 : {}
             }
           >
-            <p className="text-base md:text-lg text-gray-light-1">{ranking}</p>
+            <p
+              className="text-base md:text-lg text-gray-light-5"
+              style={ranking <= 3 ? { color: textColor } : {}}
+            >
+              {ranking}
+            </p>
           </div>
           <div className="flex items-center gap-2">
             <img
