@@ -13,7 +13,7 @@ const ConnectButton = () => {
       {connected ? (
         <>
           <div
-            className="flex flex-col items-center gap-6 px-4 py-2 rounded-3xl border border-gray-light-1 cursor-pointer"
+            className="w-[200px] flex flex-col items-center gap-6 px-4 py-2 rounded-3xl border border-gray-light-1 cursor-pointer"
             onClick={(e) => {
               e.stopPropagation();
               toggleOpen(!isOpen);
@@ -23,7 +23,7 @@ const ConnectButton = () => {
               <div className="w-8 h-8">
                 <img src="/header/ellipse.svg" className="w-8" alt="ellipse" />
               </div>
-              <span className="font-bold">
+              <span className="hover:font-bold">
                 {account?.address.slice(0, 5)}...{account?.address.slice(-3)}
                 &nbsp;{isOpen ? "▲" : "▼"}
               </span>
@@ -40,10 +40,10 @@ const ConnectButton = () => {
       ) : (
         <>
           <div
-            className="mt-3 font-semibold cursor-pointer"
+            className="w-[200px] mt-3 flex justify-center cursor-pointer"
             onClick={() => dispatch(toggleWalletPanel(true))}
           >
-            <p className="whitespace-nowrap">Connect Wallet</p>
+            <p className=" font-semibold whitespace-nowrap">Connect Wallet</p>
           </div>
         </>
       )}
