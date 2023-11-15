@@ -10,7 +10,7 @@ const MyRanking = () => {
       <div
         className="container relative mt-4 px-8 py-1 flex gap-2 justify-center items-center border-[3px] md:border-4 border-secondary-default rounded-full "
       >
-        <p className="text-[38px] md:text-[57px] font-semibold">{myRanking}</p>
+        <p className="text-[38px] md:text-[57px] font-semibold">{myRanking.toLocaleString()}</p>
         <div className="absolute -right-16 md:-right-20">
           <Share />
         </div>
