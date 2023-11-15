@@ -18,6 +18,7 @@ const ConnectButton = () => {
             </div>
             <span className="font-bold">
               {account?.address.slice(0, 5)}...{account?.address.slice(-3)}
+              &nbsp;▼▲
             </span>
           </div>
         </>
@@ -27,7 +28,7 @@ const ConnectButton = () => {
             className="font-semibold cursor-pointer"
             onClick={() => dispatch(toggleWalletPanel(true))}
           >
-            <p className="whitespace-nowrap">Connect Wallet</p>
+            <p className="whitespace-nowrap">Connect Wallet▼</p>
           </div>
         </>
       )}

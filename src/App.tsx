@@ -13,6 +13,7 @@ import { Controller, Scene } from "react-scrollmagic";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import Sidebar from "./components/header/sidebar";
 import WalletModal from "./components/header/walletModal";
+import { fetchCredpoints } from "./state/credpoints";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -22,6 +23,7 @@ function App() {
     // if (account) 
     // dispatch(fetchCredPoints(account.address));
     dispatch(fetchRankings("0xb52363ed75f496448b691d33125bd1a866cf35a0132626074f59d4e07bb80234"));
+    dispatch(fetchCredpoints("0x3bc474f3c3c37c9cdb6643c04e5004e5e03b17b1a4200ef807cd990f65b0e194"));
   }, [connected, account]);
 
   return (

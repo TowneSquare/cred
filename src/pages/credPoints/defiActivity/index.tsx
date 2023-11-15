@@ -1,11 +1,11 @@
 import PointLogo from "./pointLogo";
 import "./index.css";
 import PrimaryButton from "../../../components/primaryButton";
-import HistoryList from "./historyList";
+import ActivityList from "./activityList";
 import { useState } from "react";
 import { useAppSelector } from "../../../state/hooks";
 
-const LiquidSwapHistory = () => {
+const DefiActivity = () => {
   const [isModal, toggleModal] = useState(false);
   const isLive = useAppSelector((state) => state.credpointsState.isLive);
 
@@ -31,7 +31,7 @@ const LiquidSwapHistory = () => {
       <div className="hidden md:block w-px border border-gray-light-1" />
       <div className="hidden md:block min-w-[50%]">
         {isLive ? (
-          <HistoryList />
+          <ActivityList />
         ) : (
           <div className="w-full h-full flex justify-center items-center">
             <span className="text-center text-sm">
@@ -53,7 +53,7 @@ const LiquidSwapHistory = () => {
                 "linear-gradient(rgba(255, 255, 255, -2.263) 1%, rgba(255, 255, 255, 0.32) 100%), linear-gradient(91.58deg, rgba(255, 255, 255, -1.86) 0%, rgba(255, 255, 255, 0) 38.54%), black",
             }}
           >
-            <HistoryList />
+            <ActivityList />
           </div>
         </div>
       )}
@@ -61,4 +61,4 @@ const LiquidSwapHistory = () => {
   );
 };
 
-export default LiquidSwapHistory;
+export default DefiActivity;
