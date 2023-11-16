@@ -8,8 +8,8 @@ import { useEffect } from "react";
 import Leaderboard from "./pages/leaderboard";
 import About from "./pages/about";
 import PrivacyPolicy from "./pages/privacyPolicy";
+import Twitter from "./pages/twitter";
 
-import { Controller, Scene } from "react-scrollmagic";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import Sidebar from "./components/header/sidebar";
 import WalletModal from "./components/header/walletModal";
@@ -34,6 +34,7 @@ function App() {
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/twitter" element={<Twitter />} />
       </Routes>
       <Sidebar />
       <WalletModal />
