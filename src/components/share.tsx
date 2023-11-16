@@ -7,7 +7,7 @@ const Share = () => {
     (state) => state.credpointsState.totalPoint
   );
   const shareText = `Hey check out Cred! I’m ranked ${myRanking}th with ${totalPoint.toLocaleString()} CRED points! 
-  What’s your score? Check it out on `;
+  What’s your score?\n Check it out on `;
 
   return (
     <>
