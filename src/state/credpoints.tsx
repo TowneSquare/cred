@@ -10,7 +10,6 @@ interface credpointsStates {
    defiActivities: DefiActivityType[];
    nfts: NftType[];
    rewardNFTPointPerDay: number;
-   updatedAt: number;
 };
 
 const initialState: credpointsStates = {
@@ -21,7 +20,6 @@ const initialState: credpointsStates = {
    defiActivities: [],
    nfts: [],
    rewardNFTPointPerDay: 0,
-   updatedAt: Date.now()
 };
 
 export const fetchCredpoints = createAsyncThunk(
@@ -53,7 +51,6 @@ export const credpointsSlice = createSlice({
          state.defiActivities = action.payload.defiActivityList;
          state.nfts = action.payload.holdingNFTs;
          state.rewardNFTPointPerDay = action.payload.rewardNFTPointPerDay;
-         state.updatedAt = Date.now();
       });
    },
 });

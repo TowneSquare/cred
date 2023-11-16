@@ -3,8 +3,6 @@ import { useAppSelector } from "../../../state/hooks";
 
 const MyTotal = () => {
   const myPoint = useAppSelector(state => state.credpointsState.totalPoint);
-  const updatedAt = useAppSelector(state => state.credpointsState.updatedAt);
-  const dateString = new Date(updatedAt).toLocaleTimeString();
 
   return (
     <div className="flex flex-col items-center bg-black">

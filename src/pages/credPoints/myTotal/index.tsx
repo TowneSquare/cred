@@ -3,8 +3,6 @@ import { useAppSelector } from "../../../state/hooks";
 
 const MyTotal = () => {
   const myPoint = useAppSelector(state => state.credpointsState.totalPoint);
-  const updatedAt = useAppSelector(state => state.credpointsState.updatedAt);
-  const dateString = new Date(updatedAt).toLocaleTimeString();
 
   return (
     <div className="flex flex-col items-center bg-black">
@@ -18,7 +16,7 @@ const MyTotal = () => {
           <Share />
         </div>
       </div>
-      <p className="mt-4 text-center text-sm md:text-base">points are updated daily at {dateString}</p>
+      <p className="mt-4 text-center text-sm md:text-base">points are updated daily at 00:00 UTC</p>
     </div>
   );
 };
