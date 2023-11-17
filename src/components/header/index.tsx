@@ -8,7 +8,6 @@ import { toggleSidebar } from "../../state/dialog";
 
 const Header = () => {
   const navigate = useNavigate();
-  const show = useAppSelector((state) => state.dialogState.bSidebar);
   const dispatch = useAppDispatch();
   return (
     <>
