@@ -2,11 +2,11 @@ import PointLogo from "./pointLogo";
 import "./index.css";
 import PrimaryButton from "../../../components/primaryButton";
 import ActivityList from "./activityList";
-import { useState } from "react";
-import { useAppSelector } from "../../../state/hooks";
+import { useAppDispatch, useAppSelector } from "../../../state/hooks";
+import { toggleActivityList } from "../../../state/dialog";
 
 const DefiActivity = () => {
-  const [isModal, toggleModal] = useState(false);
+  const dispatch = useAppDispatch();
   const isLive = useAppSelector((state) => state.credpointsState.isLive);
 
   return (
@@ -23,7 +23,7 @@ const DefiActivity = () => {
         </p>
         <PrimaryButton
           className="md:hidden w-full text-sm"
-          onClick={() => toggleModal(true)}
+          onClick={() => dispatch(toggleActivityList(true))}
         >
           See last 10 DeFi activities
         </PrimaryButton>
@@ -35,28 +35,12 @@ const DefiActivity = () => {
         ) : (
           <div className="w-full h-full flex justify-center items-center">
             <span className="text-center text-sm">
-              Here we’ll show the last 10 activities,<br/> when you interact with
-              DeFi protocols
+              Here we’ll show the last 10 activities,
+              <br /> when you interact with DeFi protocols
             </span>
           </div>
         )}
       </div>
-      {isModal && (
-        <div
-          className="absolute inset-0 z-10"
-          onClick={(e) => toggleModal(false)}
-        >
-          <div
-            className="fixed top-20 bottom-px left-px right-px flex justify-center border border-gray-light-1 rounded-md"
-            style={{
-              background:
-                "linear-gradient(rgba(255, 255, 255, -2.263) 1%, rgba(255, 255, 255, 0.32) 100%), linear-gradient(91.58deg, rgba(255, 255, 255, -1.86) 0%, rgba(255, 255, 255, 0) 38.54%), black",
-            }}
-          >
-            <ActivityList />
-          </div>
-        </div>
-      )}
     </div>
   );
 };

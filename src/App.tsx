@@ -14,6 +14,8 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import Sidebar from "./components/header/sidebar";
 import WalletModal from "./components/header/walletModal";
 import { fetchCredpoints } from "./state/credpoints";
+import ActivityModal from "./pages/credPoints/defiActivity/activityModal";
+import NftModal from "./pages/credPoints/nftBoard/nftModal";
 // import Moralis from "moralis";
 
 function App() {
@@ -59,6 +61,8 @@ function App() {
       </Routes>
       <Sidebar />
       <WalletModal />
+      <ActivityModal />
+      <NftModal />
     </div>
   );
 }

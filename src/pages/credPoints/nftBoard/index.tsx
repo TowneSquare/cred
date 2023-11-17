@@ -2,12 +2,13 @@ import PointLogo from "./pointLogo";
 import "./index.css";
 import PrimaryButton from "../../../components/primaryButton";
 import NftList from "./nftList";
-import { useState } from "react";
-import { useAppSelector } from "../../../state/hooks";
+import { useAppDispatch, useAppSelector } from "../../../state/hooks";
+import { toggleNftList } from "../../../state/dialog";
 
 const NftBoard = () => {
-  const [isModal, toggleModal] = useState(false);
+  const dispatch = useAppDispatch();
   const isLive = useAppSelector((state) => state.credpointsState.isLive);
+
   return (
     <div className="container mt-4 w-full flex border border-gray-light-2 rounded-xl">
       <div className="min-w-full md:min-w-[50%] p-6 flex flex-col justify-center items-center gap-4">
@@ -23,7 +24,7 @@ const NftBoard = () => {
         </p>
         <PrimaryButton
           className="md:hidden w-full text-sm"
-          onClick={() => toggleModal(true)}
+          onClick={() => dispatch(toggleNftList(true))}
         >
           See eligible NFTs in your wallet
         </PrimaryButton>
@@ -41,30 +42,8 @@ const NftBoard = () => {
           </div>
         )}
       </div>
-      {isModal && (
-        <div
-          className="absolute inset-0 z-10"
-          onClick={(e) => toggleModal(false)}
-        >
-          <div
-            className="fixed top-20 bottom-px left-px right-px flex justify-center border border-gray-light-1 rounded-md"
-            style={{
-              background:
-                "linear-gradient(rgba(255, 255, 255, -2.263) 1%, rgba(255, 255, 255, 0.32) 100%), linear-gradient(91.58deg, rgba(255, 255, 255, -1.86) 0%, rgba(255, 255, 255, 0) 38.54%), black",
-            }}
-          >
-            <NftList />
-          </div>
-        </div>
-      )}
     </div>
   );
 };
 
 export default NftBoard;
-
-const Nfts = Array(100).fill({
-  url: "/credpoints/longestNft.svg",
-  name: "Aptos Monkey #8932",
-  price: 50,
-});

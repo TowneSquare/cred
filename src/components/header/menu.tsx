@@ -9,7 +9,9 @@ const Menu: React.FC<Props> = ({ data }) => {
    const isActive = location.pathname.includes(data.href);
 
    return (
-      <Link to={data.href} className={`flex items-center ${isActive ? "text-secondary-default" : "text-gray-light-2"}`}>
+      <Link to={data.href} className={`flex items-center "text-gray-light-2"}`}
+         style={isActive ? {color: data.color}: {}}
+      >
          <span className={`${isActive ? "font-bold" : ""} whitespace-nowrap`}>{data.label}</span>
       </Link>
    )
