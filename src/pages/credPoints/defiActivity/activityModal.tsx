@@ -14,11 +14,7 @@ const ActivityModal = () => {
           onClick={(e) => dispatch(toggleActivityList(false))}
         >
           <div
-            className="fixed top-20 bottom-px left-px right-px flex justify-center border border-gray-light-1 rounded-md"
-            style={{
-              background:
-                "linear-gradient(rgba(255, 255, 255, -2.263) 1%, rgba(255, 255, 255, 0.32) 100%), linear-gradient(91.58deg, rgba(255, 255, 255, -1.86) 0%, rgba(255, 255, 255, 0) 38.54%), black",
-            }}
+            className="container fixed top-20 bottom-px left-px right-px flex justify-center border border-gray-light-1 rounded-md"
           >
             <ActivityList />
           </div>
