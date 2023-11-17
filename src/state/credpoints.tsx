@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { DefiActivityType } from '../type/defiActivityType';
 import { NftType } from '../type/nftType';
+import Moralis from "moralis";
 
 interface credpointsStates {
    isLive: boolean;
@@ -28,7 +29,16 @@ export const fetchCredpoints = createAsyncThunk(
       const url = `https://backend.townesquare.xyz/activity/point/${wallet}`;
       try {
          const res = await fetch(url);
-         return await res.json();
+         const result = await res.json();
+         return result;
+
+         // const response = await Moralis.AptosApi.wallets.getNFTByOwners({
+         //    limit: 5,
+         //    network: "mainnet",
+         //    ownerAddresses:  [wallet]
+         //  });
+
+         // return {...result, holdingNFTs: response.result};
       } catch (error: any) {
          return thunkAPI.rejectWithValue(error.response.data);
       }

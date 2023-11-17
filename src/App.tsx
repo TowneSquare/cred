@@ -14,17 +14,38 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import Sidebar from "./components/header/sidebar";
 import WalletModal from "./components/header/walletModal";
 import { fetchCredpoints } from "./state/credpoints";
+// import Moralis from "moralis";
 
 function App() {
   const dispatch = useAppDispatch();
   const { connected, account } = useWallet();
 
   useEffect(() => {
-    // if (account) 
+    // if (account)
     // dispatch(fetchCredPoints(account.address));
-    dispatch(fetchRankings("0xb52363ed75f496448b691d33125bd1a866cf35a0132626074f59d4e07bb80234"));
-    dispatch(fetchCredpoints("0x3bc474f3c3c37c9cdb6643c04e5004e5e03b17b1a4200ef807cd990f65b0e194"));
+    dispatch(
+      fetchRankings(
+        "0xb52363ed75f496448b691d33125bd1a866cf35a0132626074f59d4e07bb80234"
+      )
+    );
+    dispatch(
+      fetchCredpoints(
+        "0x3bc474f3c3c37c9cdb6643c04e5004e5e03b17b1a4200ef807cd990f65b0e194"
+      )
+    );
   }, [connected, account]);
+
+  // useEffect(() => {
+  //   const init = async () => {
+  //     if (!Moralis.Core.isStarted) {
+  //       await Moralis.start({
+  //         apiKey:
+  //           "nmL7joMHVobMN3kzlygxYvy4TkHc5IN7VxbL8mvIO4l2QGrIWwQbySpp1eRUlL9d",
+  //       });
+  //     }
+  //   };
+  //   init();
+  // }, []);
 
   return (
     <div>

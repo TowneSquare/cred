@@ -19,7 +19,7 @@ const LongestNft = () => {
       ) : (
         <>
           <div className="flex items-center gap-2">
-            <p className="text-xl md:text-2xl font-bold">Longest hodling NFT</p>
+            <p className="text-xl md:text-2xl font-bold">Longest holding NFT</p>
           </div>
           <p className="mt-4 text-center text-xl md:text-sm">
             Here we’ll show what’s the NFT you’re

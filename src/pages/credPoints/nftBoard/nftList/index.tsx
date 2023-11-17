@@ -25,9 +25,3 @@ const NftList = () => {
 };
 
 export default NftList;
-
-const Nfts = Array(10).fill({
-  url: "/credpoints/longestNft.svg",
-  name: "Aptos Monkey #8932",
-  price: 50,
-});
