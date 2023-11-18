@@ -31,9 +31,9 @@ const Banner = () => {
         </div>
         <img src="/credpoints/overlay.svg" alt="overlay" />
         <img
-          src="/credpoints/mobile.png"
+          src="/credpoints/ts_phone@2x.png"
           alt="mobile"
-          className="absolute right-auto bottom-auto -top-5 md:right-20 md:-bottom-0.5"
+          className="absolute w-[247px] left-auto right-auto -top-5  bottom-auto md:top-auto md:right-20 md:-bottom-0.5"
         />
       </div>
     </div>
