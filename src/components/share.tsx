@@ -14,8 +14,8 @@ const Share = () => {
         url={`${window.location.origin}/twitter`}
         title={shareText}
       >
-        <div className="px-6 py-3 md:p-4 flex justify-center gap-1 items-center border border-gray-light-1 hover:border-white rounded-full cursor-pointer">
-          <img src="/share.svg" alt="share" className="-ml-2 md:ml-0 w-6 md:w-8" />
+        <div className="min-w-[50px] px-6 py-3 md:p-4 flex justify-center gap-1 items-center border border-gray-light-1 hover:border-white rounded-full cursor-pointer">
+          <img src="/share.svg" alt="share" className="-ml-2 md:ml-0 w-6 h-6 md:w-8 md:h-8" />
           <p className="md:hidden text-sm">Share</p>
         </div>
       </TwitterShareButton>

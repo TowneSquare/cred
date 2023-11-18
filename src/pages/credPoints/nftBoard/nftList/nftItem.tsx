@@ -13,39 +13,32 @@ const NftItem: React.FC<Props> = ({ data }) => {
 
   useEffect(() => {
     const getMetadata = async () => {
-      // const response = await Moralis.AptosApi.nfts.getNFTsByIds({
-      //   network: "mainnet",
-      //   tokenIds: [data.tokenDataIdHash],
-      // });
-      // console.log(response);
-      // const metadata = await getJsonFromIpfs(response[0].metadataUri);
-      // console.log(metadata);
-      // if (metadata && metadata.image) setImageLink(metadata.image);
+      try {
+        const url = `https://backend.townesquare.xyz/activity/metadata`;
+        const strData = JSON.stringify({
+          nftName: data.nftName,
+          nftCollection: data.nftCollection,
+          creator: data.creator,
+        });
+        const res = await (
+          await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: strData,
+          })
+        ).json();
 
-      const url = `https://backend.townesquare.xyz/activity/metadata`;
-      const strData = JSON.stringify({
-        nftName: data.nftName,
-        nftCollection: data.nftCollection,
-        creator: data.creator,
-      });
-      const res = await (
-        await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: strData,
-        })
-      ).json();
-
-      setImageLink(getImageURL(res.image));
+        setImageLink(getImageURL(res.image));
+      } catch (e) {}
     };
     getMetadata();
   }, []);
 
   function onLoad() {
     // delay for demo only
-    console.log(data, "onLoad")
+    console.log(data, "onLoad");
     setTimeout(() => toggleLoading(false), 1000);
 
     // setIsLoading(false)
