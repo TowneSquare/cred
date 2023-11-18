@@ -15,7 +15,7 @@ const MyRanking = () => {
           <Share />
         </div>
       </div>
-      <p className="mt-4 text-center text-sm md:text-base">ranks are updated daily at 00:00 UTC</p>
+      <p className="mt-4 text-center text-sm md:text-base">ranking is updated daily at 00:00 GMT</p>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import "./index.css";
 
 const Cards = () => {
   const settings = {
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -33,6 +33,20 @@ const Cards = () => {
         settings: {
           slidesToShow: 1.5,
           slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 350,
+        settings: {
+          slidesToShow: 1.3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 330,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 0.5,
         },
       },
     ],

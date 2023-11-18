@@ -16,7 +16,7 @@ const MyTotal = () => {
           <Share />
         </div>
       </div>
-      <p className="mt-4 text-center text-sm md:text-base">points are updated daily at 00:00 UTC</p>
+      <p className="mt-4 text-center text-sm md:text-base">points are updated daily at 00:00 GMT</p>
     </div>
   );
 };

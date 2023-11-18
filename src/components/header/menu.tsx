@@ -9,7 +9,7 @@ const Menu: React.FC<Props> = ({ data }) => {
   const ref = useRef(null);
   const location = useLocation();
   const isActive = location.pathname.includes(data.href);
-  const color = isActive ? data.color : "#5F5F5F";
+  const color = isActive ? data.color : "#ffffff80";
 
   const onMouseEnter = () => {
     const element: any = ref.current;

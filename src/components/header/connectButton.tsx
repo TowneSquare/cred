@@ -2,6 +2,7 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { toggleWalletPanel } from "../../state/dialog";
 import { useAppDispatch } from "../../state/hooks";
 import { useState } from "react";
+import { getBoringAvatar } from "../../util/boringAvatar";
 
 const ConnectButton = () => {
   const dispatch = useAppDispatch();
@@ -21,7 +22,7 @@ const ConnectButton = () => {
           >
             <div className="flex gap-2 items-center">
               <div className="w-8 h-8">
-                <img src="/header/ellipse.svg" className="w-8" alt="ellipse" />
+                <img src={getBoringAvatar(account?.address)} className="w-8" alt="ellipse" />
               </div>
               <span className="hover:font-bold">
                 {account?.address.slice(0, 5)}...{account?.address.slice(-3)}

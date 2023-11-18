@@ -1,29 +1,69 @@
-import { toggleSidebar } from "../../state/dialog";
+import { toggleSidebar, toggleWalletPanel } from "../../state/dialog";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { Menus } from ".";
 import ConnectButton from "./connectButton";
 import Menu from "./menu";
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { getBoringAvatar } from "../../util/boringAvatar";
 
 const Sidebar = () => {
   const show = useAppSelector((state) => state.dialogState.bSidebar);
   const dispatch = useAppDispatch();
 
+  const { connected, account, disconnect } = useWallet();
+
   return (
     <div
-      className={`${show ? "block" : "hidden"} fixed w-full h-screen inset-0`}
+      className={`${
+        show ? "block" : "hidden"
+      } fixed w-full h-screen inset-0 bg-[#00000080]`}
       onClick={() => dispatch(toggleSidebar(false))}
     >
       <div
-        className="fixed w-1/2 h-screen top-0 right-0 px-4 py-10 z-50 flex  flex-col gap-4  border-l border-l-gray-light-1 bg-black"
+        className="fixed w-2/3 h-screen top-0 right-0 z-50 flex  flex-col items-center justify-between gap-4  bg-[#2A2A2A]"
         onClick={(e) => {
           e.stopPropagation();
           dispatch(toggleSidebar(false));
         }}
       >
-        {Menus.map((menu, index) => (
-          <Menu data={menu} key={index} />
-        ))}
-        <ConnectButton />
+        <div className="h-10 mt-10">
+          {connected && (
+            <div className="flex gap-2 items-center">
+              <div className="w-8 h-8">
+                <img
+                  src={getBoringAvatar(account?.address)}
+                  className="w-8"
+                  alt="ellipse"
+                />
+              </div>
+              <span className="hover:font-bold">
+                {account?.address.slice(0, 5)}...{account?.address.slice(-3)}
+              </span>
+            </div>
+          )}
+        </div>
+        <div className="flex flex-col items-center gap-8">
+          {Menus.map((menu, index) => (
+            <Menu data={menu} key={index} />
+          ))}
+        </div>
+        <div className="w-full py-4 flex justify-center border-t border-gray-light-1">
+          {connected ? (
+            <p
+              className="text-gray-light-5 hover:text-white font-semibold whitespace-nowrap"
+              onClick={() => disconnect()}
+            >
+              Disconnect Wallet
+            </p>
+          ) : (
+            <p
+              className="text-gray-light-5 hover:text-white font-semibold whitespace-nowrap"
+              onClick={() => dispatch(toggleWalletPanel(true))}
+            >
+              Connect Wallet
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

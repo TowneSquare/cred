@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 import { RankingType } from "../../../type/rankingType";
+import { getBoringAvatar } from "../../../util/boringAvatar";
 
 interface Props {
   data: RankingType;
@@ -6,6 +8,8 @@ interface Props {
 }
 
 const RankingItem: React.FC<Props> = ({ data, index }) => {
+  const navigate = useNavigate();
+
   const ranking = index + 1;
   let bgColor = undefined,
     borderColor = undefined,
@@ -54,16 +58,29 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
           </div>
           <div className="flex items-center gap-2">
             <img
-              src={`https://source.boringavatars.com/marble/120/${data.wallet}?colors=264653,2a9d8f,e9c46a,f4a261,e76f51
-              `}
+              src={getBoringAvatar(data.wallet)}
               className="w-8 h-8"
               alt="avatar"
             />
-            <p className="hidden md:block text-base md:text-lg font-bold">
+            <p
+              className="hidden md:block text-base md:text-lg font-bold"
+              onClick={() =>
+                navigate(
+                  `https://explorer.aptoslabs.com/account/${data.wallet}/transactions?network=mainnet`
+                )
+              }
+            >
               {data.wallet.slice(0, 12)}...{data.wallet.slice(-10)}
             </p>
-            <p className="md:hidden text-base md:text-lg font-bold">
-              {data.wallet.slice(0, 5)}...{data.wallet.slice(-3)}
+            <p
+              className="md:hidden text-base md:text-lg font-bold"
+              onClick={() =>
+                navigate(
+                  `https://explorer.aptoslabs.com/account/${data.wallet}/transactions?network=mainnet`
+                )
+              }
+            >
+              {data.wallet.slice(0, 4)}...{data.wallet.slice(-2)}
             </p>
           </div>
         </div>

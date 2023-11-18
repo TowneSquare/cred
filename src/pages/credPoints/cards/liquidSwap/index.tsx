@@ -23,9 +23,8 @@ const LiquidSwap = () => {
           <div className="flex items-center gap-2">
             <p className="text-2xl font-bold">Favourite DeFi</p>
           </div>
-          <p className="mt-4 text-center text-xl md:text-sm">
-            Here we’ll show what’s the DeFi you
-            <br /> interacted the most
+          <p className="mt-4 text-center text-xs md:text-sm">
+            Here we’ll show what’s the DeFi you interacted the most
           </p>
         </>
       )}

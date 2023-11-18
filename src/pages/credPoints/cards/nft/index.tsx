@@ -19,11 +19,11 @@ const LongestNft = () => {
       ) : (
         <>
           <div className="flex items-center gap-2">
-            <p className="text-xl md:text-2xl font-bold">Longest holding NFT</p>
+            <p className="text-xl md:text-2xl font-bold whitespace-nowrap">Longest holding NFT</p>
           </div>
-          <p className="mt-4 text-center text-xl md:text-sm">
+          <p className="mt-4 text-center text-xs md:text-sm">
             Here we’ll show what’s the NFT you’re
-            <br /> hodling for the longest period of time
+            hodling for the longest period of time
           </p>
         </>
       )}

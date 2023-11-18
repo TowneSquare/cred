@@ -23,9 +23,8 @@ const Apt = () => {
           <div className="flex items-center gap-2">
             <p className="text-2xl font-bold">Favourite token</p>
           </div>
-          <p className="mt-4 text-center text-xl md:text-sm">
-            Here we’ll show what’s the token you
-            <br /> have interacted with the most
+          <p className="mt-4 text-center text-xs md:text-sm">
+            Here we’ll show what’s the token you have interacted with the most
           </p>
         </>
       )}
