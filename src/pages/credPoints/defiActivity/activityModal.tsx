@@ -23,7 +23,7 @@ const ActivityModal = () => {
     <div
       className={`absolute ${
         isOpen ? "block" : "hidden"
-      } inset-0 z-50 flex bg-[#000000B2]`}
+      } inset-0 z-50 flex bg-gray-dark-2`}
     >
       <div
         ref={ref}

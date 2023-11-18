@@ -16,7 +16,7 @@ const Sidebar = () => {
     <div
       className={`${
         show ? "block" : "hidden"
-      } fixed w-full h-screen inset-0 bg-[#00000080]`}
+      } fixed w-full h-screen inset-0 bg-gray-dark-1`}
       onClick={() => dispatch(toggleSidebar(false))}
     >
       <div

@@ -10,7 +10,7 @@ const WalletModal = () => {
     <div
       className={`${
         isOpen ? "block" : "hidden"
-      } absolute z-20 inset-0 flex justify-center items-center bg-[#00000050]`}
+      } absolute z-20 inset-0 flex justify-center items-center bg-gray-dark-1`}
     >
       <div className="relative w-[400px]  bg-gray-light-1 border-gray-light-3 rounded-md p-8">
         <p className="text-2xl font-bold text-center">Connect your wallet</p>

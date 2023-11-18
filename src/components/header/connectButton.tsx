@@ -14,7 +14,7 @@ const ConnectButton = () => {
       {connected ? (
         <>
           <div
-            className="w-[200px] flex flex-col items-center gap-6 px-4 py-2 rounded-3xl border border-gray-light-1 cursor-pointer"
+            className="w-[200px] flex flex-col items-center gap-6 px-6 py-4 rounded-3xl border border-gray-light-1 hover:bg-[#ffffff30] cursor-pointer"
             onClick={(e) => {
               e.stopPropagation();
               toggleOpen(!isOpen);
@@ -22,11 +22,15 @@ const ConnectButton = () => {
           >
             <div className="flex gap-2 items-center">
               <div className="w-8 h-8">
-                <img src={getBoringAvatar(account?.address)} className="w-8" alt="ellipse" />
+                <img
+                  src={getBoringAvatar(account?.address)}
+                  className="w-8"
+                  alt="ellipse"
+                />
               </div>
-              <span className="hover:font-bold">
+              <span>
                 {account?.address.slice(0, 5)}...{account?.address.slice(-3)}
-                &nbsp;{isOpen ? "▲" : "▼"}
+                <span className="text-xs">&nbsp;&nbsp;&nbsp;{isOpen ? "▲" : "▼"}</span>
               </span>
             </div>
             {isOpen && (
