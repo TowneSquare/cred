@@ -6,8 +6,7 @@ const Share = () => {
   const totalPoint = useAppSelector(
     (state) => state.credpointsState.totalPoint
   );
-  const shareText = `Hey check out Cred! I’m ranked ${myRanking}th with ${totalPoint.toLocaleString()} CRED points! 
-  What’s your score?\n Check it out on `;
+  const shareText = `Hey check out Cred! I’m ranked ${myRanking}th with ${totalPoint.toLocaleString()} CRED points!\nWhat’s your score?\nCheck it out on `;
 
   return (
     <>
@@ -15,8 +14,9 @@ const Share = () => {
         url={`${window.location.origin}/twitter`}
         title={shareText}
       >
-        <div className="p-4 flex justify-center items-center border border-gray-light-1 hover:border-white rounded-full cursor-pointer">
-          <img src="/share.svg" alt="share" className="w-4 md:w-8" />
+        <div className="px-6 py-3 md:p-4 flex justify-center gap-1 items-center border border-gray-light-1 hover:border-white rounded-full cursor-pointer">
+          <img src="/share.svg" alt="share" className="-ml-2 md:ml-0 w-6 md:w-8" />
+          <p className="md:hidden text-sm">Share</p>
         </div>
       </TwitterShareButton>
     </>
