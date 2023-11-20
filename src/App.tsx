@@ -23,8 +23,10 @@ function App() {
   const { connected, account } = useWallet();
 
   useEffect(() => {
-    // if (account)
-    // dispatch(fetchCredPoints(account.address));
+    // if (account) {
+    //   dispatch(fetchCredpoints(account.address));
+    //   dispatch(fetchRankings(account.address));
+    // }
     dispatch(
       fetchRankings(
         "0xb52363ed75f496448b691d33125bd1a866cf35a0132626074f59d4e07bb80234"

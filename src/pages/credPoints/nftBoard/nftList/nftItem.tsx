@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { NftType } from "../../../../type/nftType";
 import Moralis from "moralis";
 import axios from "axios";
+import { getImageURL } from "../../../../util/url";
+import { getMetadata } from "../../../../api/metadata";
 
 interface Props {
   data: NftType;
@@ -12,33 +14,18 @@ const NftItem: React.FC<Props> = ({ data }) => {
   const [imageLink, setImageLink] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    const getMetadata = async () => {
+    const getImage = async () => {
       try {
-        const url = `https://backend.townesquare.xyz/activity/metadata`;
-        const strData = JSON.stringify({
-          nftName: data.nftName,
-          nftCollection: data.nftCollection,
-          creator: data.creator,
-        });
-        const res = await (
-          await fetch(url, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: strData,
-          })
-        ).json();
-
+        const res = await getMetadata(data);
         setImageLink(getImageURL(res.image));
-      } catch (e) {}
+      } catch (e) {
+      }
     };
-    getMetadata();
+    getImage();
   }, []);
 
   function onLoad() {
-    console.log(data, "onLoad");
-    setTimeout(() => toggleLoading(false), 1000);
+    toggleLoading(false);
   }
 
   return (
@@ -72,8 +59,3 @@ const NftItem: React.FC<Props> = ({ data }) => {
 };
 
 export default NftItem;
-
-const getImageURL = (ipfsLink: string) => {
-  const cid = ipfsLink.replace("ipfs://", "");
-  return `https://ipfs.io/ipfs/${cid}`;
-};
