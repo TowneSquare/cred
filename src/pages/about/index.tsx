@@ -34,12 +34,14 @@ const About = () => {
               <br />
               Drop us a question or feedback on X!
             </p>
-            <PrimaryButton className="mt-8">
-              <div className="flex gap-2">
-                <p className="">Ask us anything on</p>
-                <img src="/about/x.svg" alt="x" />
-              </div>
-            </PrimaryButton>
+            <a href="https://twitter.com/TowneSquarexyz" target="_blank">
+              <PrimaryButton className="mt-8">
+                <div className="flex gap-2">
+                  <p className="">Ask us anything on</p>
+                  <img src="/about/x.svg" alt="x" />
+                </div>
+              </PrimaryButton>
+            </a>
           </div>
           <PrivacyPolicy />
         </div>

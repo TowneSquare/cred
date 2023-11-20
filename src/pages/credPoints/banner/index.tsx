@@ -24,9 +24,11 @@ const Banner = () => {
             launches!
           </p>
           <div className="w-full md:w-auto">
-            <PrimaryButton className="w-full md:w-auto ">
-              Check out TowneSquare
-            </PrimaryButton>
+            <a href="https://www.townesquare.xyz/" target="_blank">
+              <PrimaryButton className="w-full md:w-auto ">
+                Check out TowneSquare
+              </PrimaryButton>
+            </a>
           </div>
         </div>
         <img src="/credpoints/overlay.svg" alt="overlay" />
