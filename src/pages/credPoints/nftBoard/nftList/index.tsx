@@ -14,7 +14,7 @@ const NftList = () => {
         <p className="text-center">&nbsp;/day</p>
       </div>
       <div className="mt-4 w-full px-2 md:px-8">
-        <div className="nft-board pr-4 w-full h-auto md:h-[300px] flex flex-wrap justify-between gap-y-4 overflow-y-scroll">
+        <div className="nft-board pr-4 w-full h-screen md:h-[300px] flex flex-wrap justify-between gap-y-4 overflow-y-scroll">
           {nfts.map((history, index) => (
             <NftItem data={history} key={index} />
           ))}

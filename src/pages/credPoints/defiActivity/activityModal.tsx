@@ -21,7 +21,7 @@ const ActivityModal = () => {
   }, [isOpen]);
   return (
     <div
-      className={`absolute ${
+      className={`fixed ${
         isOpen ? "block" : "hidden"
       } inset-0 z-50 flex bg-gray-dark-2`}
     >

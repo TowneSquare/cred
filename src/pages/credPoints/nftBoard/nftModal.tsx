@@ -21,7 +21,7 @@ const NftModal = () => {
   }, [isOpen]);
   return (
     <div
-      className={`absolute ${isOpen ? "block" : "hidden"} inset-0 z-50 flex bg-gray-dark-2`}
+      className={`fixed ${isOpen ? "block" : "hidden"} inset-0 z-50 flex bg-gray-dark-2`}
       onClick={(e) => dispatch(toggleNftList(false))}
     >
       <div
