@@ -56,33 +56,23 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
               {ranking}
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <a
+            href={`https://explorer.aptoslabs.com/account/${data.wallet}/transactions?network=mainnet`}
+            target="_blank"
+            className="flex items-center gap-2"
+          >
             <img
               src={getBoringAvatar(data.wallet)}
               className="w-8 h-8"
               alt="avatar"
             />
-            <p
-              className="hidden md:block text-base md:text-lg font-bold"
-              onClick={() =>
-                navigate(
-                  `https://explorer.aptoslabs.com/account/${data.wallet}/transactions?network=mainnet`
-                )
-              }
-            >
+            <p className="hidden md:block text-base md:text-lg font-bold">
               {data.wallet.slice(0, 12)}...{data.wallet.slice(-10)}
             </p>
-            <p
-              className="md:hidden text-base md:text-lg font-bold"
-              onClick={() =>
-                navigate(
-                  `https://explorer.aptoslabs.com/account/${data.wallet}/transactions?network=mainnet`
-                )
-              }
-            >
+            <p className="md:hidden text-base md:text-lg font-bold">
               {data.wallet.slice(0, 4)}...{data.wallet.slice(-2)}
             </p>
-          </div>
+          </a>
         </div>
         <div className="flex gap-2 items-center">
           <p className="text-base md:text-lg">
