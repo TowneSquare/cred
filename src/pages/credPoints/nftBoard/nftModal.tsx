@@ -32,12 +32,11 @@ const NftModal = () => {
         }}
       >
         <NftList />
-        <p
-          className="absolute top-6 right-6 text-2xl"
+        <img
+          src="/credpoints/close.svg"
+          className="absolute top-5 right-6 cursor-pointer"
           onClick={(e) => dispatch(toggleNftList(false))}
-        >
-          ✖
-        </p>
+        />
       </div>
     </div>
   );

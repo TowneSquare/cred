@@ -1,4 +1,5 @@
 import { DefiActivityType } from "../../../../type/defiActivityType";
+import moment from "moment";
 
 interface Props {
   data: DefiActivityType;
@@ -10,7 +11,7 @@ const ActivityItem: React.FC<Props> = ({ data }) => {
       <div className="py-6 flex justify-between">
         <div className="flex items-center gap-2">
           <p className="text-xs text-gray-light-5">
-            {new Date(data.updatedAt).toDateString()}
+            {moment(data.updatedAt).format("MMM DD YYYY")}
           </p>
           <p className="text-sm">{data.coin.toUpperCase()}</p>
           <div className="flex gap-1 items-center">
@@ -20,8 +21,8 @@ const ActivityItem: React.FC<Props> = ({ data }) => {
               className="w-[22px] h-[22px]"
               alt="swap"
             />
-            <p className="hidden md:block text-sm text-gray-light-5">
-              {data.defiName.toUpperCase()}
+            <p className="text-sm text-gray-light-5">
+              {data.defiName}
             </p>
           </div>
         </div>
@@ -38,7 +39,6 @@ const ActivityItem: React.FC<Props> = ({ data }) => {
 export default ActivityItem;
 
 const DefiIcon:{ [key: string]: string } = {
-  "liquidswap": "/credpoints/liquidSwap.svg",
   "pontem": "/credpoints/liquidSwap.svg",
   "pancakeswap": "/credpoints/pancakeswap.png",
   "thala": "/credpoints/thala.svg",
