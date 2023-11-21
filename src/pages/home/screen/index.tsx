@@ -50,20 +50,35 @@ const Screen = () => {
           </div>
         )}
         {current == 2 && (
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-white">
-            <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
-              for
-            </p>
-            <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
-              your
-            </p>
-            <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
-              on-chain
-            </p>
-            <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
-              activities!
-            </p>
-          </div>
+          <>
+            <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-white">
+              <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
+                for
+              </p>
+              <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
+                your
+              </p>
+              <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
+                on-chain
+              </p>
+              <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
+                activities!
+              </p>
+            </div>
+            <div
+              className="container connect-button mt-2 md:mt-20 p-4 md:p-12  w-4/5 md:w-auto flex flex-col items-center border border-gray-light-2 rounded-xl"
+            >
+              <p className="mt-4 text-center text-base md:text-xl">
+                Connect wallet to check out your Cred points!
+              </p>
+              <PrimaryButton
+                className="mt-2 md:mt-8 z-[4]"
+                onClick={() => navigate("/credPoints")}
+              >
+                Connect Wallet
+              </PrimaryButton>
+            </div>
+          </>
         )}
       </>
     );
@@ -74,24 +89,7 @@ const Screen = () => {
       <div className="absolute top-16">
         <Logo />
       </div>
-      <div className="h-32 flex justify-center items-center">{TextEffect}</div>
-      <div
-        className="mt-2 md:mt-20 p-4 md:p-12  w-4/5 md:w-auto flex flex-col items-center border border-gray-light-2 rounded-xl"
-        style={{
-          background:
-            "linear-gradient(94.74deg, rgba(255, 255, 255, 0.14) 16.43%, rgba(255, 255, 255, 0) 108.74%)",
-        }}
-      >
-        <p className="mt-4 text-center text-base md:text-xl">
-          Connect wallet to check out your Cred points!
-        </p>
-        <PrimaryButton
-          className="mt-2 md:mt-8 z-[4]"
-          onClick={() => navigate("/credPoints")}
-        >
-          Connect Wallet
-        </PrimaryButton>
-      </div>
+      <div className="h-32 flex flex-col justify-center items-center">{TextEffect}</div>
       <img
         src="/home/screen1/effect1.svg"
         alt="effect1"
