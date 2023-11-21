@@ -42,7 +42,7 @@ const Cards = () => {
   };
   return (
     <>
-      <div className="hidden md:flex mt-16 w-full gap-6 justify-center items-center">
+      <div className="hidden md:flex mt-16 w-full gap-6 justify-between items-center">
         <LowerUsers />
         <GetMore />
       </div>

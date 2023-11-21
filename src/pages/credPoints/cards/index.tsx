@@ -53,7 +53,7 @@ const Cards = () => {
   };
   return (
     <>
-      <div className="hidden md:flex mt-16 w-full gap-2 items-center justify-between">
+      <div className="hidden px-4 md:flex mt-16 w-full gap-2 items-center justify-between">
         <LiquidSwap />
         <Apt />
         <LongestNft />
