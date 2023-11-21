@@ -65,18 +65,23 @@ const Screen = () => {
                 activities!
               </p>
             </div>
-            <div
-              className="container connect-button mt-2 md:mt-20 p-4 md:p-12  w-4/5 md:w-auto flex flex-col items-center border border-gray-light-2 rounded-xl"
-            >
-              <p className="mt-4 text-center text-base md:text-xl">
-                Connect wallet to check out your Cred points!
-              </p>
-              <PrimaryButton
-                className="mt-2 md:mt-8 z-[4]"
-                onClick={() => navigate("/credPoints")}
-              >
-                Connect Wallet
-              </PrimaryButton>
+            <div className="connect-button flex flex-col items-center">
+              <div className="container connect-button mt-2 md:mt-20 p-4 md:p-12  w-4/5 md:w-auto flex flex-col items-center border border-gray-light-2 rounded-xl">
+                <p className="mt-4 text-center text-base md:text-xl">
+                  Connect wallet to check out your Cred points!
+                </p>
+                <PrimaryButton
+                  className="mt-2 md:mt-8 z-[4]"
+                  onClick={() => navigate("/credPoints")}
+                >
+                  Connect Wallet
+                </PrimaryButton>
+              </div>
+              <div className="mt-8 flex justify-center items-center">
+                <p className="text-base md:text-xl">Supporting&nbsp;</p>
+                <img src="/home/aptos.svg" alt="aptos" className="h-4 md:h-6" />
+                <p className="text-base md:text-xl">&nbsp;and more...</p>
+              </div>
             </div>
           </>
         )}
@@ -89,7 +94,9 @@ const Screen = () => {
       <div className="absolute top-16">
         <Logo />
       </div>
-      <div className="h-32 flex flex-col justify-center items-center">{TextEffect}</div>
+      <div className="h-32 flex flex-col justify-center items-center">
+        {TextEffect}
+      </div>
       <img
         src="/home/screen1/effect1.svg"
         alt="effect1"
