@@ -16,12 +16,11 @@ const NftBoard = () => {
           <PointLogo />
           <p className="text-2xl font-bold">from hodling NFT</p>
           <p className="text-sm text-center text-gray-light-3">
-            Get points daily by hodling NFTs.
+            Get points daily by holding NFTs.
             <br />
-            Eligible collections: Aptosmonkeys,
+            Eligible collections: Aptos Monkeys,
             <br />
-            Pontem Pirates, Bruh bears, AptosMingos
-            <br />
+            Pontem Space Pirates, Bruh Bears, Aptomingos
           </p>
           <PrimaryButton
             className="md:hidden w-full text-sm"
