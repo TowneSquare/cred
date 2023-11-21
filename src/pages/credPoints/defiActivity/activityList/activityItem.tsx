@@ -42,4 +42,5 @@ const DefiIcon:{ [key: string]: string } = {
   "pontem": "/credpoints/liquidSwap.svg",
   "pancake": "/credpoints/pancakeswap.png",
   "thala": "/credpoints/thala.svg",
+  "aries": "/credpoints/aries.png"
 }
