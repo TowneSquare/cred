@@ -16,6 +16,7 @@ import WalletModal from "./components/header/walletModal";
 import { fetchCredpoints } from "./state/credpoints";
 import ActivityModal from "./pages/credPoints/defiActivity/activityModal";
 import NftModal from "./pages/credPoints/nftBoard/nftModal";
+import TermsOfService from "./pages/tos";
 // import Moralis from "moralis";
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/tos" element={<TermsOfService />} />
         <Route path="/twitter" element={<Twitter />} />
       </Routes>
       <Sidebar />
