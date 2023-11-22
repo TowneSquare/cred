@@ -5,7 +5,7 @@ import PrimaryButton from "../../../components/primaryButton";
 import { useNavigate } from "react-router-dom";
 
 const Screen = () => {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(2);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const Screen = () => {
                 activities!
               </p>
             </div>
-            <div className="connect-button mt-6 flex flex-col items-center">
+            <div className="connect-button mt-6 md:mt-0 flex flex-col items-center">
               <div className="container connect-button mt-2 md:mt-20 p-4 md:p-12  w-4/5 md:w-auto flex flex-col items-center border border-gray-light-2 rounded-xl">
                 <p className="mt-4 text-center text-base md:text-xl">
                   Connect wallet to check out your Cred points!
