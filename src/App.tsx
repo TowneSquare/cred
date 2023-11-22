@@ -17,7 +17,6 @@ import { fetchCredpoints } from "./state/credpoints";
 import ActivityModal from "./pages/credPoints/defiActivity/activityModal";
 import NftModal from "./pages/credPoints/nftBoard/nftModal";
 import TermsOfService from "./pages/tos";
-// import Moralis from "moralis";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -39,18 +38,6 @@ function App() {
       )
     );
   }, [connected, account]);
-
-  // useEffect(() => {
-  //   const init = async () => {
-  //     if (!Moralis.Core.isStarted) {
-  //       await Moralis.start({
-  //         apiKey:
-  //           "nmL7joMHVobMN3kzlygxYvy4TkHc5IN7VxbL8mvIO4l2QGrIWwQbySpp1eRUlL9d",
-  //       });
-  //     }
-  //   };
-  //   init();
-  // }, []);
 
   return (
     <div>

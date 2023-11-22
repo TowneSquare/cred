@@ -7,46 +7,20 @@ import "./index.css";
 const Cards = () => {
   const settings = {
     infinite: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToShow: 1.4,
+    initialSlide: 0,
+
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 400,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1.5,
-          slidesToScroll: 1,
+          slidesToShow: 1.3,
         },
       },
       {
         breakpoint: 350,
         settings: {
-          slidesToShow: 1.3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 330,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 0.5,
+          slidesToShow: 1.2,
         },
       },
     ],
@@ -58,7 +32,7 @@ const Cards = () => {
         <Apt />
         <LongestNft />
       </div>
-      <div className="md:hidden mt-16 w-full">
+      <div className="credpoints md:hidden mt-16 w-full">
         <Slider {...settings}>
           <LiquidSwap />
           <Apt />

@@ -1,10 +1,15 @@
-.slick-slider .slick-arrow {
+.leaderboard .slick-slider .slick-arrow {
   display: none !important;
 }
-
-.slick-slide > div {
-  margin: 0 10px;
+.leaderboard .slick-track {
+  display: flex;
+  gap: 16px; 
 }
-.slick-list {
-  margin: 0 -10px;
+.leaderboard .slick-initialized .slick-slide
+{
+    width: 260px !important;
+}
+.leaderboard .slick-initialized .slick-slide > div 
+{
+    width: 260px !important;
 }

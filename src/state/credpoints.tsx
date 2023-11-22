@@ -31,14 +31,6 @@ export const fetchCredpoints = createAsyncThunk(
          const res = await fetch(url);
          const result = await res.json();
          return result;
-
-         // const response = await Moralis.AptosApi.wallets.getNFTByOwners({
-         //    limit: 5,
-         //    network: "mainnet",
-         //    ownerAddresses:  [wallet]
-         //  });
-
-         // return {...result, holdingNFTs: response.result};
       } catch (error: any) {
          return thunkAPI.rejectWithValue(error.response.data);
       }
@@ -54,13 +46,14 @@ export const credpointsSlice = createSlice({
    },
    extraReducers: (builder) => {
       builder.addCase(fetchCredpoints.fulfilled, (state, action) => {
+         console.log(action.payload)
          state.isLive = true;
          state.totalPoint = action.payload.totalPoint;
          state.defiPoint = action.payload.defiPoint;
          state.nftPoint = action.payload.nftPoint;
          state.defiActivities = action.payload.defiActivityList;
-         state.nfts = action.payload.holdingNFTs;
-         state.rewardNFTPointPerDay = action.payload.rewardNFTPointPerDay;
+         state.nfts = action.payload.nftActivityList;
+         state.rewardNFTPointPerDay = action.payload.rewardNFTPointPerDay ?? state.nfts.length * 50;
       });
    },
 });

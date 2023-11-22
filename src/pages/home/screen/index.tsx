@@ -22,29 +22,29 @@ const Screen = () => {
           <div
             className={`flex flex-wrap justify-center gap-2 md:gap-4 text-white`}
           >
-            <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
+            <p className="split text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
               A
             </p>
-            <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
+            <p className="split text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
               loyalty
             </p>
-            <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
+            <p className="split text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
               system
             </p>
           </div>
         )}
         {current == 1 && (
           <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-third-default">
-            <p className="split text-[38px] md:text-[78px] font-bold before:bg-third-default">
+            <p className="split text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-third-default">
               that
             </p>
-            <p className="split text-[38px] md:text-[78px] font-bold before:bg-third-default">
+            <p className="split text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-third-default">
               rewards
             </p>
-            <p className="split text-[38px] md:text-[78px] font-bold before:bg-third-default">
+            <p className="split text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-third-default">
               you
             </p>
-            <p className="split text-[38px] md:text-[78px] font-bold before:bg-third-default">
+            <p className="split text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-third-default">
               points
             </p>
           </div>
@@ -52,20 +52,20 @@ const Screen = () => {
         {current == 2 && (
           <>
             <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-white">
-              <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
+              <p className="split text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
                 for
               </p>
-              <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
+              <p className="split text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
                 your
               </p>
-              <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
+              <p className="split text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
                 on-chain
               </p>
-              <p className="split text-[38px] md:text-[78px] font-bold before:bg-white">
+              <p className="split text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
                 activities!
               </p>
             </div>
-            <div className="connect-button flex flex-col items-center">
+            <div className="connect-button mt-6 flex flex-col items-center">
               <div className="container connect-button mt-2 md:mt-20 p-4 md:p-12  w-4/5 md:w-auto flex flex-col items-center border border-gray-light-2 rounded-xl">
                 <p className="mt-4 text-center text-base md:text-xl">
                   Connect wallet to check out your Cred points!
@@ -74,7 +74,7 @@ const Screen = () => {
                   className="mt-2 md:mt-8 z-[4]"
                   onClick={() => navigate("/credPoints")}
                 >
-                  Connect Wallet
+                  <span className="text-sm md:text-base">Connect Wallet</span>
                 </PrimaryButton>
               </div>
               <div className="mt-8 flex justify-center items-center">

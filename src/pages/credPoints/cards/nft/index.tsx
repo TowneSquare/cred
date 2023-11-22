@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../../state/hooks";
 import { getMetadata } from "../../../../api/metadata";
 import { getImageURL } from "../../../../util/url";
-import { NftType } from "../../../../type/nftType";
 
 const LongestNft = () => {
   const isLive = useAppSelector((state) => state.credpointsState.isLive);
@@ -28,7 +27,7 @@ const LongestNft = () => {
   }
 
   return (
-    <div className="container w-[220px] md:w-[320px] min-h-[140px] px-4 pt-4 flex flex-col items-center border border-gray-light-2 rounded-xl">
+    <div className="container w-[260px] md:w-[320px] min-h-[140px] px-4 pt-4 flex flex-col items-center border border-gray-light-2 rounded-xl">
       {isLive ? (
         <>
           <div className="flex items-center gap-2">

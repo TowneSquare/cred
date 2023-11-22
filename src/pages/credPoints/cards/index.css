@@ -1,3 +1,15 @@
-.slick-slider .slick-arrow {
+.credpoints .slick-slider .slick-arrow {
   display: none !important;
+}
+.credpoints .slick-track {
+  display: flex;
+  gap: 16px; 
+}
+.credpoints .slick-initialized .slick-slide
+{
+    width: 260px !important;
+}
+.credpoints .slick-initialized .slick-slide > div 
+{
+    width: 260px !important;
 }

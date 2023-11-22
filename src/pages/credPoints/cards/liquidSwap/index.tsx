@@ -5,7 +5,7 @@ const LiquidSwap = () => {
 
   return (
     <div
-      className="container w-[220px] md:w-[320px] min-h-[140px]  px-4 pt-4 flex flex-col items-center border border-gray-light-2 rounded-xl"
+      className="container w-[260px] md:w-[320px] min-h-[140px]  px-4 pt-4 flex flex-col items-center border border-gray-light-2 rounded-xl"
     >
       {isLive ? (
         <>

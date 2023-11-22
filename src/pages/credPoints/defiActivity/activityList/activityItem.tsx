@@ -22,7 +22,7 @@ const ActivityItem: React.FC<Props> = ({ data }) => {
               alt="swap"
             />
             <p className="text-sm text-gray-light-5">
-              {data.defiName.charAt(0).toUpperCase() + data.defiName.slice(1)}
+              {DefiName[data.defiName.toLowerCase()]}
             </p>
           </div>
         </div>
@@ -43,4 +43,11 @@ const DefiIcon:{ [key: string]: string } = {
   "pancake": "/credpoints/pancakeswap.png",
   "thala": "/credpoints/thala.svg",
   "aries": "/credpoints/aries.png"
+}
+
+const DefiName:{ [key: string]: string } = {
+  "pontem": "Liquidswap",
+  "pancake": "Pancakeswap",
+  "thala": "Thala",
+  "aries": "Aries Market"
 }

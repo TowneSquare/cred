@@ -6,36 +6,20 @@ import "./index.css";
 const Cards = () => {
   const settings = {
     infinite: false,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
+    slidesToShow: 1.4,
+    initialSlide: 0,
+
     responsive: [
       {
-        breakpoint: 600,
+        breakpoint: 400,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1.5,
-          slidesToScroll: 1,
+          slidesToShow: 1.3,
         },
       },
       {
         breakpoint: 350,
         settings: {
-          slidesToShow: 1.3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 300,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 0.5,
+          slidesToShow: 1.2,
         },
       },
     ],
@@ -46,7 +30,7 @@ const Cards = () => {
         <LowerUsers />
         <GetMore />
       </div>
-      <div className="md:hidden mt-16 w-full">
+      <div className="leaderboard md:hidden mt-16 w-full">
         <Slider {...settings}>
           <LowerUsers />
           <GetMore />
