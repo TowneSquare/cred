@@ -97,15 +97,17 @@ const Screen = () => {
       <div className="h-32 flex flex-col justify-center items-center">
         {TextEffect}
       </div>
+
       <img
         src="/home/screen1/effect1.svg"
         alt="effect1"
-        className="absolute top-16 -right-10 md:top-20 md:left-24 md:right-auto w-[150px] md:w-[250px] opacity-50 md:opacity-1 z-0"
+        className="absolute bottom-16 -left-10 md:top-20 md:left-24 md:right-auto w-[150px] md:w-[250px] opacity-50 md:opacity-1 z-0"
       />
+
       <img
         src="/home/screen1/effect2.svg"
         alt="effect2"
-        className="absolute bottom-10 left-0 md:bottom-16 md:left-auto md:right-32 w-[150px] md:w-[250px] opacity-50 md:opacity-1 z-0"
+        className="absolute top-10 right-0 md:top-[60%] md:left-auto md:right-16 w-[150px] md:w-[250px] opacity-50 md:opacity-1 z-0"
       />
     </div>
   );

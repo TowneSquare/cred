@@ -8,8 +8,8 @@ interface Props {
 const ActivityItem: React.FC<Props> = ({ data }) => {
   return (
     <>
-      <div className="py-6 flex justify-between">
-        <div className="flex items-center gap-2">
+      <div className="group py-6 px-2 md:px-8 flex justify-between hover:bg-gray-light-1">
+        <div className="flex items-center gap-2 cursor-pointer">
           <p className="text-xs text-gray-light-5">
             {moment(data.updatedAt).format("MMM DD YYYY")}
           </p>
@@ -25,13 +25,14 @@ const ActivityItem: React.FC<Props> = ({ data }) => {
               {DefiName[data.defiName.toLowerCase()]}
             </p>
           </div>
+          <img src="/credpoints/external_link.svg" className="hidden group-hover:block w-[16px] h-[16px]" alt="cred" />
         </div>
         <div className="flex gap-2 items-center">
           <p className="text-sm font-bold">{data.point}</p>
           <img src="/credpoints/cred.svg" className="w-[22px] h-[22px]" alt="cred" />
         </div>
       </div>
-      <div className="w-full h-px border border-gray-light-1" />
+      <div className="h-px border border-gray-light-1 md:mx-8" />
     </>
   );
 };
