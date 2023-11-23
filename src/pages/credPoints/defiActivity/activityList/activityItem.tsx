@@ -7,9 +7,10 @@ interface Props {
 
 const ActivityItem: React.FC<Props> = ({ data }) => {
   return (
-    <>
-      <div className="group py-6 px-2 md:px-8 flex justify-between hover:bg-gray-light-1">
-        <div className="flex items-center gap-2 cursor-pointer">
+    <a href={DefiLink[data.defiName.toLowerCase()]} target="_blank" className=" cursor-pointer">
+      <div className="group py-6 px-2 md:px-8 flex justify-between hover:bg-gray-light-1"
+      >
+        <div className="flex items-center gap-2">
           <p className="text-xs text-gray-light-5">
             {moment(data.updatedAt).format("MMM DD YYYY")}
           </p>
@@ -33,22 +34,29 @@ const ActivityItem: React.FC<Props> = ({ data }) => {
         </div>
       </div>
       <div className="h-px border border-gray-light-1 md:mx-8" />
-    </>
+    </a>
   );
 };
 
 export default ActivityItem;
 
-const DefiIcon:{ [key: string]: string } = {
+const DefiIcon: { [key: string]: string } = {
   "pontem": "/credpoints/liquidSwap.svg",
   "pancake": "/credpoints/pancakeswap.png",
   "thala": "/credpoints/thala.svg",
   "aries": "/credpoints/aries.png"
 }
 
-const DefiName:{ [key: string]: string } = {
+const DefiName: { [key: string]: string } = {
   "pontem": "Liquidswap",
   "pancake": "Pancakeswap",
   "thala": "Thala",
   "aries": "Aries Market"
+}
+
+const DefiLink: { [key: string]: string } = {
+  "pontem": "https://potem",
+  "pancake": "https://pancakeswap",
+  "thala": "https://thala",
+  "aries": "https://aries"
 }
