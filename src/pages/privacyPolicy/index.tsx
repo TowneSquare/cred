@@ -1,4 +1,5 @@
 import Header from "../../components/header";
+import XLink from "../../components/xlink";
 
 const PrivacyPolicy = () => {
   return (
@@ -75,7 +76,7 @@ const PrivacyPolicy = () => {
             We retain your information for as long as necessary to provide our
             services and fulfill the purposes outlined in this Privacy Policy.
             If you wish to delete your account and associated data, please
-            contact us at @townesquarexyz X account.
+            contact us at <XLink>@townesquarexyz X</XLink> account.
             <br />
             <br />
             <span className="text-xl">6. Your Choices</span>

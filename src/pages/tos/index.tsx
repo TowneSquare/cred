@@ -1,4 +1,5 @@
 import Header from "../../components/header";
+import XLink from "../../components/xlink";
 
 const TermsOfService = () => {
   return (
@@ -95,7 +96,7 @@ const TermsOfService = () => {
             <br />
             <br />
             10.1. For questions or concerns regarding these Terms of Service,
-            please contact us at @townesquarexyz X account.
+            please contact us at <XLink> @townesquarexyz X </XLink> account.
           </p>
         </div>
       </div>
