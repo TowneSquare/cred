@@ -55,8 +55,8 @@ const DefiName: { [key: string]: string } = {
 }
 
 const DefiLink: { [key: string]: string } = {
-  "pontem": "https://potem",
-  "pancake": "https://pancakeswap",
-  "thala": "https://thala",
-  "aries": "https://aries"
+  "pontem": "https://pontem.network/liquidswap",
+  "pancake": "https://pancakeswap.finance/",
+  "thala": "https://app.thala.fi/",
+  "aries": "https://ariesmarkets.xyz/"
 }
