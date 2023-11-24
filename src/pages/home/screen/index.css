@@ -1,6 +1,9 @@
 :root {
-  --speed: 3s;
+  --speed-low: 3s;
+  --speed-mid: 3s;
+  --speed-fast: 3s;
 }
+
 .split {
   position: relative;
   display: inline-block;
@@ -21,6 +24,46 @@
 
   &::before {
     animation: var(--speed) mask;
+  }
+}
+
+.split {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  /* margin: 15px; */
+  color: transparent;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: 0 0;
+    transform: translateX(calc(-100% - 1px));
+  }
+}
+
+.animate-fast {
+  animation: var(--speed-fast) text;
+  &::before {
+    animation: var(--speed-fast) mask;
+  }
+}
+
+.animate-mid {
+  animation: var(--speed-fast) text;
+  &::before {
+    animation: var(--speed-fast) mask;
+  }
+}
+
+.animate-low {
+  animation: var(--speed-low) text-showOnly;
+  animation-fill-mode: both;
+  &::before {
+    animation: var(--speed-low) mask-showOnly;
+    animation-fill-mode: both;
   }
 }
 
@@ -106,10 +149,74 @@
     /* opacity: 0; */
   }
 }
+@keyframes mask-showOnly {
+  0% {
+    transform: translateX(calc(-100% - 1px));
+    opacity: 1;
+  }
+
+  5% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  10% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  15% {
+    transform: translateX(calc(100% + 1px));
+    opacity: 1;
+  }
+
+  16% {
+    transform: translateX(calc(100% + 1px));
+    opacity: 0;
+  }
+  
+  100% {
+    transform: translateX(calc(100% + 1px));
+    opacity: 0;
+  }
+}
+
+@keyframes text-showOnly {
+  0% {
+    color: transparent;
+    /* opacity: 0; */
+  }
+
+  5% {
+    color: transparent;
+    /* opacity: 1; */
+  }
+
+  6% {
+    color: inherit;
+    /* opacity: 1; */
+  }
+
+  94% {
+    color: inherit;
+    /* opacity: 1; */
+  }
+
+  95% {
+    color: inherit;
+    /* opacity: 1; */
+  }
+
+  100% {
+    color: inherit;
+    /* opacity: 0; */
+  }
+}
 
 .connect-button {
   opacity: 0;
-  animation: var(--speed) fade-in;
+  animation: var(--speed-low) fade-in;
+  animation-fill-mode: both;
 }
 
 @keyframes fade-in {
@@ -126,6 +233,6 @@
   }
 
   100% {
-    opacity: 0;
+    opacity: 1;
   }
 }
