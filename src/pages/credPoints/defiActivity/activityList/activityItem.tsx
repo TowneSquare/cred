@@ -33,7 +33,7 @@ const ActivityItem: React.FC<Props> = ({ data }) => {
           <img src="/credpoints/cred.svg" className="w-[22px] h-[22px]" alt="cred" />
         </div>
       </div>
-      <div className="h-px border border-gray-light-1 md:mx-8" />
+      <div className="h-px border border-gray-light-1" />
     </a>
   );
 };
