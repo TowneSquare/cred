@@ -68,7 +68,7 @@ const Screen = () => {
                 activities!
               </p>
             </div>
-            <div className="connect-button mt-16 md:mt-[170px] flex flex-col items-center">
+            <div className="connect-button mt-16 md:mt-[10vh] flex flex-col items-center">
               <div className="container connect-button mt-2 p-4 md:p-12  w-4/5 md:w-auto flex flex-col items-center border border-gray-light-2 rounded-xl">
                 <p className="mt-4 text-center text-base md:text-xl">
                   Connect wallet to check out your Cred points!
@@ -97,7 +97,7 @@ const Screen = () => {
       <div className="absolute top-16">
         <Logo />
       </div>
-      <div className="mt-[250px] md:mt-[321px] flex flex-col justify-center">
+      <div className="mt-[250px] md:mt-[35vh] flex flex-col justify-center">
         {TextEffect}
       </div>
       <div className="absolute bottom-8">
