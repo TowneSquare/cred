@@ -11,9 +11,7 @@ const Screen = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if(current<2){
-        setCurrent((prev) => (prev + 1) % 3);
-      }
+      setCurrent((prev) => (prev + 1) % 3);
     }, 3500);
     return () => clearInterval(timer);
   });
@@ -101,7 +99,7 @@ const Screen = () => {
         {TextEffect}
       </div>
       <div className="absolute bottom-8">
-        <PrivacyPolicy/>
+        <PrivacyPolicy />
       </div>
       <img
         src="/home/screen1/effect1.svg"
