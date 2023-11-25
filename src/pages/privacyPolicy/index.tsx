@@ -76,7 +76,7 @@ const PrivacyPolicy = () => {
             We retain your information for as long as necessary to provide our
             services and fulfill the purposes outlined in this Privacy Policy.
             If you wish to delete your account and associated data, please
-            contact us at <XLink>@townesquarexyz X</XLink> account.
+            contact us at <XLink>@townesquarexyz</XLink> X account.
             <br />
             <br />
             <span className="text-xl">6. Your Choices</span>
@@ -84,7 +84,7 @@ const PrivacyPolicy = () => {
             <br />
             You have the right to delete your personal information. If you have
             questions or concerns about your privacy, please contact us at
-            @townesquarexyz X account.
+            <XLink>@townesquarexyz</XLink> X account.
             <br />
             <br />
             <span className="text-xl">7. Changes to the Privacy Policy</span>
@@ -99,7 +99,7 @@ const PrivacyPolicy = () => {
             <br />
             <br />
             If you have questions or concerns about this Privacy Policy, please
-            contact us at @townesquarexyz X account.
+            contact us at <XLink>@townesquarexyz</XLink> X account.
             <br />
             <br />
             By using CRED, you acknowledge that you have read and agree to this

@@ -96,7 +96,7 @@ const TermsOfService = () => {
             <br />
             <br />
             10.1. For questions or concerns regarding these Terms of Service,
-            please contact us at <XLink> @townesquarexyz X </XLink> account.
+            please contact us at <XLink>@townesquarexyz</XLink> X  account.
           </p>
         </div>
       </div>
