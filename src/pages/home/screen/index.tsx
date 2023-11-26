@@ -4,24 +4,25 @@ import "./index.css";
 import PrimaryButton from "../../../components/primaryButton";
 import PrivacyPolicy from "../../../components/privacyPolicy";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../state/hooks";
+import { toggleWalletPanel } from "../../../state/dialog";
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
 
 const Screen = () => {
   const [current, setCurrent] = useState(0);
-  const navigate = useNavigate();
+  const [boxVisible, setBoxVisible] = useState(false);
 
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setCurrent((prev) => (prev + 1) % 3);
-  //   }, 3500);
-  //   return () => clearInterval(timer);
-  // });
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const durations = [2500, 3100, 5500];
-
   useEffect(() => {
     setTimeout(() => {
       setCurrent((prev) => (prev + 1) % 3);
-    }, durations[current])
+    }, durations[current]);
+    if (current == 2 && boxVisible == false) {
+      setBoxVisible(true);
+    }
   }, [current]);
 
   const TextEffect = useMemo(() => {
@@ -80,6 +81,15 @@ const Screen = () => {
     );
   }, [current]);
 
+  const onConnectWallet = () => {
+    dispatch(toggleWalletPanel(true));
+  };
+
+  const { connected, account, disconnect } = useWallet();
+  useEffect(() => {
+    if (connected) navigate("/credPoints");
+  }, [connected]);
+  
   return (
     <div className="absolute w-full h-screen flex flex-col items-center z-10">
       <div className="absolute top-16">
@@ -88,24 +98,26 @@ const Screen = () => {
       <div className="mt-[250px] md:mt-[35vh] flex flex-col justify-center">
         {TextEffect}
       </div>
-      <div className="connect-button mt-16 md:mt-[10vh] flex flex-col items-center">
-        <div className="container connect-button mt-2 p-4 md:p-12  w-4/5 md:w-auto flex flex-col items-center border border-gray-light-2 rounded-xl">
-          <p className="mt-4 text-center text-base md:text-xl">
-            Connect wallet to check out your Cred points!
-          </p>
-          <PrimaryButton
-            className="mt-2 md:mt-8 z-[4]"
-            onClick={() => navigate("/credPoints")}
-          >
-            <span className="text-sm md:text-base">Connect Wallet</span>
-          </PrimaryButton>
+      {boxVisible && (
+        <div className="connect-button mt-16 md:mt-[10vh] flex flex-col items-center">
+          <div className="container connect-button mt-2 p-4 md:p-12  w-4/5 md:w-auto flex flex-col items-center border border-gray-light-2 rounded-xl">
+            <p className="mt-4 text-center text-base md:text-xl">
+              Connect wallet to check out your Cred points!
+            </p>
+            <PrimaryButton
+              className="mt-2 md:mt-8 z-[4]"
+              onClick={() => onConnectWallet()}
+            >
+              <span className="text-sm md:text-base">Connect Wallet</span>
+            </PrimaryButton>
+          </div>
+          <div className="mt-8 flex justify-center items-center">
+            <p className="text-base md:text-xl">Supporting&nbsp;</p>
+            <img src="/home/aptos.svg" alt="aptos" className="h-4 md:h-6" />
+            <p className="text-base md:text-xl">&nbsp;and more...</p>
+          </div>
         </div>
-        <div className="mt-8 flex justify-center items-center">
-          <p className="text-base md:text-xl">Supporting&nbsp;</p>
-          <img src="/home/aptos.svg" alt="aptos" className="h-4 md:h-6" />
-          <p className="text-base md:text-xl">&nbsp;and more...</p>
-        </div>
-      </div>
+      )}
       <div className="absolute bottom-8">
         <PrivacyPolicy />
       </div>
