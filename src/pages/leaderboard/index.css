@@ -10,6 +10,11 @@
   perspective-origin-x: 100%;
 }
 
+#leaderboard::-webkit-scrollbar {
+  width: 0px;
+}
+
+
 .parallax__group {
   position: relative;
   height: 500px; /* fallback for older browsers */
