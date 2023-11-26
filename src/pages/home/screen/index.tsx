@@ -9,12 +9,20 @@ const Screen = () => {
   const [current, setCurrent] = useState(0);
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setCurrent((prev) => (prev + 1) % 3);
+  //   }, 3500);
+  //   return () => clearInterval(timer);
+  // });
+
+  const durations = [2500, 3100, 5500];
+
   useEffect(() => {
-    const timer = setInterval(() => {
+    setTimeout(() => {
       setCurrent((prev) => (prev + 1) % 3);
-    }, 3500);
-    return () => clearInterval(timer);
-  });
+    }, durations[current])
+  }, [current]);
 
   const TextEffect = useMemo(() => {
     return (
@@ -66,24 +74,6 @@ const Screen = () => {
                 activities!
               </p>
             </div>
-            <div className="connect-button mt-16 md:mt-[10vh] flex flex-col items-center">
-              <div className="container connect-button mt-2 p-4 md:p-12  w-4/5 md:w-auto flex flex-col items-center border border-gray-light-2 rounded-xl">
-                <p className="mt-4 text-center text-base md:text-xl">
-                  Connect wallet to check out your Cred points!
-                </p>
-                <PrimaryButton
-                  className="mt-2 md:mt-8 z-[4]"
-                  onClick={() => navigate("/credPoints")}
-                >
-                  <span className="text-sm md:text-base">Connect Wallet</span>
-                </PrimaryButton>
-              </div>
-              <div className="mt-8 flex justify-center items-center">
-                <p className="text-base md:text-xl">Supporting&nbsp;</p>
-                <img src="/home/aptos.svg" alt="aptos" className="h-4 md:h-6" />
-                <p className="text-base md:text-xl">&nbsp;and more...</p>
-              </div>
-            </div>
           </>
         )}
       </>
@@ -97,6 +87,24 @@ const Screen = () => {
       </div>
       <div className="mt-[250px] md:mt-[35vh] flex flex-col justify-center">
         {TextEffect}
+      </div>
+      <div className="connect-button mt-16 md:mt-[10vh] flex flex-col items-center">
+        <div className="container connect-button mt-2 p-4 md:p-12  w-4/5 md:w-auto flex flex-col items-center border border-gray-light-2 rounded-xl">
+          <p className="mt-4 text-center text-base md:text-xl">
+            Connect wallet to check out your Cred points!
+          </p>
+          <PrimaryButton
+            className="mt-2 md:mt-8 z-[4]"
+            onClick={() => navigate("/credPoints")}
+          >
+            <span className="text-sm md:text-base">Connect Wallet</span>
+          </PrimaryButton>
+        </div>
+        <div className="mt-8 flex justify-center items-center">
+          <p className="text-base md:text-xl">Supporting&nbsp;</p>
+          <img src="/home/aptos.svg" alt="aptos" className="h-4 md:h-6" />
+          <p className="text-base md:text-xl">&nbsp;and more...</p>
+        </div>
       </div>
       <div className="absolute bottom-8">
         <PrivacyPolicy />
