@@ -32,10 +32,10 @@ const WalletView = (wallet: Wallet) => {
   const onWalletConnectRequest = async (walletName: WalletName) => {
     try {
       await connect(walletName);
-      dispatch(toggleWalletPanel(false));
     } catch (error: any) {
-      toast(error);
+      // toast(error);
     }
+    dispatch(toggleWalletPanel(false));
   };
 
   /**

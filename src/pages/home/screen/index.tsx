@@ -81,15 +81,22 @@ const Screen = () => {
     );
   }, [current]);
 
+  const [readyNavigate, setReadyNavigate] = useState(false);
+  const { connected, account, disconnect } = useWallet();
+
   const onConnectWallet = () => {
-    dispatch(toggleWalletPanel(true));
+    if(!connected)
+      dispatch(toggleWalletPanel(true));
+    setReadyNavigate(true);
   };
 
-  const { connected, account, disconnect } = useWallet();
   useEffect(() => {
-    if (connected) navigate("/credPoints");
-  }, [connected]);
-  
+    if (connected && readyNavigate) {
+      navigate("/credPoints");
+      setReadyNavigate(false);
+    }
+  }, [connected, readyNavigate]);
+
   return (
     <div className="absolute w-full h-screen flex flex-col items-center z-10">
       <div className="absolute top-16">
