@@ -7,7 +7,7 @@ const About = () => {
     <div>
       <Header />
       <div className="w-full flex justify-center">
-        <div className="w-full md:w-[730px] px-4 md:px-0 flex flex-col items-center mt-20 mb-10">
+        <div className="w-full md:w-[730px] px-4 md:px-0 flex flex-col items-center mt-44 mb-10">
           <h1 className="text-2xl md:text-3xl font-bold">ABOUT CRED</h1>
           <p className="mt-8 text-base md:text-xl">
             Cred is a loyalty points system that rewards users for being active

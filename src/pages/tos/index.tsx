@@ -6,7 +6,7 @@ const TermsOfService = () => {
     <div>
       <Header />
       <div className="w-full flex justify-center">
-        <div className="w-full md:w-[700px] px-4 md:px-0 flex flex-col mt-20 mb-10">
+        <div className="w-full md:w-[700px] px-4 md:px-0 flex flex-col mt-44 mb-10">
           <h1 className="text-3xl font-bold">Terms of Service</h1>
           <p className="text-sm mt-8 font-[inter]">
             <span className="text-xl">1. Acceptance of Terms</span>

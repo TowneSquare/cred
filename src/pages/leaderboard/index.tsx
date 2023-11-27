@@ -9,9 +9,9 @@ import Banner from "./banner";
 const Leaderboard = () => {
   return (
     <div>
+      <Header />
       <Banner />
       <div className="parallax" id="leaderboard">
-        <Header />
         <div className="parallax__group">
           <div className="parallax__layer effect1">
             <img src="/leaderboard/effect1.png" alt="effect1" />
@@ -24,7 +24,7 @@ const Leaderboard = () => {
           </div>
         </div>
         <div className="relative w-full flex justify-center z-10">
-          <div className="w-full md:w-[700px] flex flex-col items-center mt-20 mb-10">
+          <div className="w-full md:w-[700px] flex flex-col items-center mt-44 mb-10">
             <MyRanking />
             <Cards />
             <RankingList />

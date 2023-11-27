@@ -23,7 +23,7 @@ const CredPoints = () => {
         </div>
       </div>
       <div className="relative w-full flex justify-center z-10 !bg-fixed">
-        <div className="w-full md:w-[1000px] flex flex-col items-center mt-20 mb-10">
+        <div className="w-full md:w-[1000px] flex flex-col items-center mt-44 mb-10">
           <MyTotal />
           <Cards />
           <DefiActivity />

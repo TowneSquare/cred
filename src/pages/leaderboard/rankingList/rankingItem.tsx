@@ -37,8 +37,10 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
   return (
     <>
       <div
-        className="px-6 md:px-8 py-4 md:py-6 flex justify-between"
-        style={index % 2 == 1 ? { background: "#FFFFFF0D" } : {}}
+        className={`px-6 md:px-8 py-4 md:py-6 flex justify-between ${
+          index % 2 == 1 ? "bg-[#FFFFFF0D]" : ""
+        } hover:bg-gray-light-1`}
+        // style={index % 2 == 1 ? { background: "#FFFFFF0D" } : {}}
       >
         <div className="flex gap-2">
           <div
@@ -59,7 +61,7 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
           <a
             href={`https://explorer.aptoslabs.com/account/${data.wallet}/transactions?network=mainnet`}
             target="_blank"
-            className="flex items-center gap-2"
+            className="group flex items-center gap-2"
           >
             <img
               src={getBoringAvatar(data.wallet)}
@@ -72,6 +74,11 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
             <p className="md:hidden text-base md:text-lg font-bold">
               {data.wallet.slice(0, 4)}...{data.wallet.slice(-2)}
             </p>
+            <img
+              src="/credpoints/external_link.svg"
+              className="hidden group-hover:block w-[16px] h-[16px]"
+              alt="cred"
+            />
           </a>
         </div>
         <div className="flex gap-2 items-center">

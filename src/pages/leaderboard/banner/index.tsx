@@ -17,7 +17,7 @@ const Banner = () => {
 
   return (
     <div
-      className={`${
+      className={`top-[92px] ${
         scroll > 200 ? "h-[96px]" : "h-[0px]"
       } fixed z-50 transition-all duration-300 overflow-hidden w-full`}
     >
