@@ -8,7 +8,7 @@ import Banner from "./banner";
 
 const Leaderboard = () => {
   return (
-    <div>
+    <div className="relative">
       <Header />
       <Banner />
       <div className="parallax" id="leaderboard">

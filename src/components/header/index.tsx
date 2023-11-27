@@ -25,10 +25,10 @@ const Header = () => {
           ))}
         </div>
         <div className="mt-5">
-            <ConnectButton />
+          <ConnectButton />
         </div>
       </div>
-      <div className="flex lg:hidden w-full h-[92px] justify-between items-center px-2 gap-4 z-30">
+      <div className="fixed flex lg:hidden w-full h-[92px] justify-between items-center px-2 gap-4 z-30  bg-gray-dark-3">
         <img
           src="/logo.svg"
           className="h-[29px] cursor-pointer"
@@ -49,17 +49,17 @@ export const Menus: MenuType[] = [
   {
     href: "/credPoints",
     label: "Cred points",
-    color: "#F5E27D"
+    color: "#F5E27D",
   },
   {
     href: "/leaderboard",
     label: "Leaderboard",
-    color: "#A3A1E2"
+    color: "#A3A1E2",
   },
   {
     href: "/about",
     label: "About",
-    color: "#45A9A7"
+    color: "#45A9A7",
   },
 ];
 export default Header;

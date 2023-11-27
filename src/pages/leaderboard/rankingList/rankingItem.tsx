@@ -35,7 +35,11 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
   }
 
   return (
-    <>
+    <a
+      href={`https://explorer.aptoslabs.com/account/${data.wallet}/transactions?network=mainnet`}
+      target="_blank"
+      className="group"
+    >
       <div
         className={`px-6 md:px-8 py-4 md:py-6 flex justify-between ${
           index % 2 == 1 ? "bg-[#FFFFFF0D]" : ""
@@ -58,11 +62,7 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
               {ranking}
             </p>
           </div>
-          <a
-            href={`https://explorer.aptoslabs.com/account/${data.wallet}/transactions?network=mainnet`}
-            target="_blank"
-            className="group flex items-center gap-2"
-          >
+          <div className="flex items-center gap-2">
             <img
               src={getBoringAvatar(data.wallet)}
               className="w-8 h-8"
@@ -79,7 +79,7 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
               className="hidden group-hover:block w-[16px] h-[16px]"
               alt="cred"
             />
-          </a>
+          </div>
         </div>
         <div className="flex gap-2 items-center">
           <p className="text-base md:text-lg">
@@ -93,7 +93,7 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
         </div>
       </div>
       <div className="w-full h-px border border-gray-light-1" />
-    </>
+    </a>
   );
 };
 
