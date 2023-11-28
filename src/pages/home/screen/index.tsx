@@ -85,8 +85,7 @@ const Screen = () => {
   const { connected, account, disconnect } = useWallet();
 
   const onConnectWallet = () => {
-    if(!connected)
-      dispatch(toggleWalletPanel(true));
+    if (!connected) dispatch(toggleWalletPanel(true));
     setReadyNavigate(true);
   };
 
@@ -98,11 +97,11 @@ const Screen = () => {
   }, [connected, readyNavigate]);
 
   return (
-    <div className="absolute w-full h-screen flex flex-col items-center z-10">
+    <div className="absolute w-full h-screen flex flex-col items-center justify-center md:justify-normal z-10">
       <div className="absolute top-16">
         <Logo />
       </div>
-      <div className="mt-[250px] md:mt-[35vh] flex flex-col justify-center">
+      <div className="md:mt-[35vh] flex flex-col justify-center">
         {TextEffect}
       </div>
       {boxVisible && (
