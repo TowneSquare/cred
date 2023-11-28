@@ -101,7 +101,7 @@ const Screen = () => {
       <div className="absolute top-16">
         <Logo />
       </div>
-      <div className="md:mt-[35vh] flex flex-col justify-center">
+      <div className="md:mt-[35vh] min-h-[96px] md:min-h-[auto] flex flex-col justify-center">
         {TextEffect}
       </div>
       {boxVisible && (
