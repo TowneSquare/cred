@@ -70,18 +70,20 @@ const WalletView = (wallet: Wallet) => {
         disabled={true}
         key={wallet.name}
         onClick={() => onWalletConnectRequest(wallet.name)}
-
       >
         <img src={wallet.icon} alt="uri" className="w-10 h-10" />
-        {wallet.name} - Desktop Only
+        <span className="text-left">{wallet.name} <br/> Desktop Only</span>
       </button>
     );
   } else {
     // we are on desktop view
     return (
       <button
-        className={`flex items-center  gap-4  text-white font-bold py-2 px-4 rounded mr-4 ${isWalletReady ? "hover:bg-gray-dark-3" : "opacity-50 cursor-not-allowed"
-          }`}
+        className={`flex items-center  gap-4  text-white font-bold py-2 px-4 rounded mr-4 ${
+          isWalletReady
+            ? "hover:bg-gray-dark-3"
+            : "opacity-50 cursor-not-allowed"
+        }`}
         disabled={!isWalletReady}
         key={wallet.name}
         onClick={() => onWalletConnectRequest(wallet.name)}

@@ -48,7 +48,7 @@ const ConnectButton = () => {
             className="w-[200px] mt-3 flex justify-center cursor-pointer"
             onClick={() => dispatch(toggleWalletPanel(true))}
           >
-            <p className=" font-semibold whitespace-nowrap">Connect Wallet</p>
+            <p className="font-semibold whitespace-nowrap">Connect Wallet</p>
           </div>
         </>
       )}

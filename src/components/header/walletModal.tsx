@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const WalletModal = () => {
   const isOpen = useAppSelector((state) => state.dialogState.bWalletPanel);
   const dispatch = useAppDispatch();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div
