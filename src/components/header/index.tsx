@@ -16,7 +16,7 @@ const Header = () => {
           <img
             src="/logo.svg"
             className="h-[35px] cursor-pointer"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/credPoints")}
           />
         </div>
         <div className="h-full flex items-center justify-normal gap-8 lg:gap-12">
@@ -32,7 +32,7 @@ const Header = () => {
         <img
           src="/logo.svg"
           className="h-[29px] cursor-pointer"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/credPoints")}
         />
         <img
           className="w-8"
