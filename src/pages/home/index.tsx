@@ -1,11 +1,143 @@
-import Screen from "./screen";
+import { useEffect, useMemo, useState } from "react";
+import Logo from "./logo";
+import "./index.css";
+import PrimaryButton from "../../components/primaryButton";
+import PrivacyPolicy from "../../components/privacyPolicy";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../state/hooks";
+import { toggleWalletPanel } from "../../state/dialog";
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
 
 const Home = () => {
+  const [current, setCurrent] = useState(0);
+  const [boxVisible, setBoxVisible] = useState(false);
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const durations = [2500, 3100, 5500];
+  useEffect(() => {
+    setTimeout(() => {
+      setCurrent((prev) => (prev + 1) % 3);
+    }, durations[current]);
+    if (current == 2 && boxVisible == false) {
+      setBoxVisible(true);
+    }
+  }, [current]);
+
+  const TextEffect = useMemo(() => {
+    return (
+      <>
+        {current == 0 && (
+          <div
+            className={`flex flex-wrap justify-center gap-2 md:gap-4 text-white`}
+          >
+            <p className="split animate-fast text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
+              A
+            </p>
+            <p className="split animate-fast text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
+              loyalty
+            </p>
+            <p className="split animate-fast anim-speed text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
+              system
+            </p>
+          </div>
+        )}
+        {current == 1 && (
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-third-default">
+            <p className="split animate-mid text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-third-default">
+              that
+            </p>
+            <p className="split animate-mid text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-third-default">
+              rewards
+            </p>
+            <p className="split animate-mid text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-third-default">
+              you
+            </p>
+            <p className="split animate-mid text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-third-default">
+              points
+            </p>
+          </div>
+        )}
+        {current == 2 && (
+          <>
+            <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-white">
+              <p className="split animate-low text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
+                for
+              </p>
+              <p className="split animate-low text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
+                your
+              </p>
+              <p className="split animate-low text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
+                on-chain
+              </p>
+              <p className="split animate-low text-[38px] md:text-[78px] leading-[100%] font-bold before:bg-white">
+                activities!
+              </p>
+            </div>
+          </>
+        )}
+      </>
+    );
+  }, [current]);
+
+  const [readyNavigate, setReadyNavigate] = useState(false);
+  const { connected, account, disconnect } = useWallet();
+
+  const onConnectWallet = () => {
+    if (!connected) dispatch(toggleWalletPanel(true));
+    setReadyNavigate(true);
+  };
+
+  useEffect(() => {
+    if (connected && readyNavigate) {
+      navigate("/credPoints");
+      setReadyNavigate(false);
+    }
+  }, [connected, readyNavigate]);
+
   return (
-    <div className="features-wrapper bg-black" id="feature"  data-component="Features">
-      <div className="w-full h-screen relative overflow-hidden ">
-        <Screen />
+    <div className="relative w-full min-h-[800px] h-screen flex flex-col items-center justify-center md:justify-normal z-10">
+      <div className="absolute top-16">
+        <Logo />
       </div>
+      <div className="md:mt-[35vh] min-h-[96px] md:min-h-[auto] flex flex-col justify-center">
+        {TextEffect}
+      </div>
+      {boxVisible && (
+        <div className="connect-button mt-16 md:mt-[10vh] flex flex-col items-center">
+          <div className="container connect-button mt-2 p-4 md:p-12  w-4/5 md:w-auto flex flex-col items-center border border-gray-light-2 rounded-xl">
+            <p className="mt-4 text-center text-base md:text-xl">
+              Connect wallet to check out your Cred points!
+            </p>
+            <PrimaryButton
+              className="mt-2 md:mt-8 z-[4]"
+              onClick={() => onConnectWallet()}
+            >
+              <span className="text-sm md:text-base">Connect Wallet</span>
+            </PrimaryButton>
+          </div>
+          <div className="mt-8 flex justify-center items-center">
+            <p className="text-base md:text-xl">Supporting&nbsp;</p>
+            <img src="/home/aptos.svg" alt="aptos" className="h-4 md:h-6" />
+            <p className="text-base md:text-xl">&nbsp;and more...</p>
+          </div>
+        </div>
+      )}
+      <div className="absolute bottom-8">
+        <PrivacyPolicy />
+      </div>
+      <img
+        src="/home/screen1/effect1.svg"
+        alt="effect1"
+        className="absolute bottom-16 -left-10 md:top-20 md:left-24 md:right-auto w-[150px] md:w-[250px] opacity-50 md:opacity-1 z-0"
+      />
+
+      <img
+        src="/home/screen1/effect2.svg"
+        alt="effect2"
+        className="absolute top-16 -right-16 md:top-[60%] md:left-auto md:right-16 w-[150px] md:w-[250px] opacity-50 md:opacity-1 z-0"
+      />
     </div>
   );
 };
