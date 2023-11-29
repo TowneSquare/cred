@@ -136,7 +136,7 @@ const Screen = () => {
       <img
         src="/home/screen1/effect2.svg"
         alt="effect2"
-        className="absolute top-10 right-0 md:top-[60%] md:left-auto md:right-16 w-[150px] md:w-[250px] opacity-50 md:opacity-1 z-0"
+        className="absolute top-16 -right-16 md:top-[60%] md:left-auto md:right-16 w-[150px] md:w-[250px] opacity-50 md:opacity-1 z-0"
       />
     </div>
   );
