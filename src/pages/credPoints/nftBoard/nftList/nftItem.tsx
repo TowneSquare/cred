@@ -44,7 +44,6 @@ const NftItem: React.FC<Props> = ({ data }) => {
           height={120}
           className="rounded-md"
           alt="nft"
-          loading="lazy"
           onLoad={onLoad}
           style={{ display: isLoading ? "none" : "block" }}
         />
