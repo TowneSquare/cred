@@ -23,20 +23,20 @@ function App() {
   const { connected, account } = useWallet();
 
   useEffect(() => {
-    // if (account) {
-    //   dispatch(fetchCredpoints(account.address));
-    //   dispatch(fetchRankings(account.address));
-    // }
-    dispatch(
-      fetchRankings(
-        "0x1998efc2f6a84e7506eae9b789e00ac829ebe0517431500097f1b1403c5a8f8b"
-      )
-    );
-    dispatch(
-      fetchCredpoints(
-        "0x1998efc2f6a84e7506eae9b789e00ac829ebe0517431500097f1b1403c5a8f8b"
-      )
-    );
+    if (account) {
+      dispatch(fetchCredpoints(account.address));
+      dispatch(fetchRankings(account.address));
+    }
+    // dispatch(
+    //   fetchRankings(
+    //     "0x1998efc2f6a84e7506eae9b789e00ac829ebe0517431500097f1b1403c5a8f8b"
+    //   )
+    // );
+    // dispatch(
+    //   fetchCredpoints(
+    //     "0x1998efc2f6a84e7506eae9b789e00ac829ebe0517431500097f1b1403c5a8f8b"
+    //   )
+    // );
   }, [connected, account]);
 
   return (
