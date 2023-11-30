@@ -61,7 +61,7 @@ const LongestNft = () => {
             </p>
           </div>
           <p className="mt-4 text-center text-xs md:text-sm">
-            Here we’ll show what’s the NFT you’re hodling for the longest period
+            Here we’ll show what’s the NFT you’re holding for the longest period
             of time
           </p>
         </>

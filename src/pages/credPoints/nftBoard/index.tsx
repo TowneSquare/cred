@@ -14,7 +14,7 @@ const NftBoard = () => {
       <div className="container mt-4 w-full flex border border-gray-light-2 rounded-xl">
         <div className="min-w-full md:min-w-[50%] p-6 flex flex-col justify-center items-center gap-4">
           <PointLogo />
-          <p className="text-2xl font-bold">from hodling NFT</p>
+          <p className="text-2xl font-bold">from holding NFT</p>
           <p className="text-sm text-center text-gray-light-3">
             Get points daily by holding NFTs.
             <br />
