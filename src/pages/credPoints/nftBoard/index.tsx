@@ -7,7 +7,7 @@ import { toggleNftList } from "../../../state/dialog";
 
 const NftBoard = () => {
   const dispatch = useAppDispatch();
-  const isLive = useAppSelector((state) => state.credpointsState.isLive);
+  const nfts = useAppSelector(state => state.credpointsState.nfts);
 
   return (
     <div className="w-full px-4">
@@ -31,7 +31,7 @@ const NftBoard = () => {
         </div>
         <div className="hidden md:block w-px border border-gray-light-1" />
         <div className="hidden md:block min-w-[50%]">
-          {isLive ? (
+          {nfts.length > 0 ? (
             <NftList />
           ) : (
             <div className="w-full h-full flex justify-center items-center">

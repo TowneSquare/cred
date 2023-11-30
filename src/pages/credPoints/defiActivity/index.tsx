@@ -7,7 +7,7 @@ import { toggleActivityList } from "../../../state/dialog";
 
 const DefiActivity = () => {
   const dispatch = useAppDispatch();
-  const isLive = useAppSelector((state) => state.credpointsState.isLive);
+  const defiActivities = useAppSelector(state => state.credpointsState.defiActivities);
 
   return (
     <div className="w-full px-4">
@@ -31,7 +31,7 @@ const DefiActivity = () => {
         </div>
         <div className="hidden md:block w-px border border-gray-light-1" />
         <div className="hidden md:block min-w-[50%]">
-          {isLive ? (
+          {defiActivities.length > 0 ? (
             <ActivityList />
           ) : (
             <div className="w-full h-full flex justify-center items-center">

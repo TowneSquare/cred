@@ -1,3 +1,4 @@
+import { DefiIcon, DefiLink, DefiName } from "../../../../constants/defi";
 import { DefiActivityType } from "../../../../type/defiActivityType";
 import moment from "moment";
 
@@ -39,24 +40,3 @@ const ActivityItem: React.FC<Props> = ({ data }) => {
 };
 
 export default ActivityItem;
-
-const DefiIcon: { [key: string]: string } = {
-  "pontem": "/credpoints/liquidSwap.svg",
-  "pancake": "/credpoints/pancakeswap.png",
-  "thala": "/credpoints/thala.svg",
-  "aries": "/credpoints/aries.png"
-}
-
-const DefiName: { [key: string]: string } = {
-  "pontem": "Liquidswap",
-  "pancake": "Pancakeswap",
-  "thala": "Thala",
-  "aries": "Aries Market"
-}
-
-const DefiLink: { [key: string]: string } = {
-  "pontem": "https://pontem.network/liquidswap",
-  "pancake": "https://pancakeswap.finance/",
-  "thala": "https://app.thala.fi/",
-  "aries": "https://ariesmarkets.xyz/"
-}
