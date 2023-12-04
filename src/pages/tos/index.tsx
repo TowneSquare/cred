@@ -79,7 +79,7 @@ const TermsOfService = () => {
           <Title>10. Contact Information</Title>
           <Content>
             10.1. For questions or concerns regarding these Terms of Service,
-            please contact us at <XLink>@townesquarexyz</XLink> X account.
+            please contact us at <XLink>@0xcred</XLink> X account.
           </Content>
         </div>
       </div>

@@ -70,13 +70,13 @@ const PrivacyPolicy = () => {
             We retain your information for as long as necessary to provide our
             services and fulfill the purposes outlined in this Privacy Policy.
             If you wish to delete your account and associated data, please
-            contact us at <XLink>@townesquarexyz</XLink> X account.
+            contact us at <XLink>@0xcred</XLink> X account.
           </Content>
           <Title>6. Your Choices</Title>
           <Content>
             You have the right to delete your personal information. If you have
             questions or concerns about your privacy, please contact us at
-            <XLink>@townesquarexyz</XLink> X account.
+            <XLink>@0xcred</XLink> X account.
           </Content>
           <Title>7. Changes to the Privacy Policy</Title>
           <Content>
@@ -87,7 +87,7 @@ const PrivacyPolicy = () => {
           <Title>8. Contact Information</Title>
           <Content>
             If you have questions or concerns about this Privacy Policy, please
-            contact us at <XLink>@townesquarexyz</XLink> X account.
+            contact us at <XLink>@0xcred</XLink> X account.
           </Content>
           <Space />
           <Content>
