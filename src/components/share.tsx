@@ -6,7 +6,7 @@ const Share = () => {
   const totalPoint = useAppSelector(
     (state) => state.credpointsState.totalPoint
   );
-  const shareText = `Hey check out Cred! I’m ranked ${myRanking}th with ${totalPoint.toLocaleString()} CRED points!\nWhat’s your score?\nCheck it out on `;
+  const shareText = `Hey check out Cred! I’m ranked ${myRanking}th with ${totalPoint.toLocaleString()} CRED points!\nWhat’s your score?\nCheck it out on \n`;
 
   return (
     <>
