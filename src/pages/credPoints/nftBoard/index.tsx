@@ -7,7 +7,7 @@ import { toggleNftList } from "../../../state/dialog";
 
 const NftBoard = () => {
   const dispatch = useAppDispatch();
-  const nfts = useAppSelector(state => state.credpointsState.nfts);
+  const nfts = useAppSelector((state) => state.credpointsState.nfts);
 
   return (
     <div className="w-full px-4">
@@ -16,11 +16,13 @@ const NftBoard = () => {
           <PointLogo />
           <p className="text-2xl font-bold">from holding NFT</p>
           <p className="text-sm text-center text-gray-light-3">
-            Get points daily by holding NFTs.
+            Get points daily by hodling NFTs.
             <br />
             Eligible collections: Aptos Monkeys,
             <br />
-            Pontem Space Pirates, Bruh Bears, Aptomingos
+            Pontem Space Pirates, Bruh Bears, Aptomingos,
+            <br /> Spooks and Mavrik
+            <br />
           </p>
           <PrimaryButton
             className="md:hidden w-full text-sm"

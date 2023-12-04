@@ -34,7 +34,7 @@ const About = () => {
               <br />
               Drop us a question or feedback on X!
             </p>
-            <a href="https://twitter.com/TowneSquarexyz" target="_blank">
+            <a href="https://twitter.com/0xcred" target="_blank">
               <PrimaryButton className="mt-8">
                 <div className="flex gap-2">
                   <p className="">Ask us anything on</p>
