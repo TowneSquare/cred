@@ -14,7 +14,6 @@ const Twitter = () => {
         </div>
         <p className="mt-10 text-3xl font-bold">FUN FACTS</p>
         <Cards />
-        
       </div>
     </div>
   );
