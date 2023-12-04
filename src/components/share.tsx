@@ -9,10 +9,11 @@ const Share = () => {
   const shareText = `Hey check out Cred! I’m ranked ${myRanking}th with ${totalPoint.toLocaleString()} CRED points!\nWhat’s your score?\nCheck it out on \n`;
 
   console.log(window.location.href)
+  console.log(window.location.origin)
   return (
     <>
       <TwitterShareButton
-        url={`https://cred-beta.vercel.app`}
+        url={`${window.location.origin}`}
         title={shareText}
       >
         <div className="min-w-[50px] px-6 py-3 md:p-4 flex justify-center gap-1 items-center border border-gray-light-1 hover:border-white rounded-full cursor-pointer">

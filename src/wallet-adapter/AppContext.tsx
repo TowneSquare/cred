@@ -24,7 +24,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const { autoConnect } = useAutoConnect();
-
+console.log("autoconnect", autoConnect)
   const wallets = [
     new PetraWallet(),
     new PontemWallet(),
@@ -50,7 +50,7 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <AptosWalletAdapterProvider
       plugins={wallets}
-      autoConnect={autoConnect}
+      autoConnect={true}
       onError={(error) => {
         console.log("Custom error handling", error);
         toast(JSON.stringify(error));
