@@ -4,6 +4,7 @@ import Moralis from "moralis";
 import axios from "axios";
 import { getImageURL } from "../../../../util/url";
 import { getMetadata } from "../../../../api/metadata";
+import LoadingImage from "../../../../components/loadingImage";
 
 interface Props {
   data: NftType;
@@ -18,8 +19,7 @@ const NftItem: React.FC<Props> = ({ data }) => {
       try {
         const res = await getMetadata(data);
         setImageLink(getImageURL(res.image));
-      } catch (e) {
-      }
+      } catch (e) {}
     };
     getImage();
   }, []);
@@ -31,22 +31,8 @@ const NftItem: React.FC<Props> = ({ data }) => {
   return (
     <>
       <div className="w-20 md:w-[118px] flex flex-col gap-1 items-center">
-        <img
-          src="/credpoints/longestNft.svg"
-          width={120}
-          height={120}
-          alt="ad-img"
-          style={{ display: isLoading ? "block" : "none" }}
-        />
-        <img
-          src={imageLink}
-          width={120}
-          height={120}
-          className="rounded-md"
-          alt="nft"
-          onLoad={onLoad}
-          style={{ display: isLoading ? "none" : "block" }}
-        />
+        <LoadingImage url={imageLink} width={120} height={120} />
+
         <p className="text-xs font-bold text-center">{data.nftName}</p>
         <div className="flex gap-1 justify-center items-center">
           <p className="text-sm">{50}</p>

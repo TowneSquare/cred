@@ -3,6 +3,7 @@ import { useAppSelector } from "../../../../state/hooks";
 import { getMetadata } from "../../../../api/metadata";
 import { getImageURL } from "../../../../util/url";
 import LoadingState from "../../../../components/loadingstate";
+import LoadingImage from "../../../../components/loadingImage";
 
 const LongestNft = () => {
   const isLive = useAppSelector(state => state.credpointsState.isLive);
@@ -42,23 +43,7 @@ const LongestNft = () => {
       {longest ? (
         <>
           <div className="flex items-center gap-2">
-            <img
-              src="/credpoints/longestNft.svg"
-              width={48}
-              height={48}
-              alt="ad-img"
-              style={{ display: isLoading ? "block" : "none" }}
-            />
-            <img
-              src={imageLink}
-              width={48}
-              height={48}
-              className="rounded-md"
-              alt="nft"
-              loading="lazy"
-              onLoad={onLoad}
-              style={{ display: isLoading ? "none" : "block" }}
-            />
+            <LoadingImage url={imageLink} width={48} height={48} />
             <p className="text-xl md:text-2xl font-bold">{longest?.nftName}</p>
           </div>
           <p className="mt-4 text-center text-sm md:text-base">
