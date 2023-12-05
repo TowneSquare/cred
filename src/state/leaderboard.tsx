@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { RankingType } from "../type/rankingType";
 
 interface leaderboardStates {
+  isLive: boolean;
   myRank: number;
   myMorePoint: number;
   lowerPercentage: number;
@@ -9,6 +10,7 @@ interface leaderboardStates {
 }
 
 const initialState: leaderboardStates = {
+  isLive: false,
   myRank: 0,
   myMorePoint: 0,
   lowerPercentage: 0,
@@ -40,6 +42,7 @@ export const leaderboardSlice = createSlice({
       if (
         !action.payload.statusCode
       ) {
+        state.isLive = true;
         state.myRank = action.payload.rank;
         state.topRankings = action.payload.topRankings;
         state.myMorePoint = action.payload.morePoint;

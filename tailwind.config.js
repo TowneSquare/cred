@@ -20,6 +20,7 @@ module.exports = {
       'gray-dark-1': '#00000080',
       'gray-dark-2': '#000000B2',
       'gray-dark-3': '#151515',
+      'gray-dark-4': '#171717',
       'black': '#000000',
       'error': '#FF4471'
     },

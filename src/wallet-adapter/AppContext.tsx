@@ -23,8 +23,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const { autoConnect } = useAutoConnect();
-console.log("autoconnect", autoConnect)
   const wallets = [
     new PetraWallet(),
     new PontemWallet(),

@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../../state/hooks";
 import { getMetadata } from "../../../../api/metadata";
 import { getImageURL } from "../../../../util/url";
+import LoadingState from "../../../../components/loadingstate";
 
 const LongestNft = () => {
+  const isLive = useAppSelector(state => state.credpointsState.isLive);
   const nfts = useAppSelector((state) => state.credpointsState.nfts);
   const longest= nfts.length > 0 ? nfts[0] : undefined;
 
@@ -26,6 +28,16 @@ const LongestNft = () => {
   }
 
   return (
+    <>
+    {!isLive ? (
+      <div className="container w-[260px] md:w-[320px] min-h-[140px] px-10 md:px-20 py-4 flex flex-col gap-4 justify-center items-center border border-gray-light-2 rounded-xl">
+        <div className="w-full h-9 flex gap-4">
+          <LoadingState className="w-1/3" />
+          <LoadingState className="w-full" />
+        </div>
+        <LoadingState className="w-full h-9" />
+      </div>
+    ) : (
     <div className="container w-[260px] md:w-[320px] min-h-[140px] px-4 pt-4 flex flex-col items-center border border-gray-light-2 rounded-xl">
       {longest ? (
         <>
@@ -67,6 +79,8 @@ const LongestNft = () => {
         </>
       )}
     </div>
+    )}
+    </>
   );
 };
 

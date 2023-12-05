@@ -4,6 +4,7 @@ import { NftType } from "../type/nftType";
 import Moralis from "moralis";
 
 interface credpointsStates {
+  isLive: boolean;
   aptTxsPercentage: number | undefined;
   totalPoint: number;
   defiPoint: number;
@@ -15,6 +16,7 @@ interface credpointsStates {
 }
 
 const initialState: credpointsStates = {
+  isLive: false,
   aptTxsPercentage: undefined,
   totalPoint: 0,
   defiPoint: 0,
@@ -45,8 +47,9 @@ export const credpointsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchCredpoints.fulfilled, (state, action) => {
-      console.log(action.payload);
+      console.log(action.payload)
       if (!action.payload.statusCode) {
+        state.isLive = true;
         state.aptTxsPercentage = action.payload.aptTxsPercentage;
         state.totalPoint = action.payload.totalPoint;
         state.defiPoint = action.payload.defiPoint;
