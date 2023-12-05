@@ -14,8 +14,8 @@ const LoadingImage: React.FC<Props> = ({ className, url, width, height }) => {
   }
   return (
     <div
-      className={`bg-gray-dark-4 rounded-sm ${className}`}
-      style={{ backdropFilter: "blur(20px)", width: width + "px", height: height + "px" }}
+      className={`${isLoading? "bg-gray-dark-4 backdrop-blur-lg" : ""} rounded-md ${className}`}
+      style={ {width: width + "px", height: height + "px" }}
     >
       <img
         src={url}

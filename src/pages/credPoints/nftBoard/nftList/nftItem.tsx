@@ -11,7 +11,6 @@ interface Props {
 }
 
 const NftItem: React.FC<Props> = ({ data }) => {
-  const [isLoading, toggleLoading] = useState(true);
   const [imageLink, setImageLink] = useState<string | undefined>(undefined);
 
   useEffect(() => {
@@ -23,10 +22,6 @@ const NftItem: React.FC<Props> = ({ data }) => {
     };
     getImage();
   }, []);
-
-  function onLoad() {
-    toggleLoading(false);
-  }
 
   return (
     <>

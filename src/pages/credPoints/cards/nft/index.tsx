@@ -10,7 +10,6 @@ const LongestNft = () => {
   const nfts = useAppSelector((state) => state.credpointsState.nfts);
   const longest= nfts.length > 0 ? nfts[0] : undefined;
 
-  const [isLoading, toggleLoading] = useState(true);
   const [imageLink, setImageLink] = useState<string | undefined>(undefined);
 
   useEffect(() => {
@@ -23,10 +22,6 @@ const LongestNft = () => {
     };
     getImage();
   }, [longest]);
-
-  function onLoad() {
-    toggleLoading(false);
-  }
 
   return (
     <>
