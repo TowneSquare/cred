@@ -13,6 +13,7 @@ interface credpointsStates {
   nfts: NftType[];
   rewardNFTPointPerDay: number;
   popularDeFi: string | undefined;
+  longestNft: NftType | undefined;
 }
 
 const initialState: credpointsStates = {
@@ -25,6 +26,7 @@ const initialState: credpointsStates = {
   nfts: [],
   rewardNFTPointPerDay: 0,
   popularDeFi: undefined,
+  longestNft: undefined
 };
 
 export const fetchCredpoints = createAsyncThunk(
@@ -59,6 +61,7 @@ export const credpointsSlice = createSlice({
         state.rewardNFTPointPerDay =
           action.payload.rewardNFTPointPerDay ?? state.nfts.length * 50;
         state.popularDeFi = action.payload.popularDeFi;
+        state.longestNft = action.payload.longestHoldingNFT;
       }
     });
   },

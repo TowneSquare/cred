@@ -14,17 +14,4 @@ export interface NftType {
   isFirstCalc: true;
   updatedAt: string;
   url: string;
-
-  // amount: BigNumber;
-  // collectionDataIdHash: string;
-  // collectionName: string;
-  // creatorAddress: string;
-  // lastTransactionTimestamp: string;
-  // lastTransactionVersion: string;
-  // name: string;
-  // ownerAddress: string;
-  // propertyVersion: string;
-  // tableType: string;
-  // tokenDataIdHash: string;
-  // tokenProperties: string;
 }

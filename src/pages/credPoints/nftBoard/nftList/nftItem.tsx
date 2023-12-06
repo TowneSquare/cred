@@ -26,7 +26,7 @@ const NftItem: React.FC<Props> = ({ data }) => {
   return (
     <>
       <div className="w-20 md:w-[118px] flex flex-col gap-1 items-center">
-        <LoadingImage url={imageLink} width={120} height={120} />
+        <LoadingImage url={imageLink} className="min-w-[80px] min-h-[80px] md:min-w-[120px] md:min-h-[120px]"/>
 
         <p className="text-xs font-bold text-center">{data.nftName}</p>
         <div className="flex gap-1 justify-center items-center">

@@ -7,8 +7,7 @@ import LoadingImage from "../../../../components/loadingImage";
 
 const LongestNft = () => {
   const isLive = useAppSelector(state => state.credpointsState.isLive);
-  const nfts = useAppSelector((state) => state.credpointsState.nfts);
-  const longest= nfts.length > 0 ? nfts[0] : undefined;
+  const longest= useAppSelector(state => state.credpointsState.longestNft);
 
   const [imageLink, setImageLink] = useState<string | undefined>(undefined);
 
@@ -38,7 +37,7 @@ const LongestNft = () => {
       {longest ? (
         <>
           <div className="flex items-center gap-2">
-            <LoadingImage url={imageLink} width={48} height={48} />
+            <LoadingImage url={imageLink} className="w-12 h-12" />
             <p className="text-xl md:text-2xl font-bold">{longest?.nftName}</p>
           </div>
           <p className="mt-4 text-center text-sm md:text-base">
