@@ -7,14 +7,18 @@ interface leaderboardStates {
   myMorePoint: number;
   lowerPercentage: number;
   topRankings: RankingType[];
+
+  connection: boolean;
 }
 
 const initialState: leaderboardStates = {
-  isLive: false,
+  isLive: true,
   myRank: 0,
   myMorePoint: 0,
   lowerPercentage: 0,
   topRankings: [],
+
+  connection: false
 };
 
 export const fetchRankings = createAsyncThunk(
@@ -35,13 +39,26 @@ export const fetchRankings = createAsyncThunk(
 export const leaderboardSlice = createSlice({
   name: "leaderboard",
   initialState,
-  reducers: {},
+  reducers: {
+    reset: (state, action: PayloadAction<boolean>) => {
+      state.isLive = true;
+      state.myRank = 0;
+      state.myMorePoint = 0;
+      state.lowerPercentage = 0;
+      state.topRankings = [];
+    },
+    updateLeaderboardLive: (state, action: PayloadAction<boolean>) => {
+      state.isLive = action.payload;
+    },
+    updateConnection: (state, action: PayloadAction<boolean>) => {
+      state.connection = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchRankings.fulfilled, (state, action) => {
-      console.log(action.payload);
-      if (
-        !action.payload.statusCode
-      ) {
+      console.log(action.payload, state.connection);
+
+      if (!action.payload.statusCode && state.connection) {
         state.isLive = true;
         state.myRank = action.payload.rank;
         state.topRankings = action.payload.topRankings;
@@ -52,5 +69,5 @@ export const leaderboardSlice = createSlice({
   },
 });
 
-export const {} = leaderboardSlice.actions;
+export const { reset, updateLeaderboardLive, updateConnection } = leaderboardSlice.actions;
 export default leaderboardSlice.reducer;

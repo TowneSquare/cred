@@ -14,10 +14,12 @@ interface credpointsStates {
   rewardNFTPointPerDay: number;
   popularDeFi: string | undefined;
   longestNft: NftType | undefined;
+
+  connection: boolean;
 }
 
 const initialState: credpointsStates = {
-  isLive: false,
+  isLive: true,
   aptTxsPercentage: undefined,
   totalPoint: 0,
   defiPoint: 0,
@@ -26,7 +28,9 @@ const initialState: credpointsStates = {
   nfts: [],
   rewardNFTPointPerDay: 0,
   popularDeFi: undefined,
-  longestNft: undefined
+  longestNft: undefined,
+
+  connection: false
 };
 
 export const fetchCredpoints = createAsyncThunk(
@@ -46,11 +50,31 @@ export const fetchCredpoints = createAsyncThunk(
 export const credpointsSlice = createSlice({
   name: "credPoints",
   initialState,
-  reducers: {},
+  reducers: {
+    reset: (state, action: PayloadAction<boolean>) => {
+      state.isLive = true;
+      state.aptTxsPercentage = undefined;
+      state.totalPoint = 0;
+      state.defiPoint = 0;
+      state.nftPoint = 0;
+      state.defiActivities = [];
+      state.nfts = [];
+      state.rewardNFTPointPerDay = 0;
+      state.popularDeFi = undefined;
+      state.longestNft = undefined;
+    },
+    updateCredpointsLive: (state, action: PayloadAction<boolean>) => {
+      state.isLive = action.payload;
+    },
+    updateConnection: (state, action: PayloadAction<boolean>) => {
+      state.connection = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchCredpoints.fulfilled, (state, action) => {
-      console.log(action.payload)
-      if (!action.payload.statusCode) {
+      console.log(action.payload, state.connection);
+
+      if (!action.payload.statusCode && state.connection) {
         state.isLive = true;
         state.aptTxsPercentage = action.payload.aptTxsPercentage;
         state.totalPoint = action.payload.totalPoint;
@@ -67,5 +91,5 @@ export const credpointsSlice = createSlice({
   },
 });
 
-export const {} = credpointsSlice.actions;
+export const { reset, updateCredpointsLive, updateConnection } = credpointsSlice.actions;
 export default credpointsSlice.reducer;

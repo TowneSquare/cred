@@ -3,12 +3,19 @@ import { toggleWalletPanel } from "../../state/dialog";
 import { useAppDispatch } from "../../state/hooks";
 import { useState } from "react";
 import { getBoringAvatar } from "../../util/boringAvatar";
+import { reset } from "../../state/credpoints";
+import { reset as resetLeaderboard } from "../../state/leaderboard";
 
 const ConnectButton = () => {
   const dispatch = useAppDispatch();
   const { connected, account, disconnect } = useWallet();
   const [isOpen, toggleOpen] = useState(false);
 
+  const onDisconnet = () => {
+    dispatch(reset(true));
+    dispatch(resetLeaderboard(true));
+    disconnect();
+  }
   return (
     <>
       {connected ? (
@@ -34,7 +41,7 @@ const ConnectButton = () => {
               </span>
             </div>
             {isOpen && (
-              <div className="group relative z-50" onClick={() => disconnect()}>
+              <div className="group relative z-50" onClick={() => onDisconnet()}>
                 <p className="text-center font-[Inter] group-hover:font-bold">
                   Disconnect Wallet
                 </p>

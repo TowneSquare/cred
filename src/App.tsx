@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home";
 import CredPoints from "./pages/credPoints";
 import { useAppDispatch, useAppSelector } from "./state/hooks";
-import { fetchRankings } from "./state/leaderboard";
+import { fetchRankings, updateConnection, updateLeaderboardLive } from "./state/leaderboard";
 import { useEffect } from "react";
 import Leaderboard from "./pages/leaderboard";
 import About from "./pages/about";
@@ -13,7 +13,7 @@ import Twitter from "./pages/twitter";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import Sidebar from "./components/header/sidebar";
 import WalletModal from "./components/header/walletModal";
-import { fetchCredpoints } from "./state/credpoints";
+import { fetchCredpoints, updateConnection as updateLeaderboardConnection, updateCredpointsLive } from "./state/credpoints";
 import ActivityModal from "./pages/credPoints/defiActivity/activityModal";
 import NftModal from "./pages/credPoints/nftBoard/nftModal";
 import TermsOfService from "./pages/tos";
@@ -23,20 +23,27 @@ function App() {
   const { connected, account } = useWallet();
 
   useEffect(() => {
-    // if (account) {
-    //   dispatch(fetchCredpoints(account.address));
-    //   dispatch(fetchRankings(account.address));
-    // }
-    dispatch(
-      fetchRankings(
-        "0xaaf8822c3e95d511253e95335184cc42db5e039ccbd30203a59a59c941d9900e"
-      )
-    );
-    dispatch(
-      fetchCredpoints(
-        "0xaaf8822c3e95d511253e95335184cc42db5e039ccbd30203a59a59c941d9900e"
-      )
-    );
+    dispatch(updateConnection(connected));
+    dispatch(updateLeaderboardConnection(connected));
+
+    if (connected && account) {
+      dispatch(updateCredpointsLive(false));
+      dispatch(updateLeaderboardLive(false));
+      
+      dispatch(fetchCredpoints(account.address));
+      dispatch(fetchRankings(account.address));
+
+      // dispatch(
+      //   fetchRankings(
+      //     "0xaaf8822c3e95d511253e95335184cc42db5e039ccbd30203a59a59c941d9900e"
+      //   )
+      // );
+      // dispatch(
+      //   fetchCredpoints(
+      //     "0xaaf8822c3e95d511253e95335184cc42db5e039ccbd30203a59a59c941d9900e"
+      //   )
+      // );
+    }
   }, [connected, account]);
 
   return (
