@@ -8,7 +8,7 @@ interface Props {
 
 const ActivityItem: React.FC<Props> = ({ data }) => {
   return (
-    <a href={DefiLink[data.defiName.toLowerCase()]} target="_blank" className=" cursor-pointer">
+    <a href={`https://explorer.aptoslabs.com/txn/${data.txVersion}?network=mainnet`} target="_blank" className=" cursor-pointer">
       <div className="group py-6 px-2 md:px-8 flex justify-between hover:bg-gray-light-1"
       >
         <div className="flex items-center gap-2">
