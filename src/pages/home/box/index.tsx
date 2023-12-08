@@ -5,19 +5,24 @@ import { toggleWalletPanel } from "../../../state/dialog";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OtpInput from "react-otp-input";
+import { checkInviteCode } from "../../../api/invite";
 
 const Box = () => {
   const { connected } = useWallet();
   const [readyNavigate, setReadyNavigate] = useState(false);
   const [otp, setOtp] = useState("");
   const [error, setError] = useState<string | undefined>(undefined);
+  const [step, setStep] = useState(0);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const onInviteCode = () => {
-    setStep(1);
-    // setError("The invite code is not valid. Find one on socials!");
+  const onInviteCode = async () => {
+    const res = await checkInviteCode(otp);
+    if (res.success == false)
+      setError("The invite code is not valid. Find one on socials!");
+    else
+     setStep(1);
   };
 
   useEffect(() => {
@@ -32,7 +37,6 @@ const Box = () => {
     setReadyNavigate(true);
   };
 
-  const [step, setStep] = useState(0);
   return (
     <div className="connect-button mt-16 md:mt-[10vh] flex flex-col items-center">
       <div className="container connect-button mt-2 p-4 md:p-10 w-4/5 md:w-[550px] flex flex-col items-center border border-gray-light-2 rounded-xl">

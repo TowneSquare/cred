@@ -6,7 +6,6 @@ import DefiActivity from "./defiActivity";
 import MyTotal from "./myTotal";
 import NftBoard from "./nftBoard";
 import "./index.css";
-import ConnectSocial from "../../components/connectSocial";
 
 const CredPoints = () => {
   return (
@@ -25,8 +24,6 @@ const CredPoints = () => {
       </div>
       <div className="relative w-full flex justify-center z-10 !bg-fixed">
         <div className="w-full md:w-[1000px] flex flex-col items-center mt-44 mb-10">
-        <ConnectSocial />
-
           <MyTotal />
           <Cards />
           <DefiActivity />
