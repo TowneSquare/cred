@@ -1,12 +1,24 @@
 import Header from "../../components/header";
 import PrivacyPolicy from "../../components/privacyPolicy";
+import InviteCode from "../../components/inviteCode";
 import Cards from "./cards";
 import MyRanking from "./myRanking";
 import RankingList from "./rankingList";
 import "./index.css";
 import Banner from "./banner";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
+import { INVITE_CODE } from "../../constants/inviteCode";
+import Cookies from "js-cookie";
 
 const Leaderboard = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (Cookies.get(INVITE_CODE) == undefined) {
+      navigate('/')
+    } 
+  }, []);
+
   return (
     <div className="relative">
       <Header />
@@ -24,7 +36,8 @@ const Leaderboard = () => {
           </div>
         </div>
         <div className="relative w-full flex justify-center z-10">
-          <div className="w-full md:w-[700px] flex flex-col items-center mt-44 mb-10">
+          <div className="w-full md:w-[700px] flex flex-col items-center mt-[116px] mb-10">
+            <InviteCode />
             <MyRanking />
             <Cards />
             <RankingList />

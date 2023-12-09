@@ -8,6 +8,7 @@ interface leaderboardStates {
   lowerPercentage: number;
   topRankings: RankingType[];
 
+  inviteCode :string
   connection: boolean;
 }
 
@@ -17,7 +18,8 @@ const initialState: leaderboardStates = {
   myMorePoint: 0,
   lowerPercentage: 0,
   topRankings: [],
-
+  
+  inviteCode : "",
   connection: false
 };
 
@@ -52,7 +54,7 @@ export const leaderboardSlice = createSlice({
     },
     updateConnection: (state, action: PayloadAction<boolean>) => {
       state.connection = action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchRankings.fulfilled, (state, action) => {
@@ -65,7 +67,7 @@ export const leaderboardSlice = createSlice({
         state.myMorePoint = action.payload.morePoint;
         state.lowerPercentage = action.payload.lowerPercentage;
       }
-    });
+    })
   },
 });
 

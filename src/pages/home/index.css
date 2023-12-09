@@ -219,3 +219,16 @@
     opacity: 1;
   }
 }
+
+
+.otp-input{
+  width: 46px !important;
+  height: 46px;
+  background: transparent;
+  border: 1px solid #FFFFFF66;
+  border-radius: 12px;
+}
+.otp-input:focus-visible{
+  border: 1px solid white;
+  outline: none;
+}

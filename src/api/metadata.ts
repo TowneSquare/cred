@@ -7,7 +7,7 @@ export const getMetadata = async (data: NftType) => {
     nftCollection: data.nftCollection,
     creator: data.creator,
   });
-  return await (
+  const res = await (
     await fetch(url, {
       method: "POST",
       headers: {
@@ -16,4 +16,12 @@ export const getMetadata = async (data: NftType) => {
       body: strData,
     })
   ).json();
+  
+  const metadata = await (
+    await fetch(res.url, {
+      method: "GET"
+    })
+  ).json();
+
+  return metadata;
 };
