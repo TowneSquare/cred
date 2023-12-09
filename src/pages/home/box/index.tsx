@@ -1,12 +1,14 @@
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import PrimaryButton from "../../../components/primaryButton";
-import { useAppDispatch } from "../../../state/hooks";
+import { useAppDispatch, useAppSelector } from "../../../state/hooks";
 import { toggleWalletPanel } from "../../../state/dialog";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OtpInput from "react-otp-input";
 import { checkInviteCode } from "../../../api/invite";
 import Cookies from "js-cookie";
+import { INVITE_CODE } from "../../../constants/inviteCode";
+import { updateInitInviteCode } from "../../../state/credpoints";
 
 const Box = () => {
   const { connected } = useWallet();
@@ -17,20 +19,27 @@ const Box = () => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const initInviteCode = useAppSelector(state => state.credpointsState.initInviteCode);
 
   const onInviteCode = async () => {
     const res = await checkInviteCode(otp);
-    Cookies.set('inviteLink', res.inviteCode);
+    console.log(res)
     if (res.success == false)
       setError("The invite code is not valid. Find one on socials!");
-    else
+    else {
+      Cookies.set(INVITE_CODE, otp);
       setStep(1);
+      dispatch(updateInitInviteCode(otp));
+    }
   };
 
   useEffect(() => {
-    if (Cookies.get('inviteLink') != null) {
+    if (initInviteCode != undefined) {
       setStep(1);
     }
+  }, []);
+
+  useEffect(() => {
     if (connected && readyNavigate) {
       navigate("/credPoints");
       setReadyNavigate(false);

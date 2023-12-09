@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 
 const InviteCode = () => {
-  const inviteCode = useAppSelector((state) => state.leaderboardState.inviteCode);
+  const inviteCode = useAppSelector((state) => state.credpointsState.inviteCode);
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(inviteCode);
+      await navigator.clipboard.writeText(inviteCode ?? "");
       setIsCopied(true);
       toast.success("Invite code has been copied")
     } catch (error) {

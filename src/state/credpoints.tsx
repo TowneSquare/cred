@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { DefiActivityType } from "../type/defiActivityType";
 import { NftType } from "../type/nftType";
-import { updateConnection, updateLive, updateOtc } from './innerslice';
 import Moralis from "moralis";
 import { useDispatch } from "react-redux";
 interface credpointsStates {
@@ -15,8 +14,10 @@ interface credpointsStates {
   rewardNFTPointPerDay: number;
   popularDeFi: string | undefined;
   longestNft: NftType | undefined;
-  inviteCode: string,
   connection: boolean;
+
+  inviteCode: string  | undefined;
+  initInviteCode: string | undefined;
 }
 
 const initialState: credpointsStates = {
@@ -30,19 +31,20 @@ const initialState: credpointsStates = {
   rewardNFTPointPerDay: 0,
   popularDeFi: undefined,
   longestNft: undefined,
-  inviteCode: "",
+  
+  connection: false,
+  inviteCode: undefined,
 
-  connection: false
+  initInviteCode: undefined
 };
 
 export const fetchCredpoints = createAsyncThunk(
   "credpoints/fetch",
-  async (wallet: string, thunkAPI) => {
-    const url = `https://backend.townesquare.xyz/activity/point/${wallet}/BGRHH`;
+  async ({ wallet, initInviteCode }: any, thunkAPI) => {
+    const url = `https://backend.townesquare.xyz/activity/point/${wallet}/${initInviteCode}`;
     try {
       const res = await fetch(url);
       const result = await res.json();
-      thunkAPI.dispatch(updateOtc(result.inviteCode))
       return result;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -67,11 +69,18 @@ export const credpointsSlice = createSlice({
       state.longestNft = undefined;
       state.inviteCode = "";
     },
+    updateCredPointsLive: (state, action: PayloadAction<boolean>) => {
+      state.isLive = action.payload;
+    },
+    updateConnection: (state, action: PayloadAction<boolean>) => {
+      state.connection = action.payload;
+    },
+    updateInitInviteCode(state, action: PayloadAction<string | undefined>) {
+      state.initInviteCode = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCredpoints.fulfilled, (state, action) => {
-      console.log(action.payload, state.connection);
-
       if (!action.payload.statusCode && state.connection) {
         state.isLive = true;
         state.aptTxsPercentage = action.payload.aptTxsPercentage;
@@ -84,16 +93,12 @@ export const credpointsSlice = createSlice({
           action.payload.rewardNFTPointPerDay ?? state.nfts.length * 50;
         state.popularDeFi = action.payload.popularDeFi;
         state.longestNft = action.payload.longestHoldingNFT;
+
+        state.inviteCode = action.payload.inviteCode;
       }
-    }).addCase(updateConnection, (state, action) => {
-      state.connection = action.payload;
-    }).addCase(updateLive, (state, action) => {
-      state.isLive = action.payload;
-    }).addCase(updateOtc, (state, action) => {
-      state.inviteCode = action.payload;
-    });
+    })
   },
 });
 
-export const { reset } = credpointsSlice.actions;
+export const { reset, updateCredPointsLive, updateConnection, updateInitInviteCode } = credpointsSlice.actions;
 export default credpointsSlice.reducer;

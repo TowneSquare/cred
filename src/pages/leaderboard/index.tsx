@@ -6,8 +6,19 @@ import MyRanking from "./myRanking";
 import RankingList from "./rankingList";
 import "./index.css";
 import Banner from "./banner";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
+import { INVITE_CODE } from "../../constants/inviteCode";
+import Cookies from "js-cookie";
 
 const Leaderboard = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (Cookies.get(INVITE_CODE) == undefined) {
+      navigate('/')
+    } 
+  }, []);
+
   return (
     <div className="relative">
       <Header />
