@@ -5,6 +5,7 @@ import Cards from "./cards";
 import DefiActivity from "./defiActivity";
 import MyTotal from "./myTotal";
 import NftBoard from "./nftBoard";
+import InviteCode from "../../components/inviteCode";
 import "./index.css";
 
 const CredPoints = () => {
@@ -23,7 +24,8 @@ const CredPoints = () => {
         </div>
       </div>
       <div className="relative w-full flex justify-center z-10 !bg-fixed">
-        <div className="w-full md:w-[1000px] flex flex-col items-center mt-44 mb-10">
+        <div className="w-full md:w-[1000px] flex flex-col items-center mt-[116px] mb-10">
+          <InviteCode />
           <MyTotal />
           <Cards />
           <DefiActivity />

@@ -21,7 +21,8 @@ const MyTotal = () => {
         <Share />
       </div>
       <p className="mt-4 text-center text-sm md:text-base">
-        points are updated daily at 00:00 GMT
+        Reward points are calculated to reflect your current activities.<br/>
+        Some activities may take longer for the blockchain to update.
       </p>
     </div>
   );
