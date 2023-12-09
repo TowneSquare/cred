@@ -16,7 +16,8 @@ const MyRanking = () => {
         <Share />
       </div>
       <p className="mt-4 text-center text-sm md:text-base">
-        ranking is updated daily at 00:00 GMT
+        Rankings are based on your Cred points and activities.<br/>
+        Some activities may take longer for the blockchain to update.
       </p>
     </div>
   );

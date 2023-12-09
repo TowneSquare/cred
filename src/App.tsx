@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home";
 import CredPoints from "./pages/credPoints";
 import { useAppDispatch, useAppSelector } from "./state/hooks";
-import { fetchRankings, updateConnection, updateLeaderboardLive } from "./state/leaderboard";
+import { fetchRankings } from "./state/leaderboard";
 import { useEffect } from "react";
 import Leaderboard from "./pages/leaderboard";
 import About from "./pages/about";
@@ -13,10 +13,11 @@ import Twitter from "./pages/twitter";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import Sidebar from "./components/header/sidebar";
 import WalletModal from "./components/header/walletModal";
-import { fetchCredpoints, updateConnection as updateLeaderboardConnection, updateCredpointsLive } from "./state/credpoints";
+import { fetchCredpoints } from "./state/credpoints";
 import ActivityModal from "./pages/credPoints/defiActivity/activityModal";
 import NftModal from "./pages/credPoints/nftBoard/nftModal";
 import TermsOfService from "./pages/tos";
+import { updateConnection, updateLive } from "./state/innerslice";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -24,11 +25,9 @@ function App() {
 
   useEffect(() => {
     dispatch(updateConnection(connected));
-    dispatch(updateLeaderboardConnection(connected));
-
+    
     if (connected && account) {
-      dispatch(updateCredpointsLive(false));
-      dispatch(updateLeaderboardLive(false));
+      dispatch(updateLive(connected));
       
       // dispatch(fetchCredpoints(account.address));
       // dispatch(fetchRankings(account.address));

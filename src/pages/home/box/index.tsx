@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OtpInput from "react-otp-input";
 import { checkInviteCode } from "../../../api/invite";
+import Cookies from "js-cookie";
 
 const Box = () => {
   const { connected } = useWallet();
@@ -19,13 +20,17 @@ const Box = () => {
 
   const onInviteCode = async () => {
     const res = await checkInviteCode(otp);
+    Cookies.set('inviteLink', res.inviteCode);
     if (res.success == false)
       setError("The invite code is not valid. Find one on socials!");
     else
-     setStep(1);
+      setStep(1);
   };
 
   useEffect(() => {
+    if (Cookies.get('inviteLink') != null) {
+      setStep(1);
+    }
     if (connected && readyNavigate) {
       navigate("/credPoints");
       setReadyNavigate(false);
@@ -39,7 +44,7 @@ const Box = () => {
 
   return (
     <div className="connect-button mt-16 md:mt-[10vh] flex flex-col items-center">
-      <div className="container connect-button mt-2 p-4 md:p-10 w-4/5 md:w-[550px] flex flex-col items-center border border-gray-light-2 rounded-xl">
+      <div className="container connect-button mt-2 p-4 md:p-10 w-[95%] md:w-[550px] flex flex-col items-center border border-gray-light-2 rounded-xl">
         {step == 0 && (
           <>
             <p className="mt-4 text-center text-base md:text-xl font-bold">
@@ -82,13 +87,13 @@ const Box = () => {
             >
               <span className="text-sm md:text-base">Connect Wallet</span>
             </PrimaryButton>
-            <div className="mt-8 flex justify-center items-center">
-              <p className="text-base md:text-xl">Supporting&nbsp;</p>
-              <img src="/home/aptos.svg" alt="aptos" className="h-4 md:h-6" />
-              <p className="text-base md:text-xl">&nbsp;and more...</p>
-            </div>
           </>
         )}
+      </div>
+      <div className="mt-8 flex justify-center items-center">
+        <p className="text-base md:text-xl">Supporting&nbsp;</p>
+        <img src="/home/aptos.svg" alt="aptos" className="h-4 md:h-6" />
+        <p className="text-base md:text-xl">&nbsp;and more...</p>
       </div>
     </div>
   );

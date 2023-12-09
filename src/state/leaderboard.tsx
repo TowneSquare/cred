@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { RankingType } from "../type/rankingType";
+import { updateConnection, updateLive, updateOtc } from './innerslice';
 
 interface leaderboardStates {
   isLive: boolean;
@@ -7,7 +8,7 @@ interface leaderboardStates {
   myMorePoint: number;
   lowerPercentage: number;
   topRankings: RankingType[];
-
+  inviteCode :string
   connection: boolean;
 }
 
@@ -17,7 +18,7 @@ const initialState: leaderboardStates = {
   myMorePoint: 0,
   lowerPercentage: 0,
   topRankings: [],
-
+  inviteCode : "",
   connection: false
 };
 
@@ -46,12 +47,6 @@ export const leaderboardSlice = createSlice({
       state.myMorePoint = 0;
       state.lowerPercentage = 0;
       state.topRankings = [];
-    },
-    updateLeaderboardLive: (state, action: PayloadAction<boolean>) => {
-      state.isLive = action.payload;
-    },
-    updateConnection: (state, action: PayloadAction<boolean>) => {
-      state.connection = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -65,9 +60,15 @@ export const leaderboardSlice = createSlice({
         state.myMorePoint = action.payload.morePoint;
         state.lowerPercentage = action.payload.lowerPercentage;
       }
+    }).addCase(updateConnection, (state, action) => {
+      state.connection = action.payload;
+    }).addCase(updateLive, (state, action) => {
+      state.isLive = action.payload;
+    }).addCase(updateOtc, (state, action) => {
+      state.inviteCode = action.payload;
     });
   },
 });
 
-export const { reset, updateLeaderboardLive, updateConnection } = leaderboardSlice.actions;
+export const { reset } = leaderboardSlice.actions;
 export default leaderboardSlice.reducer;
