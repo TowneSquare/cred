@@ -16,21 +16,27 @@ const Box = () => {
   const [readyNavigate, setReadyNavigate] = useState(false);
   const [otp, setOtp] = useState("");
   const [error, setError] = useState<string | undefined>(undefined);
-  const step = useAppSelector(state => state.globalState.step);
+  const step = useAppSelector((state) => state.globalState.step);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const initInviteCode = useAppSelector(state => state.credpointsState.initInviteCode);
+  const initInviteCode = useAppSelector(
+    (state) => state.credpointsState.initInviteCode
+  );
 
   const onInviteCode = async () => {
-    const res = await checkInviteCode(otp);
+    try {
+      const res = await checkInviteCode(otp);
 
-    if (res.success == false)
+      if (res.success == false)
+        setError("The invite code is not valid. Find one on socials!");
+      else {
+        Cookies.set(INVITE_CODE, otp);
+        dispatch(updateStep(1));
+        dispatch(updateInitInviteCode(otp));
+      }
+    } catch (e) {
       setError("The invite code is not valid. Find one on socials!");
-    else {
-      Cookies.set(INVITE_CODE, otp);
-      dispatch(updateStep(1));
-      dispatch(updateInitInviteCode(otp));
     }
   };
 

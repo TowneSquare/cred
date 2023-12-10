@@ -3,6 +3,7 @@ import { DefiActivityType } from "../type/defiActivityType";
 import { NftType } from "../type/nftType";
 import Moralis from "moralis";
 import { useDispatch } from "react-redux";
+import { ReferralType } from "../type/referralType";
 interface credpointsStates {
   isLive: boolean;
   aptTxsPercentage: number | undefined;
@@ -14,6 +15,9 @@ interface credpointsStates {
   rewardNFTPointPerDay: number;
   popularDeFi: string | undefined;
   longestNft: NftType | undefined;
+  referralPoint: number;
+  referralList: ReferralType[];
+
   connection: boolean;
 
   inviteCode: string  | undefined;
@@ -31,10 +35,12 @@ const initialState: credpointsStates = {
   rewardNFTPointPerDay: 0,
   popularDeFi: undefined,
   longestNft: undefined,
-  
-  connection: false,
-  inviteCode: undefined,
+  referralPoint: 0,
+  referralList: [],
 
+  connection: false,
+
+  inviteCode: undefined,
   initInviteCode: undefined
 };
 
@@ -45,6 +51,7 @@ export const fetchCredpoints = createAsyncThunk(
     try {
       const res = await fetch(url);
       const result = await res.json();
+
       return result;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -67,6 +74,8 @@ export const credpointsSlice = createSlice({
       state.rewardNFTPointPerDay = 0;
       state.popularDeFi = undefined;
       state.longestNft = undefined;
+      state.referralPoint = 0;
+      state.referralList = [];
       state.inviteCode = "";
     },
     updateCredPointsLive: (state, action: PayloadAction<boolean>) => {
@@ -93,6 +102,8 @@ export const credpointsSlice = createSlice({
           action.payload.rewardNFTPointPerDay ?? state.nfts.length * 50;
         state.popularDeFi = action.payload.popularDeFi;
         state.longestNft = action.payload.longestHoldingNFT;
+        state.referralPoint = action.payload.referralPoint;
+        state.referralList = action.payload.referralList;
 
         state.inviteCode = action.payload.inviteCode;
       }

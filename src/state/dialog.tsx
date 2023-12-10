@@ -5,6 +5,7 @@ interface dialogStates {
   bWalletPanel: boolean;
   bActivityList: boolean;
   bNftList: boolean;
+  bReferral: boolean;
 }
 
 const initialState: dialogStates = {
@@ -12,6 +13,7 @@ const initialState: dialogStates = {
   bWalletPanel: false,
   bActivityList: false,
   bNftList: false,
+  bReferral: false,
 };
 
 export const dialogSlice = createSlice({
@@ -30,6 +32,9 @@ export const dialogSlice = createSlice({
     toggleNftList: (state, action: PayloadAction<boolean>) => {
       state.bNftList = action.payload;
     },
+    toggleReferral: (state, action: PayloadAction<boolean>) => {
+      state.bReferral = action.payload;
+    },
   },
   extraReducers: (builder) => {},
 });
@@ -39,5 +44,6 @@ export const {
   toggleWalletPanel,
   toggleActivityList,
   toggleNftList,
+  toggleReferral
 } = dialogSlice.actions;
 export default dialogSlice.reducer;

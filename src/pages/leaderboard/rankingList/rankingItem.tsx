@@ -44,7 +44,6 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
         className={`px-6 md:px-8 py-4 md:py-6 flex justify-between ${
           index % 2 == 1 ? "bg-[#FFFFFF0D]" : ""
         } hover:bg-gray-light-1`}
-        // style={index % 2 == 1 ? { background: "#FFFFFF0D" } : {}}
       >
         <div className="flex gap-2">
           <div

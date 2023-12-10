@@ -1,16 +1,19 @@
+import { useEffect } from "react";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router";
+
 import Header from "../../components/header";
+import InviteCode from "../../components/inviteCode";
 import PrivacyPolicy from "../../components/privacyPolicy";
+
 import Banner from "./banner";
 import Cards from "./cards";
 import DefiActivity from "./defiActivity";
 import MyTotal from "./myTotal";
 import NftBoard from "./nftBoard";
-import InviteCode from "../../components/inviteCode";
+import Referral from "./referral";
 import "./index.css";
-import { useEffect } from "react";
-import Cookies from "js-cookie";
 import { INVITE_CODE } from "../../constants/inviteCode";
-import { useNavigate } from "react-router";
 
 const CredPoints = () => {
   const navigate = useNavigate();
@@ -41,6 +44,7 @@ const CredPoints = () => {
           <Cards />
           <DefiActivity />
           <NftBoard />
+          <Referral />
           <Banner />
           <PrivacyPolicy />
         </div>

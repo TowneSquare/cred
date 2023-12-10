@@ -4,7 +4,7 @@ import { useAppSelector } from "../../../../state/hooks";
 
 const LiquidSwap = () => {
   const defiActivities = useAppSelector(
-    (state) => state.credpointsState.defiActivities
+    (state) => state.credpointsState.referralList
   );
   const popularDefi = useAppSelector(
     (state) => state.credpointsState.popularDeFi
