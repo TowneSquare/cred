@@ -9,13 +9,14 @@ import { checkInviteCode } from "../../../api/invite";
 import Cookies from "js-cookie";
 import { INVITE_CODE } from "../../../constants/inviteCode";
 import { updateInitInviteCode } from "../../../state/credpoints";
+import { updateStep } from "../../../state/global";
 
 const Box = () => {
   const { connected } = useWallet();
   const [readyNavigate, setReadyNavigate] = useState(false);
   const [otp, setOtp] = useState("");
   const [error, setError] = useState<string | undefined>(undefined);
-  const [step, setStep] = useState(0);
+  const step = useAppSelector(state => state.globalState.step);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -23,19 +24,19 @@ const Box = () => {
 
   const onInviteCode = async () => {
     const res = await checkInviteCode(otp);
-    console.log(res)
+
     if (res.success == false)
       setError("The invite code is not valid. Find one on socials!");
     else {
       Cookies.set(INVITE_CODE, otp);
-      setStep(1);
+      dispatch(updateStep(1));
       dispatch(updateInitInviteCode(otp));
     }
   };
 
   useEffect(() => {
     if (initInviteCode != undefined) {
-      setStep(1);
+      dispatch(updateStep(1));
     }
   }, []);
 
