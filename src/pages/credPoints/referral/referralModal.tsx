@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { toggleActivityList } from "../../../state/dialog";
+import { toggleReferral } from "../../../state/dialog";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
 import ReferralList from "./referralList";
 
@@ -36,7 +36,7 @@ const ReferralModal = () => {
         <img
           src="/credpoints/close.svg"
           className="absolute top-5 right-6 cursor-pointer"
-          onClick={(e) => dispatch(toggleActivityList(false))}
+          onClick={(e) => dispatch(toggleReferral(false))}
         />
       </div>
     </div>
