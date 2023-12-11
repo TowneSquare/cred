@@ -85,8 +85,8 @@ const Home = () => {
 
   return (
     <div className={`relative w-full min-h-[800px] ${step == 0 ? "md:min-h-[1000px]" : "md:min-h-[800px]"} h-screen flex flex-col items-center justify-center md:justify-normal z-10`}>
-      <div className="absolute top-16 md:right-16">
-        <p onClick={onConnectWallet} className="md:text-[18px] text-gray-light-7 cursor-pointer">Connect wallet</p>
+      <div className="absolute top-16 right-16">
+        <p onClick={onConnectWallet} className="text-[14px] md:text-[18px] text-gray-light-7 cursor-pointer">Connect wallet</p>
       </div>
       <div className="absolute top-16">
         <Logo />

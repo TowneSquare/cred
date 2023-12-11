@@ -10,7 +10,11 @@ const InviteCode = () => {
     try {
       await navigator.clipboard.writeText(inviteCode ?? "");
       setIsCopied(true);
-      toast.success("Invite code has been copied")
+      toast.success("Invite code has been copied", {
+        className: 'custom-toast',
+        // bodyClassName: 'custom-toast-body',
+        // progressClassName: 'custom-toast-progress',
+      });
     } catch (error) {
       console.error('Failed to copy to clipboard:', error);
     }

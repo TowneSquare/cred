@@ -21,15 +21,18 @@ import ReferralModal from "./pages/credPoints/referral/referralModal";
 import TermsOfService from "./pages/tos";
 import { INVITE_CODE } from "./constants/inviteCode";
 import "./App.css";
+import { checkCookie } from "./util/cookie";
 
 function App() {
   const dispatch = useAppDispatch();
   const { connected, account } = useWallet();
   const initInviteCode = useAppSelector(state => state.credpointsState.initInviteCode);
-  const inviteCodeCookie = Cookies.get(INVITE_CODE);
+  const inviteCodeCookie = checkCookie(account?.address)
 
   useEffect(() => {
-    dispatch(updateInitInviteCode(inviteCodeCookie));
+    if (inviteCodeCookie) {
+      dispatch(updateInitInviteCode(inviteCodeCookie));
+    }
   }, [inviteCodeCookie])
 
   useEffect(() => {
@@ -40,7 +43,7 @@ function App() {
       dispatch(updateCredPointsLive(false));
       dispatch(updateLeaderboardLive(false));
 
-      dispatch(fetchCredpoints({wallet: account.address, initInviteCode}));
+      dispatch(fetchCredpoints({ wallet: account.address, initInviteCode }));
       dispatch(fetchRankings(account.address));
 
       // dispatch(

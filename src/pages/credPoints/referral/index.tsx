@@ -16,7 +16,7 @@ const Referral = () => {
       <div className="container mt-4 flex border border-gray-light-2 rounded-xl">
         <div className="min-w-full md:min-w-[50%] p-6 flex flex-col justify-center items-center gap-4">
           <PointLogo />
-          <p className="text-2xl font-bold">from my Referral</p>
+          <p className="text-2xl font-bold">from my invited frens</p>
           <div className="w-full flex flex-col items-center">
             <div className="flex gap-1">
               <p className="text-base md:text-xl">
@@ -25,8 +25,8 @@ const Referral = () => {
               <img src="/credpoints/cred.svg" alt="cred" className="w-6" />
             </div>
             <p className="text-sm text-center text-gray-light-3">
-              for every fren that joins Cred using <br />
-              your invite code.
+              for every fren that joins Cred using your invite code. <br />
+              Frens you have invited also get 50 Cred points.
             </p>
           </div>
           <PrimaryButton
@@ -43,7 +43,7 @@ const Referral = () => {
           ) : (
             <div className="w-full h-full flex justify-center items-center">
               <span className="text-center text-sm">
-                Here we’ll show the last 10 referral
+                Last 10 invited frens
               </span>
             </div>
           )}
