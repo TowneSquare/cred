@@ -5,18 +5,24 @@ import ConnectButton from "./connectButton";
 import Menu from "./menu";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { getBoringAvatar } from "../../util/boringAvatar";
+import { reset } from "../../state/credpoints";
+import { reset as resetLeaderboard } from "../../state/leaderboard";
+import { disconnect } from "process";
 
 const Sidebar = () => {
   const show = useAppSelector((state) => state.dialogState.bSidebar);
   const dispatch = useAppDispatch();
 
   const { connected, account, disconnect } = useWallet();
-
+  const onDisconnet = () => {
+    dispatch(reset(true));
+    dispatch(resetLeaderboard(true));
+    disconnect();
+  }
   return (
     <div
-      className={`${
-        show ? "block" : "hidden"
-      } fixed w-full h-screen inset-0 bg-gray-dark-1`}
+      className={`${show ? "block" : "hidden"
+        } fixed w-full h-screen inset-0 bg-gray-dark-1`}
       onClick={() => dispatch(toggleSidebar(false))}
     >
       <div
@@ -51,7 +57,7 @@ const Sidebar = () => {
           {connected ? (
             <p
               className="text-gray-light-5 hover:text-white font-semibold whitespace-nowrap"
-              onClick={() => disconnect()}
+              onClick={() => onDisconnet()}
             >
               Disconnect Wallet
             </p>
