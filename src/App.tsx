@@ -59,22 +59,22 @@ function App() {
       dispatch(updateCredPointsLive(false));
       dispatch(updateLeaderboardLive(false));
 
-      dispatch(fetchCredpoints({ wallet: account.address, initInviteCode }));
-      dispatch(fetchRankings(account.address));
+      // dispatch(fetchCredpoints({ wallet: account.address, initInviteCode }));
+      // dispatch(fetchRankings(account.address));
 
-      // dispatch(
-      //   fetchRankings(
-      //     "0xbfc249dfede8270c73233cdec078dd82b69d0800342cc6f22e639bc568a301a5"
-      //   )
-      // );
-      // dispatch(
-      //   fetchCredpoints(
-      //     {
-      //       wallet: "0xbfc249dfede8270c73233cdec078dd82b69d0800342cc6f22e639bc568a301a5",
-      //       initInviteCode
-      //     }
-      //   )
-      // );
+      dispatch(
+        fetchRankings(
+          "0xbfc249dfede8270c73233cdec078dd82b69d0800342cc6f22e639bc568a301a5"
+        )
+      );
+      dispatch(
+        fetchCredpoints(
+          {
+            wallet: "0xbfc249dfede8270c73233cdec078dd82b69d0800342cc6f22e639bc568a301a5",
+            initInviteCode
+          }
+        )
+      );
     }
   }, [connected, account, initInviteCode]);
 
