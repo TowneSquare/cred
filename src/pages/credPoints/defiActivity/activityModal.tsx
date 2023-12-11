@@ -27,7 +27,7 @@ const ActivityModal = () => {
     >
       <div
         ref={ref}
-        className={`relative container mt-[100vh] opacity-0 mx-px mb-px flex justify-center border border-gray-light-1 rounded-md`}
+        className={`relative container-dark w-full mt-[100vh] opacity-0 mx-px mb-px flex justify-center border border-gray-light-1 rounded-md`}
         style={{
           transition: "margin-top 0.5s, opacity 0.5s",
         }}

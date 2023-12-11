@@ -23,3 +23,13 @@ body {
   -webkit-backdrop-filter: blur(12.9px);
   backdrop-filter: blur(12.9px);
 }
+
+.container-dark{
+  background: linear-gradient(
+    92deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0) 111.54%
+  ), #000000E0;
+  -webkit-backdrop-filter: blur(12.9px);
+  backdrop-filter: blur(12.9px);
+}
