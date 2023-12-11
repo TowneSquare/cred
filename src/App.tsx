@@ -64,13 +64,13 @@ function App() {
 
       // dispatch(
       //   fetchRankings(
-      //     "0xbfc249dfede8270c73233cdec078dd82b69d0800342cc6f22e639bc568a301a5"
+      //     "0x4dd1e6291f61c07f2487a34546991c40c53e5429d813c50ad88ef90796ba3b80"
       //   )
       // );
       // dispatch(
       //   fetchCredpoints(
       //     {
-      //       wallet: "0xbfc249dfede8270c73233cdec078dd82b69d0800342cc6f22e639bc568a301a5",
+      //       wallet: "0x4dd1e6291f61c07f2487a34546991c40c53e5429d813c50ad88ef90796ba3b80",
       //       initInviteCode
       //     }
       //   )
