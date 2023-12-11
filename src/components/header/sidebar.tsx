@@ -1,13 +1,11 @@
 import { toggleSidebar, toggleWalletPanel } from "../../state/dialog";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { Menus } from ".";
-import ConnectButton from "./connectButton";
 import Menu from "./menu";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { getBoringAvatar } from "../../util/boringAvatar";
 import { reset } from "../../state/credpoints";
 import { reset as resetLeaderboard } from "../../state/leaderboard";
-import { disconnect } from "process";
 
 const Sidebar = () => {
   const show = useAppSelector((state) => state.dialogState.bSidebar);

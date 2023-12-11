@@ -13,19 +13,43 @@ import { useAppDispatch, useAppSelector } from "./state/hooks";
 
 import Sidebar from "./components/header/sidebar";
 import WalletModal from "./components/header/walletModal";
-import { fetchCredpoints, updateConnection, updateCredPointsLive, updateInitInviteCode } from "./state/credpoints";
-import { fetchRankings, updateConnection as updateLeaderboardConnection, updateLeaderboardLive } from "./state/leaderboard";
+import {
+  fetchCredpoints,
+  updateConnection,
+  updateCredPointsLive,
+  updateInitInviteCode,
+} from "./state/credpoints";
+import {
+  fetchRankings,
+  updateConnection as updateLeaderboardConnection,
+  updateLeaderboardLive,
+} from "./state/leaderboard";
 import ActivityModal from "./pages/credPoints/defiActivity/activityModal";
 import NftModal from "./pages/credPoints/nftBoard/nftModal";
 import ReferralModal from "./pages/credPoints/referral/referralModal";
 import TermsOfService from "./pages/tos";
 import { INVITE_CODE } from "./constants/inviteCode";
 import "./App.css";
+import { getInviteCode } from "./api/invite";
 
 function App() {
   const dispatch = useAppDispatch();
   const { connected, account } = useWallet();
-  const initInviteCode = useAppSelector(state => state.credpointsState.initInviteCode);
+  const initInviteCode = useAppSelector(
+    (state) => state.credpointsState.initInviteCode
+  );
+
+  useEffect(() => {
+    const storeInviteCode = async () => {
+      if (account) {
+        const res = await getInviteCode(account?.address);
+        if (res.success == true) {
+          dispatch(updateInitInviteCode(res.code));
+        } 
+      }
+    };
+    storeInviteCode();
+  }, [account]);
 
   useEffect(() => {
     dispatch(updateConnection(connected));
