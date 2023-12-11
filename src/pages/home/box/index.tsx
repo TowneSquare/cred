@@ -29,7 +29,7 @@ const Box = () => {
       if (res.success == false)
         setError("The invite code is not valid. Find one on socials!");
       else {
-        const inviteCodeCache = Cookies.get("inviteCode");
+        const inviteCodeCache = Cookies.get(INVITE_CODE);
         let allowedWallet = [{ address: account?.address, code: otp }];
         if (inviteCodeCache != undefined) {
           const inviteCodeCacheJson = JSON.parse(inviteCodeCache as string);

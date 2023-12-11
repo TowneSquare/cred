@@ -1,7 +1,8 @@
 import Cookies from "js-cookie";
+import { INVITE_CODE } from "../constants/inviteCode";
 
 export const checkCookie = (address: string | undefined) => {
-  const inviteCodeCache = Cookies.get("inviteCode");
+  const inviteCodeCache = Cookies.get(INVITE_CODE);
   if (inviteCodeCache != undefined) {
     const inviteCodeCacheJson = JSON.parse(inviteCodeCache as string);
 

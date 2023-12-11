@@ -1,1 +1,1 @@
-export const INVITE_CODE = "inviteCode"
+export const INVITE_CODE = "inviteCodes"
