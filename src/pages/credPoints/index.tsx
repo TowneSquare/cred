@@ -17,11 +17,6 @@ import { INVITE_CODE } from "../../constants/inviteCode";
 
 const CredPoints = () => {
   const navigate = useNavigate();
-  useEffect(() => {
-    if (Cookies.get(INVITE_CODE) == undefined) {
-      navigate('/')
-    } 
-  }, []);
 
   return (
     <div className="parallax">

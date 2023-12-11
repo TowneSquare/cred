@@ -13,11 +13,6 @@ import Cookies from "js-cookie";
 
 const Leaderboard = () => {
   const navigate = useNavigate();
-  useEffect(() => {
-    if (Cookies.get(INVITE_CODE) == undefined) {
-      navigate('/')
-    } 
-  }, []);
 
   return (
     <div className="relative">

@@ -10,9 +10,10 @@ import Cookies from "js-cookie";
 import { INVITE_CODE } from "../../../constants/inviteCode";
 import { updateInitInviteCode } from "../../../state/credpoints";
 import { updateStep } from "../../../state/global";
+import { checkCookie } from "../../../util/cookie";
 
 const Box = () => {
-  const { connected } = useWallet();
+  const { connected, account } = useWallet();
   const [readyNavigate, setReadyNavigate] = useState(false);
   const [otp, setOtp] = useState("");
   const [error, setError] = useState<string | undefined>(undefined);
@@ -20,9 +21,6 @@ const Box = () => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const initInviteCode = useAppSelector(
-    (state) => state.credpointsState.initInviteCode
-  );
 
   const onInviteCode = async () => {
     try {
@@ -31,9 +29,16 @@ const Box = () => {
       if (res.success == false)
         setError("The invite code is not valid. Find one on socials!");
       else {
-        Cookies.set(INVITE_CODE, otp);
-        dispatch(updateStep(1));
+        const inviteCodeCache = Cookies.get("inviteCode");
+        let allowedWallet = [{ address: account?.address, code: otp }];
+        if (inviteCodeCache != undefined) {
+          const inviteCodeCacheJson = JSON.parse(inviteCodeCache as string);
+          allowedWallet = [allowedWallet[0], ...inviteCodeCacheJson?.wallet];
+        }
+        Cookies.set(INVITE_CODE, JSON.stringify({ wallet: allowedWallet }));
         dispatch(updateInitInviteCode(otp));
+        navigate("/credPoints");
+        setReadyNavigate(false);
       }
     } catch (e) {
       setError("The invite code is not valid. Find one on socials!");
@@ -41,17 +46,17 @@ const Box = () => {
   };
 
   useEffect(() => {
-    if (initInviteCode != undefined) {
-      dispatch(updateStep(1));
+    if (connected) {
+      const inviteCode = checkCookie(account?.address);
+      if (inviteCode) {
+        dispatch(updateInitInviteCode(inviteCode));
+        navigate("/credPoints");
+        setReadyNavigate(false);
+      } else {
+        dispatch(updateStep(1));
+      }
     }
-  }, []);
-
-  useEffect(() => {
-    if (connected && readyNavigate) {
-      navigate("/credPoints");
-      setReadyNavigate(false);
-    }
-  }, [connected, readyNavigate]);
+  }, [connected]);
 
   const onConnectWallet = () => {
     if (!connected) dispatch(toggleWalletPanel(true));
@@ -61,7 +66,7 @@ const Box = () => {
   return (
     <div className="connect-button mt-16 md:mt-[10vh] flex flex-col items-center">
       <div className="container connect-button mt-2 p-4 md:p-10 w-[95%] md:w-[550px] flex flex-col items-center border border-gray-light-2 rounded-xl">
-        {step == 0 && (
+        {step == 1 && (
           <>
             <p className="mt-4 text-center text-base md:text-xl font-bold">
               Insert an invite code
@@ -92,7 +97,7 @@ const Box = () => {
             </PrimaryButton>
           </>
         )}
-        {step == 1 && (
+        {step == 0 && (
           <>
             <p className="mt-4 text-center text-base md:text-xl">
               Connect wallet to check out your Cred points!
