@@ -5,16 +5,14 @@ import { toggleWalletPanel } from "../../../state/dialog";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OtpInput from "react-otp-input";
-import { checkInviteCode } from "../../../api/invite";
+import { checkInviteCode, getInviteCode } from "../../../api/invite";
 import Cookies from "js-cookie";
 import { INVITE_CODE } from "../../../constants/inviteCode";
 import { updateInitInviteCode } from "../../../state/credpoints";
 import { updateStep } from "../../../state/global";
-import { checkCookie } from "../../../util/cookie";
 
 const Box = () => {
   const { connected, account } = useWallet();
-  const [readyNavigate, setReadyNavigate] = useState(false);
   const [otp, setOtp] = useState("");
   const [error, setError] = useState<string | undefined>(undefined);
   const step = useAppSelector((state) => state.globalState.step);
@@ -23,22 +21,16 @@ const Box = () => {
   const navigate = useNavigate();
 
   const onInviteCode = async () => {
+    if (!account) return;
+
     try {
       const res = await checkInviteCode(otp);
 
       if (res.success == false)
         setError("The invite code is not valid. Find one on socials!");
       else {
-        const inviteCodeCache = Cookies.get(INVITE_CODE);
-        let allowedWallet = [{ address: account?.address, code: otp }];
-        if (inviteCodeCache != undefined) {
-          const inviteCodeCacheJson = JSON.parse(inviteCodeCache as string);
-          allowedWallet = [allowedWallet[0], ...inviteCodeCacheJson?.wallet];
-        }
-        Cookies.set(INVITE_CODE, JSON.stringify({ wallet: allowedWallet }));
         dispatch(updateInitInviteCode(otp));
         navigate("/credPoints");
-        setReadyNavigate(false);
       }
     } catch (e) {
       setError("The invite code is not valid. Find one on socials!");
@@ -46,21 +38,24 @@ const Box = () => {
   };
 
   useEffect(() => {
-    if (connected) {
-      const inviteCode = checkCookie(account?.address);
-      if (inviteCode) {
-        dispatch(updateInitInviteCode(inviteCode));
-        navigate("/credPoints");
-        setReadyNavigate(false);
+    const checkSignup = async () => {
+      if (connected && account) {
+        const res = await getInviteCode(account.address);
+        if (res.success == true) {
+          dispatch(updateInitInviteCode(res.code));
+          navigate("/credPoints");
+        } else {
+          dispatch(updateStep(1));
+        }
       } else {
-        dispatch(updateStep(1));
+        dispatch(updateStep(0));
       }
-    }
+    };
+    checkSignup();
   }, [connected]);
 
   const onConnectWallet = () => {
     if (!connected) dispatch(toggleWalletPanel(true));
-    setReadyNavigate(true);
   };
 
   return (

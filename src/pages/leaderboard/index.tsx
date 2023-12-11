@@ -1,3 +1,6 @@
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import Header from "../../components/header";
 import PrivacyPolicy from "../../components/privacyPolicy";
 import InviteCode from "../../components/inviteCode";
@@ -6,13 +9,23 @@ import MyRanking from "./myRanking";
 import RankingList from "./rankingList";
 import "./index.css";
 import Banner from "./banner";
-import { useNavigate } from "react-router";
-import { useEffect } from "react";
-import { INVITE_CODE } from "../../constants/inviteCode";
-import Cookies from "js-cookie";
+import { getInviteCode } from "../../api/invite";
 
 const Leaderboard = () => {
+  const { connected, account } = useWallet();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkSignup = async () => {
+      if (connected && account) {
+        const res = await getInviteCode(account.address);
+        if (res.success == false) {
+          navigate("/");
+        }
+      }
+    };
+    setTimeout(() => checkSignup(), 500);
+  }, [account]);
 
   return (
     <div className="relative">

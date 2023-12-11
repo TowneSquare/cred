@@ -76,7 +76,8 @@ export const credpointsSlice = createSlice({
       state.longestNft = undefined;
       state.referralPoint = 0;
       state.referralList = [];
-      state.inviteCode = "";
+      state.inviteCode = undefined;
+      state.initInviteCode = undefined;
     },
     updateCredPointsLive: (state, action: PayloadAction<boolean>) => {
       state.isLive = action.payload;

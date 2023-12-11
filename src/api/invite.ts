@@ -12,7 +12,22 @@ export const checkInviteCode = async (inviteCode: string) => {
       body: strData,
     })
   ).json();
-  console.log(res);
 
   return res;
 };
+
+
+export const getInviteCode = async (wallet: string) => {
+  const url = `https://backend.townesquare.xyz/activity/getcode/${wallet}`;
+
+  const res = await (
+    await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+  ).json();
+
+  return res;
+}

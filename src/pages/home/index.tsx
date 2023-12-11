@@ -6,6 +6,7 @@ import Box from "./box";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { toggleWalletPanel } from "../../state/dialog";
+import ConnectButton from "../../components/header/connectButton";
 
 const Home = () => {
   const { connected, account } = useWallet();
@@ -14,6 +15,7 @@ const Home = () => {
   const step = useAppSelector(state => state.globalState.step);
   const dispatch = useAppDispatch();
   const durations = [2500, 3100, 5500];
+  
   useEffect(() => {
     setTimeout(() => {
       setCurrent((prev) => (prev + 1) % 3);
@@ -22,10 +24,6 @@ const Home = () => {
       setBoxVisible(true);
     }
   }, [current]);
-
-  const onConnectWallet = () => {
-    if (!connected) dispatch(toggleWalletPanel(true));
-  };
 
   const TextEffect = useMemo(() => {
     return (
@@ -86,7 +84,7 @@ const Home = () => {
   return (
     <div className={`relative w-full min-h-[800px] ${step == 0 ? "md:min-h-[1000px]" : "md:min-h-[800px]"} h-screen flex flex-col items-center justify-center md:justify-normal z-10`}>
       <div className="absolute top-16 right-16">
-        <p onClick={onConnectWallet} className="text-[14px] md:text-[18px] text-gray-light-7 cursor-pointer">Connect wallet</p>
+        <ConnectButton />
       </div>
       <div className="absolute top-16">
         <Logo />

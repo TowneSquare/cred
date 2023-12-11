@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router";
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
 
 import Header from "../../components/header";
 import InviteCode from "../../components/inviteCode";
@@ -13,10 +13,23 @@ import MyTotal from "./myTotal";
 import NftBoard from "./nftBoard";
 import Referral from "./referral";
 import "./index.css";
-import { INVITE_CODE } from "../../constants/inviteCode";
+import { getInviteCode } from "../../api/invite";
 
 const CredPoints = () => {
+  const { connected, account } = useWallet();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkSignup = async () => {
+      if (connected && account) {
+        const res = await getInviteCode(account.address);
+        if (res.success == false) {
+          navigate("/");
+        }
+      }
+    };
+    setTimeout(() => checkSignup(), 500);
+  }, [account]);
 
   return (
     <div className="parallax">

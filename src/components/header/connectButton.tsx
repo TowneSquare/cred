@@ -3,7 +3,7 @@ import { toggleWalletPanel } from "../../state/dialog";
 import { useAppDispatch } from "../../state/hooks";
 import { useState } from "react";
 import { getBoringAvatar } from "../../util/boringAvatar";
-import { reset } from "../../state/credpoints";
+import { reset, updateInitInviteCode } from "../../state/credpoints";
 import { reset as resetLeaderboard } from "../../state/leaderboard";
 
 const ConnectButton = () => {

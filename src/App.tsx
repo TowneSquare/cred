@@ -21,19 +21,11 @@ import ReferralModal from "./pages/credPoints/referral/referralModal";
 import TermsOfService from "./pages/tos";
 import { INVITE_CODE } from "./constants/inviteCode";
 import "./App.css";
-import { checkCookie } from "./util/cookie";
 
 function App() {
   const dispatch = useAppDispatch();
   const { connected, account } = useWallet();
   const initInviteCode = useAppSelector(state => state.credpointsState.initInviteCode);
-  const inviteCodeCookie = checkCookie(account?.address)
-
-  useEffect(() => {
-    if (inviteCodeCookie) {
-      dispatch(updateInitInviteCode(inviteCodeCookie));
-    }
-  }, [inviteCodeCookie])
 
   useEffect(() => {
     dispatch(updateConnection(connected));
@@ -48,13 +40,13 @@ function App() {
 
       // dispatch(
       //   fetchRankings(
-      //     "0xaaf8822c3e95d511253e95335184cc42db5e039ccbd30203a59a59c941d9900e"
+      //     "0xbfc249dfede8270c73233cdec078dd82b69d0800342cc6f22e639bc568a301a5"
       //   )
       // );
       // dispatch(
       //   fetchCredpoints(
       //     {
-      //       wallet: "0xaaf8822c3e95d511253e95335184cc42db5e039ccbd30203a59a59c941d9900e",
+      //       wallet: "0xbfc249dfede8270c73233cdec078dd82b69d0800342cc6f22e639bc568a301a5",
       //       initInviteCode
       //     }
       //   )
