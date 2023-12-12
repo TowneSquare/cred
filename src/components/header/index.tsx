@@ -11,7 +11,7 @@ const Header = () => {
   const dispatch = useAppDispatch();
   return (
     <>
-      <div className="fixed hidden lg:flex w-full h-[92px] justify-between  px-10 gap-4 z-30 bg-gray-dark-3">
+      <div className="z-[100] fixed hidden lg:flex w-full h-[92px] justify-between px-10 gap-4 bg-gray-dark-3">
         <div className="flex items-center gap-4 md:gap-12">
           <img
             src="/logo.svg"
