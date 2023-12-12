@@ -3,10 +3,11 @@ import { useAppSelector } from "../state/hooks";
 
 const Share = () => {
   const myRanking = useAppSelector((state) => state.leaderboardState.myRank);
+  const formattedRanking = (myRanking / 1000).toLocaleString(undefined, { minimumFractionDigits: 3 });
   const totalPoint = useAppSelector(
     (state) => state.credpointsState.totalPoint
   );
-  const shareText = `Hey check out Cred! I’m ranked ${myRanking}th with ${totalPoint.toLocaleString()} CRED points!\nWhat’s your score?\nCheck it out on \n`;
+  const shareText = `Hey check out Cred! I’m ranked ${formattedRanking}th with ${totalPoint.toLocaleString()} CRED points!\nWhat’s your score?\nCheck it out on \n`;
 
   return (
     <TwitterShareButton url={`${window.location.origin}`} title={shareText}>
