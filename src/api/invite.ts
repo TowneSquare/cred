@@ -19,7 +19,7 @@ export const checkInviteCode = async (inviteCode: string) => {
 
 export const getInviteCode = async (wallet: string) => {
   const url = `https://backend.townesquare.xyz/activity/getcode/${wallet}`;
-  console.log("getting Invite Code", url);
+  console.log("getting Invite Code", wallet);
   const res = await (
     await fetch(url, {
       method: "GET",
