@@ -14,16 +14,26 @@ import NftBoard from "./nftBoard";
 import Referral from "./referral";
 import "./index.css";
 import { getInviteCode } from "../../api/invite";
+import { useAppDispatch, useAppSelector } from "../../state/hooks";
+import {
+  fetchCredpoints,
+  updateConnection,
+  updateCredPointsLive,
+} from "../../state/credpoints";
 
 const CredPoints = () => {
   const { connected, account } = useWallet();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const initInviteCode = useAppSelector(
+    (state) => state.credpointsState.initInviteCode
+  );
 
   useEffect(() => {
     const checkSignup = async () => {
       if (connected && account) {
         const res = await getInviteCode(account.address);
-        console.log(res)
+        console.log(res);
         if (res.success == false) {
           navigate("/");
         }
@@ -31,6 +41,17 @@ const CredPoints = () => {
     };
     setTimeout(() => checkSignup(), 500);
   }, [account]);
+
+  useEffect(() => {
+    dispatch(updateConnection(connected));
+
+    if (connected && account && initInviteCode) {
+      dispatch(updateCredPointsLive(false));
+
+      console.log("dispatching", initInviteCode);
+      dispatch(fetchCredpoints({ wallet: account.address, initInviteCode }));
+    }
+  }, [connected, account, initInviteCode]);
 
   return (
     <div className="parallax">

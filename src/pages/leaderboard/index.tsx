@@ -10,10 +10,20 @@ import RankingList from "./rankingList";
 import "./index.css";
 import Banner from "./banner";
 import { getInviteCode } from "../../api/invite";
+import {
+  fetchRankings,
+  updateConnection,
+  updateLeaderboardLive,
+} from "../../state/leaderboard";
+import { useAppDispatch, useAppSelector } from "../../state/hooks";
 
 const Leaderboard = () => {
   const { connected, account } = useWallet();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const initInviteCode = useAppSelector(
+    (state) => state.credpointsState.initInviteCode
+  );
 
   useEffect(() => {
     const checkSignup = async () => {
@@ -26,6 +36,17 @@ const Leaderboard = () => {
     };
     setTimeout(() => checkSignup(), 500);
   }, [account]);
+
+  useEffect(() => {
+    dispatch(updateConnection(connected));
+
+    if (connected && account && initInviteCode) {
+      dispatch(updateLeaderboardLive(false));
+
+      console.log("dispatching leaderboard", initInviteCode);
+      dispatch(fetchRankings(account.address));
+    }
+  }, [connected, account, initInviteCode]);
 
   return (
     <div className="relative">

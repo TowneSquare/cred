@@ -51,34 +51,6 @@ function App() {
     storeInviteCode();
   }, [account]);
 
-  useEffect(() => {
-    dispatch(updateConnection(connected));
-    dispatch(updateLeaderboardConnection(connected));
-
-    if (connected && account && initInviteCode) {
-      dispatch(updateCredPointsLive(false));
-      dispatch(updateLeaderboardLive(false));
-
-      console.log("dispatching", initInviteCode)
-      dispatch(fetchCredpoints({ wallet: account.address, initInviteCode }));
-      dispatch(fetchRankings(account.address));
-
-      // dispatch(
-      //   fetchRankings(
-      //     "0x4dd1e6291f61c07f2487a34546991c40c53e5429d813c50ad88ef90796ba3b80"
-      //   )
-      // );
-      // dispatch(
-      //   fetchCredpoints(
-      //     {
-      //       wallet: "0x4dd1e6291f61c07f2487a34546991c40c53e5429d813c50ad88ef90796ba3b80",
-      //       initInviteCode
-      //     }
-      //   )
-      // );
-    }
-  }, [connected, account, initInviteCode]);
-
   return (
     <div>
       <Routes>
