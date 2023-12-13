@@ -59,6 +59,7 @@ function App() {
       dispatch(updateCredPointsLive(false));
       dispatch(updateLeaderboardLive(false));
 
+      console.log("dispatching")
       dispatch(fetchCredpoints({ wallet: account.address, initInviteCode }));
       dispatch(fetchRankings(account.address));
 

@@ -23,6 +23,7 @@ const CredPoints = () => {
     const checkSignup = async () => {
       if (connected && account) {
         const res = await getInviteCode(account.address);
+        console.log(res)
         if (res.success == false) {
           navigate("/");
         }
