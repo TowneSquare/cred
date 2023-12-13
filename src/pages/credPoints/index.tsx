@@ -28,19 +28,14 @@ const CredPoints = () => {
   const initInviteCode = useAppSelector(
     (state) => state.credpointsState.initInviteCode
   );
+  const initialized = useAppSelector(state => state.globalState.initialized);
 
   useEffect(() => {
-    const checkSignup = async () => {
-      if (connected && account) {
-        const res = await getInviteCode(account.address);
-        console.log(res);
-        if (res.success == false) {
-          navigate("/");
-        }
+    console.log(account, initialized, initInviteCode)
+      if (connected && account && initialized && initInviteCode == undefined) {
+        navigate("/");
       }
-    };
-    setTimeout(() => checkSignup(), 500);
-  }, [account]);
+  }, [account, initialized]);
 
   useEffect(() => {
     dispatch(updateConnection(connected));

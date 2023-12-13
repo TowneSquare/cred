@@ -31,21 +31,26 @@ import TermsOfService from "./pages/tos";
 import { INVITE_CODE } from "./constants/inviteCode";
 import "./App.css";
 import { getInviteCode } from "./api/invite";
+import { updateInitialized } from "./state/global";
 
 function App() {
   const dispatch = useAppDispatch();
-  const { connected, account } = useWallet();
-  const initInviteCode = useAppSelector(
-    (state) => state.credpointsState.initInviteCode
-  );
+  const { account } = useWallet();
 
   useEffect(() => {
     const storeInviteCode = async () => {
       if (account) {
+        dispatch(updateInitialized(false))
+
         const res = await getInviteCode(account?.address);
+        
         if (res.success == true) {
           dispatch(updateInitInviteCode(res.code));
         } 
+
+        dispatch(updateInitialized(true))
+      } else {
+        dispatch(updateInitialized(false))
       }
     };
     storeInviteCode();

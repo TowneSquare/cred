@@ -24,18 +24,13 @@ const Leaderboard = () => {
   const initInviteCode = useAppSelector(
     (state) => state.credpointsState.initInviteCode
   );
+  const initialized = useAppSelector(state => state.globalState.initialized);
 
   useEffect(() => {
-    const checkSignup = async () => {
-      if (connected && account) {
-        const res = await getInviteCode(account.address);
-        if (res.success == false) {
-          navigate("/");
-        }
+      if (connected && account && initialized && initInviteCode == undefined) {
+        navigate("/");
       }
-    };
-    setTimeout(() => checkSignup(), 500);
-  }, [account]);
+  }, [account, initialized]);
 
   useEffect(() => {
     dispatch(updateConnection(connected));
