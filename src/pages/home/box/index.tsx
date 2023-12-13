@@ -24,7 +24,8 @@ const Box = () => {
     if (!account) return;
 
     try {
-      const res = await checkInviteCode(otp);
+      const inputCode = otp.toUpperCase()
+      const res = await checkInviteCode(inputCode);
 
       if (res.success == false)
         setError("The invite code is not valid. Find one on socials!");
