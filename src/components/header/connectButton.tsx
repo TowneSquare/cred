@@ -21,7 +21,7 @@ const ConnectButton = () => {
       {connected ? (
         <>
           <div
-            className="w-[200px] flex flex-col items-center gap-6 px-6 py-4 rounded-3xl border border-gray-light-1 hover:bg-[#ffffff30] cursor-pointer"
+            className="w-[200px] flex flex-col items-center gap-6 px-6 py-3 rounded-3xl border border-gray-light-1 hover:bg-[#ffffff30] cursor-pointer"
             onClick={(e) => {
               e.stopPropagation();
               toggleOpen(!isOpen);
