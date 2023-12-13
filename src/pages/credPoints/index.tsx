@@ -49,7 +49,7 @@ const CredPoints = () => {
   }, [connected, account, initInviteCode]);
 
   return (
-    <div className="parallax">
+    <div className="parallax" id="cred-point">
       <Header />
       <div className="parallax__group">
         <div className="parallax__layer cred__effect1">
