@@ -30,7 +30,7 @@ const Box = () => {
       if (res.success == false)
         setError("The invite code is not valid. Find one on socials!");
       else {
-        dispatch(updateInitInviteCode(otp));
+        dispatch(updateInitInviteCode(inputCode));
         navigate("/credPoints");
       }
     } catch (e) {
