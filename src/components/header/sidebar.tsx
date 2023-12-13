@@ -6,6 +6,7 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { getBoringAvatar } from "../../util/boringAvatar";
 import { reset } from "../../state/credpoints";
 import { reset as resetLeaderboard } from "../../state/leaderboard";
+import JoinUs from "./joinus";
 
 const Sidebar = () => {
   const show = useAppSelector((state) => state.dialogState.bSidebar);
@@ -50,6 +51,12 @@ const Sidebar = () => {
           {Menus.map((menu, index) => (
             <Menu data={menu} key={index} />
           ))}
+        </div>
+        <div className="absolute bottom-[100px]">
+          <div className="flex flex-col items-center gap-6">
+            <p className="text-gray-light-3">Fllow us</p>
+            <JoinUs />
+          </div>
         </div>
         <div className="w-full py-4 flex justify-center border-t border-gray-light-1">
           {connected ? (

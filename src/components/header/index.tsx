@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Menu from "./menu";
 import MenuType from "../../type/menuType";
 import ConnectButton from "./connectButton";
+import JoinUs from "./joinus";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { toggleSidebar } from "../../state/dialog";
@@ -24,8 +25,13 @@ const Header = () => {
             <Menu data={menu} key={index} />
           ))}
         </div>
-        <div className="mt-5">
-          <ConnectButton />
+        <div className="flex">
+          <div className="mr-[34px] flex">
+            <JoinUs />
+          </div>
+          <div className="mt-5">
+            <ConnectButton />
+          </div>
         </div>
       </div>
       <div className="fixed flex lg:hidden w-full h-[92px] justify-between items-center px-2 gap-4 z-30  bg-gray-dark-3">

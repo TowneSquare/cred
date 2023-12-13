@@ -1,20 +1,24 @@
 import { Link } from "react-router-dom";
 
-const PrivacyPolicy = () => {
+const JoinUs = () => {
   return (
-    <div className="flex gap-10">
-      <Link to={"/privacy"}>
-        <p className="mt-20 text-sm md:text-base text-gray-light-1 hover:text-third-default cursor-pointer">
-          Privacy policy
-        </p>
-      </Link>
-      <Link to={"/tos"}>
-        <p className="mt-20 text-sm md:text-base text-gray-light-1 hover:text-third-default cursor-pointer">
-          Terms of service
-        </p>
-      </Link>
+    <div className="flex gap-6 items-center">
+      <a
+        href={`https://twitter.com/0xcred`}
+        target="_blank"
+        className="w-6"
+      >
+        <img src="/credpoints/twitter.svg" alt="X" className="w-9 md:w-[54px]" />
+      </a>
+      <a
+        href={`https://discord.gg/bK5p9tNM4d`}
+        target="_blank"
+        className="w-8"
+      >
+        <img src="/credpoints/discord.svg" alt="discord" className="w-9 md:w-[54px]" />
+      </a>
     </div>
   );
 };
 
-export default PrivacyPolicy;
+export default JoinUs;
