@@ -6,10 +6,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OtpInput from "react-otp-input";
 import { checkInviteCode, getInviteCode } from "../../../api/invite";
-import Cookies from "js-cookie";
-import { INVITE_CODE } from "../../../constants/inviteCode";
 import { updateInitInviteCode } from "../../../state/credpoints";
 import { updateStep } from "../../../state/global";
+import PrivacyPolicy from "../../../components/privacyPolicy";
 
 const Box = () => {
   const { connected, account } = useWallet();
@@ -24,7 +23,7 @@ const Box = () => {
     if (!account) return;
 
     try {
-      const inputCode = otp.toUpperCase()
+      const inputCode = otp.toUpperCase();
       const res = await checkInviteCode(inputCode);
 
       if (res.success == false)
@@ -111,6 +110,9 @@ const Box = () => {
         <p className="text-base md:text-xl">Supporting&nbsp;</p>
         <img src="/home/aptos.svg" alt="aptos" className="h-4 md:h-6" />
         <p className="text-base md:text-xl">&nbsp;and more...</p>
+      </div>
+      <div className="mt-8">
+        <PrivacyPolicy />
       </div>
     </div>
   );

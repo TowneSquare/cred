@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Logo from "./logo";
 import "./index.css";
-import PrivacyPolicy from "../../components/privacyPolicy";
 import Box from "./box";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import ConnectButton from "../../components/header/connectButton";
@@ -103,9 +102,6 @@ const Home = () => {
         {TextEffect}
       </div>
       {boxVisible && <Box />}
-      <div className="absolute bottom-8">
-        <PrivacyPolicy />
-      </div>
       <img
         src="/home/screen1/effect1.svg"
         alt="effect1"
