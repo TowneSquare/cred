@@ -2,7 +2,7 @@ import LoadingState from "../../../../components/loadingstate";
 import { useAppSelector } from "../../../../state/hooks";
 
 const Apt = () => {
-  const aptTxsPercentage = useAppSelector( (state) => state.credpointsState.aptTxsPercentage );
+  const aptTxsPercentage = useAppSelector((state) => state.credpointsState.aptTxsPercentage);
   const isLive = useAppSelector(state => state.credpointsState.isLive);
 
   return (
@@ -35,8 +35,7 @@ const Apt = () => {
                 <p className="text-2xl font-bold">Favourite token</p>
               </div>
               <p className="mt-4 text-center text-xs md:text-sm">
-                Here we’ll show what’s the token you have interacted with the
-                most
+                empty state
               </p>
             </>
           )}

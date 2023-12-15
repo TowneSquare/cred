@@ -8,7 +8,7 @@ interface leaderboardStates {
   lowerPercentage: number;
   topRankings: RankingType[];
 
-  inviteCode :string
+  inviteCode: string
   connection: boolean;
 }
 
@@ -18,8 +18,8 @@ const initialState: leaderboardStates = {
   myMorePoint: 0,
   lowerPercentage: 0,
   topRankings: [],
-  
-  inviteCode : "",
+
+  inviteCode: "",
   connection: false
 };
 
