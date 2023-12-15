@@ -1,7 +1,7 @@
 :root {
-  --speed-low: 5s;
+  --speed-low: 2.6s;
   --speed-mid: 2.6s;
-  --speed-fast: 2s;
+  --speed-fast: 2.6s;
 }
 
 .split {

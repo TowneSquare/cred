@@ -13,15 +13,27 @@ const Home = () => {
   const durations = [2500, 3100, 5500];
   const dispatch = useAppDispatch();
 
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setCurrent((prev) => (prev + 1) % 3);
+  //   }, durations[current]);
+
+  //   if (current == 2 && boxVisible == false) {
+  //     setBoxVisible(true);
+  //   }
+  // }, [current]);
+
   useEffect(() => {
-    setTimeout(() => {
+    setInterval(() => {
       setCurrent((prev) => (prev + 1) % 3);
-    }, durations[current]);
-    if (current == 2 && boxVisible == false) {
+    }, 3000);
+  }, []);
+  useEffect(() => {
+    if(current == 2 && boxVisible == false){
       setBoxVisible(true);
     }
   }, [current]);
-
+  
   const TextEffect = useMemo(() => {
     return (
       <>
