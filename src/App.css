@@ -18,6 +18,11 @@
   color: white !important;
 }
 
+.custom-toast-info {
+  background-color: #222222 !important;
+  color: white !important;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

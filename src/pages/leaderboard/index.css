@@ -13,6 +13,9 @@
 #leaderboard::-webkit-scrollbar {
   width: 0px;
 }
+#cred-point::-webkit-scrollbar {
+  width: 0px;
+}
 
 
 .parallax__group {

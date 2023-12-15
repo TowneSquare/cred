@@ -17,7 +17,7 @@ const Apt = () => {
         </div>
       ) : (
         <div className="container w-[260px] md:w-[320px] min-h-[140px]  px-4 pt-4 flex flex-col items-center border border-gray-light-2 rounded-xl">
-          {aptTxsPercentage != undefined ? (
+          {aptTxsPercentage !== undefined && aptTxsPercentage !== 0 ?(
             <>
               <div className="flex items-center gap-2">
                 <img src="/credpoints/aptos.svg" alt="swap" />

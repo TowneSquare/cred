@@ -54,7 +54,7 @@ const Sidebar = () => {
         </div>
         <div className="absolute bottom-[100px]">
           <div className="flex flex-col items-center gap-6">
-            <p className="text-gray-light-3">Fllow us</p>
+            <p className="text-gray-light-3">Follow us</p>
             <JoinUs />
           </div>
         </div>

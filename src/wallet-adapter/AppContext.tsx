@@ -50,8 +50,11 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
       plugins={wallets}
       autoConnect={true}
       onError={(error) => {
-        console.log("Custom error handling", error);
-        toast(JSON.stringify(error));
+        toast.info("Wallet connection canceled", {
+          progressStyle: { backgroundColor: 'white' },
+          className: 'custom-toast-info',
+          theme: "colored"
+        });
       }}
     >
       {children}
