@@ -19,7 +19,7 @@ const Home = () => {
     if (current == 1 && boxVisible == false) {
       setBoxVisible(true);
     }
-  }, durations[current]);
+  }, 3500);
 
   useEffect(() => {
     handleEffect();
