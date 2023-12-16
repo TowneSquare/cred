@@ -5,6 +5,7 @@ import Box from "./box";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import ConnectButton from "../../components/header/connectButton";
 import { toggleSidebar } from "../../state/dialog";
+import { debounce } from 'lodash';
 
 const Home = () => {
   const [current, setCurrent] = useState(0);
@@ -13,25 +14,15 @@ const Home = () => {
   const durations = [2500, 3100, 5500];
   const dispatch = useAppDispatch();
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setCurrent((prev) => (prev + 1) % 3);
-  //   }, durations[current]);
-
-  //   if (current == 2 && boxVisible == false) {
-  //     setBoxVisible(true);
-  //   }
-  // }, [current]);
-
-  useEffect(() => {
-    setInterval(() => {
-      setCurrent((prev) => (prev + 1) % 3);
-    }, 3000);
-  }, []);
-  useEffect(() => {
-    if(current == 2 && boxVisible == false){
+  const handleEffect = debounce(() => {
+    setCurrent((prev) => (prev + 1) % 3);
+    if (current == 1 && boxVisible == false) {
       setBoxVisible(true);
     }
+  }, 3000);
+
+  useEffect(() => {
+    handleEffect();
   }, [current]);
   
   const TextEffect = useMemo(() => {

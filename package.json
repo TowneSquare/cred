@@ -24,6 +24,7 @@
     "@types/gsap": "^3.0.0",
     "@types/jest": "^27.0.1",
     "@types/js-cookie": "^3.0.6",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^16.7.13",
     "@types/react": "18",
     "@types/react-dom": "^18.0.0",
