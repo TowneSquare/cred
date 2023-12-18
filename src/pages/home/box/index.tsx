@@ -41,7 +41,7 @@ const Box = () => {
     const checkSignup = async () => {
       if (connected && account) {
         const res = await getInviteCode(account.address);
-        if (res.success == true) {
+        if (res.code != "" && res.code != undefined) {
           dispatch(updateInitInviteCode(res.code));
           navigate("/credPoints");
         } else {
