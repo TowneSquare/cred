@@ -42,9 +42,11 @@ const Box = () => {
       if (connected && account) {
         const res = await getInviteCode(account.address);
         if (res.code != "" && res.code != undefined) {
+          console.log("success getting code");
           dispatch(updateInitInviteCode(res.code));
           navigate("/credPoints");
         } else {
+          console.log("faild getting code");
           dispatch(updateStep(1));
         }
       } else {
