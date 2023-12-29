@@ -23,8 +23,8 @@ const InviteCode = () => {
     <>
       {inviteCode &&
         <div className="px-4 md:px-0">
-          <div className="p-4 md:px-0 w-full md:w-[1030px] min-h-[80px] mb-[71px] flex justify-center items-center border border-primary-default rounded-2xl">
-            <div className="grid md:flex items-center gap-2 me-4">
+          <div className="grid bg-[#191919] p-4 md:px-0 w-full md:w-[1030px] min-h-[80px] mb-[71px] justify-center items-center border border-gray-light-7 rounded-2xl">
+            <div className="grid md:flex items-center gap-2 me-4 justify-center">
               <p className="text-base md:text-xl font-normal">Get <b>50</b> <img className="w-[24px] inline-block" src="/credpoints/cred.svg" alt="swap" /> for every fren that joins Cred using your invite code:</p>
               <div className="justify-center flex">
                 <p
@@ -35,6 +35,10 @@ const InviteCode = () => {
                   <img className="inline-block w-[24px]" src="/copy.svg" alt="copy" />
                 </p>
               </div>
+            </div>
+            <div className="flex mb-2">
+              <img src="/credpoints/icon-info.svg" className="w-[22px] h-[22px] mr-2" alt="cred" />
+              <p className="text-base md:text-[18px]">You and your fren will only earn referral points if this address is an active account on Aptos</p>
             </div>
           </div>
         </div>
