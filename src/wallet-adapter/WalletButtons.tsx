@@ -7,13 +7,13 @@ import {
 } from "@aptos-labs/wallet-adapter-react";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../state/hooks";
-import { toggleWalletPanel } from "../state/dialog";
+import { toggleWalletPanel, toggleConnectRequest } from "../state/dialog";
 
 const WalletButtons = () => {
   const { wallets } = useWallet();
 
   return (
-    <div className="pl-20 mt-4 flex flex-col gap-4">
+    <div className="mt-4 flex flex-col gap-4 pb-4">
       {wallets.map((wallet: Wallet) => {
         return WalletView(wallet);
       })}
@@ -24,17 +24,20 @@ const WalletButtons = () => {
 const WalletView = (wallet: Wallet) => {
   const { connect } = useWallet();
   const isWalletReady =
-    wallet.readyState === WalletReadyState.Installed ||
-    wallet.readyState === WalletReadyState.Loadable;
+  wallet.readyState === WalletReadyState.Installed ||
+  wallet.readyState === WalletReadyState.Loadable;
   const mobileSupport = wallet.deeplinkProvider;
   const dispatch = useAppDispatch();
 
   const onWalletConnectRequest = async (walletName: WalletName) => {
     try {
+      console.log("toggleConnectRequest");
+      dispatch(toggleConnectRequest(true));
       await connect(walletName);
     } catch (error: any) {
       // toast(error);
     }
+    dispatch(toggleConnectRequest(false));
     dispatch(toggleWalletPanel(false));
   };
 
@@ -72,24 +75,26 @@ const WalletView = (wallet: Wallet) => {
         onClick={() => onWalletConnectRequest(wallet.name)}
       >
         <img src={wallet.icon} alt="uri" className="w-10 h-10" />
-        <span className="text-left">{wallet.name} <br/> Desktop Only</span>
+        <span className="text-left">{wallet.name} <br /> Desktop Only</span>
       </button>
     );
   } else {
     // we are on desktop view
     return (
       <button
-        className={`flex items-center  gap-4  text-white font-bold py-2 px-4 rounded mr-4 ${
-          isWalletReady
-            ? "hover:bg-gray-dark-3"
-            : "opacity-50 cursor-not-allowed"
-        }`}
+        className={`flex justify-between items-center  text-white py-2 px-6 rounded ${isWalletReady
+          ? "hover:bg-gray-light-8"
+          : "cursor-not-allowed"
+          }`}
         disabled={!isWalletReady}
         key={wallet.name}
         onClick={() => onWalletConnectRequest(wallet.name)}
       >
-        <img src={wallet.icon} alt="uri" className="w-10 h-10" />
-        {wallet.name}
+        <div className="flex gap-4 items-center font-bold">
+          <img src={wallet.icon} alt="uri" className="w-10 h-10" />
+          {wallet.name}
+        </div>
+        {isWalletReady && <p className="text-[14px] text-gray-light-7">Detected</p>}
       </button>
     );
   }

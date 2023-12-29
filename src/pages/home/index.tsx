@@ -15,7 +15,6 @@ const Home = () => {
   const dispatch = useAppDispatch();
 
   const handleEffect = debounce(() => {
-    console.log(current)
     setCurrent((prev) => (prev + 1) % 3);
     if (current == 1 && boxVisible == false) {
       setBoxVisible(true);
