@@ -92,6 +92,10 @@ const Box = () => {
             >
               <span className="text-sm md:text-base">Insert invite code</span>
             </PrimaryButton>
+            <div className="flex mt-6">
+              <img src="/credpoints/icon-info.svg" className="w-[22px] h-[22px] mr-2" alt="cred" />
+              <p>You and your inviter will only earn referral points if this address is an active account on Aptos</p>
+            </div>
           </>
         )}
         {step == 0 && (
