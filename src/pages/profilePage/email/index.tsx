@@ -30,7 +30,7 @@ const Email = () => {
   return (
     <>
       <div className="bg-[#1B1B1B] w-[460px] md:w-[890px] min-h-[144px] p-8 grid items-center border border-gray-light-2 rounded-xl mb-4">
-        {!connected ? (
+        {connected ? (
           <>
             <div className="flex justify-between">
               <div className="flex">

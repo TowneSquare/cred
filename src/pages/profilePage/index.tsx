@@ -18,6 +18,7 @@ import {
   updateConnection,
   updateCredPointsLive,
 } from "../../state/credpoints";
+import { toggleChangeAvatarPanel } from "../../state/dialog";
 
 const ProfilePage = () => {
   const { connected, account } = useWallet();
@@ -47,8 +48,12 @@ const ProfilePage = () => {
           <p className="text-2xl font-bold">MY PROFILE</p>
           <div className="flex justify-center mt-8 mb-4">
             <div className="relative border-[2px] border-[#F5E27D] rounded-full">
-              <img className="w-[100px] h-[100px] rounded-full z-50" src="/default-image.png" alt="" />
-              <div className="absolute top-0 left-0 w-[100px] h-[100px] group hover:bg-[black] hover:opacity-70 rounded-full flex justify-center items-center cursor-pointer">
+              {!initialized ? (
+                <img className="w-[100px] h-[100px] rounded-full z-50" src="/default-image.png" alt="" />
+              ) : (
+                <img className="w-[100px] h-[100px] rounded-full z-50" src="/avatar1.png" alt="" />
+              )}
+              <div onClick={() => dispatch(toggleChangeAvatarPanel(true))} className="absolute top-0 left-0 w-[100px] h-[100px] group hover:bg-[black] hover:opacity-70 rounded-full flex justify-center items-center cursor-pointer">
                 <p className="hidden group-hover:block text-white font-bold">Change</p>
               </div>
             </div>

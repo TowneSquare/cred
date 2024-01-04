@@ -33,6 +33,7 @@ import { INVITE_CODE } from "./constants/inviteCode";
 import "./App.css";
 import { getInviteCode } from "./api/invite";
 import { updateInitialized } from "./state/global";
+import ChangeAvatarModal from "./components/header/changeAvatarModal";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -71,6 +72,7 @@ function App() {
       </Routes>
       <Sidebar />
       <WalletModal />
+      <ChangeAvatarModal />
       <ActivityModal />
       <NftModal />
       <ReferralModal />
