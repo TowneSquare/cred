@@ -6,6 +6,7 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import Home from "./pages/home";
 import CredPoints from "./pages/credPoints";
 import Leaderboard from "./pages/leaderboard";
+import ProfilePage from "./pages/profilePage";
 import About from "./pages/about";
 import PrivacyPolicy from "./pages/privacyPolicy";
 import Twitter from "./pages/twitter";
@@ -62,6 +63,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/credPoints" element={<CredPoints />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/tos" element={<TermsOfService />} />

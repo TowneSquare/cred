@@ -5,8 +5,10 @@ import { useState } from "react";
 import { getBoringAvatar } from "../../util/boringAvatar";
 import { reset, updateInitInviteCode } from "../../state/credpoints";
 import { reset as resetLeaderboard } from "../../state/leaderboard";
+import { useNavigate } from "react-router-dom";
 
 const ConnectButton = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { connected, account, disconnect } = useWallet();
   const [isOpen, toggleOpen] = useState(false);
@@ -27,6 +29,7 @@ const ConnectButton = () => {
               toggleOpen(!isOpen);
             }}
           >
+            {account?.address && <img src="/credpoints/icon-warning.svg" className="absolute right-6 top-3 w-[32px] h-[32px] mr-2" alt="cred" />}
             <div className="flex gap-2 items-center">
               <div className="w-8 h-8">
                 <img
@@ -41,11 +44,19 @@ const ConnectButton = () => {
               </span>
             </div>
             {isOpen && (
-              <div className="group relative z-50" onClick={() => onDisconnet()}>
-                <p className="text-center font-[Inter] group-hover:font-bold">
-                  Disconnect Wallet
-                </p>
-              </div>
+              <>
+                <div className="group relative z-50 flex items-center">
+                  <p onClick={() => navigate("/profile")} className="text-center font-[Inter] group-hover:font-bold ml-4 mr-2">
+                    My profile
+                  </p>
+                  {account?.address && <img src="/credpoints/icon-warning-sm.svg" className="w-[16px] h-[16px] mr-2 text-white" alt="cred" />}
+                </div>
+                <div className="group relative z-50" onClick={() => onDisconnet()}>
+                  <p className="text-center font-[Inter] group-hover:font-bold">
+                    Disconnect Wallet
+                  </p>
+                </div>
+              </>
             )}
           </div>
         </>
