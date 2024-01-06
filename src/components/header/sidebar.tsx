@@ -18,6 +18,7 @@ const Sidebar = () => {
     dispatch(resetLeaderboard(true));
     disconnect();
   }
+  const inviteCode = useAppSelector((state) => state.credpointsState.initInviteCode);
   return (
     <div
       className={`${show ? "block" : "hidden"
@@ -51,6 +52,10 @@ const Sidebar = () => {
           {Menus.map((menu, index) => (
             <Menu data={menu} key={index} />
           ))}
+          <div className="flex">
+            <a className="flex items-center  hover:font-bold whitespace-nowrap" href="/profile">Profile</a>
+            {inviteCode && <img src="/credpoints/icon-warning.svg" className="w-[24px] h-[24px] ml-2" alt="cred" />}
+          </div>
         </div>
         <div className="absolute bottom-[100px]">
           <div className="flex flex-col items-center gap-6">

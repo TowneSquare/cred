@@ -27,7 +27,6 @@ export const fetchRankings = createAsyncThunk(
   "leaderboard/fetch",
   async (wallet: string, thunkAPI) => {
     const url = `https://backend.townesquare.xyz/activity/leaderboard/${wallet}`;
-    console.log(url);
     try {
       const res = await fetch(url);
       const result = await res.json();

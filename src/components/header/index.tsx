@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { toggleSidebar } from "../../state/dialog";
 
 const Header = () => {
+  const inviteCode = useAppSelector((state) => state.credpointsState.initInviteCode);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   return (
@@ -30,11 +31,13 @@ const Header = () => {
             <JoinUs />
           </div>
           <div className="mt-5">
+            {inviteCode && <img src="/credpoints/icon-warning.svg" className="absolute right-6 top-3 w-[32px] h-[32px] mr-2" alt="cred" />}
             <ConnectButton />
           </div>
         </div>
       </div>
       <div className="fixed flex lg:hidden w-full h-[92px] justify-between items-center px-2 gap-4 z-30  bg-gray-dark-3">
+        {inviteCode && <img src="/credpoints/icon-warning.svg" className="absolute -right-2 top-3 w-[32px] h-[32px] mr-2" alt="cred" />}
         <img
           src="/logo.svg"
           className="h-[29px] cursor-pointer"

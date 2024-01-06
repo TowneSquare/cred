@@ -1,6 +1,6 @@
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { toggleWalletPanel } from "../../state/dialog";
-import { useAppDispatch } from "../../state/hooks";
+import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { useState } from "react";
 import { getBoringAvatar } from "../../util/boringAvatar";
 import { reset, updateInitInviteCode } from "../../state/credpoints";
@@ -29,7 +29,6 @@ const ConnectButton = () => {
               toggleOpen(!isOpen);
             }}
           >
-            {account?.address && <img src="/credpoints/icon-warning.svg" className="absolute right-6 top-3 w-[32px] h-[32px] mr-2" alt="cred" />}
             <div className="flex gap-2 items-center">
               <div className="w-8 h-8">
                 <img

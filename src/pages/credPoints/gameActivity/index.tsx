@@ -5,7 +5,7 @@ import ReferralList from "./referralList";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
 import { toggleReferral } from "../../../state/dialog";
 
-const Referral = () => {
+const GameActivity = () => {
   const dispatch = useAppDispatch();
   const referralList = useAppSelector(
     (state) => state.credpointsState.referralList
@@ -16,11 +16,12 @@ const Referral = () => {
       <div className="h-[450px] container mt-4 flex border border-gray-light-2 rounded-xl">
         <div className="min-w-full md:min-w-[50%] p-6 flex flex-col justify-center items-center gap-4">
           <PointLogo />
-          <p className="text-2xl font-bold">from my invited frens</p>
+          <p className="text-2xl font-bold">from playing on-chain games</p>
           <div className="w-full flex flex-col items-center">
             <p className="text-sm text-center text-gray-light-3">
-              Get 50 Cred points for every fren that joins Cred using <br /> your invite code. Frens you have invited also get 50 <br /> Cred points.
+              Get points every day you login to on-chain  <br /> games.
             </p>
+            <p className="text-sm font-normal text-[#45A9A7] mt-2 cursor-pointer">Show eligible games</p>
           </div>
           <PrimaryButton
             className="md:hidden w-full text-sm"
@@ -36,7 +37,7 @@ const Referral = () => {
           ) : (
             <div className="w-full h-full flex justify-center items-center">
               <span className="text-center text-sm">
-                Last 10 invited frens
+                Last 10 days you played on-chain games
               </span>
             </div>
           )}
@@ -46,4 +47,4 @@ const Referral = () => {
   );
 };
 
-export default Referral;
+export default GameActivity;

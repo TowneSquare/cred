@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { toggleChangeAvatarPanel } from "../../state/dialog";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
-import WalletButtons from "../../wallet-adapter/WalletButtons";
-import { useNavigate } from "react-router-dom";
 
 const ChangeAvatarModal = () => {
   const [selectedImage, setSelectedImage] = useState('/avatar1.png'); // State to manage the selected image

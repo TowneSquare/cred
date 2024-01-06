@@ -1,0 +1,21 @@
+
+.history-board::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.history-board::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.history-board::-webkit-scrollbar-thumb {
+  background: #6E6E6E80; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.history-board::-webkit-scrollbar-thumb:hover {
+  background: #6E6E6EA0;
+}

@@ -20,6 +20,8 @@ import {
   updateConnection,
   updateCredPointsLive,
 } from "../../state/credpoints";
+import TokenBoard from "./tokenBoard";
+import GameActivity from "./gameActivity";
 
 const CredPoints = () => {
   const { connected, account } = useWallet();
@@ -31,10 +33,9 @@ const CredPoints = () => {
   const initialized = useAppSelector(state => state.globalState.initialized);
 
   useEffect(() => {
-    console.log(account, initialized, initInviteCode)
-      if (connected && account && initialized && initInviteCode == undefined) {
-        navigate("/");
-      }
+    if (connected && account && initialized && initInviteCode == undefined) {
+      navigate("/");
+    }
   }, [account, initialized]);
 
   useEffect(() => {
@@ -42,8 +43,6 @@ const CredPoints = () => {
 
     if (connected && account && initInviteCode) {
       dispatch(updateCredPointsLive(false));
-
-      console.log("dispatching", initInviteCode);
       dispatch(fetchCredpoints({ wallet: account.address, initInviteCode }));
     }
   }, [connected, account, initInviteCode]);
@@ -70,6 +69,8 @@ const CredPoints = () => {
           <DefiActivity />
           <NftBoard />
           <Referral />
+          <TokenBoard />
+          <GameActivity />
           <Banner />
           <PrivacyPolicy />
         </div>

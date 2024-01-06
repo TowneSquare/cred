@@ -37,8 +37,6 @@ const Leaderboard = () => {
 
     if (connected && account && initInviteCode) {
       dispatch(updateLeaderboardLive(false));
-
-      console.log("dispatching leaderboard", initInviteCode);
       dispatch(fetchRankings(account.address));
     }
   }, [connected, account, initInviteCode]);

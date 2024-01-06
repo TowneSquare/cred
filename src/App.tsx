@@ -34,6 +34,8 @@ import "./App.css";
 import { getInviteCode } from "./api/invite";
 import { updateInitialized } from "./state/global";
 import ChangeAvatarModal from "./components/header/changeAvatarModal";
+import RecapachaModal from "./components/header/recapachaModal";
+import EmailVerifyModal from "./components/header/emailVerifyModal";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -73,6 +75,8 @@ function App() {
       <Sidebar />
       <WalletModal />
       <ChangeAvatarModal />
+      <RecapachaModal />
+      <EmailVerifyModal />
       <ActivityModal />
       <NftModal />
       <ReferralModal />

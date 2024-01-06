@@ -94,7 +94,7 @@ const Box = () => {
             </PrimaryButton>
             <div className="flex mt-6">
               <img src="/credpoints/icon-info.svg" className="w-[22px] h-[22px] mr-2" alt="cred" />
-              <p>You and your inviter will only earn referral points if this address is an active account on Aptos</p>
+              <p>You and your inviter will only earn referral points if this address is an active account on Aptos or is verified with X / Discord.</p>
             </div>
           </>
         )}

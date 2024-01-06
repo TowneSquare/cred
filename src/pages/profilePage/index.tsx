@@ -60,7 +60,7 @@ const ProfilePage = () => {
           </div>
           <ConnectButton />
         </div>
-        <div className="w-full md:w-[1000px] flex flex-col items-center mt-[116px] mb-10">
+        <div className="min-w-[320px] md:w-[989px] flex flex-col items-center mt-[40px] mb:mt-[116px] mb-10 justify-center">
           <Twitter />
           <Discord />
           <Ans />

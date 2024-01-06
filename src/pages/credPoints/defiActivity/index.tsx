@@ -11,17 +11,14 @@ const DefiActivity = () => {
 
   return (
     <div className="w-full px-4">
-      <div className="container mt-4 flex border border-gray-light-2 rounded-xl">
+      <div className="h-[450px] container mt-4 flex border border-gray-light-2 rounded-xl">
         <div className="min-w-full md:min-w-[50%] p-6 flex flex-col justify-center items-center gap-4">
           <PointLogo />
           <p className="text-2xl font-bold">from DeFi trading</p>
           <p className="text-sm text-center text-gray-light-3">
             Get points by being active on Aptos DeFi.
-            <br />
-            Eligible DeFi protocols: Liquidswap, Pancakeswap,
-            <br />
-            Aries Market, Thala
           </p>
+          <p className="text-sm font-normal text-[#45A9A7] cursor-pointer">Show eligible activities and pairs</p>
           <PrimaryButton
             className="md:hidden w-full text-sm"
             onClick={() => dispatch(toggleActivityList(true))}
