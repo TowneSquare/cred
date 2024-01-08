@@ -32,6 +32,7 @@ import { INVITE_CODE } from "./constants/inviteCode";
 import "./App.css";
 import { getInviteCode } from "./api/invite";
 import { updateInitialized } from "./state/global";
+import RecapachaModal from "./components/header/recapachaModal";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -68,6 +69,7 @@ function App() {
         <Route path="/twitter" element={<Twitter />} />
       </Routes>
       <Sidebar />
+      <RecapachaModal />
       <WalletModal />
       <ActivityModal />
       <NftModal />

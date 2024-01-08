@@ -4,6 +4,7 @@ interface dialogStates {
   bSidebar: boolean;
   bWalletPanel: boolean;
   bWalletHold: boolean;
+  bRecapachaModal : boolean
   bActivityList: boolean;
   bNftList: boolean;
   bReferral: boolean;
@@ -13,6 +14,7 @@ const initialState: dialogStates = {
   bSidebar: false,
   bWalletPanel: false,
   bWalletHold: false,
+  bRecapachaModal: false,
   bActivityList: false,
   bNftList: false,
   bReferral: false,
@@ -31,6 +33,9 @@ export const dialogSlice = createSlice({
     toggleConnectRequest: (state, action: PayloadAction<boolean>) => {
       state.bWalletHold = action.payload;
     },
+    toggleRecapachaModal: (state, action: PayloadAction<boolean>) => {
+      state.bRecapachaModal = action.payload;
+    },
     toggleActivityList: (state, action: PayloadAction<boolean>) => {
       state.bActivityList = action.payload;
     },
@@ -48,6 +53,7 @@ export const {
   toggleSidebar,
   toggleWalletPanel,
   toggleConnectRequest,
+  toggleRecapachaModal,
   toggleActivityList,
   toggleNftList,
   toggleReferral
