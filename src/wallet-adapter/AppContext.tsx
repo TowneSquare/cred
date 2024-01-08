@@ -8,6 +8,7 @@ import { OpenBlockWallet } from "@openblockhq/aptos-wallet-adapter";
 import { PetraWallet } from "petra-plugin-wallet-adapter";
 import { PontemWallet } from "@pontem/wallet-adapter-plugin";
 import { RiseWallet } from "@rise-wallet/wallet-adapter";
+import { OKXWallet } from '@okwallet/aptos-wallet-adapter'
 import { TokenPocketWallet } from "@tp-lab/aptos-wallet-adapter";
 import { TrustWallet } from "@trustwallet/aptos-wallet-adapter";
 // import { MSafeWalletAdapter } from "msafe-plugin-wallet-adapter";
@@ -26,9 +27,10 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const wallets = [
     new PetraWallet(),
     new PontemWallet(),
-    new MartianWallet(),
+    new OKXWallet(),
     new RiseWallet(),
     new FewchaWallet(),
+    new MartianWallet(),
 
     // Blocto supports Testnet/Mainnet for now.
     // new BloctoWallet({

@@ -45,17 +45,16 @@ const ChangeAvatarModal = () => {
     >
       <div className="grid w-[416px] h-[420px]">
         <div className="flex justify-center">
-          <div className="relative w-[300px] h-[300px] border-[2px] border-[#F5E27D] rounded-full">
+          <div className="relative w-[170px] h-[170px] md:w-[300px] md:h-[300px] border-[2px] border-[#F5E27D] rounded-full">
             <img
               src="./credpoints/cancel.svg"
-              className="cursor-pointer absolute -right-20 -top-6"
+              className="cursor-pointer absolute -right-20 -top-[100px] md:-right-20 md:-top-6"
               onClick={() => dispatch(toggleChangeAvatarPanel(false))}
             />
-            <img className="w-[300px] h-[300px] rounded-full z-50" src={selectedImage} alt="" />
+            <img className="w-[170px] h-[170px] md:w-[300px] md:h-[300px] rounded-full z-50" src={selectedImage} alt="" />
           </div>
         </div>
-        <div className="flex justify-between mt-[64px]">
-          <div>
+        <div className="grid justify-center md:flex md:justify-between mt-[144px] md:mt-[64px]">
             <input
               type="file"
               id="fileInput"
@@ -64,15 +63,14 @@ const ChangeAvatarModal = () => {
               accept="image/*"
             />
             <button
-              className="w-[200px] h-[56px] py-3 px-8 rounded-[200px] border border-[#F5E27D] text-[#F5E27D] text-opacity-70 font-bold text-[16px] text-center"
+              className="w-[294px] md:w-[200px] h-[56px] py-3 px-8 rounded-[200px] border border-[#F5E27D] text-[#F5E27D] text-opacity-70 font-bold text-[16px] text-center"
               onClick={handleButtonClick}
             >
               <img src="/credpoints/arrows_clock_wise.svg" className="w-[24px] h-[24px] inline-block" alt="cred" /> Replace PFP
             </button>
-          </div>
           {/* Button to remove image */}
           <button
-            className="opacity-50 w-[200px] h-[56px] py-3 px-8 rounded-[200px] border border-[#F5E27D] text-[#F5E27D] text-opacity-70 font-bold text-[16px] text-center"
+            className="mt-4 md:mt-0 opacity-50 w-[294px] md:w-[200px] h-[56px] py-3 px-8 rounded-[200px] border border-[#F5E27D] text-[#F5E27D] text-opacity-70 font-bold text-[16px] text-center"
             onClick={() => setSelectedImage('/avatar1.png')} // Change selectedImage to default image
           >
             <img src="/credpoints/x_circle.svg" className="w-[24px] h-[24px] inline-block" alt="cred" /> Remove PFP

@@ -1,33 +1,61 @@
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../../state/hooks";
+import { useAppDispatch, useAppSelector } from "../../../state/hooks";
 import { getMetadata } from "../../../api/metadata";
 import { getImageURL } from "../../../util/url";
 import LoadingState from "../../../components/loadingstate";
 import LoadingImage from "../../../components/loadingImage";
 import ConnectedButton from "../../../components/connectedButton";
+import axios from 'axios';
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { useNavigate } from "react-router";
+import { magic } from "../../lib/magic";
+
 
 const Discord = () => {
+
+  const { connected, account } = useWallet();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const initInviteCode = useAppSelector(
+    (state) => state.credpointsState.initInviteCode
+  );
+  const initialized = useAppSelector(state => state.globalState.initialized);
+
+  useEffect(() => {
+    login();
+  }, []);
+
   const isLive = useAppSelector(state => state.credpointsState.isLive);
-  // const connected= {nftName : "@handsomeX"};
-  const connected = false;
-
   const [imageLink, setImageLink] = useState<string | undefined>(undefined);
+  const [connected_discord, setConnected_discord] = useState(false);
 
-  // useEffect(() => {
-  //   const getImage = async () => {
-  //     if (!connected) return;
-  //     try {
-  //       const res = await getMetadata(longest);
-  //       setImageLink(getImageURL(res.image));
-  //     } catch (e) {}
-  //   };
-  //   getImage();
-  // }, [connected]);
+  const login = async () => {
+    const result = await magic.oauth.getRedirectResult();
+    const discordAccessToken = result.oauth.accessToken;
+    const discordUserInfo = await axios.get('https://discord.com/api/v10/users/@me', {
+      headers: {
+        Authorization: `Bearer ${discordAccessToken}`,
+      },
+    });
+    const { id } = discordUserInfo.data;
+    console.log("@@@@@", id);
+    setConnected_discord(true);
+  }
 
+  const authenticateWithDiscord = async () => {
+    try {
+      await magic.oauth.loginWithRedirect({
+        provider: "discord",
+        redirectURI: new URL("/profile", window.location.origin).href,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <>
-      <div className={`bg-[#1B1B1B] w-[90%] ${connected ? 'h-[298px]' : 'h-[267px]'} md:h-[144px] py-8 px-4 md:px-8 grid md:flex items-center border border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
-        {connected ? (
+      <div className={`bg-[#1B1B1B] w-[90%] ${connected_discord ? 'h-[298px]' : 'h-[267px]'} md:h-[144px] py-8 px-4 md:px-8 grid md:flex items-center border border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
+        {connected_discord ? (
           <>
             <div className="flex md:items-center w-[90%]">
               <div className="justify-center container-light border w-16 h-16 md:w-[80px] md:h-[80px] border-gray-light-2 rounded-full">
@@ -76,11 +104,14 @@ const Discord = () => {
                   Reward: 50 &nbsp;
                   <img className="inline-block w-[24px]" src="credpoints/cred.svg" alt="copy" />
                 </p>
+                <p className="hidden md:block text-[20px] font-normal md:whitespace-nowrap text-[#B9B9B9]">
+                  Active account verification
+                </p>
               </div>
             </div>
             <div className="flex justify-center mt-8 md:mt-0">
               <div className="grid w-full">
-                <button className="bg-[#F5E27D] md:w-[200px] h-[51px] py-3 px-8 rounded-[200px] text-black font-bold text-[16px] text-center">
+                <button onClick={authenticateWithDiscord} className="bg-[#F5E27D] md:w-[200px] h-[51px] py-3 px-8 rounded-[200px] text-black font-bold text-[16px] text-center">
                   Connect Discord
                 </button>
                 <div className="flex mt-4 justify-center">
