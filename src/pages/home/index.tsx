@@ -4,7 +4,7 @@ import "./index.css";
 import Box from "./box";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import ConnectButton from "../../components/header/connectButton";
-import { toggleSidebar } from "../../state/dialog";
+import { toggleRecapachaModal, toggleSidebar } from "../../state/dialog";
 import { debounce } from 'lodash';
 
 const Home = () => {
@@ -22,9 +22,14 @@ const Home = () => {
   }, 3500);
 
   useEffect(() => {
+    if (step == 1)
+      dispatch(toggleRecapachaModal(true));
+  }, [step]);
+
+  useEffect(() => {
     handleEffect();
   }, [current]);
-  
+
   const TextEffect = useMemo(() => {
     return (
       <>
@@ -83,9 +88,8 @@ const Home = () => {
 
   return (
     <div
-      className={`relative w-full min-h-[800px] ${
-        step == 0 ? "md:min-h-[1000px]" : "md:min-h-[1000px] lg:min-h-[800px]"
-      } h-screen flex flex-col items-center justify-center md:justify-normal z-10`}
+      className={`relative w-full min-h-[800px] ${step == 0 ? "md:min-h-[1000px]" : "md:min-h-[1000px] lg:min-h-[800px]"
+        } h-screen flex flex-col items-center justify-center md:justify-normal z-10`}
     >
       <div className="hidden md:block absolute top-8 right-8">
         <ConnectButton />
