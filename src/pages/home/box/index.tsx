@@ -9,8 +9,10 @@ import { checkInviteCode, getInviteCode } from "../../../api/invite";
 import { updateInitInviteCode } from "../../../state/credpoints";
 import { updateStep } from "../../../state/global";
 import PrivacyPolicy from "../../../components/privacyPolicy";
+import Twitter from "../../../components/connectSocial/twitter";
+import Discord from "../../../components/connectSocial/discord";
 
-const Box = () => {
+const Box = (boxVisible: any) => {
   const { connected, account } = useWallet();
   const [otp, setOtp] = useState("");
   const [error, setError] = useState<string | undefined>(undefined);
@@ -41,12 +43,15 @@ const Box = () => {
     const checkSignup = async () => {
       if (connected && account) {
         const res = await getInviteCode(account.address);
-        if (res.code != "" && res.code != undefined) {
+        console.log(res)
+        if (res.success) {
           console.log("success getting code");
           dispatch(updateInitInviteCode(res.code));
           navigate("/credPoints");
-        } else {
+        } else if (!res.success && !res.newWallet) {
           console.log("faild getting code");
+          dispatch(updateStep(2));
+        } else {
           dispatch(updateStep(1));
         }
       } else {
@@ -56,14 +61,18 @@ const Box = () => {
     checkSignup();
   }, [connected]);
 
+  useEffect(() => {
+    console.log(boxVisible.boxVisible);
+  }, [boxVisible]);
+
   const onConnectWallet = () => {
     if (!connected) dispatch(toggleWalletPanel(true));
   };
 
   return (
-    <div className="connect-button mt-16 md:mt-[10vh] flex flex-col items-center">
-      <div className="container connect-button mt-2 p-4 md:p-10 w-[95%] md:w-[550px] flex flex-col items-center border border-gray-light-2 rounded-xl">
-        {step == 1 && (
+    <div className={`${boxVisible.boxVisible ? 'block' : 'hidden'} connect-button mt-16 md:mt-[10vh] flex flex-col items-center`}>
+      <div className={`container connect-button mt-2 p-4 md:p-10 w-[95%] ${step == 1 ? 'md:w-[770px] mb-[100px]' : 'md:w-[550px]'} flex flex-col items-center border border-gray-light-2 rounded-xl`}>
+        {step == 2 && (
           <>
             <p className="mt-4 text-center text-base md:text-xl font-bold">
               Insert an invite code
@@ -109,6 +118,29 @@ const Box = () => {
             >
               <span className="text-sm md:text-base">Connect Wallet</span>
             </PrimaryButton>
+          </>
+        )}
+        {step == 1 && (
+          <>
+            <div className="grid">
+              <p className="text-center text-base md:text-xl font-normal">
+                Hey fren, it looks like you’re either new on Aptos or haven’t made any CRED eligible transactions!
+                <br />
+                <b>
+                  Verify you wallet by connecting your X or Discord account to proceed.
+                </b>
+              </p>
+              <div className="grid mt-12 mb-8">
+                <Twitter isProfileModal={false} />
+                <Discord isProfileModal={false} />
+              </div>
+              <p className="text-center text-base md:text-xl font-normal">
+                Want to first check what Cred is all about?
+              </p>
+              <p onClick={() => navigate("/credPoints")} className="text-center text-[#45A9A7] text-base md:text-[18px] font-normal mt-2 cursor-pointer">
+                Explore CRED as visitor
+              </p>
+            </div>
           </>
         )}
       </div>

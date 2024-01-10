@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { toggleActivityList } from "../../../state/dialog";
+import { toggleActivityList, toggleEligibleModal } from "../../../state/dialog";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
 import ActivityList from "./activityList";
 
 const EligibleModal = () => {
-  const isOpen = useAppSelector((state) => state.dialogState.bActivityList);
+  const isOpen = useAppSelector((state) => state.dialogState.beligibleModal);
   const dispatch = useAppDispatch();
   const ref = useRef(null);
 
@@ -36,7 +36,7 @@ const EligibleModal = () => {
         <img
           src="/credpoints/close.svg"
           className="absolute top-5 right-6 cursor-pointer"
-          onClick={(e) => dispatch(toggleActivityList(false))}
+          onClick={(e) => dispatch(toggleEligibleModal(false))}
         />
       </div>
     </div>

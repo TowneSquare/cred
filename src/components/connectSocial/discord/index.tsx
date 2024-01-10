@@ -1,77 +1,79 @@
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../../state/hooks";
+import { useAppDispatch, useAppSelector } from "../../../state/hooks";
 import { getMetadata } from "../../../api/metadata";
 import { getImageURL } from "../../../util/url";
-import LoadingState from "../../../components/loadingstate";
-import LoadingImage from "../../../components/loadingImage";
-import ConnectedButton from "../../../components/connectedButton";
-import { magic } from "../../lib/magic";
-import axios from "axios";
+import LoadingState from "../../loadingstate";
+import LoadingImage from "../../loadingImage";
+import ConnectedButton from "../../connectedButton";
+import axios from 'axios';
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { useNavigate } from "react-router";
+import { magic } from "../../../pages/lib/magic";
 
-const Twitter = () => {
+
+const Discord = ({ isProfileModal }: { isProfileModal: boolean }) => {
+
+  const { connected, account } = useWallet();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const initInviteCode = useAppSelector(
+    (state) => state.credpointsState.initInviteCode
+  );
+  const initialized = useAppSelector(state => state.globalState.initialized);
+
+  useEffect(() => {
+    login();
+  }, []);
+
   const isLive = useAppSelector(state => state.credpointsState.isLive);
-  // const connected= {nftName : "@handsomeX"};
-  let connected_twitter = false;
   const [imageLink, setImageLink] = useState<string | undefined>(undefined);
-  const [twitterUsername, setTwitterUsername] = useState('');
-  const [profileImageURL, setProfileImageURL] = useState('');
+  const [connected_discord, setConnected_discord] = useState(false);
 
   const login = async () => {
     try {
-      const didToken = await magic.oauth.getRedirectResult();
-      const twitterAccessToken = didToken.oauth.accessToken;
-      const twitterUserInfo = await axios.get('https://api.twitter.com/2/account', {
+      const result = await magic.oauth.getRedirectResult();
+      const discordAccessToken = result.oauth.accessToken;
+      const discordUserInfo = await axios.get('https://discord.com/api/v10/users/@me', {
         headers: {
-          Authorization: `Bearer ${twitterAccessToken}`,
+          Authorization: `Bearer ${discordAccessToken}`,
         },
       });
-      const { username, id } = twitterUserInfo.data;
-      console.log("$$$$$$$", id);
-    } catch (error) {
-      console.error(error);
+      const { id } = discordUserInfo.data;
+      console.log("@@@@@", id);
+      setConnected_discord(true);
+    } catch {
+      console.log("Not prepared yet");
     }
-  };
+  }
 
-  const authenticateWithTwitter = async () => {
+  const authenticateWithDiscord = async () => {
     try {
       await magic.oauth.loginWithRedirect({
-        provider: "twitter", // Specify Twitter as the authentication provider
+        provider: "discord",
         redirectURI: new URL("/profile", window.location.origin).href,
       });
     } catch (err) {
       console.error(err);
     }
   };
-
-  // useEffect(() => {
-  //   const getImage = async () => {
-  //     if (!connected) return;
-  //     try {
-  //       const res = await getMetadata(longest);
-  //       setImageLink(getImageURL(res.image));
-  //     } catch (e) {}
-  //   };
-  //   getImage();
-  // }, [connected]);
-
   return (
     <>
-      <div className={`bg-[#1B1B1B] w-[90%] ${connected_twitter ? 'h-[298px]' : 'h-[267px]'} md:h-[144px] py-8 px-4 md:px-8 grid md:flex items-center border border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
-        {connected_twitter ? (
+      <div className={`${isProfileModal ? 'bg-[#1B1B1B] w-[90%] border py-8 px-4 md:px-8 md:h-[144px]' : ' bg-opacity-0 w-[100%] md:h-[91px]'} ${connected_discord ? 'md:h-[298px]' : 'h-[267px]'} grid md:flex items-center border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
+        {connected_discord ? (
           <>
             <div className="flex md:items-center w-[90%]">
               <div className="justify-center container-light border w-16 h-16 md:w-[80px] md:h-[80px] border-gray-light-2 rounded-full">
                 <div className="top-0 left-0  w-16 h-16 md:w-[80px] md:h-[80px] group rounded-full flex justify-center items-center">
-                  <img src="/credpoints/twitter.svg" alt="X" className="w-6 absolute" />
+                  <img src="/credpoints/discord.svg" alt="X" className="w-8 absolute" />
                 </div>
               </div>
               <div className="grid items-center ml-4 md:ml-8">
                 <p className="text-[20px] font-bold md:whitespace-nowrap text-[#A3A1E2]">
-                  Connect your X account
+                  Connect your Discord account
                 </p>
                 <p className="text-[20px] font-normal">
                   Reward: 50 &nbsp;
-                  <img className="inline-block w-[24px]" src="credpoints/cred.svg" alt="copy" />
+                  <img className="inline-block w-[24px]" src="/credpoints/cred.svg" alt="copy" />
                   {" "}<img src="/credpoints/success.svg" className="hidden w-[24px] h-[24px] md:inline-block" alt="cred" />
                 </p>
                 <div className="grid md:flex">
@@ -92,29 +94,29 @@ const Twitter = () => {
         ) : (
           <>
             <div className="flex md:items-center w-[90%]">
-              <div className="justify-center items-center container-light border w-16 h-16 md:w-[80px] md:h-[80px] border-gray-light-2 rounded-full">
-                <img src="/credpoints/icon-warning.svg" className="absolute left-[40px] md:left-[50px] -top-[6px] w-[32px] h-[32px]" alt="cred" />
-                <div className="top-0 left-0 w-16 h-16 md:w-[80px] md:h-[80px] group rounded-full flex justify-center items-center">
-                  <img src="/credpoints/twitter.svg" alt="X" className="w-6 absolute" />
+              <div className="justify-center items-center bg-[#1B1B1B] border w-16 h-16 md:w-[80px] md:h-[80px] border-gray-light-2 rounded-full">
+                {isProfileModal && <img src="/credpoints/icon-warning.svg" className="absolute left-[40px] md:left-[50px] -top-[6px] w-[32px] h-[32px]" alt="cred" />}
+                <div className="container-light w-16 h-16 md:w-[78px] md:h-[78px] group rounded-full flex justify-center items-center">
+                  <img src="/credpoints/discord.svg" alt="X" className="w-8 absolute" />
                 </div>
               </div>
               <div className="grid items-center ml-4 md:ml-8">
                 <p className="text-[18px] md:text-[20px] font-bold md:whitespace-nowrap text-[#A3A1E2]">
-                  Connect your X account
+                  Connect your Discord account
                 </p>
                 <p className="text-[18px] md:text-[20px] font-normal">
                   Reward: 50 &nbsp;
-                  <img className="inline-block w-[24px]" src="credpoints/cred.svg" alt="copy" />
+                  <img className="inline-block w-[24px]" src="/credpoints/cred.svg" alt="copy" />
                 </p>
-                <p className="hidden md:block text-[20px] font-normal md:whitespace-nowrap text-[#B9B9B9]">
+                {isProfileModal && <p className="hidden md:block text-[20px] font-normal md:whitespace-nowrap text-[#B9B9B9]">
                   Active account verification
-                </p>
+                </p>}
               </div>
             </div>
             <div className="flex justify-center mt-8 md:mt-0">
               <div className="grid w-full">
-                <button onClick={authenticateWithTwitter} className="bg-[#F5E27D] md:w-[200px] h-[51px] py-3 px-8 rounded-[200px] text-black font-bold text-[16px] text-center">
-                  Connect X
+                <button onClick={authenticateWithDiscord} className="bg-[#F5E27D] md:w-[200px] h-[51px] py-3 px-8 rounded-[200px] text-black font-bold text-[16px] text-center">
+                  Connect Discord
                 </button>
                 <div className="flex mt-4 justify-center">
                   <input
@@ -124,7 +126,7 @@ const Twitter = () => {
                     value="checked"
                     id="flexSwitchCheckDefault" />
                   <p className="ml-2 mt-1 text-center text-xs md:text-[16px]">
-                    follow @0xcred
+                    join Cred server
                   </p>
                 </div>
               </div>
@@ -136,4 +138,4 @@ const Twitter = () => {
   );
 };
 
-export default Twitter;
+export default Discord;

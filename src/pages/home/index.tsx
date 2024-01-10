@@ -22,10 +22,10 @@ const Home = () => {
     }
   }, 3500);
 
-  useEffect(() => {
-    if (step == 1)
-      dispatch(toggleRecapachaModal(true));
-  }, [step]);
+  // useEffect(() => {
+  //   if (step == 1)
+  //     dispatch(toggleRecapachaModal(true));
+  // }, [step]);
 
   useEffect(() => {
     handleEffect();
@@ -109,7 +109,7 @@ const Home = () => {
       <div className="md:mt-[35vh] min-h-[96px] md:min-h-[auto] flex flex-col justify-center">
         {TextEffect}
       </div>
-      {boxVisible && <Box />}
+      <Box boxVisible={boxVisible} />
       <img
         src="/home/screen1/effect1.svg"
         alt="effect1"

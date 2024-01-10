@@ -22,6 +22,8 @@ import {
 } from "../../state/credpoints";
 import TokenBoard from "./tokenBoard";
 import GameActivity from "./gameActivity";
+import { updateVisitorMode } from "../../state/global";
+import SuggestVerifyNavbar from "../../components/header/suggestVerifyNavbar";
 
 const CredPoints = () => {
   const { connected, account } = useWallet();
@@ -31,10 +33,11 @@ const CredPoints = () => {
     (state) => state.credpointsState.initInviteCode
   );
   const initialized = useAppSelector(state => state.globalState.initialized);
+  const visitorMode = useAppSelector(state => state.globalState.visitorMode);
 
   useEffect(() => {
     if (connected && account && initialized && initInviteCode == undefined) {
-      navigate("/");
+      dispatch(updateVisitorMode(true));
     }
   }, [account, initialized]);
 
@@ -50,6 +53,7 @@ const CredPoints = () => {
   return (
     <div className="parallax" id="cred-point">
       <Header />
+      {visitorMode && <SuggestVerifyNavbar />}
       <div className="parallax__group">
         <div className="parallax__layer cred__effect1">
           <img src="/credpoints/effect1.png" alt="effect1" />
@@ -62,7 +66,7 @@ const CredPoints = () => {
         </div>
       </div>
       <div className="relative w-full flex justify-center z-10 !bg-fixed">
-        <div className="w-full md:w-[1000px] flex flex-col items-center mt-[116px] mb-10">
+        <div className={`w-full md:w-[1000px] flex flex-col items-center ${visitorMode ? 'mt-[70px]' : 'mt-[116px]'} mb-10`}>
           <InviteCode />
           <MyTotal />
           <Cards />
@@ -72,7 +76,6 @@ const CredPoints = () => {
           <TokenBoard />
           <GameActivity />
           <Banner />
-          <PrivacyPolicy />
         </div>
       </div>
     </div>

@@ -53,7 +53,7 @@ const Sidebar = () => {
             <Menu data={menu} key={index} />
           ))}
           <div className="flex">
-            <a className="flex items-center  hover:font-bold whitespace-nowrap" href="/profile">Profile</a>
+            <a className="flex items-center text-gray-light-3 hover:font-bold whitespace-nowrap" href="/profile">Profile</a>
             {inviteCode && <img src="/credpoints/icon-warning.svg" className="w-[24px] h-[24px] ml-2" alt="cred" />}
           </div>
         </div>

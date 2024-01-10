@@ -1,14 +1,14 @@
 import { useAppSelector } from "../../../state/hooks";
 import { RankingType } from "../../../type/rankingType";
-import RankingItem from "./rankingItem";
+import RankingItem from "./connectionItem";
 
-const RankingList = () => {
+const ConnectionList = () => {
   const topRankings = useAppSelector(
     (state) => state.leaderboardState.topRankings
   );
   return (
-    <div className="mt-32  py-5 w-[60%]  flex flex-col items-center">
-      <p className="text-center text-3xl font-bold">Top 500 addresses by CRED score</p>
+    <div className="mt-32  py-5 w-[40%]  flex flex-col items-center">
+      <p className="text-center text-3xl font-bold">Recent connections with X</p>
       <div className="mt-2 w-8 h-px border border-secondary-default" />
       <div
         className="container mt-8 w-[95%] border border-gray-light-4 rounded-2xl"
@@ -24,4 +24,4 @@ const RankingList = () => {
   );
 };
 
-export default RankingList;
+export default ConnectionList;

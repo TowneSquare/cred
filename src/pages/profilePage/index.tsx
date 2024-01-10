@@ -5,8 +5,8 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import Header from "../../components/header";
 import PrivacyPolicy from "../../components/privacyPolicy";
 
-import Discord from "./discord";
-import Twitter from "./twitter";
+import Discord from "../../components/connectSocial/discord";
+import Twitter from "../../components/connectSocial/twitter";
 import Ans from "./ans";
 import Email from "./email";
 import ConnectButton from "./connectButton";
@@ -61,8 +61,8 @@ const ProfilePage = () => {
           <ConnectButton />
         </div>
         <div className="min-w-[320px] md:w-[989px] flex flex-col items-center mt-[40px] mb:mt-[116px] mb-10 justify-center">
-          <Twitter />
-          <Discord />
+          <Twitter isProfileModal={true} />
+          <Discord isProfileModal={true} />
           <Ans />
           <Email />
         </div>

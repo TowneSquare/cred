@@ -3,11 +3,13 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 interface globalStates {
   step: number;
   initialized: boolean;
+  visitorMode: boolean;
 }
 
 const initialState: globalStates = {
   step: 0,
-  initialized: false
+  initialized: false,
+  visitorMode: false
 };
 
 export const globalSlice = createSlice({
@@ -20,8 +22,11 @@ export const globalSlice = createSlice({
     updateInitialized: (state, action: PayloadAction<boolean>) => {
       state.initialized = action.payload;
     },
+    updateVisitorMode: (state, action: PayloadAction<boolean>) => {
+      state.visitorMode = action.payload;
+    },
   },
 });
 
-export const { updateStep, updateInitialized } = globalSlice.actions;
+export const { updateStep, updateInitialized, updateVisitorMode } = globalSlice.actions;
 export default globalSlice.reducer;

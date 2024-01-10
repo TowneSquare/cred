@@ -1,11 +1,15 @@
 import Header from "../../components/header";
+import SuggestVerifyNavbar from "../../components/header/suggestVerifyNavbar";
 import PrimaryButton from "../../components/primaryButton";
 import PrivacyPolicy from "../../components/privacyPolicy";
+import { useAppSelector } from "../../state/hooks";
 
 const About = () => {
+  const visitorMode = useAppSelector(state => state.globalState.visitorMode)
   return (
-    <div>
+    <div className="parallax" id="about">
       <Header />
+      {visitorMode && <SuggestVerifyNavbar />}
       <div className="w-full flex justify-center">
         <div className="w-full md:w-[730px] px-4 md:px-0 flex flex-col items-center mt-44 mb-10">
           <h1 className="text-2xl md:text-3xl font-bold">ABOUT CRED</h1>
@@ -43,7 +47,9 @@ const About = () => {
               </PrimaryButton>
             </a>
           </div>
-          <PrivacyPolicy />
+          <div className="mt-[138px]">
+            <PrivacyPolicy />
+          </div>
         </div>
       </div>
     </div>

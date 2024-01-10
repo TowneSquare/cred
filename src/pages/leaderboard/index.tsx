@@ -16,6 +16,9 @@ import {
   updateLeaderboardLive,
 } from "../../state/leaderboard";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
+import { updateVisitorMode } from "../../state/global";
+import SuggestVerifyNavbar from "../../components/header/suggestVerifyNavbar";
+import ConnectionList from "./connectionList";
 
 const Leaderboard = () => {
   const { connected, account } = useWallet();
@@ -25,11 +28,12 @@ const Leaderboard = () => {
     (state) => state.credpointsState.initInviteCode
   );
   const initialized = useAppSelector(state => state.globalState.initialized);
+  const visitorMode = useAppSelector(state => state.globalState.visitorMode);
 
   useEffect(() => {
-      if (connected && account && initialized && initInviteCode == undefined) {
-        navigate("/");
-      }
+    if (connected && account && initialized && initInviteCode == undefined) {
+      dispatch(updateVisitorMode(true));
+    }
   }, [account, initialized]);
 
   useEffect(() => {
@@ -46,6 +50,7 @@ const Leaderboard = () => {
       <Header />
       <Banner />
       <div className="parallax" id="leaderboard">
+        {visitorMode && <SuggestVerifyNavbar />}
         <div className="parallax__group">
           <div className="parallax__layer effect1">
             <img src="/leaderboard/effect1.png" alt="effect1" />
@@ -58,12 +63,16 @@ const Leaderboard = () => {
           </div>
         </div>
         <div className="relative w-full flex justify-center z-10">
-          <div className="w-full md:w-[700px] flex flex-col items-center mt-[116px] mb-10">
+          <div className={`w-full md:w-[700px] flex flex-col items-center ${visitorMode ? 'mt-[20px]' : 'mt-[116px]'}  mb-10`}>
             <InviteCode />
             <MyRanking />
             <Cards />
+          </div>
+        </div>
+        <div className="flex w-full justify-center">
+          <div className={`w-full md:w-[70%] flex items-center`}>
             <RankingList />
-            <PrivacyPolicy />
+            <ConnectionList />
           </div>
         </div>
       </div>

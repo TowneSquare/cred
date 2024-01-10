@@ -2,14 +2,17 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface dialogStates {
   bSidebar: boolean;
-  bWalletPanel: boolean;
   bWalletHold: boolean;
   bActivityList: boolean;
   bNftList: boolean;
   bReferral: boolean;
   bChangeAvatarPanel: boolean;
   bRecapachaModal: boolean;
-  bEmailVerifyModal : boolean;
+  bEmailVerifyModal: boolean;
+  beligibleModal: boolean;
+  bWalletPanel: boolean;
+  bSocialConnectPanel: boolean;
+  bSuggestVerifyModal: boolean;
 }
 
 const initialState: dialogStates = {
@@ -19,9 +22,12 @@ const initialState: dialogStates = {
   bActivityList: false,
   bNftList: false,
   bReferral: false,
-  bChangeAvatarPanel : false,
-  bEmailVerifyModal : false,
-  bRecapachaModal : false
+  bChangeAvatarPanel: false,
+  bEmailVerifyModal: false,
+  bRecapachaModal: false,
+  beligibleModal: false,
+  bSocialConnectPanel: false,
+  bSuggestVerifyModal: false
 };
 
 export const dialogSlice = createSlice({
@@ -55,8 +61,17 @@ export const dialogSlice = createSlice({
     toggleReferral: (state, action: PayloadAction<boolean>) => {
       state.bReferral = action.payload;
     },
+    toggleEligibleModal: (state, action: PayloadAction<boolean>) => {
+      state.beligibleModal = action.payload;
+    },
+    toggleSocialConnectPanel: (state, action: PayloadAction<boolean>) => {
+      state.bSocialConnectPanel = action.payload;
+    },
+    toggleSuggestVerifyModal: (state, action: PayloadAction<boolean>) => {
+      state.bSuggestVerifyModal = action.payload;
+    },
   },
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => { },
 });
 
 export const {
@@ -68,6 +83,9 @@ export const {
   toggleConnectRequest,
   toggleActivityList,
   toggleNftList,
-  toggleReferral
+  toggleReferral,
+  toggleEligibleModal,
+  toggleSocialConnectPanel,
+  toggleSuggestVerifyModal
 } = dialogSlice.actions;
 export default dialogSlice.reducer;

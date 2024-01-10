@@ -9,11 +9,10 @@ import Leaderboard from "./pages/leaderboard";
 import ProfilePage from "./pages/profilePage";
 import About from "./pages/about";
 import PrivacyPolicy from "./pages/privacyPolicy";
-import Twitter from "./pages/twitter";
 import { useAppDispatch, useAppSelector } from "./state/hooks";
 
 import Sidebar from "./components/header/sidebar";
-import WalletModal from "./components/header/walletModal";
+import WalletModal from "./components/modal/walletModal";
 import {
   fetchCredpoints,
   updateConnection,
@@ -34,8 +33,10 @@ import "./App.css";
 import { getInviteCode } from "./api/invite";
 import { updateInitialized } from "./state/global";
 import ChangeAvatarModal from "./components/header/changeAvatarModal";
-import RecapachaModal from "./components/header/recapachaModal";
-import EmailVerifyModal from "./components/header/emailVerifyModal";
+import RecapachaModal from "./components/modal/recapachaModal";
+import EmailVerifyModal from "./components/modal/emailVerifyModal";
+import EligibleModal from "./pages/credPoints/defiActivity/eligibleModal";
+import SuggestVerifyModal from "./components/modal/suggestVerifyModal";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -47,10 +48,10 @@ function App() {
         dispatch(updateInitialized(false))
 
         const res = await getInviteCode(account?.address);
-        
+
         if (res.success == true) {
           dispatch(updateInitInviteCode(res.code));
-        } 
+        }
 
         dispatch(updateInitialized(true))
       } else {
@@ -70,7 +71,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/tos" element={<TermsOfService />} />
-        <Route path="/twitter" element={<Twitter />} />
       </Routes>
       <Sidebar />
       <WalletModal />
@@ -78,8 +78,10 @@ function App() {
       <RecapachaModal />
       <EmailVerifyModal />
       <ActivityModal />
+      <EligibleModal />
       <NftModal />
       <ReferralModal />
+      <SuggestVerifyModal />
     </div>
   );
 }

@@ -41,7 +41,7 @@ const Ans = () => {
                 </p>
                 <p className="text-[20px] font-normal">
                   Reward: 50 &nbsp;
-                  <img className="inline-block w-[24px]" src="credpoints/cred.svg" alt="copy" />
+                  <img className="inline-block w-[24px]" src="/credpoints/cred.svg" alt="copy" />
                   {" "}<img src="/credpoints/success.svg" className="hidden w-[24px] h-[24px] md:inline-block" alt="cred" />
                 </p>
                 <div className="grid md:flex">
@@ -73,7 +73,7 @@ const Ans = () => {
                 </p>
                 <p className="text-[18px] md:text-[20px] font-normal">
                   Reward: 50 &nbsp;
-                  <img className="inline-block w-[24px]" src="credpoints/cred.svg" alt="copy" />
+                  <img className="inline-block w-[24px]" src="/credpoints/cred.svg" alt="copy" />
                 </p>
               </div>
             </div>

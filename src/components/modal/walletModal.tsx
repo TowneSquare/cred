@@ -29,9 +29,9 @@ const WalletModal = () => {
         {sentRequest &&
           <div role="status" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <svg className="w-8 h-8 animate-spin" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="50" r="45" fill="none" stroke="bg-gray-light-6" stroke-width="8"></circle>
-              <circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="8"
-                stroke-dasharray="350.91" stroke-dashoffset="152.94" className="animate-rotate"></circle>
+              <circle cx="50" cy="50" r="45" fill="none" stroke="bg-gray-light-6" strokeWidth="8"></circle>
+              <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="8"
+                strokeDasharray="350.91" strokeDashoffset="152.94" className="animate-rotate"></circle>
             </svg>
           </div>
         }
