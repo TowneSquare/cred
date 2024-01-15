@@ -13,11 +13,16 @@ const Header = () => {
   const dispatch = useAppDispatch();
   return (
     <>
-      <div className=" bg-[#0C0C0C] z-[100] fixed hidden lg:flex w-full h-[92px] justify-between px-10 gap-4">
-        <div className="flex items-center gap-4 md:gap-12">
+      <div className="bg-[#0C0C0C] z-[100] fixed hidden lg:flex w-full h-[92px] justify-between px-10 gap-4">
+        <div className="flex items-center">
           <img
             src="/logo.svg"
-            className="h-[35px] cursor-pointer"
+            className="h-[35px] cursor-pointer w-[123px]"
+            onClick={() => navigate("/credPoints")}
+          />
+          <img
+            src="/logo_season01.svg"
+            className="h-[35px] cursor-pointer ml-3 w-[106px]"
             onClick={() => navigate("/credPoints")}
           />
         </div>
@@ -36,13 +41,21 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="fixed flex lg:hidden w-full h-[92px] justify-between items-center px-2 gap-4 z-30  bg-gray-dark-3">
+      <div className="fixed flex lg:hidden w-full h-[92px] justify-between items-center px-4 gap-4 z-30  bg-[#0C0C0C]">
         {inviteCode && <img src="/credpoints/icon-warning.svg" className="absolute -right-2 top-3 w-[32px] h-[32px] mr-2" alt="cred" />}
-        <img
-          src="/logo.svg"
-          className="h-[29px] cursor-pointer"
-          onClick={() => navigate("/credPoints")}
-        />
+        <div className="flex">
+          <img
+            src="/logo.svg"
+            className="h-[29px] cursor-pointer w-[100px]"
+            onClick={() => navigate("/credPoints")}
+          />
+          <img
+            src="/logo_season01.svg"
+            className="h-[35px] cursor-pointer ml-3 w-[92px]"
+            onClick={() => navigate("/credPoints")}
+          />
+        </div>
+
         <img
           className="w-8"
           src="/header/list.svg"

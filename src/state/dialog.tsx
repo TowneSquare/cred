@@ -13,6 +13,10 @@ interface dialogStates {
   bWalletPanel: boolean;
   bSocialConnectPanel: boolean;
   bSuggestVerifyModal: boolean;
+  bFirstVerifyModal: boolean;
+  beligibleNftModal: boolean;
+  beligibleTokenModal: boolean;
+  beligibleGameModal: boolean
 }
 
 const initialState: dialogStates = {
@@ -25,9 +29,13 @@ const initialState: dialogStates = {
   bChangeAvatarPanel: false,
   bEmailVerifyModal: false,
   bRecapachaModal: false,
-  beligibleModal: false,
   bSocialConnectPanel: false,
-  bSuggestVerifyModal: false
+  bSuggestVerifyModal: false,
+  bFirstVerifyModal: false,
+  beligibleModal: false,
+  beligibleNftModal: false,
+  beligibleTokenModal: false,
+  beligibleGameModal: false
 };
 
 export const dialogSlice = createSlice({
@@ -61,14 +69,26 @@ export const dialogSlice = createSlice({
     toggleReferral: (state, action: PayloadAction<boolean>) => {
       state.bReferral = action.payload;
     },
-    toggleEligibleModal: (state, action: PayloadAction<boolean>) => {
-      state.beligibleModal = action.payload;
-    },
     toggleSocialConnectPanel: (state, action: PayloadAction<boolean>) => {
       state.bSocialConnectPanel = action.payload;
     },
     toggleSuggestVerifyModal: (state, action: PayloadAction<boolean>) => {
       state.bSuggestVerifyModal = action.payload;
+    },
+    toggleFirstVerifyModal: (state, action: PayloadAction<boolean>) => {
+      state.bFirstVerifyModal = action.payload;
+    },
+    toggleEligibleModal: (state, action: PayloadAction<boolean>) => {
+      state.beligibleModal = action.payload;
+    },
+    toggleEligibleNftModal: (state, action: PayloadAction<boolean>) => {
+      state.beligibleNftModal = action.payload;
+    },
+    toggleEligibleTokenModal: (state, action: PayloadAction<boolean>) => {
+      state.beligibleTokenModal = action.payload;
+    },
+    toggleEligibleGameModal: (state, action: PayloadAction<boolean>) => {
+      state.beligibleGameModal = action.payload;
     },
   },
   extraReducers: (builder) => { },
@@ -86,6 +106,10 @@ export const {
   toggleReferral,
   toggleEligibleModal,
   toggleSocialConnectPanel,
-  toggleSuggestVerifyModal
+  toggleSuggestVerifyModal,
+  toggleFirstVerifyModal,
+  toggleEligibleNftModal,
+  toggleEligibleTokenModal,
+  toggleEligibleGameModal
 } = dialogSlice.actions;
 export default dialogSlice.reducer;

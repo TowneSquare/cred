@@ -28,8 +28,8 @@ const Banner = () => {
           visible ? "h-[96px]" : "h-[0px]"
         } fixed z-50 transition-all duration-300 overflow-hidden w-full`}
       >
-        <div className="px-2 md:px-0 w-full h-[96px] flex justify-center  bg-gray-dark-3">
-          <div className="w-full md:w-[800px] flex justify-between">
+        <div className="px-5 md:px-0 w-full h-[96px] flex justify-center  bg-gray-dark-3">
+          <div className="w-full md:w-[700px] flex justify-between">
             <div className="flex items-center gap-2">
               <p className="text-xl md:text-2xl font-semibold">My ranking</p>
               <MyRanking />

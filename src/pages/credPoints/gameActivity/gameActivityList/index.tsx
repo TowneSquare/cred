@@ -1,7 +1,7 @@
 import { useAppSelector } from "../../../../state/hooks";
 import ReferralItem from "./referralItem";
 
-const ReferralList = () => {
+const GameActivityList = () => {
   const referrals = useAppSelector(state => state.credpointsState.referralList);
 
   return (
@@ -19,4 +19,4 @@ const ReferralList = () => {
   );
 };
 
-export default ReferralList;
+export default GameActivityList;

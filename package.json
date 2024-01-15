@@ -5,7 +5,10 @@
   "dependencies": {
     "@aptos-labs/wallet-adapter-core": "*",
     "@aptos-labs/wallet-adapter-react": "*",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@blocto/aptos-wallet-adapter-plugin": "^0.2.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
     "@flipperplatform/wallet-adapter-plugin": "^0.1.0",
     "@haechi-labs/face-aptos-adapter-plugin": "^0.0.4",
     "@haechi-labs/face-sdk": "^1.10.8",
@@ -52,6 +55,7 @@
     "postcss": "^8.4.28",
     "react": "^18.2.0",
     "react-app-rewired": "^2.2.1",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",

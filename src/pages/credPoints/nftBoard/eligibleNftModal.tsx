@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { toggleReferral } from "../../../state/dialog";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
-import ReferralList from "./referralList";
+import EligibleNftList from "./eligibleNftList";
 
-const ReferralModal = () => {
-  const isOpen = useAppSelector((state) => state.dialogState.bReferral);
+const EligibleNftModal = () => {
+  const isOpen = useAppSelector((state) => state.dialogState.beligibleNftModal);
   const dispatch = useAppDispatch();
   const ref = useRef(null);
 
@@ -21,26 +20,20 @@ const ReferralModal = () => {
   }, [isOpen]);
   return (
     <div
-      className={`fixed ${
-        isOpen ? "block" : "hidden"
-      } inset-0 z-50 flex bg-gray-dark-2`}
+      className={`fixed ${isOpen ? "block" : "hidden"
+        } inset-0 z-50 flex bg-gray-dark-2 justify-center items-center`}
     >
       <div
         ref={ref}
-        className={`relative container-dark w-full mt-[100vh] opacity-0 mx-px mb-px flex justify-center border border-gray-light-1 rounded-md`}
+        className={`relative container-dark1 w-full h-full mt-[100vh] md:w-[718px] md:h-[523px] flex justify-center border border-gray-light-1 rounded-[18px]`}
         style={{
           transition: "margin-top 0.5s, opacity 0.5s",
         }}
       >
-        <ReferralList />
-        <img
-          src="/credpoints/close.svg"
-          className="absolute top-5 right-6 cursor-pointer"
-          onClick={(e) => dispatch(toggleReferral(false))}
-        />
+        <EligibleNftList />
       </div>
     </div>
   );
 };
 
-export default ReferralModal;
+export default EligibleNftModal;

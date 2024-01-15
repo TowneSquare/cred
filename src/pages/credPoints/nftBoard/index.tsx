@@ -3,7 +3,7 @@ import "./index.css";
 import PrimaryButton from "../../../components/primaryButton";
 import NftList from "./nftList";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
-import { toggleNftList, toggleSuggestVerifyModal } from "../../../state/dialog";
+import { toggleEligibleNftModal, toggleNftList, toggleSuggestVerifyModal } from "../../../state/dialog";
 import SuggestVerify from "../../../components/suggestVerify";
 
 const NftBoard = () => {
@@ -20,7 +20,7 @@ const NftBoard = () => {
           <p className="text-sm text-center text-gray-light-3">
             Get points daily by hodling NFTs or staking them.
           </p>
-          <p className="text-sm font-normal text-[#45A9A7] cursor-pointer">Show eligible collections</p>
+          <p onClick={() => dispatch(toggleEligibleNftModal(true))} className="text-sm font-normal text-[#45A9A7] cursor-pointer">Show eligible collections</p>
           {visitorMode ?
             <PrimaryButton
               className="md:hidden w-full text-sm"

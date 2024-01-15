@@ -1,7 +1,7 @@
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import PrimaryButton from "../../../components/primaryButton";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
-import { toggleWalletPanel } from "../../../state/dialog";
+import { toggleFirstVerifyModal, toggleWalletPanel } from "../../../state/dialog";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OtpInput from "react-otp-input";
@@ -40,6 +40,11 @@ const Box = (boxVisible: any) => {
   };
 
   useEffect(() => {
+    if (step == 1)
+      dispatch(toggleFirstVerifyModal(true));
+  }, [step])
+
+  useEffect(() => {
     const checkSignup = async () => {
       if (connected && account) {
         const res = await getInviteCode(account.address);
@@ -61,16 +66,12 @@ const Box = (boxVisible: any) => {
     checkSignup();
   }, [connected]);
 
-  useEffect(() => {
-    console.log(boxVisible.boxVisible);
-  }, [boxVisible]);
-
   const onConnectWallet = () => {
     if (!connected) dispatch(toggleWalletPanel(true));
   };
 
   return (
-    <div className={`${boxVisible.boxVisible ? 'block' : 'hidden'} connect-button mt-16 md:mt-[10vh] flex flex-col items-center`}>
+    <div className={`${boxVisible.boxVisible ? 'block' : 'hidden'} ${step == 1 ? 'hidden md:flex' : 'flex'} connect-button mt-16 md:mt-[10vh] flex-col items-center`}>
       <div className={`container connect-button mt-2 p-4 md:p-10 w-[95%] ${step == 1 ? 'md:w-[770px] mb-[100px]' : 'md:w-[550px]'} flex flex-col items-center border border-gray-light-2 rounded-xl`}>
         {step == 2 && (
           <>
@@ -96,12 +97,12 @@ const Box = (boxVisible: any) => {
               )}
             </div>
             <PrimaryButton
-              className="mt-2 md:mt-8 w-[300px] z-[4]"
+              className="md :mt-2 md:mt-8 w-[300px] z-[4] mb-6"
               onClick={() => onInviteCode()}
             >
               <span className="text-sm md:text-base">Insert invite code</span>
             </PrimaryButton>
-            <div className="flex mt-6">
+            <div className="hidden md:flex">
               <img src="/credpoints/icon-info.svg" className="w-[22px] h-[22px] mr-2" alt="cred" />
               <p>You and your inviter will only earn referral points if this address is an active account on Aptos or is verified with X / Discord.</p>
             </div>
@@ -122,7 +123,7 @@ const Box = (boxVisible: any) => {
         )}
         {step == 1 && (
           <>
-            <div className="grid">
+            <div className="md:grid">
               <p className="text-center text-base md:text-xl font-normal">
                 Hey fren, it looks like you’re either new on Aptos or haven’t made any CRED eligible transactions!
                 <br />

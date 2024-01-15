@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { toggleActivityList, toggleEligibleModal } from "../../../state/dialog";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
-import ActivityList from "./activityList";
+import EligibleActivityList from "./eligibleActivityList";
 
 const EligibleModal = () => {
   const isOpen = useAppSelector((state) => state.dialogState.beligibleModal);
+  const currentTap = useAppSelector(state => state.credpointsState.eligibleDefiTapIndex);
   const dispatch = useAppDispatch();
   const ref = useRef(null);
 
@@ -21,23 +21,17 @@ const EligibleModal = () => {
   }, [isOpen]);
   return (
     <div
-      className={`fixed ${
-        isOpen ? "block" : "hidden"
-      } inset-0 z-50 flex bg-gray-dark-2`}
+      className={`fixed ${isOpen ? "block" : "hidden"
+        } inset-0 z-50 flex bg-gray-dark-2 justify-center items-center`}
     >
       <div
         ref={ref}
-        className={`relative container-dark w-full mt-[100vh] opacity-0 mx-px mb-px flex justify-center border border-gray-light-1 rounded-md`}
+        className={`relative container-dark1 w-full h-full mt-[100vh] md:w-[718px] ${currentTap > 1 ? 'md:h-[520px]' : 'md:h-[626px]'} flex justify-center border border-gray-light-1 rounded-[18px]`}
         style={{
           transition: "margin-top 0.5s, opacity 0.5s",
         }}
       >
-        <ActivityList />
-        <img
-          src="/credpoints/close.svg"
-          className="absolute top-5 right-6 cursor-pointer"
-          onClick={(e) => dispatch(toggleEligibleModal(false))}
-        />
+        <EligibleActivityList />
       </div>
     </div>
   );

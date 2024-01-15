@@ -7,10 +7,7 @@ import LoadingImage from "../../../components/loadingImage";
 import ConnectedButton from "../../../components/connectedButton";
 
 const Ans = () => {
-  const isLive = useAppSelector(state => state.credpointsState.isLive);
-  // const connected= {nftName : "@handsomeX"};
   const connected = false;
-
   const [imageLink, setImageLink] = useState<string | undefined>(undefined);
 
   // useEffect(() => {
@@ -55,7 +52,7 @@ const Ans = () => {
               </div>
             </div>
             <div className="flex justify-center mt-8 md:mt-0">
-              <ConnectedButton />
+              <ConnectedButton>You own ANS</ConnectedButton>
             </div>
           </>
         ) : (
@@ -80,7 +77,10 @@ const Ans = () => {
             <div className="flex justify-center mt-8 md:mt-0">
               <div className="grid w-full">
                 <button className="bg-[#F5E27D] md:w-[200px] h-[51px] py-3 px-8 rounded-[200px] text-black font-bold text-[16px] text-center">
-                  You own ANS
+                  <a href="https://aptosnames.com" target="_blank" rel="noopener noreferrer">
+                    Get ANS
+                  </a>
+                  <img className="inline-block w-[16px] ml-1 mb-1" src="/credpoints/external_link_black.svg" alt="copy" />
                 </button>
               </div>
             </div>

@@ -1,6 +1,6 @@
-
 .parallax {
-  height: 500px; /* fallback for older browsers */
+  height: 500px;
+  /* fallback for older browsers */
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
@@ -12,7 +12,8 @@
 
 .parallax__group {
   position: relative;
-  height: 500px; /* fallback for older browsers */
+  height: 500px;
+  /* fallback for older browsers */
   height: auto;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -28,22 +29,33 @@
   transform-origin-x: 100%;
 }
 
-.cred__effect1 {
-  top: 0vh !important;
+.cred__effect4 {
+  top: -40vh !important;
   left: 10vw !important;
 
   -webkit-transform: translate3d(0, 0, -300px) scale(2);
   transform: translate3d(0, 0, -300px) scale(2);
   z-index: 1;
 }
-.cred__effect2 {
-  top: 700px !important;
-  left: 75vw !important;
-  
+
+.cred__effect1 {
+  top: 10vh !important;
+  left: 10vw !important;
+
   -webkit-transform: translate3d(0, 0, -300px) scale(2);
   transform: translate3d(0, 0, -300px) scale(2);
   z-index: 1;
 }
+
+.cred__effect2 {
+  top: 700px !important;
+  left: 75vw !important;
+
+  -webkit-transform: translate3d(0, 0, -300px) scale(2);
+  transform: translate3d(0, 0, -300px) scale(2);
+  z-index: 1;
+}
+
 .cred__effect3 {
   top: 1600px !important;
   left: -56vw !important;

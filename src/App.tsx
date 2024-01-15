@@ -37,6 +37,11 @@ import RecapachaModal from "./components/modal/recapachaModal";
 import EmailVerifyModal from "./components/modal/emailVerifyModal";
 import EligibleModal from "./pages/credPoints/defiActivity/eligibleModal";
 import SuggestVerifyModal from "./components/modal/suggestVerifyModal";
+import FirstVerifyModal from "./components/modal/firstVerifyModal";
+import EligibleNftModal from "./pages/credPoints/nftBoard/eligibleNftModal";
+import EligibleTokenModal from "./pages/credPoints/tokenBoard/eligibleTokenModal";
+import EligibleGameModal from "./pages/credPoints/gameActivity/eligibleGameModal";
+import GameActivityList from "./pages/credPoints/gameActivity/gameActivityList";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -79,9 +84,14 @@ function App() {
       <EmailVerifyModal />
       <ActivityModal />
       <EligibleModal />
+      <EligibleNftModal />
+      <EligibleTokenModal />
+      <EligibleGameModal />
+      <GameActivityList />
       <NftModal />
       <ReferralModal />
       <SuggestVerifyModal />
+      <FirstVerifyModal />
     </div>
   );
 }

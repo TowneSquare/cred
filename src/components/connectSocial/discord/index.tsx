@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
-import { getMetadata } from "../../../api/metadata";
 import { getImageURL } from "../../../util/url";
 import LoadingState from "../../loadingstate";
 import LoadingImage from "../../loadingImage";
@@ -12,6 +11,9 @@ import { magic } from "../../../pages/lib/magic";
 
 
 const Discord = ({ isProfileModal }: { isProfileModal: boolean }) => {
+
+  const suggestVerifyModal = useAppSelector(state => state.dialogState.bSuggestVerifyModal);
+  const firstVerifyModal = useAppSelector(state => state.dialogState.bFirstVerifyModal);
 
   const { connected, account } = useWallet();
   const navigate = useNavigate();
@@ -33,14 +35,7 @@ const Discord = ({ isProfileModal }: { isProfileModal: boolean }) => {
     try {
       const result = await magic.oauth.getRedirectResult();
       const discordAccessToken = result.oauth.accessToken;
-      const discordUserInfo = await axios.get('https://discord.com/api/v10/users/@me', {
-        headers: {
-          Authorization: `Bearer ${discordAccessToken}`,
-        },
-      });
-      const { id } = discordUserInfo.data;
-      console.log("@@@@@", id);
-      setConnected_discord(true);
+      console.log(discordAccessToken);
     } catch {
       console.log("Not prepared yet");
     }
@@ -58,7 +53,7 @@ const Discord = ({ isProfileModal }: { isProfileModal: boolean }) => {
   };
   return (
     <>
-      <div className={`${isProfileModal ? 'bg-[#1B1B1B] w-[90%] border py-8 px-4 md:px-8 md:h-[144px]' : ' bg-opacity-0 w-[100%] md:h-[91px]'} ${connected_discord ? 'md:h-[298px]' : 'h-[267px]'} grid md:flex items-center border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
+      <div className={`${isProfileModal ? 'bg-[#1B1B1B] w-[90%] border py-8 px-4 md:px-8 md:h-[144px]' : ' bg-opacity-0 w-[100%] md:h-[91px]'} ${!connected_discord && suggestVerifyModal || firstVerifyModal ? 'h-[205px]' : 'h-[298px]'} grid md:flex items-center border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
         {connected_discord ? (
           <>
             <div className="flex md:items-center w-[90%]">
@@ -88,7 +83,7 @@ const Discord = ({ isProfileModal }: { isProfileModal: boolean }) => {
               </div>
             </div>
             <div className="flex justify-center mt-8 md:mt-0">
-              <ConnectedButton />
+              <ConnectedButton>Connected</ConnectedButton>
             </div>
           </>
         ) : (
@@ -120,7 +115,7 @@ const Discord = ({ isProfileModal }: { isProfileModal: boolean }) => {
                 </button>
                 <div className="flex mt-4 justify-center">
                   <input
-                    className="h-6 w-11 appearance-none rounded-[20px] bg-[#52BDB2] checked:bg-gray-light-2 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:mt-[3px] after:ml-[22px] after:h-[18px] after:w-[18px] after:rounded-full after:border-none after:bg-white after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:mt-[3px] checked:after:ml-1 checked:after:h-[18px] checked:after:w-[18px] checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[18px] focus:after:w-[18px] focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100  dark:bg-neutral-600 dark:after:bg-neutral-400 dark:checked:bg-primary dark:checked:after:bg-primary"
+                    className="h-6 w-11 appearance-none rounded-[20px] bg-[#52BDB2] checked:bg-gray-light-2 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:mt-[3px] after:ml-[22px] after:h-[17px] after:w-[17px] after:rounded-full after:border-none after:bg-white after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:mt-[3px] checked:after:ml-1 checked:after:h-[17px] checked:after:w-[17px] checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[17px] focus:after:w-[17px] focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100  dark:bg-neutral-600 dark:after:bg-neutral-400 dark:checked:bg-primary dark:checked:after:bg-primary"
                     type="checkbox"
                     role="switch"
                     value="checked"

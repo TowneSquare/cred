@@ -1,9 +1,9 @@
 import PointLogo from "./pointLogo";
 import "./index.css";
 import PrimaryButton from "../../../components/primaryButton";
-import ReferralList from "./referralList";
+import ReferralList from "./gameActivityList";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
-import { toggleReferral, toggleSuggestVerifyModal } from "../../../state/dialog";
+import { toggleEligibleGameModal, toggleReferral, toggleSuggestVerifyModal } from "../../../state/dialog";
 import SuggestVerify from "../../../components/suggestVerify";
 
 const GameActivity = () => {
@@ -25,7 +25,7 @@ const GameActivity = () => {
             <p className="text-sm text-center text-gray-light-3">
               Get points every day you login to on-chain games.
             </p>
-            <p className="text-sm font-normal text-[#45A9A7] mt-2 cursor-pointer">Show eligible games</p>
+            <p onClick={() => dispatch(toggleEligibleGameModal(true))} className="text-sm font-normal text-[#45A9A7] mt-2 cursor-pointer">Show eligible games</p>
           </div>
           {visitorMode ?
             <PrimaryButton

@@ -9,8 +9,9 @@ import { magic } from "../../../pages/lib/magic";
 import axios from "axios";
 
 const Twitter = ({ isProfileModal }: { isProfileModal: boolean }) => {
-  const isLive = useAppSelector(state => state.credpointsState.isLive);
-  // const connected= {nftName : "@handsomeX"};
+  const suggestVerifyModal = useAppSelector(state => state.dialogState.bSuggestVerifyModal);
+  const firstVerifyModal = useAppSelector(state => state.dialogState.bFirstVerifyModal);
+
   let connected_twitter = false;
   const [imageLink, setImageLink] = useState<string | undefined>(undefined);
 
@@ -18,19 +19,22 @@ const Twitter = ({ isProfileModal }: { isProfileModal: boolean }) => {
     login();
   }, []);
 
+  // 1746727583902019584-FEfiKkWElWLcRH4zHdjJ2xykwaOeJ5+f07VYA78LGKTYz2plZdcx9Z0ZlWa9tN1jYzxB43a05ZYQ
+  // https://auth.magic.link/v1/oauth2/4_RZAf6QfYOcm32xCCiwFwMh34vAp8-u3grAuUdJNyE=/callback
   const login = async () => {
     try {
       const didToken = await magic.oauth.getRedirectResult();
       const twitterAccessToken = didToken.oauth.accessToken;
-      const twitterUserInfo = await axios.get('https://api.twitter.com/2/account', {
+      console.log(twitterAccessToken);
+      const twitterUserInfo = await axios.get('https://api.twitter.com/2/tweets', {
         headers: {
           Authorization: `Bearer ${twitterAccessToken}`,
         },
       });
-      const { username, id } = twitterUserInfo.data;
-      console.log("$$$$$$$", id);
+      // const { username, id } = twitterUserInfo.data;
+      console.log("$$$$$$$", twitterUserInfo);
     } catch (error) {
-      console.error(error);
+      console.log("Not prepared yet");
     }
   };
 
@@ -58,7 +62,7 @@ const Twitter = ({ isProfileModal }: { isProfileModal: boolean }) => {
 
   return (
     <>
-      <div className={`${isProfileModal ? 'bg-[#1B1B1B] md:h-[144px] w-[90%] border py-8 px-4 md:px-8 mb-4' : 'md:h-[91px] bg-opacity-0 w-[100%] mb-8'} ${connected_twitter ? 'h-[298px]' : 'h-[267px]'} grid md:flex items-center border-gray-light-2 rounded-xl md:justify-between`}>
+      <div className={`${isProfileModal ? 'bg-[#1B1B1B] md:h-[144px] w-[90%] border py-8 px-4 md:px-8 mb-4' : 'md:h-[91px] bg-opacity-0 w-[100%] mb-8'} ${!connected_twitter && suggestVerifyModal || firstVerifyModal ? 'h-[205px]' : 'h-[298px]'} grid md:flex items-center border-gray-light-2 rounded-xl md:justify-between`}>
         {connected_twitter ? (
           <>
             <div className="flex md:items-center w-[90%]">
@@ -88,7 +92,7 @@ const Twitter = ({ isProfileModal }: { isProfileModal: boolean }) => {
               </div>
             </div>
             <div className="flex justify-center mt-8 md:mt-0">
-              <ConnectedButton />
+              <ConnectedButton>Connected</ConnectedButton>
             </div>
           </>
         ) : (
@@ -121,7 +125,7 @@ const Twitter = ({ isProfileModal }: { isProfileModal: boolean }) => {
                 </button>
                 <div className="flex mt-4 justify-center">
                   <input
-                    className="h-6 w-11 appearance-none rounded-[20px] bg-[#52BDB2] checked:bg-gray-light-2 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:mt-[3px] after:ml-[22px] after:h-[18px] after:w-[18px] after:rounded-full after:border-none after:bg-white after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:mt-[3px] checked:after:ml-1 checked:after:h-[18px] checked:after:w-[18px] checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[18px] focus:after:w-[18px] focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100  dark:bg-neutral-600 dark:after:bg-neutral-400 dark:checked:bg-primary dark:checked:after:bg-primary"
+                    className="h-6 w-11 appearance-none rounded-[20px] bg-[#52BDB2] checked:bg-gray-light-2 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:mt-[3px] after:ml-[22px] after:h-[17px] after:w-[17px] after:rounded-full after:border-none after:bg-white after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:mt-[3px] checked:after:ml-1 checked:after:h-[17px] checked:after:w-[17px] checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[17px] focus:after:w-[17px] focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100  dark:bg-neutral-600 dark:after:bg-neutral-400 dark:checked:bg-primary dark:checked:after:bg-primary"
                     type="checkbox"
                     role="switch"
                     value="checked"

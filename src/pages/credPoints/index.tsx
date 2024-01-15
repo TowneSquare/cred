@@ -53,10 +53,13 @@ const CredPoints = () => {
   return (
     <div className="parallax" id="cred-point">
       <Header />
-      {visitorMode && <SuggestVerifyNavbar />}
+      <SuggestVerifyNavbar />
       <div className="parallax__group">
         <div className="parallax__layer cred__effect1">
           <img src="/credpoints/effect1.png" alt="effect1" />
+        </div>
+        <div className="parallax__layer cred__effect4">
+          <img src="/credpoints/transparent_text.svg" />
         </div>
         <div className="parallax__layer cred__effect2">
           <img src="/credpoints/effect2.png" alt="effect2" />

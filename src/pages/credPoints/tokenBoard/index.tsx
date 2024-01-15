@@ -1,9 +1,9 @@
 import PointLogo from "./pointLogo";
 import "./index.css";
 import PrimaryButton from "../../../components/primaryButton";
-import ReferralList from "./referralList";
+import ReferralList from "./tokenList";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
-import { toggleReferral, toggleSuggestVerifyModal } from "../../../state/dialog";
+import { toggleEligibleTokenModal, toggleReferral, toggleSuggestVerifyModal } from "../../../state/dialog";
 import SuggestVerify from "../../../components/suggestVerify";
 
 const TokenBoard = () => {
@@ -25,7 +25,7 @@ const TokenBoard = () => {
             <p className="text-sm text-center text-gray-light-3 w-[90%]">
               Get daily points by holding a certain amount of eligible tokens.
             </p>
-            <p className="text-sm font-normal text-[#45A9A7] mt-2 cursor-pointer">Show eligible tokens</p>
+            <p onClick={() => dispatch(toggleEligibleTokenModal(true))} className="text-sm font-normal text-[#45A9A7] mt-2 cursor-pointer">Show eligible tokens</p>
           </div>
           {visitorMode ?
             <PrimaryButton

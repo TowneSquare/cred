@@ -17,11 +17,12 @@ interface credpointsStates {
   longestNft: NftType | undefined;
   referralPoint: number;
   referralList: ReferralType[];
-
+  
   connection: boolean;
-
+  
   inviteCode: string  | undefined;
   initInviteCode: string | undefined;
+  eligibleDefiTapIndex: number;
 }
 
 const initialState: credpointsStates = {
@@ -41,13 +42,14 @@ const initialState: credpointsStates = {
   connection: false,
 
   inviteCode: undefined,
-  initInviteCode: undefined
+  initInviteCode: undefined,
+  eligibleDefiTapIndex : 0
 };
 
 export const fetchCredpoints = createAsyncThunk(
   "credpoints/fetch",
   async ({ wallet, initInviteCode }: any, thunkAPI) => {
-    const url = `https://backend.townesquare.xyz/activity/point/${wallet}/${initInviteCode}`;
+    const url = `https://backend.townesquare.xyz/activity/test_point/${wallet}/${initInviteCode}`;
     try {
       const res = await fetch(url);
       const result = await res.json();
@@ -87,6 +89,9 @@ export const credpointsSlice = createSlice({
     },
     updateInitInviteCode(state, action: PayloadAction<string | undefined>) {
       state.initInviteCode = action.payload;
+    },
+    updateEligibleDefiTapIndex(state, action: PayloadAction<number>) {
+      state.eligibleDefiTapIndex = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -113,5 +118,5 @@ export const credpointsSlice = createSlice({
   },
 });
 
-export const { reset, updateCredPointsLive, updateConnection, updateInitInviteCode } = credpointsSlice.actions;
+export const { reset, updateCredPointsLive, updateConnection, updateInitInviteCode, updateEligibleDefiTapIndex } = credpointsSlice.actions;
 export default credpointsSlice.reducer;

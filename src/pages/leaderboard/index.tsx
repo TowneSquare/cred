@@ -50,7 +50,7 @@ const Leaderboard = () => {
       <Header />
       <Banner />
       <div className="parallax" id="leaderboard">
-        {visitorMode && <SuggestVerifyNavbar />}
+        <SuggestVerifyNavbar />
         <div className="parallax__group">
           <div className="parallax__layer effect1">
             <img src="/leaderboard/effect1.png" alt="effect1" />
@@ -63,7 +63,7 @@ const Leaderboard = () => {
           </div>
         </div>
         <div className="relative w-full flex justify-center z-10">
-          <div className={`w-full md:w-[700px] flex flex-col items-center ${visitorMode ? 'mt-[20px]' : 'mt-[116px]'}  mb-10`}>
+          <div className={`w-full md:w-[700px] flex flex-col items-center ${visitorMode ? 'mt-[70px]' : 'mt-[116px]'}  mb-10`}>
             <InviteCode />
             <MyRanking />
             <Cards />
