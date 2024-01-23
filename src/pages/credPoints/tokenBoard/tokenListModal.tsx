@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { toggleReferral } from "../../../state/dialog";
+import { toggleReferral, toggleTokenModal } from "../../../state/dialog";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
-import ReferralList from "./tokenList";
+import TokenList from "./tokenList";
 
 const TokenListModal = () => {
-  const isOpen = useAppSelector((state) => state.dialogState.bReferral);
+  const isOpen = useAppSelector((state) => state.dialogState.bTokenModal);
   const dispatch = useAppDispatch();
   const ref = useRef(null);
 
@@ -21,9 +21,8 @@ const TokenListModal = () => {
   }, [isOpen]);
   return (
     <div
-      className={`fixed ${
-        isOpen ? "block" : "hidden"
-      } inset-0 z-50 flex bg-gray-dark-2`}
+      className={`fixed ${isOpen ? "block" : "hidden"
+        } inset-0 z-50 flex bg-gray-dark-2`}
     >
       <div
         ref={ref}
@@ -32,11 +31,11 @@ const TokenListModal = () => {
           transition: "margin-top 0.5s, opacity 0.5s",
         }}
       >
-        <ReferralList />
+        <TokenList />
         <img
           src="/credpoints/close.svg"
           className="absolute top-5 right-6 cursor-pointer"
-          onClick={(e) => dispatch(toggleReferral(false))}
+          onClick={(e) => dispatch(toggleTokenModal(false))}
         />
       </div>
     </div>

@@ -41,9 +41,8 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
       className="group"
     >
       <div
-        className={`px-6 md:px-8 py-4 md:py-6 flex justify-between ${
-          index % 2 == 1 ? "bg-[#FFFFFF0D]" : ""
-        } hover:bg-gray-light-1`}
+        className={`px-6 md:px-8 py-4 md:py-6 flex justify-between ${index % 2 == 1 ? "bg-[#FFFFFF0D]" : ""
+          } hover:bg-gray-light-1 ${index == 0 && 'hover:rounded-t-[17px]'}`}
       >
         <div className="flex gap-2">
           <div
@@ -55,7 +54,7 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
             }
           >
             <p
-              className="text-base md:text-lg text-gray-light-5"
+              className="text-[16px] text-gray-light-5"
               style={ranking <= 3 ? { color: textColor } : {}}
             >
               {ranking}
@@ -64,13 +63,13 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
           <div className="flex items-center gap-2">
             <img
               src={getBoringAvatar(data.wallet)}
-              className="w-8 h-8"
+              className="w-8 h-8 hidden md:block"
               alt="avatar"
             />
-            <p className="hidden md:block text-base md:text-lg font-bold">
+            <p className="hidden md:block text-[16px]">
               {data.wallet.slice(0, 12)}...{data.wallet.slice(-10)}
             </p>
-            <p className="md:hidden text-base md:text-lg font-bold">
+            <p className="md:hidden text-base md:text-lg">
               {data.wallet.slice(0, 4)}...{data.wallet.slice(-2)}
             </p>
             <img
@@ -81,17 +80,17 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
           </div>
         </div>
         <div className="flex gap-2 items-center">
-          <p className="text-base md:text-lg">
+          <p className="text-[16px]">
             {data.totalPoint.toLocaleString()}
           </p>
           <img
             src="/credpoints/cred.svg"
-            className="w-6 h-6 md:w-8 md:h-8"
+            className="w-6 h-6 md:w-7 md:h-7"
             alt="cred"
           />
         </div>
       </div>
-      <div className="w-full h-px border border-gray-light-1" />
+      <div className="w-full h-p" />
     </a>
   );
 };

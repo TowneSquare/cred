@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 const JoinUs = () => {
   return (
     <div className="flex gap-6 items-center">

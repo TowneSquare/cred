@@ -1,7 +1,10 @@
 import { Magic } from "magic-sdk";
 import { OAuthExtension } from "@magic-ext/oauth";
 
-const createMagic = (key : string) => {
+const magicApiKey = process.env.REACT_APP_MAGIC_API_KEY ?? 'default-key';
+const createMagic = (key: string) => {
+
+
   return (
     typeof window !== "undefined" &&
     new Magic(key, {
@@ -10,4 +13,4 @@ const createMagic = (key : string) => {
   );
 };
 
-export const magic: any = createMagic("pk_live_CA547FCC1F472701");
+export const magic: any = createMagic(magicApiKey);

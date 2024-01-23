@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { toggleReferral } from "../../../state/dialog";
+import { toggleReferral, togglebGameList } from "../../../state/dialog";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
 import ReferralList from "./gameActivityList";
 
 const GameActivityModal = () => {
-  const isOpen = useAppSelector((state) => state.dialogState.bReferral);
+  const isOpen = useAppSelector((state) => state.dialogState.bGameList);
   const dispatch = useAppDispatch();
   const ref = useRef(null);
 
@@ -21,9 +21,8 @@ const GameActivityModal = () => {
   }, [isOpen]);
   return (
     <div
-      className={`fixed ${
-        isOpen ? "block" : "hidden"
-      } inset-0 z-50 flex bg-gray-dark-2`}
+      className={`fixed ${isOpen ? "block" : "hidden"
+        } inset-0 z-50 flex bg-gray-dark-2`}
     >
       <div
         ref={ref}
@@ -36,7 +35,7 @@ const GameActivityModal = () => {
         <img
           src="/credpoints/close.svg"
           className="absolute top-5 right-6 cursor-pointer"
-          onClick={(e) => dispatch(toggleReferral(false))}
+          onClick={(e) => dispatch(togglebGameList(false))}
         />
       </div>
     </div>

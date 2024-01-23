@@ -4,6 +4,8 @@ import { NftType } from "../type/nftType";
 import Moralis from "moralis";
 import { useDispatch } from "react-redux";
 import { ReferralType } from "../type/referralType";
+import { GameType } from "../type/gameType";
+import { TokenType } from "../type/tokenType";
 interface credpointsStates {
   isLive: boolean;
   aptTxsPercentage: number | undefined;
@@ -17,12 +19,13 @@ interface credpointsStates {
   longestNft: NftType | undefined;
   referralPoint: number;
   referralList: ReferralType[];
-  
+  gameList: GameType[];
+  holdingTokenList: TokenType[]
   connection: boolean;
-  
-  inviteCode: string  | undefined;
+  inviteCode: string | undefined;
   initInviteCode: string | undefined;
   eligibleDefiTapIndex: number;
+  walletAddress: string;
 }
 
 const initialState: credpointsStates = {
@@ -38,12 +41,13 @@ const initialState: credpointsStates = {
   longestNft: undefined,
   referralPoint: 0,
   referralList: [],
-
+  gameList: [],
+  holdingTokenList: [],
   connection: false,
-
   inviteCode: undefined,
   initInviteCode: undefined,
-  eligibleDefiTapIndex : 0
+  eligibleDefiTapIndex: 0,
+  walletAddress: ""
 };
 
 export const fetchCredpoints = createAsyncThunk(
@@ -78,6 +82,8 @@ export const credpointsSlice = createSlice({
       state.longestNft = undefined;
       state.referralPoint = 0;
       state.referralList = [];
+      state.gameList = [];
+      state.holdingTokenList = [];
       state.inviteCode = undefined;
       state.initInviteCode = undefined;
     },
@@ -92,6 +98,9 @@ export const credpointsSlice = createSlice({
     },
     updateEligibleDefiTapIndex(state, action: PayloadAction<number>) {
       state.eligibleDefiTapIndex = action.payload;
+    },
+    updateWalletAddress(state, action: PayloadAction<string>) {
+      state.walletAddress = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -111,12 +120,13 @@ export const credpointsSlice = createSlice({
         state.longestNft = action.payload.longestHoldingNFT;
         state.referralPoint = action.payload.referralPoint;
         state.referralList = action.payload.referralList;
-
+        state.gameList = action.payload.gameList;
+        state.holdingTokenList = action.payload.holdingTokenList;
         state.inviteCode = action.payload.inviteCode;
       }
     })
   },
 });
 
-export const { reset, updateCredPointsLive, updateConnection, updateInitInviteCode, updateEligibleDefiTapIndex } = credpointsSlice.actions;
+export const { reset, updateCredPointsLive, updateConnection, updateInitInviteCode, updateEligibleDefiTapIndex, updateWalletAddress } = credpointsSlice.actions;
 export default credpointsSlice.reducer;

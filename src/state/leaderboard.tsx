@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { RankingType } from "../type/rankingType";
+import { TwitterList } from "../type/twitterList";
 
 interface leaderboardStates {
   isLive: boolean;
@@ -7,9 +8,10 @@ interface leaderboardStates {
   myMorePoint: number;
   lowerPercentage: number;
   topRankings: RankingType[];
-
-  inviteCode: string
+  twitterList: TwitterList[];
   connection: boolean;
+  leaderboardTapIndex: number;
+  initInviteCode : string | undefined;
 }
 
 const initialState: leaderboardStates = {
@@ -18,9 +20,10 @@ const initialState: leaderboardStates = {
   myMorePoint: 0,
   lowerPercentage: 0,
   topRankings: [],
-
-  inviteCode: "",
-  connection: false
+  twitterList: [],
+  connection: false,
+  leaderboardTapIndex: 0,
+  initInviteCode : undefined
 };
 
 export const fetchRankings = createAsyncThunk(
@@ -47,12 +50,19 @@ export const leaderboardSlice = createSlice({
       state.myMorePoint = 0;
       state.lowerPercentage = 0;
       state.topRankings = [];
+      state.twitterList = []
     },
     updateLeaderboardLive: (state, action: PayloadAction<boolean>) => {
       state.isLive = action.payload;
     },
     updateConnection: (state, action: PayloadAction<boolean>) => {
       state.connection = action.payload;
+    },
+    updateLeaderboardTapIndex: (state, action: PayloadAction<number>) => {
+      state.leaderboardTapIndex = action.payload;
+    },
+    updateInitInviteCode: (state, action: PayloadAction<string | undefined>) => {
+      state.initInviteCode = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -62,6 +72,7 @@ export const leaderboardSlice = createSlice({
         state.isLive = true;
         state.myRank = action.payload.rank;
         state.topRankings = action.payload.topRankings;
+        state.twitterList = action.payload.twitterList;
         state.myMorePoint = action.payload.morePoint;
         state.lowerPercentage = action.payload.lowerPercentage;
       }
@@ -69,5 +80,5 @@ export const leaderboardSlice = createSlice({
   },
 });
 
-export const { reset, updateLeaderboardLive, updateConnection } = leaderboardSlice.actions;
+export const { reset, updateLeaderboardLive, updateConnection, updateLeaderboardTapIndex, updateInitInviteCode } = leaderboardSlice.actions;
 export default leaderboardSlice.reducer;

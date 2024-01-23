@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 
@@ -35,6 +35,29 @@ const CredPoints = () => {
   const initialized = useAppSelector(state => state.globalState.initialized);
   const visitorMode = useAppSelector(state => state.globalState.visitorMode);
 
+  const initInviteCodeRef = useRef(initInviteCode);
+  const visitorModeRef = useRef(visitorMode);
+
+  useEffect(() => {
+    initInviteCodeRef.current = initInviteCode;
+    visitorModeRef.current = visitorMode;
+  }, [initInviteCode, account, visitorMode]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!initInviteCodeRef.current && !visitorModeRef.current) {
+        navigate('/')
+      }
+    };
+    const fetchDataTimeout = setTimeout(() => {
+      fetchData();
+    }, 5000);
+    return () => {
+      clearTimeout(fetchDataTimeout);
+    };
+  }, [initInviteCodeRef, visitorModeRef]);
+
+
   useEffect(() => {
     if (connected && account && initialized && initInviteCode == undefined) {
       dispatch(updateVisitorMode(true));
@@ -43,7 +66,6 @@ const CredPoints = () => {
 
   useEffect(() => {
     dispatch(updateConnection(connected));
-
     if (connected && account && initInviteCode) {
       dispatch(updateCredPointsLive(false));
       dispatch(fetchCredpoints({ wallet: account.address, initInviteCode }));
@@ -53,12 +75,8 @@ const CredPoints = () => {
   return (
     <div className="parallax" id="cred-point">
       <Header />
-      <SuggestVerifyNavbar />
       <div className="parallax__group">
-        <div className="parallax__layer cred__effect1">
-          <img src="/credpoints/effect1.png" alt="effect1" />
-        </div>
-        <div className="parallax__layer cred__effect4">
+        <div className="parallax__layer cred__effect4 z-[100]">
           <img src="/credpoints/transparent_text.svg" />
         </div>
         <div className="parallax__layer cred__effect2">
@@ -68,6 +86,7 @@ const CredPoints = () => {
           <img src="/credpoints/effect3.png" alt="effect3" />
         </div>
       </div>
+      <SuggestVerifyNavbar />
       <div className="relative w-full flex justify-center z-10 !bg-fixed">
         <div className={`w-full md:w-[1000px] flex flex-col items-center ${visitorMode ? 'mt-[70px]' : 'mt-[116px]'} mb-10`}>
           <InviteCode />

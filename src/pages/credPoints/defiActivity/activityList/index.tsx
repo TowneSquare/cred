@@ -9,7 +9,7 @@ const ActivityList = () => {
       <p className="text-center">Last 10 DeFi activities</p>
       <div className="mt-2 w-8 h-px border border-primary-default" />
       <div className="w-full md:pr-8">
-        <div className="history-board w-full h-screen md:h-[300px] flex flex-col overflow-y-auto">
+        <div className="history-board w-full h-screen md:h-[380px] flex flex-col overflow-y-auto md:px-0 px-4">
           {defiActivities.slice(0, 9).map((history, index) => (
             <ActivityItem data={history} key={index} />
           ))}

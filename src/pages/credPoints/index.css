@@ -30,12 +30,11 @@
 }
 
 .cred__effect4 {
-  top: -40vh !important;
-  left: 10vw !important;
+  top: -30vh !important;
+  left: 0 !important;
 
   -webkit-transform: translate3d(0, 0, -300px) scale(2);
   transform: translate3d(0, 0, -300px) scale(2);
-  z-index: 1;
 }
 
 .cred__effect1 {

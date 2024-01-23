@@ -32,7 +32,7 @@ import { INVITE_CODE } from "./constants/inviteCode";
 import "./App.css";
 import { getInviteCode } from "./api/invite";
 import { updateInitialized } from "./state/global";
-import ChangeAvatarModal from "./components/header/changeAvatarModal";
+import ChangeAvatarModal from "./components/modal/changeAvatarModal";
 import RecapachaModal from "./components/modal/recapachaModal";
 import EmailVerifyModal from "./components/modal/emailVerifyModal";
 import EligibleModal from "./pages/credPoints/defiActivity/eligibleModal";
@@ -41,7 +41,8 @@ import FirstVerifyModal from "./components/modal/firstVerifyModal";
 import EligibleNftModal from "./pages/credPoints/nftBoard/eligibleNftModal";
 import EligibleTokenModal from "./pages/credPoints/tokenBoard/eligibleTokenModal";
 import EligibleGameModal from "./pages/credPoints/gameActivity/eligibleGameModal";
-import GameActivityList from "./pages/credPoints/gameActivity/gameActivityList";
+import TokenListModal from "./pages/credPoints/tokenBoard/tokenListModal";
+import GameActivityModal from "./pages/credPoints/gameActivity/gameActivityModal";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -87,10 +88,11 @@ function App() {
       <EligibleNftModal />
       <EligibleTokenModal />
       <EligibleGameModal />
-      <GameActivityList />
       <NftModal />
       <ReferralModal />
       <SuggestVerifyModal />
+      <TokenListModal />
+      <GameActivityModal />
       <FirstVerifyModal />
     </div>
   );

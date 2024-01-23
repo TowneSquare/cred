@@ -1,10 +1,10 @@
 import PointLogo from "./pointLogo";
 import "./index.css";
 import PrimaryButton from "../../../components/primaryButton";
-import ReferralList from "./gameActivityList";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
-import { toggleEligibleGameModal, toggleReferral, toggleSuggestVerifyModal } from "../../../state/dialog";
+import { toggleEligibleGameModal, toggleSuggestVerifyModal, togglebGameList } from "../../../state/dialog";
 import SuggestVerify from "../../../components/suggestVerify";
+import GameActivityList from "./gameActivityList";
 
 const GameActivity = () => {
   const dispatch = useAppDispatch();
@@ -36,7 +36,7 @@ const GameActivity = () => {
             </PrimaryButton> :
             <PrimaryButton
               className="md:hidden w-full text-sm"
-              onClick={() => dispatch(toggleReferral(true))}
+              onClick={() => dispatch(togglebGameList(true))}
             >
               Last 10 rewards from games
             </PrimaryButton>
@@ -47,7 +47,7 @@ const GameActivity = () => {
           <SuggestVerify /> :
           <div className="hidden md:block min-w-[50%]">
             {referralList.length > 0 ? (
-              <ReferralList />
+              <GameActivityList />
             ) : (
               <div className="w-full h-full flex justify-center items-center">
                 <span className="text-center text-sm">

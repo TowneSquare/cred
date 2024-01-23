@@ -1,13 +1,12 @@
-import { DefiIcon, DefiLink, DefiName } from "../../../../constants/defi";
-import { ReferralType } from "../../../../type/referralType";
 import moment from "moment";
+import { GameType } from "../../../../type/gameType";
 import { getBoringAvatar } from "../../../../util/boringAvatar";
 
 interface Props {
-  data: ReferralType;
+  data: GameType;
 }
 
-const ReferralItem: React.FC<Props> = ({ data }) => {
+const GameItem: React.FC<Props> = ({ data }) => {
   return (
     <a
       target="_blank"
@@ -20,12 +19,12 @@ const ReferralItem: React.FC<Props> = ({ data }) => {
           </p>
           <div className="flex gap-1 items-center">
             <img
-              src={getBoringAvatar(data.toWallet)}
+              src={data.image}
               className="w-5 h-5"
               alt="avatar"
             />
             <p className="text-xs md:text-sm text-gray-light-5 group-hover:text-white">
-              {data.toWallet.slice(0, 5)}...{data.toWallet.slice(-4)}
+              {data.nftName}
             </p>
           </div>
           <img
@@ -43,9 +42,9 @@ const ReferralItem: React.FC<Props> = ({ data }) => {
           />
         </div>
       </div>
-      <div className="h-px border border-gray-light-1" />
+      <div className="h-px border border-gray-light-1 border-opacity-20" />
     </a>
   );
 };
 
-export default ReferralItem;
+export default GameItem;

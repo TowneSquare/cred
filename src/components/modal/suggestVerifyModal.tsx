@@ -9,7 +9,7 @@ const SuggestVerifyModal = () => {
   return (
     <div
       className={`${isOpen ? 'block' : 'hidden'
-        } absolute z-20 h-[700px] md:h-full inset-0 flex justify-center items-center bg-black bg-opacity-90`}
+        } absolute z-20  h-[800px] md:h-full inset-0 flex justify-center items-center bg-black bg-opacity-90`}
     >
       <div className={`container connect-button mt-2 p-4 md:p-10 w-[95%] md:w-[770px] flex flex-col items-center border border-gray-light-2 rounded-xl`}>
         <div className="grid">

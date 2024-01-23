@@ -4,6 +4,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import OTPInput from "react-otp-input";
 import PrimaryButton from "../primaryButton";
 import { toggleEmailVerifyModal } from "../../state/dialog";
+import { emailVerify } from "../../api/profile";
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
 
 const EmailVerifyModal = () => {
   const [otp, setOtp] = useState("");
@@ -19,19 +21,6 @@ const EmailVerifyModal = () => {
 
   const onInviteCode = async () => {
     setSuccess(true)
-    // try {
-    //   const inputCode = otp.toUpperCase();
-    //   const res = await checkInviteCode(inputCode);
-
-    //   if (res.success == false)
-    //     setError("The invite code is not valid. Find one on socials!");
-    //   else {
-    //     dispatch(updateInitInviteCode(inputCode));
-    //     navigate("/credPoints");
-    //   }
-    // } catch (e) {
-    //   setError("The invite code is not valid. Find one on socials!");
-    // }
   };
 
 

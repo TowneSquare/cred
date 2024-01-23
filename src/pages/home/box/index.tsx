@@ -11,12 +11,14 @@ import { updateStep } from "../../../state/global";
 import PrivacyPolicy from "../../../components/privacyPolicy";
 import Twitter from "../../../components/connectSocial/twitter";
 import Discord from "../../../components/connectSocial/discord";
+import jwtEncode from 'jwt-encode';
 
 const Box = (boxVisible: any) => {
   const { connected, account } = useWallet();
   const [otp, setOtp] = useState("");
   const [error, setError] = useState<string | undefined>(undefined);
   const step = useAppSelector((state) => state.globalState.step);
+  const secritKey = process.env.REACT_APP_JWT_SECRIT_KEY ?? 'default-secret-key';
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -45,6 +47,8 @@ const Box = (boxVisible: any) => {
   }, [step])
 
   useEffect(() => {
+    console.log("ansNames", account?.ansName);
+    
     const checkSignup = async () => {
       if (connected && account) {
         const res = await getInviteCode(account.address);

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import Header from "../../components/header";
 import PrivacyPolicy from "../../components/privacyPolicy";
@@ -19,6 +19,9 @@ import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { updateVisitorMode } from "../../state/global";
 import SuggestVerifyNavbar from "../../components/header/suggestVerifyNavbar";
 import ConnectionList from "./connectionList";
+import { updateLeaderboardTapIndex } from "../../state/leaderboard";
+import LeaderboardTapItem from "../../components/leaderboardTapItem";
+import { fetchCredpoints } from "../../state/credpoints";
 
 const Leaderboard = () => {
   const { connected, account } = useWallet();
@@ -29,6 +32,29 @@ const Leaderboard = () => {
   );
   const initialized = useAppSelector(state => state.globalState.initialized);
   const visitorMode = useAppSelector(state => state.globalState.visitorMode);
+  const currentTap = useAppSelector(state => state.leaderboardState.leaderboardTapIndex);
+
+  const initInviteCodeRef = useRef(initInviteCode);
+  const visitorModeRef = useRef(visitorMode);
+
+  useEffect(() => {
+    initInviteCodeRef.current = initInviteCode;
+    visitorModeRef.current = visitorMode;
+  }, [initInviteCode, account, visitorMode]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!initInviteCodeRef.current && !visitorModeRef.current) {
+        navigate('/')
+      }
+    };
+    const fetchDataTimeout = setTimeout(() => {
+      fetchData();
+    }, 4000);
+    return () => {
+      clearTimeout(fetchDataTimeout);
+    };
+  }, [initInviteCodeRef, visitorModeRef]);
 
   useEffect(() => {
     if (connected && account && initialized && initInviteCode == undefined) {
@@ -55,9 +81,6 @@ const Leaderboard = () => {
           <div className="parallax__layer effect1">
             <img src="/leaderboard/effect1.png" alt="effect1" />
           </div>
-          <div className="parallax__layer effect2">
-            <img src="/leaderboard/effect2.png" alt="effect2" />
-          </div>
           <div className="parallax__layer effect3">
             <img src="/leaderboard/effect3.png" alt="effect3" />
           </div>
@@ -69,10 +92,20 @@ const Leaderboard = () => {
             <Cards />
           </div>
         </div>
-        <div className="flex w-full justify-center">
-          <div className={`w-full md:w-[70%] flex items-center`}>
-            <RankingList />
-            <ConnectionList />
+        <div className="flex flex-col justify-center">
+          <div className="flex justify-between w-[100%] md:hidden border-b-[1px] border-[#B9B9B9] z-50">
+            <LeaderboardTapItem onClick={() => dispatch(updateLeaderboardTapIndex(0))} className={` font-bold ${currentTap == 0 && 'border-b-[3px]'} `}>
+              {"Leaderboard"}
+            </LeaderboardTapItem>
+            <LeaderboardTapItem onClick={() => dispatch(updateLeaderboardTapIndex(1))} className={` font-bold ${currentTap == 1 && 'border-b-[3px]'} `}>
+              {"Connect with X"}
+            </LeaderboardTapItem>
+          </div>
+          <div className="flex justify-center">
+            <div className={`w-full md:w-[70%] flex`}>
+              <RankingList />
+              <ConnectionList />
+            </div>
           </div>
         </div>
       </div>

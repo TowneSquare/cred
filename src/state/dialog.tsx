@@ -16,7 +16,9 @@ interface dialogStates {
   bFirstVerifyModal: boolean;
   beligibleNftModal: boolean;
   beligibleTokenModal: boolean;
-  beligibleGameModal: boolean
+  beligibleGameModal: boolean;
+  bTokenModal: boolean;
+  bGameList: boolean;
 }
 
 const initialState: dialogStates = {
@@ -35,7 +37,9 @@ const initialState: dialogStates = {
   beligibleModal: false,
   beligibleNftModal: false,
   beligibleTokenModal: false,
-  beligibleGameModal: false
+  beligibleGameModal: false,
+  bTokenModal: false,
+  bGameList: false
 };
 
 export const dialogSlice = createSlice({
@@ -75,6 +79,9 @@ export const dialogSlice = createSlice({
     toggleSuggestVerifyModal: (state, action: PayloadAction<boolean>) => {
       state.bSuggestVerifyModal = action.payload;
     },
+    toggleTokenModal: (state, action: PayloadAction<boolean>) => {
+      state.bTokenModal = action.payload;
+    },
     toggleFirstVerifyModal: (state, action: PayloadAction<boolean>) => {
       state.bFirstVerifyModal = action.payload;
     },
@@ -89,6 +96,9 @@ export const dialogSlice = createSlice({
     },
     toggleEligibleGameModal: (state, action: PayloadAction<boolean>) => {
       state.beligibleGameModal = action.payload;
+    },
+    togglebGameList: (state, action: PayloadAction<boolean>) => {
+      state.bGameList = action.payload;
     },
   },
   extraReducers: (builder) => { },
@@ -107,9 +117,11 @@ export const {
   toggleEligibleModal,
   toggleSocialConnectPanel,
   toggleSuggestVerifyModal,
+  toggleTokenModal,
   toggleFirstVerifyModal,
   toggleEligibleNftModal,
   toggleEligibleTokenModal,
-  toggleEligibleGameModal
+  toggleEligibleGameModal,
+  togglebGameList
 } = dialogSlice.actions;
 export default dialogSlice.reducer;

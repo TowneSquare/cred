@@ -3,8 +3,9 @@ import "./index.css";
 import PrimaryButton from "../../../components/primaryButton";
 import ReferralList from "./tokenList";
 import { useAppDispatch, useAppSelector } from "../../../state/hooks";
-import { toggleEligibleTokenModal, toggleReferral, toggleSuggestVerifyModal } from "../../../state/dialog";
+import { toggleEligibleTokenModal, toggleReferral, toggleSuggestVerifyModal, toggleTokenModal } from "../../../state/dialog";
 import SuggestVerify from "../../../components/suggestVerify";
+import TokenList from "./tokenList";
 
 const TokenBoard = () => {
   const dispatch = useAppDispatch();
@@ -36,9 +37,9 @@ const TokenBoard = () => {
             </PrimaryButton> :
             <PrimaryButton
               className="md:hidden w-full text-sm"
-              onClick={() => dispatch(toggleReferral(true))}
+              onClick={() => dispatch(toggleTokenModal(true))}
             >
-              Last 10 rewards from tokens
+              Last 10 rewards
             </PrimaryButton>
           }
         </div>
@@ -47,7 +48,7 @@ const TokenBoard = () => {
           <SuggestVerify /> :
           <div className="hidden md:block min-w-[50%]">
             {referralList.length > 0 ? (
-              <ReferralList />
+              <TokenList />
             ) : (
               <div className="w-full h-full flex justify-center items-center">
                 <span className="text-center text-sm">

@@ -1,33 +1,68 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useNavigate } from "react-router";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
-
+import jwtEncode from 'jwt-encode';
 import Header from "../../components/header";
-import PrivacyPolicy from "../../components/privacyPolicy";
-
 import Discord from "../../components/connectSocial/discord";
 import Twitter from "../../components/connectSocial/twitter";
 import Ans from "./ans";
 import Email from "./email";
 import ConnectButton from "./connectButton";
 import "./index.css";
-import { getInviteCode } from "../../api/invite";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
-import {
-  fetchCredpoints,
-  updateConnection,
-  updateCredPointsLive,
-} from "../../state/credpoints";
 import { toggleChangeAvatarPanel } from "../../state/dialog";
+import { profileviewed, setProfileName } from "../../api/profile";
+import { updateProfileViewed } from "../../state/profile";
+import { getBoringAvatar } from "../../util/boringAvatar";
 
 const ProfilePage = () => {
+  const secritKey = process.env.REACT_APP_JWT_SECRIT_KEY ?? 'default-secret-key';
   const { connected, account } = useWallet();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const inviteCode = useAppSelector((state) => state.credpointsState.inviteCode);
+  const initialized = useAppSelector(state => state.globalState.initialized);
+  const profileViewed = useAppSelector(state => state.profileState.profileViewed);
+  const profileImage = useAppSelector(state => state.profileState.avatar);
   const initInviteCode = useAppSelector(
     (state) => state.credpointsState.initInviteCode
   );
-  const initialized = useAppSelector(state => state.globalState.initialized);
+  const initInviteCodeRef = useRef(initInviteCode);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (inviteCode && account?.address) {
+        if (!profileViewed) {
+          const token = jwtEncode({ wallet: account.address }, secritKey);
+          const res = await profileviewed(token);
+          if (res.success) {
+            console.log(res, "        ", account.address)
+            dispatch(updateProfileViewed(true))
+          }
+        }
+      }
+    };
+    fetchData();
+  }, [inviteCode, account])
+
+  useEffect(() => {
+    initInviteCodeRef.current = initInviteCode;
+  }, [initInviteCode, account]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!initInviteCodeRef.current) {
+        navigate('/')
+      }
+    };
+    const fetchDataTimeout = setTimeout(() => {
+      fetchData();
+    }, 5000);
+    return () => {
+      clearTimeout(fetchDataTimeout);
+    };
+  }, [initInviteCodeRef]);
+
 
   return (
     <div className="parallax font-[Inter]" id="cred-point">
@@ -51,7 +86,7 @@ const ProfilePage = () => {
               {!initialized ? (
                 <img className="w-[100px] h-[100px] rounded-full z-50" src="/default-image.png" alt="" />
               ) : (
-                <img className="w-[100px] h-[100px] rounded-full z-50" src="/avatar1.png" alt="" />
+                <img className="w-[100px] h-[100px] rounded-full z-50" src={profileImage == "" ? getBoringAvatar(account?.address) : profileImage} alt="" />
               )}
               <div onClick={() => dispatch(toggleChangeAvatarPanel(true))} className="absolute top-0 left-0 w-[100px] h-[100px] group hover:bg-[black] hover:opacity-70 rounded-full flex justify-center items-center cursor-pointer">
                 <p className="hidden group-hover:block text-white font-bold">Change</p>
