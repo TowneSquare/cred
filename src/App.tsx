@@ -32,6 +32,7 @@ import { INVITE_CODE } from "./constants/inviteCode";
 import "./App.css";
 import { getInviteCode } from "./api/invite";
 import { updateInitialized } from "./state/global";
+
 import ChangeAvatarModal from "./components/modal/changeAvatarModal";
 import RecapachaModal from "./components/modal/recapachaModal";
 import EmailVerifyModal from "./components/modal/emailVerifyModal";
@@ -79,6 +80,7 @@ function App() {
         <Route path="/tos" element={<TermsOfService />} />
       </Routes>
       <Sidebar />
+      <RecapachaModal />
       <WalletModal />
       <ChangeAvatarModal />
       <RecapachaModal />

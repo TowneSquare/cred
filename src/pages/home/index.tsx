@@ -23,7 +23,9 @@ const Home = () => {
   }, 3500);
 
   useEffect(() => {
-    if (step == 2)
+
+  if (step == 2)
+
       dispatch(toggleRecapachaModal(true));
   }, [step]);
 

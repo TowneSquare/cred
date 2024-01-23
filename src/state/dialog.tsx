@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface dialogStates {
   bSidebar: boolean;
   bWalletHold: boolean;
+  bRecapachaModal : boolean
   bActivityList: boolean;
   bNftList: boolean;
   bReferral: boolean;
@@ -25,6 +26,7 @@ const initialState: dialogStates = {
   bSidebar: false,
   bWalletPanel: false,
   bWalletHold: false,
+  bRecapachaModal: false,
   bActivityList: false,
   bNftList: false,
   bReferral: false,
@@ -63,6 +65,9 @@ export const dialogSlice = createSlice({
     },
     toggleConnectRequest: (state, action: PayloadAction<boolean>) => {
       state.bWalletHold = action.payload;
+    },
+    toggleRecapachaModal: (state, action: PayloadAction<boolean>) => {
+      state.bRecapachaModal = action.payload;
     },
     toggleActivityList: (state, action: PayloadAction<boolean>) => {
       state.bActivityList = action.payload;
@@ -111,6 +116,7 @@ export const {
   toggleEmailVerifyModal,
   toggleRecapachaModal,
   toggleConnectRequest,
+  toggleRecapachaModal,
   toggleActivityList,
   toggleNftList,
   toggleReferral,
