@@ -10,26 +10,50 @@ body {
   font-family: "Space Grotesk", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #121212;
+  background: #0C0C0C;
   color: white;
 }
 
 .container {
-  background: linear-gradient(
-    92deg,
-    rgba(255, 255, 255, 0.14) 0%,
-    rgba(255, 255, 255, 0) 111.54%
-  );
+  background: linear-gradient(92deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0) 111.54%);
   -webkit-backdrop-filter: blur(12.9px);
   backdrop-filter: blur(12.9px);
 }
 
-.container-dark{
-  background: linear-gradient(
-    92deg,
-    rgba(255, 255, 255, 0.14) 0%,
-    rgba(255, 255, 255, 0) 111.54%
-  ), #000000E0;
+.container-dark {
+  background: linear-gradient(92deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0) 111.54%), #000000E0;
   -webkit-backdrop-filter: blur(12.9px);
   backdrop-filter: blur(12.9px);
+}
+
+.container-dark1 {
+  background: linear-gradient(92deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0) 111.54%), #000000E0;
+  -webkit-backdrop-filter: blur(12.9px);
+  backdrop-filter: blur(12.9px);
+}
+
+.container-popup {
+  background: #121212;
+  -webkit-backdrop-filter: blur(12.9px);
+  backdrop-filter: blur(12.9px);
+}
+
+.container-light {
+  background: linear-gradient(92deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0) 111.54%);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+@media (min-width: 768px) {
+  .container-dark1 {
+    background: #121212
+  }
 }

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 
@@ -20,6 +20,10 @@ import {
   updateConnection,
   updateCredPointsLive,
 } from "../../state/credpoints";
+import TokenBoard from "./tokenBoard";
+import GameActivity from "./gameActivity";
+import { updateVisitorMode } from "../../state/global";
+import SuggestVerifyNavbar from "../../components/header/suggestVerifyNavbar";
 
 const CredPoints = () => {
   const { connected, account } = useWallet();
@@ -29,21 +33,41 @@ const CredPoints = () => {
     (state) => state.credpointsState.initInviteCode
   );
   const initialized = useAppSelector(state => state.globalState.initialized);
+  const visitorMode = useAppSelector(state => state.globalState.visitorMode);
+
+  const initInviteCodeRef = useRef(initInviteCode);
+  const visitorModeRef = useRef(visitorMode);
 
   useEffect(() => {
-    console.log(account, initialized, initInviteCode)
-      if (connected && account && initialized && initInviteCode == undefined) {
-        navigate("/");
+    initInviteCodeRef.current = initInviteCode;
+    visitorModeRef.current = visitorMode;
+  }, [initInviteCode, account, visitorMode]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!initInviteCodeRef.current && !visitorModeRef.current) {
+        navigate('/')
       }
+    };
+    const fetchDataTimeout = setTimeout(() => {
+      fetchData();
+    }, 5000);
+    return () => {
+      clearTimeout(fetchDataTimeout);
+    };
+  }, [initInviteCodeRef, visitorModeRef]);
+
+
+  useEffect(() => {
+    if (connected && account && initialized && initInviteCode == undefined) {
+      dispatch(updateVisitorMode(true));
+    }
   }, [account, initialized]);
 
   useEffect(() => {
     dispatch(updateConnection(connected));
-
     if (connected && account && initInviteCode) {
       dispatch(updateCredPointsLive(false));
-
-      console.log("dispatching", initInviteCode);
       dispatch(fetchCredpoints({ wallet: account.address, initInviteCode }));
     }
   }, [connected, account, initInviteCode]);
@@ -52,8 +76,8 @@ const CredPoints = () => {
     <div className="parallax" id="cred-point">
       <Header />
       <div className="parallax__group">
-        <div className="parallax__layer cred__effect1">
-          <img src="/credpoints/effect1.png" alt="effect1" />
+        <div className="parallax__layer cred__effect4 z-[100]">
+          <img src="/credpoints/transparent_text.svg" />
         </div>
         <div className="parallax__layer cred__effect2">
           <img src="/credpoints/effect2.png" alt="effect2" />
@@ -62,16 +86,18 @@ const CredPoints = () => {
           <img src="/credpoints/effect3.png" alt="effect3" />
         </div>
       </div>
+      <SuggestVerifyNavbar />
       <div className="relative w-full flex justify-center z-10 !bg-fixed">
-        <div className="w-full md:w-[1000px] flex flex-col items-center mt-[116px] mb-10">
+        <div className={`w-full md:w-[1000px] flex flex-col items-center ${visitorMode ? 'mt-[70px]' : 'mt-[116px]'} mb-10`}>
           <InviteCode />
           <MyTotal />
           <Cards />
           <DefiActivity />
           <NftBoard />
           <Referral />
+          <TokenBoard />
+          <GameActivity />
           <Banner />
-          <PrivacyPolicy />
         </div>
       </div>
     </div>

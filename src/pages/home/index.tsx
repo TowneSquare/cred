@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import ConnectButton from "../../components/header/connectButton";
 import { toggleRecapachaModal, toggleSidebar } from "../../state/dialog";
 import { debounce } from 'lodash';
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Home = () => {
   const [current, setCurrent] = useState(0);
@@ -22,7 +23,9 @@ const Home = () => {
   }, 3500);
 
   useEffect(() => {
-    if (step == 1)
+
+  if (step == 2)
+
       dispatch(toggleRecapachaModal(true));
   }, [step]);
 
@@ -102,23 +105,24 @@ const Home = () => {
           onClick={() => dispatch(toggleSidebar(true))}
         />
       </div>
-      <div className="absolute top-16">
-        <Logo />
+      <div className="absolute top-16 w-[90%]">
+        <div>
+          <Logo />
+        </div>
+        <div className="mt-[51px] md:mt-[62px] min-h-[96px] md:min-h-[auto] flex flex-col justify-center">
+          {TextEffect}
+        </div>
+        <Box boxVisible={boxVisible} />
       </div>
-      <div className="md:mt-[35vh] min-h-[96px] md:min-h-[auto] flex flex-col justify-center">
-        {TextEffect}
-      </div>
-      {boxVisible && <Box />}
       <img
         src="/home/screen1/effect1.svg"
         alt="effect1"
         className="absolute bottom-16 -left-10 md:top-20 md:left-24 md:right-auto w-[150px] md:w-[250px] opacity-50 md:opacity-1 z-0"
       />
-
       <img
         src="/home/screen1/effect2.svg"
         alt="effect2"
-        className="absolute top-16 -right-16 md:top-[60%] md:left-auto md:right-16 w-[150px] md:w-[250px] opacity-50 md:opacity-1 z-0"
+        className="absolute top-16 right-10 md:top-[60%] md:left-auto md:right-16 w-[150px] md:w-[250px] opacity-50 md:opacity-1 z-[-1]"
       />
     </div>
   );
