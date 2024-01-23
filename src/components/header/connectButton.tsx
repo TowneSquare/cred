@@ -46,7 +46,7 @@ const ConnectButton = () => {
                 />
               </div>
               <span>
-                {account?.address == profileName || !profileName ? account?.address.slice(0, 7) + "..." + account?.address.slice(-3) : profileName}
+                {account?.address == profileName || !profileName ? account?.address.slice(0, 5) + "..." + account?.address.slice(-3) : profileName}
                 <span className="text-xs">&nbsp;&nbsp;&nbsp;{isOpen ? "▲" : "▼"}</span>
               </span>
             </div>

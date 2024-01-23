@@ -8,7 +8,6 @@ interface dialogStates {
   bNftList: boolean;
   bReferral: boolean;
   bChangeAvatarPanel: boolean;
-  bRecapachaModal: boolean;
   bEmailVerifyModal: boolean;
   beligibleModal: boolean;
   bWalletPanel: boolean;
@@ -32,7 +31,6 @@ const initialState: dialogStates = {
   bReferral: false,
   bChangeAvatarPanel: false,
   bEmailVerifyModal: false,
-  bRecapachaModal: false,
   bSocialConnectPanel: false,
   bSuggestVerifyModal: false,
   bFirstVerifyModal: false,
@@ -65,9 +63,6 @@ export const dialogSlice = createSlice({
     },
     toggleConnectRequest: (state, action: PayloadAction<boolean>) => {
       state.bWalletHold = action.payload;
-    },
-    toggleRecapachaModal: (state, action: PayloadAction<boolean>) => {
-      state.bRecapachaModal = action.payload;
     },
     toggleActivityList: (state, action: PayloadAction<boolean>) => {
       state.bActivityList = action.payload;
@@ -116,7 +111,6 @@ export const {
   toggleEmailVerifyModal,
   toggleRecapachaModal,
   toggleConnectRequest,
-  toggleRecapachaModal,
   toggleActivityList,
   toggleNftList,
   toggleReferral,
