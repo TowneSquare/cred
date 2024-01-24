@@ -31,7 +31,7 @@ const Email = () => {
 
   return (
     <>
-      <div className={`bg-[#1B1B1B] w-[90%] ${emailConnected ? 'h-[216px]' : 'h-[357px]'} ${inputText && !isValidEmail ? 'md:h-[230px]' : 'md:h-[195px]'} py-8 px-4 md:px-8 grid md:flex items-center border border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
+      <div className={`bg-[#1B1B1B] w-[90%] opacity-[30%] blur ${emailConnected ? 'h-[216px]' : 'h-[357px]'} ${inputText && !isValidEmail ? 'md:h-[230px]' : 'md:h-[195px]'} py-8 px-4 md:px-8 grid md:flex items-center border border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
         {emailConnected ? (
           <>
             <div className="grid md:flex md:justify-between w-[100%]">
@@ -72,12 +72,12 @@ const Email = () => {
                   Verify email
                 </p>
                 <div className="hidden md:flex justify-between mt-[10px] md:w-[710px]">
-                  <input
+                  <div
                     placeholder="Email"
                     className="bg-black w-full md:w-[497px] h-[51px] border border-gray-light-2 rounded-[200px] pl-8"
-                    type="text"
-                    value={inputText}
-                    onChange={handleInputChange}
+                    // type="text"
+                    // value={inputText}
+                    // onChange={handleInputChange}
                   />
                   <button
                     onClick={() => { isValidEmail && dispatch(toggleEmailVerifyModal(true)) }}
