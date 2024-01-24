@@ -23,8 +23,8 @@ const Ans = () => {
 
   return (
     <>
-      <div className={`bg-[#1B1B1B] w-[90%] ${ansList.length != 0 ? 'h-[298px]' : 'h-[229px]'} md:h-[144px] py-8 px-4 md:px-8 grid md:flex items-center border border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
-        {ansList.length != 1 ? (
+      <div className={`bg-[#1B1B1B] w-[90%] h-[298px] md:h-[144px] py-8 px-4 md:px-8 grid md:flex items-center border border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
+        {ansList.length != 0 ? (
           <>
             <div className="flex md:items-center w-[90%]">
               <div className="justify-center container-light border w-16 h-16 md:w-[80px] md:h-[80px] border-gray-light-2 rounded-full">
@@ -42,11 +42,8 @@ const Ans = () => {
                   {" "}<img src="/credpoints/success.svg" className="hidden w-[24px] h-[24px] md:inline-block" alt="cred" />
                 </p>
                 <div className="grid md:flex">
-                  <p className="text-[20px] font-normal">
-                    Aptos name:&nbsp;
-                  </p>
                   <div className="flex items-center text-[20px]">
-                    &nbsp; {ansList[0]}
+                    {"Aptos name: " + ansList[0]}
                   </div>
                 </div>
               </div>

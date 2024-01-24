@@ -22,11 +22,8 @@ const Twitter = ({ isProfileModal }: { isProfileModal: boolean }) => {
 
   const authenticateWithTwitter = async () => {
     try {
-      if (isChecked == true) {
-        window.open('https://twitter.com/0xcred', '_blank', 'noopener,noreferrer,resizable');
-      }
       await magic.oauth.loginWithRedirect({
-        provider: "twitter", // Specify Twitter as the authentication provider
+        provider: "twitter",
         redirectURI: new URL(!isProfileModal ? '/' : '/profile', window.location.origin).href,
       });
     } catch (err) {
@@ -37,7 +34,7 @@ const Twitter = ({ isProfileModal }: { isProfileModal: boolean }) => {
 
   return (
     <>
-      <div className={`${isProfileModal ? 'bg-[#1B1B1B] md:h-[144px] w-[90%] border py-8 px-4 md:px-8 mb-4' : 'md:h-[91px] bg-opacity-0 w-[100%] mb-8'} ${!twitterId && suggestVerifyModal || firstVerifyModal ? 'h-[205px]' : 'h-[298px]'} grid md:flex items-center border-gray-light-2 rounded-xl md:justify-between`}>
+      <div className={`${isProfileModal ? 'bg-[#1B1B1B] md:h-[144px] w-[90%] border py-8 px-4 md:px-8 mb-4' : 'md:h-[91px] bg-opacity-0 w-[100%] mb-8'} ${!twitterId && suggestVerifyModal || firstVerifyModal ? 'h-[205px]' : 'h-[358px]'} grid md:flex items-center border-gray-light-2 rounded-xl md:justify-between`}>
         {twitterId ? (
           <>
             <div className="flex md:items-center w-[90%]">
@@ -56,18 +53,23 @@ const Twitter = ({ isProfileModal }: { isProfileModal: boolean }) => {
                   {" "}<img src="/credpoints/success.svg" className="hidden w-[24px] h-[24px] md:inline-block" alt="cred" />
                 </p>
                 <div className="grid md:flex">
-                  <p className="text-[20px] font-normal">
-                    Verified:&nbsp;
-                  </p>
                   <div className="flex items-center text-[20px]">
-                    {/* <img src={!twitterImage ? getBoringAvatar(account?.address) : twitterImage} className="w-[26px] h-[26px] inline-block rounded-full" /> */}
-                    &nbsp; {twitterId}
+                    {"Verified: " + twitterId}
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex justify-center mt-8 md:mt-0">
-              <ConnectedButton>Connected</ConnectedButton>
+            <div className="grid">
+              <div className="flex justify-center mt-8 md:mt-0">
+                <ConnectedButton>Connected</ConnectedButton>
+              </div>
+              <button className="md:mt-2 mt-4 bg-black flex items-center justify-center text-white md:w-[200px] md:h-[44px] py-3 rounded-[200px] text-[16px] text-center">
+                <a href="https://twitter.com/0xcred" target="_blank" >
+                  <img className="inline-block w-[26px] mr-[5px]" src="/profile/0xcred.svg" alt="copy" />
+                  Follow us on X
+                  <img className="inline-block ml-[5px] w-4" src="/credpoints/arrow-right.svg" alt="copy" />
+                </a>
+              </button>
             </div>
           </>
         ) : (
@@ -100,20 +102,13 @@ const Twitter = ({ isProfileModal }: { isProfileModal: boolean }) => {
                 <button onClick={authenticateWithTwitter} className="bg-[#F5E27D] md:w-[200px] h-[51px] py-3 px-8 rounded-[200px] text-black font-bold text-[16px] text-center">
                   Connect X
                 </button>
-                <div className="flex mt-4 justify-center">
-                  <input
-                    className="h-6 w-11 appearance-none rounded-[20px] bg-[#52BDB2] checked:bg-gray-light-2 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:mt-[3px] after:ml-[22px] after:h-[17px] after:w-[17px] after:rounded-full after:border-none after:bg-white after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:mt-[3px] checked:after:ml-1 checked:after:h-[17px] checked:after:w-[17px] checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[17px] focus:after:w-[17px] focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100  dark:bg-neutral-600 dark:after:bg-neutral-400 dark:checked:bg-primary dark:checked:after:bg-primary"
-                    type="checkbox"
-                    role="switch"
-                    value="checked"
-                    id="flexSwitchCheckDefault"
-                    checked={!isChecked}
-                    onChange={handleCheckboxChange}
-                  />
-                  <p className="ml-2 mt-1 text-center text-xs md:text-[16px]">
-                    follow @0xcred
-                  </p>
-                </div>
+                <button className="mt-4 md:mt-2 bg-black flex items-center justify-center text-white md:w-[200px] md:h-[44px] py-3 rounded-[200px] text-[16px] text-center">
+                  <a href="https://twitter.com/0xcred" target="_blank">
+                    <img className="inline-block w-[22.5px] mr-[5px]" src="/profile/0xcred.svg" alt="copy" />
+                    Follow us on X
+                    <img className="inline-block ml-[5px] w-4" src="/credpoints/arrow-right.svg" alt="copy" />
+                  </a>
+                </button>
               </div>
             </div>
           </>

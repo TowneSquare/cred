@@ -50,7 +50,8 @@ export const leaderboardSlice = createSlice({
       state.myMorePoint = 0;
       state.lowerPercentage = 0;
       state.topRankings = [];
-      state.twitterList = []
+      state.twitterList = [];
+      state.initInviteCode = undefined;
     },
     updateLeaderboardLive: (state, action: PayloadAction<boolean>) => {
       state.isLive = action.payload;

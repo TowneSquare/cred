@@ -16,6 +16,11 @@ export const globalSlice = createSlice({
   name: "global",
   initialState,
   reducers: {
+    resetGlobal: (state, action: PayloadAction<boolean>) => {
+      state.step = 0;
+      state.initialized = false;
+      state.visitorMode = false;
+    },
     updateStep: (state, action: PayloadAction<number>) => {
       state.step = action.payload;
     },
@@ -28,5 +33,5 @@ export const globalSlice = createSlice({
   },
 });
 
-export const { updateStep, updateInitialized, updateVisitorMode } = globalSlice.actions;
+export const { resetGlobal, updateStep, updateInitialized, updateVisitorMode } = globalSlice.actions;
 export default globalSlice.reducer;

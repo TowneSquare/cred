@@ -7,6 +7,7 @@ import { reset } from "../../state/credpoints";
 import { reset as resetLeaderboard } from "../../state/leaderboard";
 import { resetProfile } from "../../state/profile";
 import { useNavigate } from "react-router-dom";
+import { resetGlobal } from "../../state/global";
 
 const ConnectButton = () => {
   const navigate = useNavigate();
@@ -22,8 +23,11 @@ const ConnectButton = () => {
     dispatch(reset(true));
     dispatch(resetLeaderboard(true));
     dispatch(resetProfile(true));
+    dispatch(resetGlobal(true));
     disconnect();
-    navigate('/')
+    setTimeout(() => {
+      navigate('/')
+    }, 2000)
   }
 
   return (

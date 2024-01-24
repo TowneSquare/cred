@@ -10,7 +10,7 @@ const ConnectionList = () => {
   );
   return (
     <div className={`${currentTap == 1 ? 'flex' : 'hidden md:flex'} mt-8 md:mt-32 md:py-5 md:w-[45%] w-full flex-col items-center`}>
-      <p className="text-center text-[20px] md:text-3xl font-bold">Recent connections with X</p>
+      <p className="text-center text-[20px] md:text-[25px] font-bold">Recent connections with X</p>
       <div className="mt-2 w-8 h-px border border-secondary-default" />
       <div
         className="container mt-8 w-[95%] border border-gray-light-1 md:border-gray-light-4 rounded-2xl"

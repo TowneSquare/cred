@@ -50,7 +50,7 @@ const ConnectionItem: React.FC<Props> = ({ data, index }) => {
               alt="avatar"
             />
             <p className="md:block text-base md:text-lg">
-              {data.twitterId}
+              {data.twitterId.slice(0, 6)+"..."}
             </p>
             <img
               src="/credpoints/external_link.svg"
