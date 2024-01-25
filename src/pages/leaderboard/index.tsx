@@ -21,7 +21,7 @@ import SuggestVerifyNavbar from "../../components/header/suggestVerifyNavbar";
 import ConnectionList from "./connectionList";
 import { updateLeaderboardTapIndex } from "../../state/leaderboard";
 import LeaderboardTapItem from "../../components/leaderboardTapItem";
-import { fetchCredpoints } from "../../state/credpoints";
+import { fetchCredpoints, updateCredPointsLive } from "../../state/credpoints";
 
 const Leaderboard = () => {
   const { connected, account } = useWallet();
@@ -67,9 +67,12 @@ const Leaderboard = () => {
 
     if (connected && account && initInviteCode) {
       dispatch(updateLeaderboardLive(false));
+      dispatch(updateCredPointsLive(false));
       dispatch(fetchRankings(account.address));
+      dispatch(fetchCredpoints({ wallet: account.address, initInviteCode }));
     }
   }, [connected, account, initInviteCode]);
+
 
   return (
     <div className="relative">

@@ -14,6 +14,8 @@ import { toggleChangeAvatarPanel } from "../../state/dialog";
 import { profileviewed, setProfileName } from "../../api/profile";
 import { updateProfileViewed } from "../../state/profile";
 import { getBoringAvatar } from "../../util/boringAvatar";
+import { fetchCredpoints, updateCredPointsLive } from "../../state/credpoints";
+import { fetchRankings } from "../../state/leaderboard";
 
 const ProfilePage = () => {
   const secritKey = process.env.REACT_APP_JWT_SECRIT_KEY ?? 'default-secret-key';
@@ -63,6 +65,13 @@ const ProfilePage = () => {
     };
   }, [initInviteCodeRef]);
 
+  useEffect(() => {
+    if (connected && account && initInviteCode) {
+      dispatch(updateCredPointsLive(false));
+      dispatch(fetchRankings(account.address));
+      dispatch(fetchCredpoints({ wallet: account.address, initInviteCode }));
+    }
+  }, [connected, account, initInviteCode]);
 
   return (
     <div className="parallax font-[Inter]" id="cred-point">

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { getBoringAvatar } from "../../../util/boringAvatar";
 import { TwitterList } from "../../../type/twitterList";
+import { useEffect, useState } from "react";
 
 interface Props {
   data: TwitterList;
@@ -31,6 +32,27 @@ const ConnectionItem: React.FC<Props> = ({ data, index }) => {
     }
   }
 
+  const [truncateHandles, setTruncateHandles] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Check the browser width and set truncateHandles accordingly
+      setTruncateHandles(window.innerWidth < 1400); // You can adjust the threshold as needed
+    };
+
+    // Add event listener for resize
+    window.addEventListener('resize', handleResize);
+
+    // Initial check on component mount
+    handleResize();
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
   return (
     <>
       <div
@@ -50,7 +72,11 @@ const ConnectionItem: React.FC<Props> = ({ data, index }) => {
               alt="avatar"
             />
             <p className="md:block text-base md:text-lg">
-              {data.twitterId.slice(0, 6)+"..."}
+              {truncateHandles ? (
+                <span>{data.twitterId.slice(0, 6) + '...'}</span>
+              ) : (
+                <span>{data.twitterId}</span>
+              )}
             </p>
             <img
               src="/credpoints/external_link.svg"

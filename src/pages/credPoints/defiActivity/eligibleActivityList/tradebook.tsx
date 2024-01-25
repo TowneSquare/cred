@@ -9,7 +9,7 @@ interface Props {
 const Tradebook: React.FC<Props> = ({ data }) => {
   return (
     <div className="flex flex-col">
-      <div className="grid h-[129px] border-b-[1px] border-[#626262] mb-2">
+      {/* <div className="grid h-[129px] border-b-[1px] border-[#626262] mb-2">
         <div className="flex justify-between md:mt-4 h-8 items-center">
           <div className="flex">
             <img
@@ -32,7 +32,7 @@ const Tradebook: React.FC<Props> = ({ data }) => {
           </div>
           <p className="text-[12px] text-[#B9B9B9] mt-2">Supported bridges for <b>USDC</b>: LayerZero</p>
         </div>
-      </div>
+      </div> */}
 
       <div className="grid h-[129px] border-b-[1px] border-[#626262] mb-2">
         <div className="flex justify-between md:mt-4 h-8 items-center">
