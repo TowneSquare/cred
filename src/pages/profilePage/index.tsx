@@ -18,7 +18,7 @@ import { fetchCredpoints, updateCredPointsLive } from "../../state/credpoints";
 import { fetchRankings } from "../../state/leaderboard";
 
 const ProfilePage = () => {
-  const secritKey = process.env.REACT_APP_JWT_SECRIT_KEY ?? 'default-secret-key';
+  const secretKey = process.env.REACT_APP_JWT_SECRET_KEY ?? 'default-secret-key';
   const { connected, account } = useWallet();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -35,7 +35,7 @@ const ProfilePage = () => {
     const fetchData = async () => {
       if (inviteCode && account?.address) {
         if (!profileViewed) {
-          const token = jwtEncode({ wallet: account.address }, secritKey);
+          const token = jwtEncode({ wallet: account.address }, secretKey);
           const res = await profileviewed(token);
           if (res.success) {
             console.log(res, "        ", account.address)
@@ -95,7 +95,7 @@ const ProfilePage = () => {
               {!initialized ? (
                 <img className="w-[100px] h-[100px] rounded-full z-50" src="/default-image.png" alt="" />
               ) : (
-                <img className="w-[100px] h-[100px] rounded-full z-50" src={profileImage == "" ? getBoringAvatar(account?.address) : profileImage} alt="" />
+                <img className="w-[100px] h-[100px] rounded-full z-50" src={profileImage == "" ? getBoringAvatar(account?.address) : profileImage} alt=""/>
               )}
               <div onClick={() => dispatch(toggleChangeAvatarPanel(true))} className="absolute top-0 left-0 w-[100px] h-[100px] group hover:bg-[black] hover:opacity-70 rounded-full flex justify-center items-center cursor-pointer">
                 <p className="hidden group-hover:block text-white font-bold">Change</p>

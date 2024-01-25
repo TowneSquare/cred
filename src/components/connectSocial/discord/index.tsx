@@ -20,7 +20,7 @@ const Discord = ({ isProfileModal }: { isProfileModal: boolean }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const step = useAppSelector((state) => state.globalState.step);
-  const secritKey = process.env.REACT_APP_JWT_SECRIT_KEY ?? 'default-secret-key';
+  const secretKey = process.env.REACT_APP_JWT_SECRET_KEY ?? 'default-secret-key';
   const [isChecked, setChecked] = useState(true);
   const handleCheckboxChange = () => {
     setChecked(!isChecked);
@@ -59,7 +59,7 @@ const Discord = ({ isProfileModal }: { isProfileModal: boolean }) => {
         const userName = result.oauth.userInfo.preferredUsername;
         const profileImage = result.oauth.userInfo.profile;
         if (userName && profileImage) {
-          const token = jwtEncode({ userName: userName, profileImage: profileImage }, secritKey);
+          const token = jwtEncode({ userName: userName, profileImage: profileImage }, secretKey);
           const res = await registerSocial(account?.address, token, 'twitter');
           if (res.success) {
             if (isProfileModal) {

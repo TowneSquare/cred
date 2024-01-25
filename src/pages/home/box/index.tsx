@@ -18,7 +18,7 @@ const Box = (boxVisible: any) => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState<string | undefined>(undefined);
   const step = useAppSelector((state) => state.globalState.step);
-  const secritKey = process.env.REACT_APP_JWT_SECRIT_KEY ?? 'default-secret-key';
+  const secretKey = process.env.REACT_APP_JWT_SECRET_KEY ?? 'default-secret-key';
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

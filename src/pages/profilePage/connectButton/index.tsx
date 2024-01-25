@@ -18,12 +18,12 @@ const ConnectButton = () => {
   const ansList = useAppSelector((state) => state.profileState.ansName)
   const twitterId = useAppSelector((state) => state.profileState.twitterId)
   const profileName = useAppSelector((state) => state.profileState.profileName)
-  const secritKey = process.env.REACT_APP_JWT_SECRIT_KEY ?? 'default-secret-key';
+  const secretKey = process.env.REACT_APP_JWT_SECRET_KEY ?? 'default-secret-key';
 
   const handleSetName = async (name: string) => {
     console.log(profileName, name)
     if (account) {
-      const token = jwtEncode({ wallet: account.address }, secritKey);
+      const token = jwtEncode({ wallet: account.address }, secretKey);
       const res = await setProfileName(name, token)
       if (res.success) {
         console.log(profileName, res.name)

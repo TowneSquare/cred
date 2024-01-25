@@ -13,7 +13,7 @@ const Email = () => {
   const [inputText, setInputText] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(false);
   const emailAddress = useAppSelector(state => state.profileState.email);
-  const secritKey = process.env.REACT_APP_JWT_SECRIT_KEY ?? 'default-secret-key';
+  const secretKey = process.env.REACT_APP_JWT_SECRET_KEY ?? 'default-secret-key';
   const profileViewed = useAppSelector((state) => state.profileState.profileViewed)
   const handleInputChange = (event: any) => {
     const email = event.target.value;
@@ -29,7 +29,7 @@ const Email = () => {
   const submitVerifyRequest = async () => {
     dispatch(toggleEmailVerifyModal(true));
     dispatch(toggleUpdateRequestEmail(inputText));
-    const token = jwtEncode({ wallet: account?.address }, secritKey);
+    const token = jwtEncode({ wallet: account?.address }, secretKey);
     const res = await emailVerify(inputText, token);
     console.log("email sent", res);
   };

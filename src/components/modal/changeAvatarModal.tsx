@@ -9,7 +9,7 @@ import { getBoringAvatar } from "../../util/boringAvatar";
 
 const ChangeAvatarModal = () => {
   const { connected, account } = useWallet();
-  const secritKey = process.env.REACT_APP_JWT_SECRIT_KEY ?? 'default-secret-key';
+  const secretKey = process.env.REACT_APP_JWT_SECRET_KEY ?? 'default-secret-key';
   const dispatch = useAppDispatch();
   const isOpen = useAppSelector((state) => state.dialogState.bChangeAvatarPanel);
   const avatar = useAppSelector((state) => state.profileState.avatar)
@@ -17,7 +17,7 @@ const ChangeAvatarModal = () => {
   const handleFileUpload = async (event: any) => {
     const file = event.target.files[0];
     if (file && account?.address) {
-      const token = jwtEncode({ wallet: account.address }, secritKey);
+      const token = jwtEncode({ wallet: account.address }, secretKey);
       const data = new FormData();
       data.append('token', token);
       data.append('file', file);
@@ -31,7 +31,7 @@ const ChangeAvatarModal = () => {
 
   const handleProfileImage = async (event: any) => {
     if (account?.address && avatar != "") {
-      const token = jwtEncode({ wallet: account.address }, secritKey);
+      const token = jwtEncode({ wallet: account.address }, secretKey);
       const res = await removeProfileImage(token);
       if (res.success) {
         dispatch(updateProfileImage(res.profile.avatar))

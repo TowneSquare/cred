@@ -16,7 +16,7 @@ const EmailVerifyModal = () => {
   const recaptcha = useRef(null);
   const dispatch = useAppDispatch();
   const isOpen = useAppSelector((state) => state.dialogState.bEmailVerifyModal);
-  const secritKey = process.env.REACT_APP_JWT_SECRIT_KEY ?? 'default-secret-key';
+  const secretKey = process.env.REACT_APP_JWT_SECRET_KEY ?? 'default-secret-key';
   const { connected, account } = useWallet();
 
   const requestedEmail = useAppSelector((state) => state.profileState.requestEmail)
@@ -26,7 +26,7 @@ const EmailVerifyModal = () => {
 
   const onInviteCode = async () => {
     if (account) {
-      const token = jwtEncode({ wallet: account?.address }, secritKey);
+      const token = jwtEncode({ wallet: account?.address }, secretKey);
       const inviteCode = otp.toUpperCase()
       const res = await checkEmailVerifyCode(requestedEmail, token, inviteCode);
       if (res.success) {
