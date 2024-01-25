@@ -4,13 +4,16 @@ import ConnectedButton from "../../../components/connectedButton";
 import { toggleEmailVerifyModal } from "../../../state/dialog";
 import { emailVerify } from "../../../api/profile";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import jwtEncode from 'jwt-encode';
+import { toggleUpdateRequestEmail } from "../../../state/profile";
 
 const Email = () => {
   const dispatch = useAppDispatch();
   const { connected, account } = useWallet();
   const [inputText, setInputText] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(false);
-  const [emailConnected, setEmailConnected] = useState(false);
+  const emailAddress = useAppSelector(state => state.profileState.email);
+  const secritKey = process.env.REACT_APP_JWT_SECRIT_KEY ?? 'default-secret-key';
   const profileViewed = useAppSelector((state) => state.profileState.profileViewed)
   const handleInputChange = (event: any) => {
     const email = event.target.value;
@@ -25,14 +28,16 @@ const Email = () => {
 
   const submitVerifyRequest = async () => {
     dispatch(toggleEmailVerifyModal(true));
-    // const res = await emailVerify(inputText, account?.address);
-    // console.log(res);
+    dispatch(toggleUpdateRequestEmail(inputText));
+    const token = jwtEncode({ wallet: account?.address }, secritKey);
+    const res = await emailVerify(inputText, token);
+    console.log("email sent", res);
   };
 
   return (
     <>
-      <div className={`bg-[#1B1B1B] w-[90%] ${emailConnected ? 'h-[216px]' : 'h-[357px]'} ${inputText && !isValidEmail ? 'md:h-[230px]' : 'md:h-[195px]'} py-8 px-4 md:px-8 grid md:flex items-center border border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
-        {emailConnected ? (
+      <div className={`bg-[#1B1B1B] w-[90%] ${emailAddress ? 'h-[216px]' : 'h-[357px]'} ${inputText && !isValidEmail ? 'md:h-[230px]' : 'md:h-[175px]'} py-8 px-4 md:px-8 grid md:flex items-center border border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
+        {emailAddress ? (
           <>
             <div className="grid md:flex md:justify-between w-[100%]">
               <div className="flex mb-8 md:mb-0">
@@ -49,8 +54,8 @@ const Email = () => {
                     <p className="hidden md:block text-[18px] md:text-[20px] font-normal ">
                       Email:&nbsp;
                     </p>
-                    <p className="text-[18px] md:text-[20px] font-normal">
-                      test@test.com
+                    <p className="text-[14px] md:text-[20px] font-normal">
+                      {emailAddress}
                     </p>
                   </div>
                 </div>
@@ -80,7 +85,7 @@ const Email = () => {
                     onChange={handleInputChange}
                   />
                   <button
-                    onClick={() => { isValidEmail && dispatch(toggleEmailVerifyModal(true)) }}
+                    onClick={() => { isValidEmail && submitVerifyRequest() }}
                     className={`bg-[#F5E27D] md:w-[200px] h-[51px] py-3 px-8 rounded-[200px] text-black font-bold text-[16px] text-center ${isValidEmail ? '' : ' opacity-50 cursor-not-allowed'
                       }`}
                   >
@@ -128,7 +133,7 @@ const Email = () => {
               </div>
 
               <button
-                onClick={() => { isValidEmail && dispatch(toggleEmailVerifyModal(true)) }}
+                onClick={() => { isValidEmail && submitVerifyRequest() }}
                 className={`bg-[#F5E27D] w-full md:w-[200px] mt-4 h-[51px] py-3 px-8 rounded-[200px] text-black font-bold text-[16px] text-center ${isValidEmail ? '' : ' opacity-50 cursor-not-allowed'
                   }`}
               >

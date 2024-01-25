@@ -6,10 +6,12 @@ interface profileStates {
   profileViewed: boolean;
   discordId: string | null;
   twitterId: string | null;
+  email: string | undefined;
   profileName: string | null;
   twitterImage: string | undefined;
   ansName: any[];
   avatar: string;
+  requestEmail: string;
 }
 
 const initialState: profileStates = {
@@ -19,6 +21,8 @@ const initialState: profileStates = {
   discordId: null,
   twitterId: null,
   profileName: null,
+  requestEmail: "",
+  email: undefined,
   twitterImage: undefined,
   ansName: [],
   avatar: ''
@@ -50,6 +54,8 @@ export const profileSlice = createSlice({
       state.ansName = [];
       state.avatar = '';
       state.twitterImage = '';
+      state.requestEmail = '';
+      state.email = undefined;
     },
     updateDiscordId: (state, action: PayloadAction<string>) => {
       state.discordId = action.payload;
@@ -66,8 +72,14 @@ export const profileSlice = createSlice({
     updateProfileName: (state, action: PayloadAction<string>) => {
       state.profileName = action.payload;
     },
+    toggleUpdateRequestEmail: (state, action: PayloadAction<string>) => {
+      state.requestEmail = action.payload;
+    },
     updateTwitterImage: (state, action: PayloadAction<string>) => {
       state.twitterImage = action.payload;
+    },
+    updateEmail: (state, action: PayloadAction<string | undefined>) => {
+      state.email = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -83,6 +95,7 @@ export const profileSlice = createSlice({
         state.ansName = action.payload.ansName;
         state.avatar = action.payload.avatar;
         state.twitterImage = action.payload.twitterImage;
+        state.email = action.payload.email;
       }
     })
   },
@@ -93,7 +106,9 @@ export const {
   updateDiscordId,
   updateTwitterId,
   updateProfileViewed,
+  toggleUpdateRequestEmail,
   updateProfileImage,
-  updateProfileName
+  updateProfileName,
+  updateEmail
 } = profileSlice.actions;
 export default profileSlice.reducer;

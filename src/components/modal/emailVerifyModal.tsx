@@ -4,8 +4,10 @@ import ReCAPTCHA from "react-google-recaptcha";
 import OTPInput from "react-otp-input";
 import PrimaryButton from "../primaryButton";
 import { toggleEmailVerifyModal } from "../../state/dialog";
-import { emailVerify } from "../../api/profile";
+import { checkEmailVerifyCode } from "../../api/profile";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import jwtEncode from 'jwt-encode';
+import { updateEmail } from "../../state/profile";
 
 const EmailVerifyModal = () => {
   const [otp, setOtp] = useState("");
@@ -14,15 +16,26 @@ const EmailVerifyModal = () => {
   const recaptcha = useRef(null);
   const dispatch = useAppDispatch();
   const isOpen = useAppSelector((state) => state.dialogState.bEmailVerifyModal);
+  const secritKey = process.env.REACT_APP_JWT_SECRIT_KEY ?? 'default-secret-key';
+  const { connected, account } = useWallet();
 
+  const requestedEmail = useAppSelector((state) => state.profileState.requestEmail)
   useEffect(() => {
     console.log(isOpen)
   }, [isOpen])
 
   const onInviteCode = async () => {
-    setSuccess(true)
+    if (account) {
+      const token = jwtEncode({ wallet: account?.address }, secritKey);
+      const inviteCode = otp.toUpperCase()
+      const res = await checkEmailVerifyCode(requestedEmail, token, inviteCode);
+      if (res.success) {
+        console.log("code sent", res)
+        setSuccess(true)
+        dispatch(updateEmail(res.email))
+      }
+    }
   };
-
 
   return (
     <div
@@ -75,7 +88,7 @@ const EmailVerifyModal = () => {
             <OTPInput
               value={otp}
               onChange={setOtp}
-              numInputs={5}
+              numInputs={6}
               renderSeparator={<span className="w-3"></span>}
               renderInput={(props) => <input {...props} />}
               inputStyle="otp-input"
@@ -92,7 +105,7 @@ const EmailVerifyModal = () => {
           >
             <span className="text-sm md:text-base">Insert code</span>
           </PrimaryButton>
-          <p className="text-[#45A9A7] text-sm cursor-pointer mt-6 font-bold">Resend verification code</p>
+          <p onClick={() => dispatch(toggleEmailVerifyModal(false))} className="text-[#45A9A7] text-sm cursor-pointer mt-6 font-bold">Resend verification code</p>
         </div>
       </div>)}
     </div>

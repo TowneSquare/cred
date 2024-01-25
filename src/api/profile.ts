@@ -1,8 +1,27 @@
-export const emailVerify = async (email: string, wallet: any) => {
-    const url = `https://backend.townesquare.xyz/activity/verify_email`;
+export const emailVerify = async (email: string, token: any) => {
+    const url = `https://backend.townesquare.xyz/activity/verifyEmail`;
     const strData = JSON.stringify({
         email,
-        wallet
+        token
+    });
+    const res = await (
+        await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: strData,
+        })
+    ).json();
+    return res;
+};
+
+export const checkEmailVerifyCode = async (email: string, token: any, code : string) => {
+    const url = `https://backend.townesquare.xyz/activity/verifyEmailCode`;
+    const strData = JSON.stringify({
+        email,
+        token,
+        code
     });
     const res = await (
         await fetch(url, {
