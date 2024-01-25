@@ -72,7 +72,7 @@ const ConnectButton = () => {
                       </div>
                     </div>
                   }
-                  <div className="w-[200px] group grid relative z-50">
+                  <div className="w-[200px] grid relative z-50">
                     {ansList.map((ansName, index) => (
                       <div
                         key={index}
@@ -85,10 +85,10 @@ const ConnectButton = () => {
                           <img src="/credpoints/checkOff.svg" className="w-[24px] h-[24px] mr-2 text-white" alt="cred" />
                         }
                         <div className="grid">
-                          <p className="font-[Inter] group-hover:font-bold">
+                          <p className="font-[Inter] hover:font-bold">
                             Use ANS name
                           </p>
-                          <p className="font-[Inter] text-[#B9B9B9] group-hover:font-bold font-[500px]">
+                          <p className="font-[Inter] text-[#B9B9B9] hover:font-bold font-[500px]">
                             {ansName}
                           </p>
                         </div>
