@@ -89,7 +89,7 @@ const EmailVerifyModal = () => {
               value={otp}
               onChange={setOtp}
               numInputs={6}
-              renderSeparator={<span className="w-3"></span>}
+              renderSeparator={<span className="w-1 md:w-3"></span>}
               renderInput={(props) => <input {...props} />}
               inputStyle="otp-input"
             />

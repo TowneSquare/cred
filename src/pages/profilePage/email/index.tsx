@@ -37,7 +37,7 @@ const Email = () => {
   return (
     <>
       <div className={`bg-[#1B1B1B] w-[90%] ${emailAddress ? 'h-[216px]' : 'h-[357px]'} ${inputText && !isValidEmail ? 'md:h-[230px]' : 'md:h-[175px]'} py-8 px-4 md:px-8 grid md:flex items-center border border-gray-light-2 rounded-xl mb-4 md:justify-between`}>
-        {emailAddress ? (
+        {!emailAddress ? (
           <>
             <div className="grid md:flex md:justify-between w-[100%]">
               <div className="flex mb-8 md:mb-0">
