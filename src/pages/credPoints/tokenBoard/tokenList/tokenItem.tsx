@@ -26,7 +26,7 @@ const TokenItem: React.FC<Props> = ({ data }) => {
               alt="avatar"
             />
             <p className="text-xs md:text-sm text-gray-light-5 group-hover:text-white">
-              {"$" + data.nftName}
+              {"$" + data.token}
             </p>
           </div>
           <img
@@ -36,7 +36,7 @@ const TokenItem: React.FC<Props> = ({ data }) => {
           />
         </div>
         <div className="flex gap-2 items-center">
-          <p className="text-sm font-bold">{data.point}</p>
+          <p className="text-sm font-bold">{data.amount}</p>
           <img
             src="/credpoints/cred.svg"
             className="w-[22px] h-[22px]"
