@@ -1,4 +1,5 @@
 import { useAppSelector } from "../../../state/hooks";
+import Share from "../../../components/share";
 
 const MyTotal = () => {
   const myPoint = useAppSelector((state) => state.credpointsState.totalPoint);
@@ -17,6 +18,7 @@ const MyTotal = () => {
             className="w-9 md:w-[54px]"
           />
         </div>
+        <Share />
       </div>
       <p className="mt-4 text-center text-sm md:text-base w-[90%] md:w-full">
         Reward points are calculated to reflect your current activities.<br />
