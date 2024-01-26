@@ -28,8 +28,8 @@ const Banner = () => {
           visible ? "h-[96px]" : "h-[0px]"
         } fixed z-50 transition-all duration-300 overflow-hidden w-full`}
       >
-        <div className="px-2 md:px-0 w-full h-[96px] flex justify-center  bg-gray-dark-3">
-          <div className="w-full md:w-[800px] flex justify-between">
+        <div className="px-5 md:px-0 w-full h-[96px] flex justify-center  bg-gray-dark-3">
+          <div className="w-full md:w-[700px] flex justify-between">
             <div className="flex items-center gap-2">
               <p className="text-xl md:text-2xl font-semibold">My ranking</p>
               <MyRanking />
@@ -50,10 +50,10 @@ const Banner = () => {
       <div
         className={`${
           visible ? "opacity-100" : "opacity-0"
-        } absolute right-20 md:right-32 bottom-20 md:bottom-32 w-12 md:w-16 h-12 md:h-16 flex justify-center items-center border-2 border-[#D6D5FF] bg-secondary-default/90 hover:bg-secondary-default/50 rounded-full cursor-pointer z-50 transition-all duration-300`}
+        } absolute right-4 md:right-32 bottom-4 md:bottom-32 w-8 md:w-11 h-8 md:h-11 flex justify-center items-center border-2 border-[#D6D5FF] bg-secondary-default/90 hover:bg-secondary-default/50 rounded-full cursor-pointer z-50 transition-all duration-300`}
         onClick={() => gotoTop()}
       >
-        <img src="/leaderboard/upwards.svg" alt="upwards" />
+        <img src="/leaderboard/upwards.svg" alt="upwards" className="w-4"/>
       </div>
     </>
   );

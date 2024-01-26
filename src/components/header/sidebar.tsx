@@ -7,17 +7,21 @@ import { getBoringAvatar } from "../../util/boringAvatar";
 import { reset } from "../../state/credpoints";
 import { reset as resetLeaderboard } from "../../state/leaderboard";
 import JoinUs from "./joinus";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const show = useAppSelector((state) => state.dialogState.bSidebar);
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
   const { connected, account, disconnect } = useWallet();
   const onDisconnet = () => {
     dispatch(reset(true));
     dispatch(resetLeaderboard(true));
+    
     disconnect();
   }
+  const inviteCode = useAppSelector((state) => state.credpointsState.initInviteCode);
+  const profileViewed = useAppSelector((state) => state.profileState.profileViewed);
   return (
     <div
       className={`${show ? "block" : "hidden"
@@ -51,6 +55,10 @@ const Sidebar = () => {
           {Menus.map((menu, index) => (
             <Menu data={menu} key={index} />
           ))}
+          {inviteCode && <div className="flex">
+            <p className="flex items-center text-gray-light-3 hover:font-bold whitespace-nowrap cursor-pointer" onClick={()=>navigate('/profile')}>Profile</p>
+            {!profileViewed && <img src="/credpoints/icon-warning.svg" className="w-[24px] h-[24px] ml-2" alt="cred" />}
+          </div>}
         </div>
         <div className="absolute bottom-[100px]">
           <div className="flex flex-col items-center gap-6">

@@ -8,10 +8,11 @@ import {
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../state/hooks";
 import { toggleWalletPanel, toggleConnectRequest } from "../state/dialog";
+import { initializeConnector } from '@web3-react/core'
 
 const WalletButtons = () => {
   const { wallets } = useWallet();
-
+  
   return (
     <div className="mt-4 flex flex-col gap-4 pb-4">
       {wallets.map((wallet: Wallet) => {
@@ -20,6 +21,7 @@ const WalletButtons = () => {
     </div>
   );
 };
+
 
 const WalletView = (wallet: Wallet) => {
   const { connect } = useWallet();
@@ -51,6 +53,7 @@ const WalletView = (wallet: Wallet) => {
    * isRedirectable() - are we on mobile AND not in an in-app browser
    * mobileSupport - does wallet have deeplinkProvider property? i.e does it support a mobile app
    */
+
   if (!isWalletReady && isRedirectable()) {
     // wallet has mobile app
     if (mobileSupport) {

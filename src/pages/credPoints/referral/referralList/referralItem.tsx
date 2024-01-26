@@ -11,6 +11,7 @@ const ReferralItem: React.FC<Props> = ({ data }) => {
   return (
     <a
       target="_blank"
+      href={`https://explorer.aptoslabs.com/account/${data.fromWallet}/transactions?network=mainnet`}
       className=" cursor-pointer"
     >
       <div className="group py-6 px-2 md:px-8 flex justify-between hover:bg-gray-light-1">
@@ -43,7 +44,7 @@ const ReferralItem: React.FC<Props> = ({ data }) => {
           />
         </div>
       </div>
-      <div className="h-px border border-gray-light-1" />
+      <div className="h-px border border-gray-light-1 border-opacity-20" />
     </a>
   );
 };
