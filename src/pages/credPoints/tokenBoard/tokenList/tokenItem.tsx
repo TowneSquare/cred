@@ -36,7 +36,7 @@ const TokenItem: React.FC<Props> = ({ data }) => {
           />
         </div>
         <div className="flex gap-2 items-center">
-          <p className="text-sm font-bold">{data.amount}</p>
+          <p className="text-sm font-bold">{data.point}</p>
           <img
             src="/credpoints/cred.svg"
             className="w-[22px] h-[22px]"
