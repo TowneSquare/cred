@@ -31,7 +31,7 @@ const Email = () => {
     dispatch(toggleUpdateRequestEmail(inputText));
     const token = jwtEncode({ wallet: account?.address }, secretKey);
     const res = await emailVerify(inputText, token);
-    console.log("email sent", res);
+    // console.log("email sent", res);
   };
 
   return (

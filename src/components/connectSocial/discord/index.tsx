@@ -35,15 +35,15 @@ const Discord = ({ isProfileModal }: { isProfileModal: boolean }) => {
   const login = async () => {
     try {
       const result = await magic.oauth.getRedirectResult();
-      console.log(result);
+      // console.log(result);
       const provider = result.oauth.provider;
       if (provider == "discord" && account?.address) {
-        console.log("provider", provider, account?.address);
+        // console.log("provider", provider, account?.address);
         const discordAccessToken = result.oauth.accessToken;
         const res = await registerSocial(account?.address, discordAccessToken, 'discord');
         if (res.success) {
           if (isProfileModal) {
-            console.log('discord', res);
+            // console.log('discord', res);
             dispatch(updateDiscordId(res.userInfo.discordId))
           } else {
             navigate('/')

@@ -21,7 +21,7 @@ const EmailVerifyModal = () => {
 
   const requestedEmail = useAppSelector((state) => state.profileState.requestEmail)
   useEffect(() => {
-    console.log(isOpen)
+    // console.log(isOpen)
   }, [isOpen])
 
   const onInviteCode = async () => {
@@ -30,7 +30,7 @@ const EmailVerifyModal = () => {
       const inviteCode = otp.toUpperCase()
       const res = await checkEmailVerifyCode(requestedEmail, token, inviteCode);
       if (res.success) {
-        console.log("code sent", res)
+        // console.log("code sent", res)
         setSuccess(true)
         dispatch(updateEmail(res.email))
       }

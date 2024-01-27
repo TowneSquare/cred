@@ -38,7 +38,7 @@ const ProfilePage = () => {
           const token = jwtEncode({ wallet: account.address }, secretKey);
           const res = await profileviewed(token);
           if (res.success) {
-            console.log(res, "        ", account.address)
+            // console.log(res, "        ", account.address)
             dispatch(updateProfileViewed(true))
           }
         }

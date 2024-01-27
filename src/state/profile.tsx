@@ -84,7 +84,7 @@ export const profileSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProfile.fulfilled, (state, action) => {
-      console.log(action.payload)
+      // console.log(action.payload)
       if (!action.payload.statusCode) {
         state.success = true;
         state.newWallet = action.payload.newWallet;

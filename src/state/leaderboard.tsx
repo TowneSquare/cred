@@ -68,7 +68,7 @@ export const leaderboardSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchRankings.fulfilled, (state, action) => {
-      console.log(action.payload)
+      // console.log(action.payload)
       if (!action.payload.statusCode && state.connection) {
         state.isLive = true;
         state.myRank = action.payload.rank;

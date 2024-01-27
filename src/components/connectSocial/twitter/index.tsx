@@ -29,7 +29,7 @@ const Twitter = ({ isProfileModal }: { isProfileModal: boolean }) => {
     } catch (err) {
       console.error(err);
     }
-    console.log(isChecked)
+    // console.log(isChecked)
   };
 
   return (

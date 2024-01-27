@@ -21,12 +21,12 @@ const ConnectButton = () => {
   const secretKey = process.env.REACT_APP_JWT_SECRET_KEY ?? 'default-secret-key';
 
   const handleSetName = async (name: string) => {
-    console.log(profileName, name)
+    // console.log(profileName, name)
     if (account) {
       const token = jwtEncode({ wallet: account.address }, secretKey);
       const res = await setProfileName(name, token)
       if (res.success) {
-        console.log(profileName, res.name)
+        // console.log(profileName, res.name)
         dispatch(updateProfileName(res.name))
       }
     }

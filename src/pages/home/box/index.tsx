@@ -47,18 +47,18 @@ const Box = (boxVisible: any) => {
   }, [step])
 
   useEffect(() => {
-    console.log("ansNames", account?.ansName);
+    // console.log("ansNames", account?.ansName);
     
     const checkSignup = async () => {
       if (connected && account) {
         const res = await getInviteCode(account.address);
-        console.log(res)
+        // console.log(res)
         if (res.success) {
-          console.log("success getting code");
+          // console.log("success getting code");
           dispatch(updateInitInviteCode(res.code));
           navigate("/credPoints");
         } else if (!res.success && !res.newWallet) {
-          console.log("faild getting code");
+          // console.log("faild getting code");
           dispatch(updateStep(2));
         } else {
           dispatch(updateStep(1));

@@ -105,7 +105,7 @@ export const credpointsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCredpoints.fulfilled, (state, action) => {
-      console.log(action.payload)
+      // console.log(action.payload)
       if (!action.payload.statusCode && state.connection) {
         state.isLive = true;
         state.aptTxsPercentage = action.payload.aptTxsPercentage;
