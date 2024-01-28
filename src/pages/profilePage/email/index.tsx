@@ -50,6 +50,11 @@ const Email = () => {
                   <p className="text-[18px] md:text-[20px] font-bold md:whitespace-nowrap text-[#A3A1E2]">
                     Verify email
                   </p>
+                  <p className="text-[20px] font-normal">
+                    Reward: 50
+                    <img className="inline-block w-7 ml-[5px]" src="/credpoints/cred.svg" alt="copy" />
+                    {" "}<img src="/credpoints/success.svg" className="hidden w-[24px] h-[24px] md:inline-block" alt="cred" />
+                  </p>
                   <div className="flex">
                     <p className="hidden md:block text-[18px] md:text-[20px] font-normal ">
                       Email:&nbsp;
