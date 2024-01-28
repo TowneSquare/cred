@@ -10,7 +10,7 @@ const MyRanking = () => {
       <div className="mt-4 flex flex-col md:flex-row justify-center items-center gap-4">
         <div className="container px-8 py-1 w-auto flex gap-2 justify-center items-center border-[3px] md:border-4 border-secondary-default rounded-full ">
           <p className="text-[38px] md:text-[57px] font-semibold">
-            {visitorMode ? "???" : myRanking.toLocaleString()}
+            {visitorMode ? "???" : myRanking.toLocaleString('en-US', { minimumIntegerDigits: 1 })}
           </p>
         </div>
       </div>
