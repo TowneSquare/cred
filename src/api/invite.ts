@@ -21,7 +21,7 @@ export const getInviteCode = async (wallet: string) => {
   const url = `https://backend.townesquare.xyz/activity/getProfile/${wallet}`;
   const res = await (
     await fetch(url, {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },

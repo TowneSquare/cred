@@ -35,9 +35,16 @@ export const fetchProfile = createAsyncThunk(
   async (wallet: any, thunkAPI) => {
     const token = jwtEncode({ wallet: wallet }, secretKey);
 
-    const url = `https://backend.townesquare.xyz/activity/getProfile/${token}`;
+    const url = "https://backend.townesquare.xyz/activity/getProfile";
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token: token }),
+    };
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, options);
       const result = await res.json();
       return result;
     } catch (error: any) {
