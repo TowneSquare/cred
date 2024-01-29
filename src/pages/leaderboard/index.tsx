@@ -9,7 +9,6 @@ import MyRanking from "./myRanking";
 import RankingList from "./rankingList";
 import "./index.css";
 import Banner from "./banner";
-import { getInviteCode } from "../../api/invite";
 import {
   fetchRankings,
   updateConnection,

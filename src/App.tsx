@@ -44,17 +44,19 @@ import EligibleTokenModal from "./pages/credPoints/tokenBoard/eligibleTokenModal
 import EligibleGameModal from "./pages/credPoints/gameActivity/eligibleGameModal";
 import TokenListModal from "./pages/credPoints/tokenBoard/tokenListModal";
 import GameActivityModal from "./pages/credPoints/gameActivity/gameActivityModal";
+import jwtEncode from 'jwt-encode';
 
 function App() {
   const dispatch = useAppDispatch();
   const { account } = useWallet();
+  const secretKey = process.env.REACT_APP_JWT_SECRET_KEY ?? 'default-secret-key';
 
   useEffect(() => {
     const storeInviteCode = async () => {
       if (account) {
         dispatch(updateInitialized(false))
-
-        const res = await getInviteCode(account?.address);
+        const token = jwtEncode({ wallet: account.address }, secretKey);
+        const res = await getInviteCode(token);
 
         if (res.success == true) {
           dispatch(updateInitInviteCode(res.code));

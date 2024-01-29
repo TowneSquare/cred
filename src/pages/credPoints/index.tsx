@@ -13,7 +13,6 @@ import MyTotal from "./myTotal";
 import NftBoard from "./nftBoard";
 import Referral from "./referral";
 import "./index.css";
-import { getInviteCode } from "../../api/invite";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import {
   fetchCredpoints,

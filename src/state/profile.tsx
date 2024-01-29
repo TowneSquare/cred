@@ -1,4 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import jwtEncode from 'jwt-encode';
+const secretKey = process.env.REACT_APP_JWT_SECRET_KEY ?? 'default-secret-key';
 
 interface profileStates {
   success: boolean;
@@ -31,7 +33,9 @@ const initialState: profileStates = {
 export const fetchProfile = createAsyncThunk(
   "profilePage/fetch",
   async (wallet: any, thunkAPI) => {
-    const url = `https://backend.townesquare.xyz/activity/getProfile/${wallet}`;
+    const token = jwtEncode({ wallet: wallet }, secretKey);
+
+    const url = `https://backend.townesquare.xyz/activity/getProfile/${token}`;
     try {
       const res = await fetch(url);
       const result = await res.json();

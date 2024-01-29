@@ -51,7 +51,8 @@ const Box = (boxVisible: any) => {
     
     const checkSignup = async () => {
       if (connected && account) {
-        const res = await getInviteCode(account.address);
+        const token = jwtEncode({ wallet: account.address }, secretKey);
+        const res = await getInviteCode(token);
         // console.log(res)
         if (res.success) {
           // console.log("success getting code");
