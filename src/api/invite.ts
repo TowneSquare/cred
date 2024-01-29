@@ -18,14 +18,23 @@ export const checkInviteCode = async (inviteCode: string) => {
 
 
 export const getInviteCode = async (wallet: string) => {
-  const url = `https://backend.townesquare.xyz/activity/getProfile/${wallet}`;
-  const res = await (
-    await fetch(url, {
+  const url = "https://backend.townesquare.xyz/activity/getProfile";
+  const data = { token: wallet };
+
+  try {
+    const res = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-    })
-  ).json();
-  return res;
-}
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+    return result;
+  } catch (error) {
+    // Handle errors as needed
+    console.error("Error fetching invite code:", error);
+    throw error; // Rethrow the error or handle it accordingly
+  }
+};
