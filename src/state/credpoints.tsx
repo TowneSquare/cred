@@ -12,6 +12,8 @@ interface credpointsStates {
   totalPoint: number;
   defiPoint: number;
   nftPoint: number;
+  gamePoint: number;
+  tokenPoint: number;
   defiActivities: DefiActivityType[];
   nfts: NftType[];
   rewardNFTPointPerDay: number;
@@ -34,6 +36,8 @@ const initialState: credpointsStates = {
   totalPoint: 0,
   defiPoint: 0,
   nftPoint: 0,
+  gamePoint: 0,
+  tokenPoint: 0,
   defiActivities: [],
   nfts: [],
   rewardNFTPointPerDay: 0,
@@ -75,6 +79,8 @@ export const credpointsSlice = createSlice({
       state.totalPoint = 0;
       state.defiPoint = 0;
       state.nftPoint = 0;
+      state.gamePoint = 0;
+      state.tokenPoint = 0;
       state.defiActivities = [];
       state.nfts = [];
       state.rewardNFTPointPerDay = 0;

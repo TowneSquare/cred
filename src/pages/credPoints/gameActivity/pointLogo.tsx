@@ -1,7 +1,7 @@
 import { useAppSelector } from "../../../state/hooks";
 
 const PointLogo = () => {
-  const referralPoint = useAppSelector((state) => state.credpointsState.referralPoint);
+  const referralPoint = useAppSelector((state) => state.credpointsState.tokenPoint);
   const visitorMode = useAppSelector((state) => state.globalState.visitorMode);
 
   return (
