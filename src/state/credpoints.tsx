@@ -118,6 +118,7 @@ export const credpointsSlice = createSlice({
         state.totalPoint = action.payload.totalPoint;
         state.defiPoint = action.payload.defiPoint;
         state.nftPoint = action.payload.nftPoint;
+        state.gamePoint = action.payload.gamePoint;
         state.defiActivities = action.payload.defiActivityList;
         state.nfts = action.payload.nftActivityList;
         state.rewardNFTPointPerDay =
