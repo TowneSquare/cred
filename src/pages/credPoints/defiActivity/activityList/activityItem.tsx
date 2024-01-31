@@ -13,7 +13,7 @@ const ActivityItem: React.FC<Props> = ({ data }) => {
       >
         <div className="flex items-center gap-2">
           <p className="text-xs text-gray-light-5">
-            {moment(data.updatedAt).format("MMM DD YYYY")}
+            {moment(data.blockTime).format("MMM DD YYYY")}
           </p>
           <p className="text-sm">{data.coin.toUpperCase()}</p>
           <div className="flex gap-1 items-center">
