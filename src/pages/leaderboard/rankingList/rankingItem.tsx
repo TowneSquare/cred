@@ -64,13 +64,13 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
             {data.avatar == null ?
               <img
                 src={getBoringAvatar(data.wallet)}
-                className="w-8 h-8 hidden md:block"
+                className="w-8 h-8 hidden md:block "
                 alt="avatar"
               />
               :
               <img
                 src={data.avatar}
-                className="w-8 h-8 hidden md:block"
+                className="w-8 h-8 hidden md:block rounded-full"
                 alt="avatar"
               />
             }
