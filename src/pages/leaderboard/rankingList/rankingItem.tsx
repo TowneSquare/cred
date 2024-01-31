@@ -61,17 +61,37 @@ const RankingItem: React.FC<Props> = ({ data, index }) => {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <img
-              src={getBoringAvatar(data.wallet)}
-              className="w-8 h-8 hidden md:block"
-              alt="avatar"
-            />
-            <p className="hidden md:block text-[16px]">
-              {data.wallet.slice(0, 12)}...{data.wallet.slice(-10)}
-            </p>
-            <p className="md:hidden text-base md:text-lg">
-              {data.wallet.slice(0, 4)}...{data.wallet.slice(-2)}
-            </p>
+            {data.avatar == null ?
+              <img
+                src={getBoringAvatar(data.wallet)}
+                className="w-8 h-8 hidden md:block"
+                alt="avatar"
+              />
+              :
+              <img
+                src={data.avatar}
+                className="w-8 h-8 hidden md:block"
+                alt="avatar"
+              />
+            }
+            {data.profileName == null || data.wallet == data.profileName ?
+              <>
+                <p className="hidden md:block text-[16px]">
+                  {data.wallet.slice(0, 12)}...{data.wallet.slice(-10)}
+                </p>
+                <p className="md:hidden text-base md:text-lg">
+                  {data.wallet.slice(0, 4)}...{data.wallet.slice(-2)}
+                </p>
+              </> :
+              <>
+                <p className="hidden md:block text-[16px]">
+                  {data.profileName}
+                </p>
+                <p className="md:hidden text-base md:text-lg">
+                  {data.profileName}
+                </p>
+              </>
+            }
             <img
               src="/credpoints/external_link.svg"
               className="hidden group-hover:block w-[16px] h-[16px]"
