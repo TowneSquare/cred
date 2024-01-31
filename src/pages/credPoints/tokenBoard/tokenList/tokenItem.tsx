@@ -17,7 +17,7 @@ const TokenItem: React.FC<Props> = ({ data }) => {
       <div className="group py-6 px-2 md:px-8 flex justify-between hover:bg-gray-light-1">
         <div className="flex items-center gap-2">
           <p className="text-xs text-gray-light-5">
-            {moment(data.createdAt).format("MMM DD YYYY")}
+            {moment(data.date).format("MMM DD YYYY")}
           </p>
           <div className="flex gap-1 items-center">
             <img
