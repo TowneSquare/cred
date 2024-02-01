@@ -7,6 +7,7 @@ export interface NftType {
   type: string;
   period: number;
   blockTime: string;
+  dailyPoint: number;
   nftName: string;
   nftCollection: string;
   nftAction: string;
