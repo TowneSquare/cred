@@ -16,12 +16,10 @@ export const getMetadata = async (data: NftType) => {
       body: strData,
     })
   ).json();
-  
-  const metadata = await (
-    await fetch(res.url, {
-      method: "GET"
-    })
-  ).json();
+  return res;
+};
 
+export const getImageUrl = async (url: string) => {
+  const metadata = await (await fetch(url, { method: "GET" })).json();
   return metadata;
 };

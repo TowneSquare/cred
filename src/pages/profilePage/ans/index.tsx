@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../state/hooks";
-import { getMetadata } from "../../../api/metadata";
 import { getImageURL } from "../../../util/url";
 import LoadingState from "../../../components/loadingstate";
 import LoadingImage from "../../../components/loadingImage";
@@ -10,16 +9,6 @@ const Ans = () => {
   const [imageLink, setImageLink] = useState<string | undefined>(undefined);
   const profileViewed = useAppSelector((state) => state.profileState.profileViewed);
   const ansList = useAppSelector((state) => state.profileState.ansName);
-  // useEffect(() => {
-  //   const getImage = async () => {
-  //     if (!connected) return;
-  //     try {
-  //       const res = await getMetadata(longest);
-  //       setImageLink(getImageURL(res.image));
-  //     } catch (e) {}
-  //   };
-  //   getImage();
-  // }, [connected]);
 
   return (
     <>

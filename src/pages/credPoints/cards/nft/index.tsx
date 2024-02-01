@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../../state/hooks";
-import { getMetadata } from "../../../../api/metadata";
+import { getImageUrl, getMetadata } from "../../../../api/metadata";
 import { getImageURL } from "../../../../util/url";
 import LoadingState from "../../../../components/loadingstate";
 import LoadingImage from "../../../../components/loadingImage";
 
 const LongestNft = () => {
   const isLive = useAppSelector(state => state.credpointsState.isLive);
-  const longest= useAppSelector(state => state.credpointsState.longestNft);
+  const longest = useAppSelector(state => state.credpointsState.longestNft);
 
   const [imageLink, setImageLink] = useState<string | undefined>(undefined);
 
@@ -16,49 +16,55 @@ const LongestNft = () => {
       if (!longest) return;
       try {
         const res = await getMetadata(longest);
-        setImageLink(getImageURL(res.image));
-      } catch (e) {}
+        const initUrl = res.url;
+        if (initUrl.endsWith(".json") == true) {
+          const res = await getImageUrl(initUrl);
+          setImageLink(getImageURL(res.image));
+        } else {
+          setImageLink(getImageURL(res.url));
+        }
+      } catch (e) { }
     };
     getImage();
   }, [longest]);
 
   return (
     <>
-    {!isLive ? (
-      <div className="container w-[260px] md:w-[320px] min-h-[140px] px-10 md:px-20 py-4 flex flex-col gap-4 justify-center items-center border border-gray-light-2 rounded-xl">
-        <div className="w-full h-9 flex gap-4">
-          <LoadingState className="w-1/3" />
-          <LoadingState className="w-full" />
+      {!isLive ? (
+        <div className="container w-[260px] md:w-[320px] min-h-[140px] px-10 md:px-20 py-4 flex flex-col gap-4 justify-center items-center border border-gray-light-2 rounded-xl">
+          <div className="w-full h-9 flex gap-4">
+            <LoadingState className="w-1/3" />
+            <LoadingState className="w-full" />
+          </div>
+          <LoadingState className="w-full h-9" />
         </div>
-        <LoadingState className="w-full h-9" />
-      </div>
-    ) : (
-    <div className="container w-[260px] md:w-[320px] min-h-[140px] px-4 pt-4 flex flex-col items-center border border-gray-light-2 rounded-xl">
-      {longest ? (
-        <>
-          <div className="flex items-center gap-2">
-            <LoadingImage url={imageLink} className="w-12 h-12" />
-            <p className="text-xl md:text-2xl font-bold">{longest?.nftName}</p>
-          </div>
-          <p className="mt-4 text-center text-sm md:text-base">
-            is your longest-holding NFT
-          </p>
-        </>
       ) : (
-        <>
-          <div className="flex items-center gap-2">
-            <p className="text-xl md:text-2xl font-bold whitespace-nowrap">
-              Longest holding NFT
-            </p>
-          </div>
-          <p className="mt-4 text-center text-xs md:text-sm">
-            Here we’ll show what’s the NFT you’re holding for the longest period
-            of time
-          </p>
-        </>
+        <div className="container w-[260px] md:w-[320px] min-h-[140px] px-4 pt-4 flex flex-col items-center border border-gray-light-2 rounded-xl">
+          {longest ? (
+            <>
+              <div className="flex items-center gap-2">
+                <LoadingImage url={imageLink} className="w-12 h-12" />
+                <p className="text-xl md:text-2xl font-bold">{longest?.nftName}</p>
+              </div>
+              <p className="mt-4 text-center text-sm md:text-base">
+                is your longest-holding NFT
+              </p>
+            </>
+          ) : (
+            <>
+              <div className="flex items-center gap-2">
+                <p className="text-xl md:text-2xl font-bold whitespace-nowrap">
+                  Longest holding NFT
+                </p>
+              </div>
+              <p className="mt-4 text-center text-xs md:text-sm">
+                Here we’ll show what’s the NFT you’re holding for the longest period
+                of time
+              </p>
+            </>
+          )}
+        </div>
       )}
-    </div>
-    )}
     </>
   );
 };
