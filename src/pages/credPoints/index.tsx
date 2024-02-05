@@ -23,6 +23,7 @@ import TokenBoard from "./tokenBoard";
 import GameActivity from "./gameActivity";
 import { updateVisitorMode } from "../../state/global";
 import SuggestVerifyNavbar from "../../components/header/suggestVerifyNavbar";
+import Footer from "./footer";
 
 const CredPoints = () => {
   const { connected, account } = useWallet();
@@ -99,6 +100,7 @@ const CredPoints = () => {
           <Banner />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

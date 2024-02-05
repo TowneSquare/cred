@@ -26,12 +26,12 @@ const Pool: React.FC<Props> = ({ data }) => {
         <div className="grid h-[49px]">
           <div className="flex justify-start">
             <BridgeShowcase
-              Item1={{ imgUrl: "/credpoints/token_icons/mod.svg", text: "MOD" }}
+              Item1={{ imgUrl: "/credpoints/token_icons/MOD.svg", text: "MOD" }}
               Item2={{ imgUrl: "/credpoints/token_icons/usdc.svg", text: "USDC" }}
             />
             <BridgeShowcase
               Item1={{ imgUrl: "/credpoints/aptos.svg", text: "APT" }}
-              Item2={{ imgUrl: "/credpoints/token_icons/mod.svg", text: "MOD" }}
+              Item2={{ imgUrl: "/credpoints/token_icons/MOD.svg", text: "MOD" }}
             />
           </div>
           <p className="text-[12px] text-[#B9B9B9] mt-2">Supported bridges for <b>USDC</b>: LayerZero</p>
