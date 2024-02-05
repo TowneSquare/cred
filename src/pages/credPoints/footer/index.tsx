@@ -20,6 +20,7 @@ const Footer = () => {
         <div className="flex flex-col w-full md:w-[1000px] mt-12 px-4">
           <div className="flex">
             <img src="/logo.svg" alt="cred" className="w-[123px] md:w-[158px] md:w-auto" />
+            <img src="/logo_season01.svg" alt="cred" className="w-[123px] md:w-[158px] md:w-auto ml-4" />
           </div>
           <div className="grid md:flex md:justify-between my-[50px]">
             <div className="flex flex-col gap-2">
