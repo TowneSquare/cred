@@ -79,12 +79,18 @@ const EligibleNftList = () => {
             twitterLink={"https://twitter.com/NetzFamily"}
             globalLink={"https://www.netzfamily.xyz/"}
           />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/netzjoy.svg"}
+            text={"NetzJoy"}
+            twitterLink={"https://twitter.com/NetzFamily"}
+            globalLink={"https://www.netzfamily.xyz/"}
+          />
           <div className="mb-6">
             <NftCollection
-              imgUrl={"/credpoints/nft_collections/netzjoy.svg"}
-              text={"NetzJoy"}
-              twitterLink={"https://twitter.com/NetzFamily"}
-              globalLink={"https://www.netzfamily.xyz/"}
+              imgUrl={"/credpoints/nft_collections/lions.svg"}
+              text={"Proud Lions Club"}
+              twitterLink={"https://twitter.com/proudlionsclub"}
+              globalLink={"https://www.proudlionsclub.com/"}
             />
           </div>
         </div>

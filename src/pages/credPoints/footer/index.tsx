@@ -19,8 +19,8 @@ const Footer = () => {
       <div className="flex flex-col items-center justify-center w-full md:h-[382px] border-t border-white border-opacity-92 bg-[#121212]">
         <div className="flex flex-col w-full md:w-[1000px] mt-12 px-4">
           <div className="flex">
-            <img src="/logo.svg" alt="cred" className="w-[123px] md:w-[158px] md:w-auto" />
-            <img src="/logo_season01.svg" alt="cred" className="w-[123px] md:w-[158px] md:w-auto ml-4" />
+            <img src="/logo.svg" alt="cred" className="w-[123px] md:w-[158px]" />
+            <img src="/logo_season01.svg" alt="cred" className="w-[123px] md:w-[158px]ml-4" />
           </div>
           <div className="grid md:flex md:justify-between my-[50px]">
             <div className="flex flex-col gap-2">
