@@ -4,6 +4,7 @@ import NftCollection from "../../../../components/defi/nftCollection";
 import "./index.css"
 
 const EligibleNftList = () => {
+
   const dispatch = useDispatch();
   return (
     <div className="w-full pt-10 flex flex-col">

@@ -15,6 +15,7 @@
     "@haechi-labs/face-types": "^1.10.8",
     "@magic-ext/oauth": "^15.6.0",
     "@martianwallet/aptos-wallet-adapter": "^0.0.4",
+    "@material-tailwind/react": "^2.1.9",
     "@nightlylabs/aptos-wallet-adapter-plugin": "^0.2.12",
     "@okwallet/aptos-wallet-adapter": "^0.0.4",
     "@openblockhq/aptos-wallet-adapter": "^0.1.5",

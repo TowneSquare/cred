@@ -3,6 +3,35 @@ import { toggleEligibleNftModal, toggleEligibleTokenModal } from "../../../../st
 import NftCollection from "../../../../components/defi/nftCollection";
 
 const EligibleTokenList = () => {
+
+  const tipData = [
+    {
+      title: "Rewards",
+      items: [
+        { descr: "5 - 10 milion $GUI", price: "50" },
+        { descr: "10 - 30 milion $GUI", price: "100" },
+      ]
+    }
+  ];
+  const tipData2 = [
+    {
+      title: "Holding Rewards",
+      items: [
+        { descr: "5 < X ≤ 100 $SEEDZ", price: "20" },
+        { descr: "101 < X ≤ 200 $SEEDZ", price: "50" },
+        { descr: "200 < X $SEEDZ", price: "100" },
+      ]
+    },
+    {
+      title: "Staking Rewards",
+      items: [
+        { descr: "1-100 staked $SEEDZ", price: "20" },
+        { descr: "101-200 staked $SEEDZ", price: "50" },
+        { descr: "+200 staked $SEEDZ", price: "100 " }
+      ]
+    }
+  ];
+
   const dispatch = useDispatch();
   return (
     <div className="w-full pt-10 flex flex-col">
@@ -19,15 +48,17 @@ const EligibleTokenList = () => {
           <NftCollection
             imgUrl={"/credpoints/token_icons/gui_inu.svg"}
             text={"$GUI"}
+            tipData={tipData}
             twitterLink={"https://twitter.com/guiinuonaptos"}
             globalLink={"https://www.guiinu.com/"}
           />
           <NftCollection
             imgUrl={"/credpoints/token_icons/SEEDZ.svg"}
             text={"$SEEDZ"}
+            tipData={tipData2}
             text_sm={"& Staking"}
-            twitterLink={"https://twitter.com/AptosMonkeys"}
-            globalLink={"https://jungle.aptosmonkeys.club/"}
+            twitterLink={"#"}
+            globalLink={"#"}
           />
           <NftCollection
             imgUrl={"/credpoints/token_icons/DOODOO.svg"}

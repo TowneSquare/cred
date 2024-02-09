@@ -21,7 +21,7 @@ const EligibleTokenModal = () => {
   return (
     <div
       className={`fixed ${isOpen ? "block" : "hidden"
-        } inset-0 z-50 flex bg-gray-dark-2 justify-center items-center`}
+        } inset-0 z-1 flex bg-gray-dark-2 justify-center items-center`}
     >
       <div
         ref={ref}
