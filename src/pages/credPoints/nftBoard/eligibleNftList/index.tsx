@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { toggleEligibleNftModal } from "../../../../state/dialog";
 import NftCollection from "../../../../components/defi/nftCollection";
+import "./index.css"
 
 const EligibleNftList = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const EligibleNftList = () => {
           onClick={(e) => dispatch(toggleEligibleNftModal(false))}
         />
       </div>
-      <div className="flex flex-col px-4 md:px-1 font-Inter overflow-y-scroll md:overflow-hidden">
+      <div className="flex flex-col px-4 md:px-1 font-Inter overflow-y-scroll overflow-hidden" id="tokenModal">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <NftCollection
             imgUrl={"/credpoints/nft_collections/Aptomingos.svg"}
@@ -85,6 +86,18 @@ const EligibleNftList = () => {
             twitterLink={"https://twitter.com/NetzFamily"}
             globalLink={"https://www.netzfamily.xyz/"}
           />
+          {/* <NftCollection
+            imgUrl={"/credpoints/nft_collections/Creature.svg"}
+            text={"Aptos Creature"}
+            twitterLink={"https://twitter.com/NetzFamily"}
+            globalLink={"https://www.netzfamily.xyz/"}
+          />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/Mania.svg"}
+            text={"Mancini Mania"}
+            twitterLink={"https://twitter.com/NetzFamily"}
+            globalLink={"https://www.netzfamily.xyz/"}
+          /> */}
           <div className="mb-6">
             <NftCollection
               imgUrl={"/credpoints/nft_collections/lions.svg"}

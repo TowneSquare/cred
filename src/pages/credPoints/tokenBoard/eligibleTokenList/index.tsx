@@ -29,6 +29,13 @@ const EligibleTokenList = () => {
             twitterLink={"https://twitter.com/AptosMonkeys"}
             globalLink={"https://jungle.aptosmonkeys.club/"}
           />
+          <NftCollection
+            imgUrl={"/credpoints/token_icons/DOODOO.svg"}
+            text={"$DOODOO"}
+            text_sm={""}
+            twitterLink={"https://twitter.com/doodoocoin"}
+            globalLink={"https://doodoo.io/"}
+          />
         </div>
       </div>
     </div>
