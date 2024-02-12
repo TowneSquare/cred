@@ -32,39 +32,38 @@ const NftCollection: React.FC<Props> = ({ imgUrl, text, twitterLink, globalLink,
           <p className="text-4 font-[500] mx-2">{text}</p>
           {text_sm && <p className="text-[12px] font-[400] text-[#B9B9B9] ml-2">{text_sm}</p>}
         </div>
-        {/* {tipData &&
-
-        } */}
-        <Tooltip
-          content={
-            <div className="w-[265px] h-fit p-4 border">
-              {tipData && tipData.map((section, index) => (
-                <div key={index} className="mb-4">
-                  <Typography color="white" className="font-normal text-[#B9B9B9] text-[13px]">
-                    <p className="mb-2">
-                      {section.title}
-                    </p>
-                  </Typography>
-                  <Typography variant="small" color="white" className="font-normal">
-                    <div className="flex-col gap-2">
-                      {section.items.map((item, i) => (
-                        <div key={i} className="flex items-center">
-                          <p className="text-[13px] mr-2">{item.descr}</p>
-                          <p className="text-[13px] flex text-[#B9B9B9]">
-                            {item.price}
-                            <img className="w-[14px] mx-1" src="/credpoints/cred.svg" alt="copy" />/day
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </Typography>
-                </div>
-              ))}
-            </div>
-          }
-        >
-          <img src={"./credpoints/question_tip.svg"} className="w-5 h-5" />
-        </Tooltip>
+        {tipData &&
+          <Tooltip
+            content={
+              <div className="w-[265px] h-fit p-4 border">
+                {tipData && tipData.map((section, index) => (
+                  <div key={index} className="mb-4">
+                    <Typography color="white" className="font-normal text-[#B9B9B9] text-[13px]">
+                      <p className="mb-2">
+                        {section.title}
+                      </p>
+                    </Typography>
+                    <Typography variant="small" color="white" className="font-normal">
+                      <div className="flex-col gap-2">
+                        {section.items.map((item, i) => (
+                          <div key={i} className="flex items-center">
+                            <p className="text-[13px] mr-2">{item.descr}</p>
+                            <p className="text-[13px] flex text-[#B9B9B9]">
+                              {item.price}
+                              <img className="w-[14px] mx-1" src="/credpoints/cred.svg" alt="copy" />/day
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </Typography>
+                  </div>
+                ))}
+              </div>
+            }
+          >
+            <img src={"./credpoints/question_tip.svg"} className="w-5 h-5" />
+          </Tooltip>
+        }
       </div>
       <div className="flex">
         <TwitterLink link={twitterLink} />
