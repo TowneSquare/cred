@@ -35,9 +35,9 @@ const NftCollection: React.FC<Props> = ({ imgUrl, text, twitterLink, globalLink,
         {tipData &&
           <Tooltip
             content={
-              <div className="w-[265px] h-fit p-4 border">
+              <div className="w-fit h-fit p-4 border border-[#626262] rounded-[4px]">
                 {tipData && tipData.map((section, index) => (
-                  <div key={index} className="mb-4">
+                  <div key={index} className="">
                     <Typography color="white" className="font-normal text-[#B9B9B9] text-[13px]">
                       <p className="mb-2">
                         {section.title}

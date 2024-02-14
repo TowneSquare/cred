@@ -31,6 +31,18 @@ const EligibleTokenList = () => {
       ]
     }
   ];
+  const tipData3 = [
+    {
+      title: "Rewards",
+      items: [
+        { descr: "<1 $DOODOO", price: "0" },
+        { descr: "1 - 25 $DOODOO", price: "50" },
+        { descr: "26 - 50 $DOODOO", price: "100" },
+        { descr: "51 - 100 $DOODOO", price: "150" },
+        { descr: ">100 $DOODOO", price: "200" },
+      ]
+    }
+  ];
 
   const dispatch = useDispatch();
   return (
@@ -59,10 +71,11 @@ const EligibleTokenList = () => {
             text_sm={"& Staking"}
             twitterLink={"#"}
             globalLink={"#"}
-          />
+            />
           <NftCollection
             imgUrl={"/credpoints/token_icons/DOODOO.svg"}
             text={"$DOODOO"}
+            tipData={tipData3}
             text_sm={""}
             twitterLink={"https://twitter.com/doodoocoin"}
             globalLink={"https://doodoo.io/"}
