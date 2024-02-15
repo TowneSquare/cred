@@ -123,7 +123,7 @@ const Discord = ({ isProfileModal }: { isProfileModal: boolean }) => {
               <div className="flex justify-center mt-8 md:mt-0">
                 <ConnectedButton>Connected</ConnectedButton>
               </div>
-              <button className="md:mt-2 mt-4 bg-black flex items-center justify-center text-white md:w-[200px] md:h-[44px] py-3 rounded-[200px] text-[16px] text-center">
+              <button className="md:mt-2 mt-4 bg-black bg-opacity-40 hover:bg-opacity-100 flex items-center justify-center text-white md:w-[200px] md:h-[44px] py-3 rounded-[200px] text-[16px] text-center">
                 <a href="https://discord.gg/bK5p9tNM4d" target="_blank" >
                   <img className="inline-block w-[26px] mr-[5px]" src="/profile/townsquare.svg" alt="copy" />
                   Join our server
@@ -161,7 +161,7 @@ const Discord = ({ isProfileModal }: { isProfileModal: boolean }) => {
                 <button onClick={authenticateWithDiscord} className="bg-[#F5E27D] md:w-[200px] h-[51px] py-3 px-8 rounded-[200px] text-black font-bold text-[16px] text-center">
                   Connect Discord
                 </button>
-                <button className="md:mt-2 mt-4 bg-black flex items-center justify-center text-white md:w-[200px] md:h-[44px] py-3 rounded-[200px] text-[16px] text-center">
+                <button className="md:mt-2 mt-4 bg-black bg-opacity-40 hover:bg-opacity-100 flex items-center justify-center text-white md:w-[200px] md:h-[44px] py-3 rounded-[200px] text-[16px] text-center">
                   <a href="https://discord.gg/bK5p9tNM4d" target="_blank" >
                     <img className="inline-block w-[26px] mr-[5px]" src="/profile/townsquare.svg" alt="copy" />
                     Join our server
