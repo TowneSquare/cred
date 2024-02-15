@@ -5,6 +5,7 @@ import ConnectedButton from "../../connectedButton";
 import { magic } from "../../../pages/lib/magic";
 import { getBoringAvatar } from "../../../util/boringAvatar";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { Tooltip, Typography } from "@material-tailwind/react";
 
 const Twitter = ({ isProfileModal }: { isProfileModal: boolean }) => {
   const { account, connected } = useWallet();
@@ -50,7 +51,20 @@ const Twitter = ({ isProfileModal }: { isProfileModal: boolean }) => {
                 <p className="text-[20px] font-normal">
                   Reward: 50
                   <img className="inline-block w-7 ml-[5px]" src="/credpoints/cred.svg" alt="copy" />
-                  {" "}<img src="/credpoints/success.svg" className="hidden w-[24px] h-[24px] md:inline-block" alt="cred" />
+                  {" "}
+                  <Tooltip
+                    content={
+                      <div className="w-fit h-fit border border-[#626262] rounded-[4px]">
+                        <Typography color="white" className="font-normal text-white text-[13px]">
+                          <p className="my-1 mx-2">
+                            You received the reward
+                          </p>
+                        </Typography>
+                      </div>
+                    }
+                  >
+                    <img src="/credpoints/success.svg" className="hidden w-[24px] h-[24px] md:inline-block" alt="cred" />
+                  </Tooltip>
                 </p>
                 <div className="grid md:flex">
                   <div className="flex items-center text-[20px]">

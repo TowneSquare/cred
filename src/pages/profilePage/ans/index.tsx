@@ -4,6 +4,7 @@ import { getImageURL } from "../../../util/url";
 import LoadingState from "../../../components/loadingstate";
 import LoadingImage from "../../../components/loadingImage";
 import ConnectedButton from "../../../components/connectedButton";
+import { Tooltip, Typography } from "@material-tailwind/react";
 
 const Ans = () => {
   const [imageLink, setImageLink] = useState<string | undefined>(undefined);
@@ -28,7 +29,20 @@ const Ans = () => {
                 <p className="text-[20px] font-normal">
                   Reward: 50
                   <img className="inline-block w-7 ml-[5px]" src="/credpoints/cred.svg" alt="copy" />
-                  {" "}<img src="/credpoints/success.svg" className="hidden w-[24px] h-[24px] md:inline-block" alt="cred" />
+                  {" "}
+                  <Tooltip
+                    content={
+                      <div className="w-fit h-fit border border-[#626262] rounded-[4px]">
+                        <Typography color="white" className="font-normal text-white text-[13px]">
+                          <p className="my-1 mx-2">
+                            You received the reward
+                          </p>
+                        </Typography>
+                      </div>
+                    }
+                  >
+                    <img src="/credpoints/success.svg" className="hidden w-[24px] h-[24px] md:inline-block" alt="cred" />
+                  </Tooltip>
                 </p>
                 <div className="grid md:flex">
                   <div className="flex items-center text-[20px]">
