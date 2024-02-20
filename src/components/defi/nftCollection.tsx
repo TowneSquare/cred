@@ -26,7 +26,7 @@ const NftCollection: React.FC<Props> = ({ imgUrl, text, twitterLink, globalLink,
       <div className="flex">
         <img
           src={imgUrl}
-          className="w-6 h-6"
+          className="w-6 h-6 rounded-full"
         />
         <div className="grid">
           <p className="text-4 font-[500] mx-2">{text}</p>
