@@ -87,24 +87,24 @@ const EligibleNftList = () => {
             twitterLink={"https://twitter.com/NetzFamily"}
             globalLink={"https://www.netzfamily.xyz/"}
           />
-          {/* <NftCollection
-            imgUrl={"/credpoints/nft_collections/Creature.svg"}
-            text={"Aptos Creature"}
-            twitterLink={"https://twitter.com/NetzFamily"}
-            globalLink={"https://www.netzfamily.xyz/"}
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/lions.svg"}
+            text={"Proud Lions Club"}
+            twitterLink={"https://twitter.com/proudlionsclub"}
+            globalLink={"https://www.proudlionsclub.com/"}
           />
           <NftCollection
-            imgUrl={"/credpoints/nft_collections/Mania.svg"}
-            text={"Mancini Mania"}
-            twitterLink={"https://twitter.com/NetzFamily"}
-            globalLink={"https://www.netzfamily.xyz/"}
-          /> */}
+            imgUrl={"/credpoints/nft_collections/Creature.svg"}
+            text={"Aptos Creature"}
+            twitterLink={"https://twitter.com/AptosCreature"}
+            globalLink={"https://aptoscreature.xyz/"}
+          />
           <div className="mb-6">
             <NftCollection
-              imgUrl={"/credpoints/nft_collections/lions.svg"}
-              text={"Proud Lions Club"}
-              twitterLink={"https://twitter.com/proudlionsclub"}
-              globalLink={"https://www.proudlionsclub.com/"}
+              imgUrl={"/credpoints/nft_collections/Mania.svg"}
+              text={"Mancini Mania"}
+              twitterLink={"https://twitter.com/mancinixo"}
+              globalLink={"https://www.mancinix.io/"}
             />
           </div>
         </div>
