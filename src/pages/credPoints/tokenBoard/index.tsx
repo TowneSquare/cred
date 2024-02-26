@@ -21,10 +21,10 @@ const TokenBoard = () => {
       <div className="h-[450px] container mt-4 flex border border-gray-light-2 rounded-xl">
         <div className="min-w-full md:min-w-[50%] p-6 flex flex-col justify-center items-center gap-4">
           <PointLogo />
-          <p className="text-2xl font-bold">from holding tokens</p>
+          <p className="text-2xl font-bold">from holding or staking tokens</p>
           <div className="w-full flex flex-col items-center">
             <p className="text-sm text-center text-gray-light-3 w-[90%]">
-              Get daily points by holding a certain amount of eligible tokens.
+              Get daily points by holding or staking a certain amount of eligible tokens
             </p>
             <p onClick={() => dispatch(toggleEligibleTokenModal(true))} className="text-sm font-normal text-[#45A9A7] mt-2 cursor-pointer">Show eligible tokens</p>
           </div>

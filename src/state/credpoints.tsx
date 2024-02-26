@@ -27,6 +27,7 @@ interface credpointsStates {
   inviteCode: string | undefined;
   initInviteCode: string | undefined;
   eligibleDefiTapIndex: number;
+  eligibleTokenTapIndex: number;
   walletAddress: string;
 }
 
@@ -51,6 +52,7 @@ const initialState: credpointsStates = {
   inviteCode: undefined,
   initInviteCode: undefined,
   eligibleDefiTapIndex: 0,
+  eligibleTokenTapIndex: 0,
   walletAddress: ""
 };
 
@@ -105,6 +107,9 @@ export const credpointsSlice = createSlice({
     updateEligibleDefiTapIndex(state, action: PayloadAction<number>) {
       state.eligibleDefiTapIndex = action.payload;
     },
+    updateEligibleTokenTapIndex(state, action: PayloadAction<number>) {
+      state.eligibleTokenTapIndex = action.payload;
+    },
     updateWalletAddress(state, action: PayloadAction<string>) {
       state.walletAddress = action.payload;
     }
@@ -136,5 +141,12 @@ export const credpointsSlice = createSlice({
   },
 });
 
-export const { reset, updateCredPointsLive, updateConnection, updateInitInviteCode, updateEligibleDefiTapIndex, updateWalletAddress } = credpointsSlice.actions;
+export const { reset,
+  updateCredPointsLive,
+  updateConnection,
+  updateInitInviteCode,
+  updateEligibleDefiTapIndex,
+  updateWalletAddress,
+  updateEligibleTokenTapIndex
+} = credpointsSlice.actions;
 export default credpointsSlice.reducer;

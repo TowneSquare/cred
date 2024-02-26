@@ -1,86 +1,39 @@
 import { useDispatch } from "react-redux";
-import { toggleEligibleNftModal, toggleEligibleTokenModal } from "../../../../state/dialog";
-import NftCollection from "../../../../components/defi/nftCollection";
+import { toggleEligibleTokenModal } from "../../../../state/dialog";
+import { useAppSelector } from "../../../../state/hooks";
+import { updateEligibleTokenTapIndex } from "../../../../state/credpoints";
+import Tokens from "./tokens";
+import Staking from "./staking";
+import EligibleTapItemTokens from "../../../../components/eligibleTapItemTokens";
 
 const EligibleTokenList = () => {
 
-  const tipData = [
-    {
-      title: "Rewards",
-      items: [
-        { descr: "5 - 10 milion $GUI", price: "50" },
-        { descr: "10 - 30 milion $GUI", price: "100" },
-      ]
-    }
-  ];
-  const tipData2 = [
-    {
-      title: "Holding Rewards",
-      items: [
-        { descr: "5 < X ≤ 100 $SEEDZ", price: "20" },
-        { descr: "101 < X ≤ 200 $SEEDZ", price: "50" },
-        { descr: "200 < X $SEEDZ", price: "100" },
-      ]
-    },
-    {
-      title: "Staking Rewards",
-      items: [
-        { descr: "1-100 staked $SEEDZ", price: "20" },
-        { descr: "101-200 staked $SEEDZ", price: "50" },
-        { descr: "+200 staked $SEEDZ", price: "100 " }
-      ]
-    }
-  ];
-  const tipData3 = [
-    {
-      title: "Rewards",
-      items: [
-        { descr: "<1 $DOODOO", price: "0" },
-        { descr: "1 - 25 $DOODOO", price: "50" },
-        { descr: "26 - 50 $DOODOO", price: "100" },
-        { descr: "51 - 100 $DOODOO", price: "150" },
-        { descr: ">100 $DOODOO", price: "200" },
-      ]
-    }
-  ];
-
+  const tabs = ["Tokens", "Staking"];
+  const currentTap = useAppSelector(state => state.credpointsState.eligibleTokenTapIndex);
   const dispatch = useDispatch();
+
   return (
-    <div className="w-full pt-10 flex flex-col">
-      <div className="flex justify-center md:justify-between md:px-8 md:h-7 mb-10">
-        <p className="text-[20px] w-[270px] md:w-full md:text-[22px] font-bold text-center md:text-left">Eligible tokens</p>
+    <div className="w-full pt-10 pb-12 flex flex-col">
+      <div className="flex justify-center md:justify-between md:px-8 md:h-7">
+        <p className="text-[20px] w-[270px] md:w-full md:text-[22px] font-bold text-center md:text-left">Eligible DeFi platforms, activities and pairs</p>
         <img
           src="/credpoints/close.svg"
-          className="absolute top-5 right-6 md:flex cursor-pointer w-8"
+          className="absolute top-5 right-6  md:flex cursor-pointer w-8"
           onClick={(e) => dispatch(toggleEligibleTokenModal(false))}
         />
       </div>
-      <div className="flex flex-col px-4 md:px-1 font-Inter overflow-y-scroll md:overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <NftCollection
-            imgUrl={"/credpoints/token_icons/gui_inu.svg"}
-            text={"$GUI"}
-            tipData={tipData}
-            twitterLink={"https://twitter.com/guiinuonaptos"}
-            globalLink={"https://www.guiinu.com/"}
-          />
-          <NftCollection
-            imgUrl={"/credpoints/token_icons/SEEDZ.svg"}
-            text={"$SEEDZ"}
-            tipData={tipData2}
-            text_sm={"& Staking"}
-            twitterLink={"#"}
-            globalLink={"#"}
-            />
-          <NftCollection
-            imgUrl={"/credpoints/token_icons/DOODOO.svg"}
-            text={"$DOODOO"}
-            tipData={tipData3}
-            text_sm={""}
-            twitterLink={"https://twitter.com/doodoocoin"}
-            globalLink={"https://doodoo.io/"}
-          />
+      <div className="grid mt-6 mb-8">
+        <div className="flex justify-between h-[49px] items-center border-b-[1px] border-[#B9B9B9]">
+          {tabs.map((text, index) => (
+            <EligibleTapItemTokens onClick={() => dispatch(updateEligibleTokenTapIndex(index))} key={index} className={`${currentTap == index && 'font-bold border-b-[3px]'}`}>
+              {text}
+            </EligibleTapItemTokens>
+          ))}
         </div>
+      </div >
+      <div className="grid h-[405px] font-Inter overflow-y-scroll md:overflow-hidden">
+        {currentTap == 0 && <Tokens />}
+        {currentTap == 1 && <Staking />}
       </div>
     </div>
   );
