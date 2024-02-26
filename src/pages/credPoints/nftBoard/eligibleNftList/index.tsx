@@ -99,12 +99,48 @@ const EligibleNftList = () => {
             twitterLink={"https://twitter.com/AptosCreature"}
             globalLink={"https://aptoscreature.xyz/"}
           />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/Mania.svg"}
+            text={"Mancini Mania"}
+            twitterLink={"https://twitter.com/mancinixo"}
+            globalLink={"https://www.mancinix.io/"}
+          />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/nruh.svg"}
+            text={"Nruh Bers"}
+            twitterLink={"#"}
+            globalLink={"https://www.mercato.xyz/aptos/collection/0xba3ece85f7c2d1451b5e5da4ddccca14b93c6b0b248e55f4b39adcbdaf355415?tab=items&bottomTab=trades"}
+          />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/observer.svg"}
+            text={"Observer"}
+            twitterLink={"https://twitter.com/NickoleNFT"}
+            globalLink={"https://linktr.ee/nickole_"}
+          />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/realm.svg"}
+            text={"Realm of Personas"}
+            twitterLink={"https://twitter.com/SereneForest_"}
+            globalLink={"https://www.mercato.xyz/aptos/collection/0xa3b8b91e179eceebf77bb558a05aa2a60455e28df5517b71c87ca1681e91a835?tab=mint&mintTokenId=2e179b85-6df5-4821-84c9-82b531d99c3b&bottomTab=trades"}
+          />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/messages.svg"}
+            text={"Messages"}
+            twitterLink={"https://twitter.com/NickoleNFT"}
+            globalLink={"https://linktr.ee/nickole_"}
+          />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/micro.svg"}
+            text={"Micro (Bacteria) Aliens"}
+            twitterLink={"https://twitter.com/terakiart"}
+            globalLink={"https://terakiart.xyz"}
+          />
           <div className="mb-6">
             <NftCollection
-              imgUrl={"/credpoints/nft_collections/Mania.svg"}
-              text={"Mancini Mania"}
-              twitterLink={"https://twitter.com/mancinixo"}
-              globalLink={"https://www.mancinix.io/"}
+              imgUrl={"/credpoints/nft_collections/sushi.svg"}
+              text={"Sushi Mania"}
+              twitterLink={"https://twitter.com/IamSushiSheriff"}
+              globalLink={"https://www.mercato.xyz/aptos/collection/0xdd4150980c421573771a2c049b97eedd89a410989e5b98048aac881b3821567b?bottomTab=trades&tab=items"}
             />
           </div>
         </div>
