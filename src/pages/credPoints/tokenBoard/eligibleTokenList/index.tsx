@@ -15,7 +15,7 @@ const EligibleTokenList = () => {
   return (
     <div className="w-full pt-10 pb-12 flex flex-col">
       <div className="flex justify-center md:justify-between md:px-8 md:h-7">
-        <p className="text-[20px] w-[270px] md:w-full md:text-[22px] font-bold text-center md:text-left">Eligible DeFi platforms, activities and pairs</p>
+        <p className="text-[20px] w-[270px] md:w-full md:text-[22px] font-bold text-center md:text-left">Eligible tokens and Staking platforms</p>
         <img
           src="/credpoints/close.svg"
           className="absolute top-5 right-6  md:flex cursor-pointer w-8"

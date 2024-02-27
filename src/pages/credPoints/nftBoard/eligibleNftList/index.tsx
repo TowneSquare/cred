@@ -145,7 +145,7 @@ const EligibleNftList = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   );
 };
 
