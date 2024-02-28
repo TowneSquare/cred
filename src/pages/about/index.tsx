@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "../../components/header";
 import SuggestVerifyNavbar from "../../components/header/suggestVerifyNavbar";
 import PrimaryButton from "../../components/primaryButton";
@@ -22,9 +23,11 @@ const About = () => {
             <br />
             What to do with CRED points? We’ll reveal more information soon.
             Stay tuned and follow all the news on our&nbsp;
-            <span className="text-third-default font-bold underline cursor-pointer">
-              X account!
-            </span>
+            <Link to={'https://twitter.com/0xcred'}>
+              <span className="text-third-default font-bold underline cursor-pointer">
+                X account!
+              </span>
+            </Link>
           </p>
           <div
             className="mt-20 w-full py-12 flex flex-col justify-center items-center border border-gray-light-1 rounded-xl"
