@@ -135,6 +135,30 @@ const EligibleNftList = () => {
             twitterLink={"https://twitter.com/terakiart"}
             globalLink={"https://terakiart.xyz"}
           />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/pandato.svg"}
+            text={"Pandato"}
+            twitterLink={"https://twitter.com/pandatonft"}
+            globalLink={"#"}
+          />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/gui lion.svg"}
+            text={"GUI Lion"}
+            twitterLink={"https://twitter.com/proudlionsclub"}
+            globalLink={"https://www.proudlionsclub.com/"}
+          />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/ooga.svg"}
+            text={"Ooga Republic"}
+            twitterLink={"https://twitter.com/OogaRepublic"}
+            globalLink={"https://lynkfire.com/OogaRepublic"}
+          />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/faerune.svg"}
+            text={"Faerune (Celestines)"}
+            twitterLink={"https://twitter.com/FaeruneWorld"}
+            globalLink={"#"}
+          />
           <div className="mb-6">
             <NftCollection
               imgUrl={"/credpoints/nft_collections/sushi.svg"}
