@@ -149,7 +149,7 @@ const EligibleNftList = () => {
           />
           <NftCollection
             imgUrl={"/credpoints/nft_collections/ooga.svg"}
-            text={"Ooga Republic"}
+            text={"CHOMBLES"}
             twitterLink={"https://twitter.com/OogaRepublic"}
             globalLink={"https://lynkfire.com/OogaRepublic"}
           />
