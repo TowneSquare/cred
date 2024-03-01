@@ -154,7 +154,7 @@ const EligibleNftList = () => {
             globalLink={"https://lynkfire.com/OogaRepublic"}
           />
           <NftCollection
-            imgUrl={"/credpoints/nft_collections/faerune.svg"}
+            imgUrl={"/credpoints/nft_collections/fearune.svg"}
             text={"Faerune (Celestines)"}
             twitterLink={"https://twitter.com/FaeruneWorld"}
             globalLink={"#"}
