@@ -159,17 +159,23 @@ const EligibleNftList = () => {
             twitterLink={"https://twitter.com/FaeruneWorld"}
             globalLink={"#"}
           />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/sushi.svg"}
+            text={"Sushi Mania"}
+            twitterLink={"https://twitter.com/IamSushiSheriff"}
+            globalLink={"https://www.mercato.xyz/aptos/collection/0xdd4150980c421573771a2c049b97eedd89a410989e5b98048aac881b3821567b?bottomTab=trades&tab=items"}
+          />
           <div className="mb-6">
             <NftCollection
-              imgUrl={"/credpoints/nft_collections/sushi.svg"}
-              text={"Sushi Mania"}
-              twitterLink={"https://twitter.com/IamSushiSheriff"}
-              globalLink={"https://www.mercato.xyz/aptos/collection/0xdd4150980c421573771a2c049b97eedd89a410989e5b98048aac881b3821567b?bottomTab=trades&tab=items"}
+              imgUrl={"/credpoints/nft_collections/aptos girl.svg"}
+              text={"Aptos Girls"}
+              twitterLink={"https://twitter.com/AptosGirls_nft"}
+              globalLink={"https://wapal.io/collection/happy-movers"}
             />
           </div>
         </div>
       </div>
-    </div> 
+    </div>
   );
 };
 
