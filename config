@@ -1,0 +1,33 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://codewizard870: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@github.com/TowneSquare/cred.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[user]
+	name = codewizard870
+	email = alenzer0902@gmail.com
+[branch "version/overlay"]
+	remote = origin
+	merge = refs/heads/version/overlay
+[branch "feat/socials"]
+	remote = origin
+	merge = refs/heads/feat/socials
+[branch "fix/issues43-48"]
+	remote = origin
+	merge = refs/heads/fix/issues43-48
+[lfs]
+	repositoryformatversion = 0
+[branch "fix/invitecode"]
+	remote = origin
+	merge = refs/heads/fix/invitecode
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+[branch "feat/version2-tested"]
+	remote = origin
+	merge = refs/heads/feat/version2-tested

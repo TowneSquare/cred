@@ -165,6 +165,18 @@ const EligibleNftList = () => {
             twitterLink={"https://twitter.com/IamSushiSheriff"}
             globalLink={"https://www.mercato.xyz/aptos/collection/0xdd4150980c421573771a2c049b97eedd89a410989e5b98048aac881b3821567b?bottomTab=trades&tab=items"}
           />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/qribbles.svg"}
+            text={"Qribbles"}
+            twitterLink={"#"}
+            globalLink={"https://sshift.xyz/#qribbles"}
+          />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/koalas.svg"}
+            text={"Relocated Koalas"}
+            twitterLink={"https://twitter.com/RelocatedKoalas"}
+            globalLink={"https://www.relocatedkoalas.com/"}
+          />
           <div className="mb-6">
             <NftCollection
               imgUrl={"/credpoints/nft_collections/aptos girl.svg"}
