@@ -4,7 +4,7 @@ export const DefiIcon: { [key: string]: string } = {
   "pancake": "/credpoints/pancakeswap.png",
   "thala": "/credpoints/thala.svg",
   "aries": "/credpoints/aries.png",
-  "swap": "/credpoints/defi/swapgpt.svg",
+  "panora": "/credpoints/defi/panora.svg",
   "kana": "/credpoints/defi/kana_labs.svg",
   "merkle": "/credpoints/defi/merkle_trade.svg"
 }
@@ -14,7 +14,7 @@ export const DefiName: { [key: string]: string } = {
   "pancake": "Pancakeswap",
   "thala": "Thala",
   "aries": "Aries Market",
-  "swap": "SwapGPT",
+  "panora": "PANORA",
   "kana": "Kana Labs",
   "merkle": "Merkle trade"
 }
@@ -24,7 +24,7 @@ export const DefiLink: { [key: string]: string } = {
   "pancake": "https://pancakeswap.finance/",
   "thala": "https://app.thala.fi/",
   "aries": "https://ariesmarkets.xyz/",
-  "swap": "https://app.swapgpt.ai/trade/",
+  "panora": "https://app.swapgpt.ai/trade/",
   "kana": "https://tradebook.kanalabs.io/",
   "merkle": "https://app.merkle.trade/"
 }
