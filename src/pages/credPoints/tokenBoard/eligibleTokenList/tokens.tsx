@@ -43,6 +43,19 @@ const tipData3 = [
     ]
   }
 ];
+const tipData4 = [
+  {
+    title: "Rewards",
+    items: [
+      { descr: "<10 SHRIMP", price: "0" },
+      { descr: "10 - 25 SHRIMP", price: "50" },
+      { descr: "25 - 50 SHRIMP", price: "100" },
+      { descr: "51 - 100 SHRIMP", price: "150" },
+      { descr: "100 - 200 SHRIMP", price: "200" },
+      { descr: ">200 SHRIMP", price: "250" },
+    ]
+  }
+];
 
 const Tokens: React.FC<Props> = () => {
   return (
@@ -70,6 +83,14 @@ const Tokens: React.FC<Props> = () => {
           text_sm={""}
           twitterLink={"https://twitter.com/doodoocoin"}
           globalLink={"https://doodoo.io/"}
+        />
+        <NftCollection
+          imgUrl={"/credpoints/token_icons/shrimp.svg"}
+          text={"SHRIMP"}
+          tipData={tipData4}
+          text_sm={""}
+          twitterLink={"https://twitter.com/shrimp_apt"}
+          globalLink={"https://shrimp.app/"}
         />
       </div>
     </div>
