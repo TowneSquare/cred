@@ -70,7 +70,7 @@ const Tradebook: React.FC<Props> = ({ data }) => {
               src="/credpoints/defi/panora.svg"
               className="w-6 h-6"
             />
-            <p className="text-4 font-semibold ml-2">SwapGPT</p>
+            <p className="text-4 font-semibold ml-2">Panora</p>
           </div>
           <div className="flex">
             <TwitterLink link="https://twitter.com/PanoraExchange" />
