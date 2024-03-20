@@ -67,25 +67,21 @@ const Tradebook: React.FC<Props> = ({ data }) => {
         <div className="flex justify-between md:mt-4 h-8 items-center">
           <div className="flex">
             <img
-              src="/credpoints/defi/merkle_trade.svg"
+              src="/credpoints/defi/panora.svg"
               className="w-6 h-6"
             />
-            <p className="text-4 font-semibold ml-2">Merkle Trade</p>
+            <p className="text-4 font-semibold ml-2">SwapGPT</p>
           </div>
           <div className="flex">
-            <TwitterLink link="https://twitter.com/merkle_trade" />
-            <GlobalLink link="https://merkle.trade/" />
+            <TwitterLink link="https://twitter.com/PanoraExchange" />
+            <GlobalLink link="https://panora.exchange/" />
           </div>
         </div>
         <div className="grid h-[49px] mt-4">
           <div className="flex justify-start">
             <BridgeShowcase
               Item1={{ imgUrl: "/credpoints/aptos.svg", text: "APT" }}
-              Item2={{ imgUrl: "/credpoints/token_icons/usd.svg", text: "USD" }}
-            />
-            <BridgeShowcase
-              Item1={{ imgUrl: "/credpoints/token_icons/eth.svg", text: "ETH" }}
-              Item2={{ imgUrl: "/credpoints/token_icons/usd.svg", text: "USD" }}
+              Item2={{ imgUrl: "/credpoints/token_icons/usdc.svg", text: "USDC" }}
             />
           </div>
         </div>

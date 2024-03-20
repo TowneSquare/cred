@@ -66,6 +66,10 @@ const Swap: React.FC<Props> = ({ data }) => {
               Item1={{ imgUrl: "/credpoints/aptos.svg", text: "APT" }}
               Item2={{ imgUrl: "/credpoints/token_icons/usdc.svg", text: "USDC" }}
             />
+            <BridgeShowcase
+              Item1={{ imgUrl: "/credpoints/aptos.svg", text: "APT" }}
+              Item2={{ imgUrl: "/credpoints/token_icons/gui_inu.svg", text: "GUI" }}
+            />
           </div>
           <p className="text-[12px] text-[#B9B9B9] mt-2">Supported bridges for <b>USDC</b>: LayerZero</p>
         </div>
