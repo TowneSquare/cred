@@ -177,6 +177,18 @@ const EligibleNftList = () => {
             twitterLink={"https://twitter.com/RelocatedKoalas"}
             globalLink={"https://www.relocatedkoalas.com/"}
           />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/ice.svg"}
+            text={"Ice Blue"}
+            twitterLink={"https://twitter.com/pandatonft"}
+            globalLink={"#"}
+          />
+          <NftCollection
+            imgUrl={"/credpoints/nft_collections/stellar.svg"}
+            text={"Stellarland"}
+            twitterLink={"https://twitter.com/Stellarland69"}
+            globalLink={"#"}
+          />
           <div className="mb-6">
             <NftCollection
               imgUrl={"/credpoints/nft_collections/aptos girl.svg"}

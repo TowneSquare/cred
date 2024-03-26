@@ -6,7 +6,9 @@ export const DefiIcon: { [key: string]: string } = {
   "aries": "/credpoints/aries.png",
   "panora": "/credpoints/defi/panora.svg",
   "kana": "/credpoints/defi/kana_labs.svg",
-  "merkle": "/credpoints/defi/merkle_trade.svg"
+  "kanaTrade": "/credpoints/defi/kana_labs.svg",
+  "merkle": "/credpoints/defi/merkle_trade.svg",
+  "aptin": "/credpoints/defi/aptin.svg"
 }
 
 export const DefiName: { [key: string]: string } = {
@@ -16,7 +18,9 @@ export const DefiName: { [key: string]: string } = {
   "aries": "Aries Market",
   "panora": "PANORA",
   "kana": "Kana Labs",
-  "merkle": "Merkle trade"
+  "kanaTrade": "Kana Labs",
+  "merkle": "Merkle trade",
+  "aptin": "Aptin Finance"
 }
 
 export const DefiLink: { [key: string]: string } = {
@@ -26,5 +30,7 @@ export const DefiLink: { [key: string]: string } = {
   "aries": "https://ariesmarkets.xyz/",
   "panora": "https://app.swapgpt.ai/trade/",
   "kana": "https://tradebook.kanalabs.io/",
-  "merkle": "https://app.merkle.trade/"
+  "kanaTrade": "https://tradebook.kanalabs.io/",
+  "merkle": "https://app.merkle.trade/",
+  "aptin": "https://aptin.io/"
 }
