@@ -29,7 +29,7 @@ export const DefiLink: { [key: string]: string } = {
   "thala": "https://app.thala.fi/",
   "aries": "https://ariesmarkets.xyz/",
   "panora": "https://app.swapgpt.ai/trade/",
-  "kana": "https://tradebook.kanalabs.io/",
+  "kana": "https://app.kanalabs.io/",
   "kanaTrade": "https://tradebook.kanalabs.io/",
   "merkle": "https://app.merkle.trade/",
   "aptin": "https://aptin.io/"
